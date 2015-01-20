@@ -12,7 +12,7 @@ class OfferPolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
     def resolve
       if user.present?
-        scope.owned_by(user.id)
+        scope.owned_by(user)
       else
         scope.none
       end

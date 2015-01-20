@@ -56,6 +56,8 @@ gem 'virtus', '~> 1.0.4'
 gem 'haml-rails', '~> 0.7.0'
 gem 'bootstrap-sass-extras', '~> 0.0.6'
 group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'faker'
   gem 'mail_safe'
   gem 'rspec'
   gem 'rspec-rails'
