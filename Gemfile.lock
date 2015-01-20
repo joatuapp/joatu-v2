@@ -113,9 +113,6 @@ GEM
       ruby_parser (~> 3.5)
     i18n (0.7.0)
     ice_nine (0.11.1)
-    jbuilder (2.2.6)
-      activesupport (>= 3.0.0, < 5)
-      multi_json (~> 1.2)
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -211,6 +208,9 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     sexp_processor (4.4.5)
+    simple_form (3.0.3)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     slop (3.6.0)
     spring (1.2.0)
     spring-commands-rspec (1.0.4)
@@ -266,7 +266,6 @@ DEPENDENCIES
   devise (~> 3.4.1)
   foreman (~> 0.75)
   haml-rails (~> 0.7.0)
-  jbuilder (~> 2.0)
   jquery-rails
   mail_safe
   pg
@@ -277,6 +276,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simple_form (~> 3.0.0)
   spring
   spring-commands-rspec
   turbolinks
