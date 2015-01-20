@@ -14,33 +14,32 @@ class OffersController < ApplicationController
   end
 
   def new
-    @form = OfferForm.new(Offer.new)
-    authorize @form
-    respond_with(@form)
+    @offer = OfferForm.new(Offer.new)
+    authorize @offer
+    respond_with(@offer)
   end
 
   def edit
     authorize @offer
-    @form = OfferForm.new(@offer)
-    respond_with(@form)
+    @offer = OfferForm.new(@offer)
   end
 
   def create
-    @form = OfferForm.new(Offer.new(user_id: current_user.id))
-    authorize @form
-    if @form.validate(params[:offer])
-      @form.save
+    @offer = OfferForm.new(Offer.new(user_id: current_user.id))
+    if @offer.validate(params[:offer])
+      authorize @offer
+      @offer.save
     end
-    respond_with(@form)
+    respond_with(@offer)
   end
 
   def update
-    authorize @offer
-    @form = OfferForm.new(@offer)
-    if @form.validate(params[:offer])
-      @form.save
+    @offer = OfferForm.new(@offer)
+    if @offer.validate(params[:offer])
+      authorize @offer
+      @offer.save
     end
-    respond_with(@form)
+    respond_with(@offer)
   end
 
   def destroy

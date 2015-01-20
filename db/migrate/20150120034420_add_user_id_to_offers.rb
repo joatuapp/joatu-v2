@@ -4,6 +4,6 @@ class AddUserIdToOffers < ActiveRecord::Migration
       t.integer :user_id, null: false, after: :id
     end
 
-    add_foreign_key :offers, :users
+    add_foreign_key :offers, :users, on_delete: :cascade
   end
 end

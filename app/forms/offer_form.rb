@@ -1,4 +1,4 @@
-class OfferForm < Reform::Form
+class OfferForm < ApplicationForm
   def self.policy_class
     OfferPolicy
   end
@@ -6,5 +6,5 @@ class OfferForm < Reform::Form
   property :title, validates: {presence: true}
   property :summary
   property :description
-  property :user_id, validates: {presence: true}
+  property :user_id, writeable: false
 end
