@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_action :set_offer, only: [:show, :update, :destroy]
 
   respond_to :html
 
@@ -13,21 +13,27 @@ class OffersController < ApplicationController
   end
 
   def new
-    @offer = Offer.new
+    @offer = OfferForm.new(Offer.new)
     respond_with(@offer)
   end
 
   def edit
+    @offer = OfferForm.new(Offer.find(params[:id]))
   end
 
   def create
-    @offer = Offer.new(offer_params)
-    @offer.save
+    @form = OfferForm.new(Offer.new(user_id: current_user.id))
+    if @form.validate(params[:offer])
+      @form.save
+    end
     respond_with(@offer)
   end
 
   def update
-    @offer.update(offer_params)
+    @form = OfferForm.new(Offer.find(params[:id]))
+    if @form.validate(params[:offer])
+      @form.save
+    end
     respond_with(@offer)
   end
 
@@ -39,9 +45,5 @@ class OffersController < ApplicationController
   private
     def set_offer
       @offer = Offer.find(params[:id])
-    end
-
-    def offer_params
-      params.require(:offer).permit(:title, :summary, :description)
     end
 end
