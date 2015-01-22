@@ -24,6 +24,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Mailboxer, handle messaging between users
+gem 'mailboxer', git: 'https://github.com/div/mailboxer.git', branch: 'rails42-foreigner'
+
 # Rails frontend specific gems:
 gem 'simple_form', '~> 3.0.0'
 
