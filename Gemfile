@@ -26,6 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Mailboxer, handle messaging between users
 gem 'mailboxer', git: 'https://github.com/div/mailboxer.git', branch: 'rails42-foreigner'
+gem 'kaminari'
 
 # Rails frontend specific gems:
 gem 'simple_form', '~> 3.0.0'

@@ -1,0 +1,10 @@
+= simple_form_for(@message, path: messages_path, method: :post) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :'recipients', as: :hidden, default: @recipient.try(:id)
+    = f.input :subject
+    = f.input :body
+
+  .form-actions
+    = f.button :submit
