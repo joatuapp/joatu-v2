@@ -1,11 +1,6 @@
-class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
-  acts_as_messageable
-
-  has_many :offers
-  has_one :profile
+class User < DomainBase
+  attribute :email
+  attribute :offers
+  attribute :profile
+  attribute :mailbox
 end

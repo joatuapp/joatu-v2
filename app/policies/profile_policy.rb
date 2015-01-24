@@ -10,7 +10,7 @@ class ProfilePolicy < ApplicationPolicy
 
   def update?
     user.present? && 
-      user.id == record.user_id
+      user.id == record.user.id
   end
 
   class Scope < ApplicationPolicy::Scope

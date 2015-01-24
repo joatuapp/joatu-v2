@@ -6,5 +6,4 @@ class OfferForm < ApplicationForm
   property :title, validates: {presence: true}
   property :summary
   property :description
-  property :user_id, writeable: false
 end

@@ -1,14 +1,3 @@
-MessageStruct = Struct.new(:recipients, :subject, :body) do
-  def persisted? 
-    false
-  end
-  def to_key
-    ["foobar"]
-  end
-  def model_name
-  end
-end
-
 class MessagesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :get_mailbox, :get_box
@@ -17,35 +6,30 @@ class MessagesController < ApplicationController
   respond_to :html
 
   def show
-    @message = Message.find(params[:id])
+    @message = Message.query {|m| m.find(params[:id]) }
     authorize @message
     redirect_to conversation_path(@message.conversation, box: box, anchor: "message_#{@message.id}")
   end
 
   def new
     if params[:receiver].present?
-      @receipient = User.find(params[:receiver])
+      @receipient = User.query {|m| m.find(params[:receiver]) }
     end
-    @message = MessageForm.new(MessageStruct.new)
+    @message = MessageForm.new(Message.new)
   end
 
   def edit
   end
 
   def create
-    @message = MessageForm.new(MessageStruct.new)
-    if @message.validate(params[:message])
-      @message.save do |message_data|
-        @receipt = current_user.send_message(message_data[:recipients], message_data[:body], message_data[:subject])
-        if (@receipt.errors.blank?)
-          @conversation = @receipt.conversation
-          flash[:success] = t('mailboxer.sent')
-          return redirect_to conversation_path(@conversation, :box => :sentbox)
-        end
-      end
+    @form = MessageForm.new(Message.new(nil, sender: current_user))
+    if @form.validate(params[:message])
+      @message = @form.save
+      flash[:success] = t('mailboxer.sent')
+      redirect_to conversation_path(@message.conversation, :box => :sentbox)
+    else
+      render action: :new
     end
-    Rails.logger.debug @receipt.errors.inspect
-    render action: :new
   end
 
   def update

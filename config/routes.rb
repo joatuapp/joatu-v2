@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :offers
 
-  devise_for :users
+  devise_for :users, class_name: "Persistent::User"
   root 'static_page#home'
   get 'static_page/home'
 

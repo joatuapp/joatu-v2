@@ -4,7 +4,7 @@ class OffersController < ApplicationController
   respond_to :html
 
   def index
-    @offers = policy_scope Offer.all
+    @offers = Offer.query {|m| policy_scope m.all }
     respond_with(@offers)
   end
 
@@ -14,9 +14,9 @@ class OffersController < ApplicationController
   end
 
   def new
-    @offer = OfferForm.new(Offer.new)
-    authorize @offer
-    respond_with(@offer)
+    @form = OfferForm.new(Offer.new)
+    authorize @form.model
+    respond_with(@offer = @form)
   end
 
   def edit
@@ -25,21 +25,21 @@ class OffersController < ApplicationController
   end
 
   def create
-    @offer = OfferForm.new(Offer.new(user_id: current_user.id))
-    if @offer.validate(params[:offer])
-      authorize @offer
-      @offer.save
+    @form = OfferForm.new(Offer.new(user: current_user))
+    if @form.validate(params[:offer])
+      authorize @form.model
+      @form.save
     end
-    respond_with(@offer)
+    respond_with(@offer = @form)
   end
 
   def update
-    @offer = OfferForm.new(@offer)
-    if @offer.validate(params[:offer])
-      authorize @offer
-      @offer.save
+    @form = OfferForm.new(@offer)
+    if @form.validate(params[:offer])
+      authorize @form.model
+      @form.save
     end
-    respond_with(@offer)
+    respond_with(@offer = @form)
   end
 
   def destroy
@@ -50,6 +50,6 @@ class OffersController < ApplicationController
 
   private
     def set_offer
-      @offer = Offer.find(params[:id])
+      @offer = Offer.query {|m| m.find(params[:id]) }
     end
 end

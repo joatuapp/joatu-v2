@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   respond_to :html
 
   def index
-    @profiles = policy_scope Profile.all
+    @profiles = Profile.query {|m| policy_scope m.all }
     respond_with(@profiles)
   end
 
@@ -24,31 +24,32 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = ProfileForm.new(Profile.new(user_id: current_user.id))
-    if @profile.validate(params[:profile])
-      authorize @profile
-      @profile.save
+    @form = ProfileForm.new(Profile.new(user: current_user))
+    if @form.validate(params[:profile])
+      authorize @form.model
+      @form.save
     end
-    respond_with(@profile)
+    respond_with(@profile = @form)
   end
 
   def update
-    @profile = ProfileForm.new(@profile)
-    if @profile.validate(params[:profile])
-      authorize @profile
-      @profile.save
+    @form = ProfileForm.new(@profile)
+    if @form.validate(params[:profile])
+      authorize @form.model
+      @form.save
     end
-    respond_with(@profile)
+    respond_with(@profile = @form)
   end
 
   def destroy
     authorize @profile
-    @profile.destroy
+    @profile.destroy!
     respond_with(@profile)
   end
 
   private
-    def set_profile
-      @profile = Profile.find(params[:id])
-    end
+
+  def set_profile
+    @profile = Profile.query {|m| m.find(params[:id]) }
+  end
 end

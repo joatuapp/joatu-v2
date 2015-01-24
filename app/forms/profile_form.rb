@@ -6,5 +6,4 @@ class ProfileForm < ApplicationForm
   property :given_name
   property :surname
   property :about_me
-  property :user_id, writeable: false
 end

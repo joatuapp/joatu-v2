@@ -1,7 +1,6 @@
-class Offer < ActiveRecord::Base
-  belongs_to :user
-
-  def self.owned_by(user)
-    where(user_id: user.id)
-  end
+class Offer < DomainBase
+  attribute :user
+  attribute :title
+  attribute :summary
+  attribute :description
 end
