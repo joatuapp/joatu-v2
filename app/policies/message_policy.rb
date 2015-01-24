@@ -5,6 +5,10 @@ class MessagePolicy < ApplicationPolicy
       record.conversation.is_participant(user)
   end
 
+  def create?
+    true
+  end
+
   def update?
     record.conversation.present? && 
       record.conversation.is_participant(user)

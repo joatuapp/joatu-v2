@@ -1,4 +1,4 @@
-class DomainBase
+class DomainModel
   include Virtus.model strict: true
   include ActiveModel::Model
 
@@ -31,6 +31,55 @@ class DomainBase
         self.new results
       end
     end
+
+    # Generates and returns an Virtus::Attribute object to coerce objects
+    # into instances of type_class. Works for collections as well.
+    def attr_type(type_class, options = {})
+      options[:collection] ||= false
+
+      @generated_attribute_classes ||= {}
+      @generated_attribute_classes[type_class] ||= {}
+      if options[:collection]
+        return @generated_attribute_classes[type_class][:collection] ||= Class.new(Virtus::Attribute) do
+          default lambda {|m,a| [type_class.new] }
+
+          define_method :type do
+            type_class
+          end
+
+          define_method :coerce do |value|
+            # If value is not already a collection, wrap it in one.
+            unless value.respond_to? :each
+              value = [value]
+            end
+
+            if value.present? && !value.first.is_a?(type)
+              value = type.query {|m| m.find(value) }
+            end
+            value
+          end
+        end
+      else
+        return @generated_attribute_classes[type_class][:single] ||= Class.new(Virtus::Attribute) do
+          default lambda {|m,a| type_class.new }
+
+          define_method :type do
+            type_class
+          end
+
+          define_method :coerce do |value|
+            if value.present? && !value.is_a?(type)
+              if value.respond_to? :each
+                raise "Cannot coerce collection into single instance of #{type_class}"
+              end
+
+              value = type.query {|m| m.find(value) }
+            end
+            value
+          end
+        end
+      end
+    end
   end
 
   attr_reader :model
@@ -54,7 +103,7 @@ class DomainBase
     raise "Cannot persist a destroyed object!" if destroyed?
 
     attrs = self.attributes.inject({}) do |hash, (attr, val)|
-      if val.is_a? DomainBase
+      if val.is_a? DomainModel
         hash[attr] = val.model
       else
         hash[attr] = val
@@ -63,19 +112,24 @@ class DomainBase
     end
     model.update!(attrs)
     populate_from_model!
+
+    self
   end
-  alias :save :persist! # For integration with reform.
+  def save
+    persist!
+  end
 
   def destroy!
     model.destroy!
     @destroyed = true
     self.freeze
+    self
   end
 
   def destroyed?
     !!@destroyed
   end
-
+  
   private
 
   attr_writer :model

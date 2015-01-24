@@ -1,4 +1,4 @@
-class Mailboxer::ConversationPolicy < ApplicationPolicy
+class ConversationPolicy < ApplicationPolicy
 
   def show?
     record.present? && 

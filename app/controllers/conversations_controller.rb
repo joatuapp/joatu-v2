@@ -2,25 +2,21 @@ class ConversationsController < ApplicationController
 
   before_filter :authenticate_user!
   before_filter :get_mailbox, :get_box
+
+  # We look up conversations by user, no need to scope it too.
   skip_after_filter :verify_policy_scoped, only: :index
 
   respond_to :html
 
   def index
-    @conversations = @mailbox.send(@box).page(params[:page])
+    @conversations = Conversation.query {|m| m.user_conversations(current_user, @box).page(params[:page]) }
     respond_with(@conversations)
   end
 
   def show
-    @conversation = Mailboxer::Conversation.find_by_id(params[:id])
+    @conversation = Conversation.query {|m| m.find(params[:id]) }
     authorize @conversation
-    if @box == 'trash'
-      @receipts = @mailbox.receipts_for(@conversation).trash
-    else
-      @receipts = @mailbox.receipts_for(@conversation).not_trash
-    end
     respond_with(@conversation)
-    @receipts.mark_as_read
   end
 
   def update

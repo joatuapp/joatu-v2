@@ -33,6 +33,11 @@
             %li= link_to "Link 2", "#"
             %li= link_to "Link 3", "#"
             %li= link_to "Link 3", "#"
+            - if user_signed_in?
+              %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+            - else
+              %li= link_to "Sign In", new_user_session_path
+              %li= link_to "Sign Up", new_user_registration_path
 
     .container
       .row

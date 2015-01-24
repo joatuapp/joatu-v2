@@ -1,4 +1,4 @@
-class Profile < DomainBase
+class Profile < DomainModel
   attribute :user
   attribute :given_name
   attribute :surname

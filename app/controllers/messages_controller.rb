@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_mailbox, :get_box
-  skip_after_filter :verify_authorized, only: [:new, :create]
+  before_filter :get_box
 
   respond_to :html
 
@@ -12,18 +11,22 @@ class MessagesController < ApplicationController
   end
 
   def new
+    @form = MessageForm.new(Message.new)
     if params[:receiver].present?
-      @receipient = User.query {|m| m.find(params[:receiver]) }
+      receiver = User.query {|m| m.find(params[:receiver]) }
+      @form.recipients = receiver.id
     end
-    @message = MessageForm.new(Message.new)
+    authorize @form.model
+    @message = @form
   end
 
   def edit
   end
 
   def create
-    @form = MessageForm.new(Message.new(nil, sender: current_user))
+    @form = MessageForm.new(Message.new(sender: current_user))
     if @form.validate(params[:message])
+      authorize @form.model
       @message = @form.save
       flash[:success] = t('mailboxer.sent')
       redirect_to conversation_path(@message.conversation, :box => :sentbox)
@@ -39,10 +42,6 @@ class MessagesController < ApplicationController
   end
 
   private
-
-  def get_mailbox
-    @mailbox = current_user.mailbox
-  end
 
   def get_box
     if params[:box].blank? or !["inbox","sentbox","trash"].include?params[:box]

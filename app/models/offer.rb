@@ -1,5 +1,5 @@
-class Offer < DomainBase
-  attribute :user
+class Offer < DomainModel
+  attribute :user, DomainModel.attr_type(User)
   attribute :title
   attribute :summary
   attribute :description
