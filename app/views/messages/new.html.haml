@@ -1,6 +1,8 @@
 - content_for :title do
   = t('message.other')
 
+= render partial: 'toolbar/messages'
+
 %section#new_message
   .conversation
     = render partial: 'form'

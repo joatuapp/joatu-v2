@@ -3,9 +3,12 @@ class Conversation < DomainModel
 
   attribute :subject
 
-  def is_participant?(messageable)
-    model.is_participant? messageable
-  end
+  attribute :last_sender, nil, writer: :private
+  attribute :last_message, nil, writer: :private
+  attribute :created_at, nil, writer: :private
+  attribute :updated_at, nil, writer: :private
+
+  delegate :is_participant?, :is_unread?, to: :model
 
   def self.query
     results = yield Queries.new(model_class)

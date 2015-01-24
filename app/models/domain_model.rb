@@ -34,49 +34,18 @@ class DomainModel
 
     # Generates and returns an Virtus::Attribute object to coerce objects
     # into instances of type_class. Works for collections as well.
-    def attr_type(type_class, options = {})
-      options[:collection] ||= false
-
+    def attr_type(type_class)
       @generated_attribute_classes ||= {}
-      @generated_attribute_classes[type_class] ||= {}
-      if options[:collection]
-        return @generated_attribute_classes[type_class][:collection] ||= Class.new(Virtus::Attribute) do
-          default lambda {|m,a| [type_class.new] }
-
-          define_method :type do
-            type_class
-          end
-
-          define_method :coerce do |value|
-            # If value is not already a collection, wrap it in one.
-            unless value.respond_to? :each
-              value = [value]
-            end
-
-            if value.present? && !value.first.is_a?(type)
-              value = type.query {|m| m.find(value) }
-            end
-            value
-          end
+      @generated_attribute_classes[type_class] ||= Class.new(Virtus::Attribute) do
+        define_method :type do
+          type_class.to_s.constantize
         end
-      else
-        return @generated_attribute_classes[type_class][:single] ||= Class.new(Virtus::Attribute) do
-          default lambda {|m,a| type_class.new }
 
-          define_method :type do
-            type_class
+        define_method :coerce do |value|
+          if value.present? && !value.is_a?(type)
+            value = type.query {|m| m.find(value) }
           end
-
-          define_method :coerce do |value|
-            if value.present? && !value.is_a?(type)
-              if value.respond_to? :each
-                raise "Cannot coerce collection into single instance of #{type_class}"
-              end
-
-              value = type.query {|m| m.find(value) }
-            end
-            value
-          end
+          value
         end
       end
     end

@@ -8,4 +8,10 @@ class Persistent::User < Persistent::Base
 
   has_many :offers
   has_one :profile
+
+  def name
+    if profile.present?
+      "#{profile.given_name} #{profile.surname}".strip
+    end
+  end
 end

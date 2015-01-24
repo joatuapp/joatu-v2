@@ -1,5 +1,4 @@
-%p#notice= notice
-
-
-
+%section#conversation
+  = render partial: 'toolbar/messages'
+  = render @conversation
 = link_to 'Back', conversations_path

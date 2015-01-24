@@ -1,0 +1,15 @@
+%section#toolbar.toolbar-conversations
+  %nav.toolbar_menu
+    %ul.nav.nav-pills
+      %li{role: "presentation", class: "#{'active' if controller.action_name == 'new'}"}
+        = link_to new_message_path do
+          %i.glyphicon.glyphicon-pencil
+      %li{role: "presentation", class: "#{'active' if params[:box] == 'inbox'}"}
+        = link_to conversations_path(box: :inbox) do
+          %i.glyphicon.glyphicon-inbox
+      %li{role: "presentation", class: "#{'active' if params[:box] == 'sentbox'}"}
+        = link_to conversations_path(box: :sentbox) do
+          %i.glyphicon.glyphicon-envelope
+      %li{role: "presentation", class: "#{'active' if params[:box] == 'trash'}"}
+        = link_to conversations_path(box: :trash) do
+          %i.glyphicon.glyphicon-trash

@@ -1,7 +1,6 @@
 class User < DomainModel
   attribute :email
-  attribute :offers
-  attribute :profile
+  attribute :offers, DomainModel.attr_type(:Offer)
+  attribute :profile, DomainModel.attr_type(:Profile)
   attribute :mailbox
-
 end
