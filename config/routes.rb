@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :communities
+
   resources :messages, except: [:index]
 
   resources :conversations, only: [:index, :show, :update, :destroy]
