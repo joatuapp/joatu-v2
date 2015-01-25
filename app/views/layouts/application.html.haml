@@ -30,23 +30,23 @@
             = image_tag('logo_white.png')
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li.active= link_to "Benefits", "#"
-            %li= link_to "How It Works", "#"
-            %li= link_to "Team", "#"
-            %li= link_to "Contact", "#"
-            %li= link_to "Press", "#"
-            %li= link_to "Blog", "#"
+            %li.active= link_to t('nav.benefits'), "#"
+            %li= link_to t('nav.how_it_works'), "#"
+            %li= link_to t('nav.team'), "#"
+            %li= link_to t('nav.contact'), "#"
+            %li= link_to t('nav.press'), "#"
+            %li= link_to t('nav.blog'), "#"
           - if user_signed_in?
             = form_tag(destroy_user_session_path, method: :delete, class: "navbar-form navbar-right") do
-              %button.btn.btn-default.btn-sm{type: "submit"}= t('auth.sign_out')
+              %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.forml.log_out')
           - else
             = form_tag(new_user_registration_path, method: :get, class: "navbar-form navbar-right") do
-              %button.btn.btn-default.btn-sm{type: "submit"}= t('auth.sign_up')
+              %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.form.sign_up')
             = form_tag(new_user_session_path, class: "navbar-form navbar-right") do
               .form-group
-                %input.form-control.input-sm{name: "user[email]", type: "text", placeholder: "Email"}
-                %input.form-control.input-sm{name: "user[password]", type: "password", placeholder: "Password"}
-              %button.btn.btn-default.btn-sm{type: "submit"}= t('auth.sign_in')
+                %input.form-control.input-sm{name: "user[email]", type: "text", placeholder: t('devise.form.email')}
+                %input.form-control.input-sm{name: "user[password]", type: "password", placeholder: t('devise.form.password')}
+              %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.form.log_in')
 
     .container
       .row
