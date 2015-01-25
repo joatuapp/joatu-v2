@@ -42,9 +42,9 @@ class ConversationsController < ApplicationController
   end
 
   def destroy
-    @conversation = Conversation.find_by_id(params[:id])
+    @conversation = Conversation.query {|m| m.find(params[:id]) }
     authorize @conversation
-    @conversation.move_to_trash(current_user)
+    @conversation.destroy!(current_user)
 
     if params[:location].present? and params[:location] == 'conversation'
       redirect_to conversations_path(:box => :trash)

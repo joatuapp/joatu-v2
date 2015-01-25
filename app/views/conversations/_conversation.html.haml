@@ -20,5 +20,5 @@
     - unless @box == 'trash'
       .col-sm-1
         .action
-          = link_to(conversation_path(conversation, location: @box, box: @box, page: params[:page], confirm: t('messages.delete_confirm', object: conversation.subject), method: :delete)) do
+          = link_to(conversation_path(conversation, location: @box, box: @box, page: params[:page]), method: :delete) do
             %i.glyphicon.glyphicon-trash

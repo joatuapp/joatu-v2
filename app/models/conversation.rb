@@ -19,6 +19,12 @@ class Conversation < DomainModel
     raise "Not implemented"
   end
 
+  # Takes one parameter, the messageable that is destrying the conversation
+  # (it show as trashed only for them)
+  def destroy!(destroyer)
+    @model.move_to_trash(destroyer)
+  end
+
   class Queries < SimpleDelegator
     def initialize(model_class)
       @model = model_class
