@@ -23,13 +23,33 @@ class DomainModel
         end
     end
 
-    def query
-      results = yield self.model_class
-      if results.respond_to? :each
-        results.collect {|mdl| self.new(mdl) }
-      else
-        self.new results
+    def association(assoc_name, other_model, options = {})
+      define_method assoc_name do
+        @domain_associations ||= {}
+        @domain_associations[assoc_name] ||= other_model.to_s.constantize.new(model.send(assoc_name))
       end
+
+      define_method "#{assoc_name}=" do |val|
+        @domain_associations ||= {}
+        @domain_associations[assoc_name] = DomainModel.attr_type(assoc_name.to_sym).new.coerce(val)
+      end
+    end
+
+    def collection(collection_name, other_model, options = {})
+      define_method collection_name do
+        @domain_collections ||= {}
+        @domain_collections[collection_name] ||= DomainCollection.new(other_model, model.send(collection_name))
+      end
+
+      define_method "#{collection_name}=" do |val|
+        @domain_collections ||= {}
+        @domain_collections[collection_name] = DomainCollection[DomainModel.attr_type(other_model.to_sym).new.coerce(val)]
+      end
+    end
+
+
+    def query
+      wrap_query_results(yield self.model_class)
     end
 
     # Generates and returns an Virtus::Attribute object to coerce objects
@@ -47,6 +67,16 @@ class DomainModel
           end
           value
         end
+      end
+    end
+    
+    private
+
+    def wrap_query_results(results)
+      if results.respond_to? :each
+        DomainCollection.new(self, results)
+      else
+        self.new results
       end
     end
   end

@@ -68,4 +68,5 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'spring-commands-rspec'
+  gem 'pry-rails'
 end

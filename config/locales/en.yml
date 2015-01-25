@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+  time:
+    ago: "%{time} ago"
+  messages:
+    from: "From"
+    subject: "Subject"
+    delete: "Delete"
+    delete_confirm: "Are you sure you want to delete this message?"

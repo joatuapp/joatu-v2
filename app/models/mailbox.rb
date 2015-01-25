@@ -1,0 +1,2 @@
+class Mailbox < DomainModel
+end

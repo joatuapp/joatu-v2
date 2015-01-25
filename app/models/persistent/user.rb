@@ -10,8 +10,10 @@ class Persistent::User < Persistent::Base
   has_one :profile
 
   def name
-    if profile.present?
+    if profile.present? && (profile.given_name.present? || profile.surname.present?)
       "#{profile.given_name} #{profile.surname}".strip
+    else
+      "<anon>"
     end
   end
 end

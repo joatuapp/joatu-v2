@@ -1,5 +1,5 @@
 class Offer < DomainModel
-  attribute :user, DomainModel.attr_type(:User)
+  association :user, :User
   attribute :title
   attribute :summary
   attribute :description
