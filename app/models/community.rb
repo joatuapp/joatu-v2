@@ -1,2 +1,3 @@
-class Community < ActiveRecord::Base
+class Community < DomainModel
+  attribute :name
 end

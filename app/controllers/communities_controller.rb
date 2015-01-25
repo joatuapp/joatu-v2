@@ -4,44 +4,52 @@ class CommunitiesController < ApplicationController
   respond_to :html
 
   def index
-    @communities = Community.all
+    @communities = Community.query {|m| policy_scope m.all }
     respond_with(@communities)
   end
 
   def show
+    authorize @community
     respond_with(@community)
   end
 
   def new
-    @community = Community.new
-    respond_with(@community)
+    @form = CommunityForm.new(Community.new)
+    authorize @form.model
+    respond_with(@community = @form)
   end
 
   def edit
+    authorize @community
+    @community = CommunityForm.new(@community)
   end
 
   def create
-    @community = Community.new(community_params)
-    @community.save
-    respond_with(@community)
+    @form = CommunityForm.new(Community.new)
+    if @form.validate(params[:community])
+      authorize @form.model
+      @form.save
+    end
+    respond_with(@community = @form)
   end
 
   def update
-    @community.update(community_params)
-    respond_with(@community)
+    @form = CommunityForm.new(@community)
+    if @form.validate(params[:community])
+      authorize @form.model
+      @form.save
+    end
+    respond_with(@community = @form)
   end
 
   def destroy
+    authorize @community
     @community.destroy
     respond_with(@community)
   end
 
   private
     def set_community
-      @community = Community.find(params[:id])
-    end
-
-    def community_params
-      params.require(:community).permit(:name)
+      @community = Community.query {|m| m.find(params[:id]) }
     end
 end
