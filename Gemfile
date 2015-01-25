@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -48,6 +49,9 @@ group :development, :test do
   gem 'spring'
 end
 
+# Protects mail from going out to the real world in all environments for which
+# this gem is installed:
+gem "mail_safe", group: [:development, :staging]
 
 gem 'foreman', '~> 0.75'
 gem 'bootstrap-sass', '~> 3.3.1'
@@ -62,7 +66,6 @@ gem 'bootstrap-sass-extras', '~> 0.0.6'
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'mail_safe'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara'

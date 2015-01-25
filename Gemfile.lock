@@ -104,6 +104,8 @@ GEM
       representable (~> 2.0)
       uber
     dotenv (1.0.2)
+    dotenv-rails (1.0.2)
+      dotenv (= 1.0.2)
     equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.2.2)
@@ -296,6 +298,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise (~> 3.4.1)
+  dotenv-rails
   factory_girl_rails
   faker
   foreman (~> 0.75)

@@ -38,7 +38,7 @@
             %li= link_to t('nav.blog'), "#"
           - if user_signed_in?
             = form_tag(destroy_user_session_path, method: :delete, class: "navbar-form navbar-right") do
-              %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.forml.log_out')
+              %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.form.log_out')
           - else
             = form_tag(new_user_registration_path, method: :get, class: "navbar-form navbar-right") do
               %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.form.sign_up')

@@ -23,5 +23,6 @@ doc/
 .project
 .idea
 .secret
+.env
 .DS_Store
 vendor/postgresql
