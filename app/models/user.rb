@@ -5,4 +5,6 @@ class User < DomainModel
   association :offers, :Offer
   association :profile, :Profile
   association :mailbox, :Mailbox
+
+  collection :communities, :Community
 end

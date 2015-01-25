@@ -8,6 +8,8 @@ class Persistent::User < Persistent::Base
 
   has_many :offers
   has_one :profile
+  has_many :community_memberships
+  has_many :communities, through: :community_memberships
 
   def name
     if profile.present? && (profile.given_name.present? || profile.surname.present?)
