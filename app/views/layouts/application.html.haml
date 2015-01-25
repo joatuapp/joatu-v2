@@ -42,10 +42,10 @@
           - else
             = form_tag(new_user_registration_path, method: :get, class: "navbar-form navbar-right") do
               %button.btn.btn-default.btn-sm{type: "submit"}= t('auth.sign_up')
-            = form_tag(user_registration_path, class: "navbar-form navbar-right") do
+            = form_tag(new_user_session_path, class: "navbar-form navbar-right") do
               .form-group
-                %input.form-control.input-sm{name: "username", type: "text", placeholder: "Username"}
-                %input.form-control.input-sm{name: "password", type: "password", placeholder: "Password"}
+                %input.form-control.input-sm{name: "user[email]", type: "text", placeholder: "Email"}
+                %input.form-control.input-sm{name: "user[password]", type: "password", placeholder: "Password"}
               %button.btn.btn-default.btn-sm{type: "submit"}= t('auth.sign_in')
 
     .container
@@ -62,4 +62,4 @@
               %li= link_to "Link 2", "#"
               %li= link_to "Link 3", "#"
       %footer
-        %p &copy; Company 2015
+        %p &copy; JoatU 2014
