@@ -14,31 +14,26 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @reply = MessageForm.new(Message.new)
     @conversation = Conversation.query {|m| m.find(params[:id]) }
+    @messages = @conversation.read_messages_for_user_and_box!(current_user, @box)
     authorize @conversation
     respond_with(@conversation)
   end
 
   def update
-    @conversation = Conversation.find_by_id(params[:id])
+    @conversation = Conversation.query {|m| m.find_by_id(params[:id]) }
     authorize @conversation
     if params[:untrash].present?
       @conversation.untrash(current_user)
     end
     
     if params[:reply_all].present?
-      last_receipt = @mailbox.recipts_for(@conversation).last
-      @receipt = current_user.reply_to_all(last_receipt, params[:body])
+      @receipt = @conversation.reply_to_all(current_user, params[:message][:body])
     end
 
-    if @box == 'trash'
-      @receipts = @mailbox.receipts_for(@conversation).trash
-    else
-      @receipts = @mailbox.receipts_for(@conversation).not_trash
-    end
-
+    @messages = @conversation.read_messages_for_user_and_box!(current_user, @box)
     redirect_to action: :show
-    @receipts.mark_as_read
   end
 
   def destroy

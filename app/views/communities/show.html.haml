@@ -1,9 +1,9 @@
 %p#notice= notice
 
 %p
-  %b Name:
+  %b= "#{t('communities.name')}:"
   = @community.name
 
-= link_to 'Edit', edit_community_path(@community)
+= link_to t('edit'), edit_community_path(@community)
 \|
-= link_to 'Back', communities_path
+= link_to t('back'), communities_path

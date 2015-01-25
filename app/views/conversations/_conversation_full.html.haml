@@ -1,24 +1,22 @@
-= div_for(conversation, class: "#{ 'unread' if conversation.is_unread? current_user }") do
-  .row
-    .col-sm-3
-      .avatar
+%h3= @conversation.subject
+.action
+  - unless @box == 'trash'
+    = link_to conversation_path(@conversation), location: 'conversation', box: @box, method: :delete do
+      %i.glyphicon.glyphicon-trash
+%h4= t('message.participants')
+.participants
+  - @conversation.recipients.each do |recp|
+    = link_to recp.name, profile_path(recp)
+%hr/
+.messages
+  - @messages.each do |message|
+    = render message
 
-      %header
-        %h5
-          = "#{t('messages.from')}:"
-          = link_to truncate(conversation.last_sender.name, length: 15), profile_path(conversation.last_sender)
-        .date
-          = t('time.ago', time: time_ago_in_words(conversation.updated_at))
-    
-    .col-sm-8
-      .subject
-        = "#{t('messages.subject')}:"
-        = link_to(truncate(conversation.subject, length: 55), conversation_path(conversation.id, box: @box, page: params[:page]))
-
-      .briefing
-        = raw(strip_tags(conversation.last_message.body))
-    - unless @box == 'trash'
-      .col-sm-1
-        .action
-          = link_to(conversation_path(conversation, location: @box, box: @box, page: params[:page]), method: :delete) do
-            %i.glyphicon.glyphicon-trash
+  - unless @box == 'trash'
+    %br/
+    = simple_form_for(@reply, url: conversation_path(@conversation), html: {method: :put}) do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :body
+      .form-actions
+        = f.button :submit, name: :reply_all

@@ -1,0 +1,10 @@
+= div_for(message, class: (message.is_unread?(current_user) ? 'unread' : '')) do
+  .media
+    .media-heading.name
+      .name
+        = link_to truncate(message.sender.name, length: 30), profile_path(message.sender)
+      .date
+        = t('time.ago', time: time_ago_in_words(message.updated_at))
+  .media-body
+    .word-break.pre-message
+      = raw(message.body)

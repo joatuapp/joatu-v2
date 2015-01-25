@@ -1,9 +1,9 @@
-%h1 Listing communities
+%h1= t('communities.index_header')
 
 %table
   %thead
     %tr
-      %th Name
+      %th= t('communities.name')
       %th
       %th
       %th
@@ -12,10 +12,10 @@
     - @communities.each do |community|
       %tr
         %td= community.name
-        %td= link_to 'Show', community
-        %td= link_to 'Edit', edit_community_path(community)
-        %td= link_to 'Destroy', community, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to t('show'), community
+        %td= link_to t('edit'), edit_community_path(community)
+        %td= link_to t('destroy'), community, :method => :delete, :data => { :confirm => t('communities.destroy_confirm') }
 
 %br
 
-= link_to 'New Community', new_community_path
+= link_to t('communities.new_link'), new_community_path

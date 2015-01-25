@@ -3,6 +3,10 @@ class DomainModel
   include ActiveModel::Model
 
   class << self
+    # None returns an empty collection object.
+    def none
+      model_class.none
+    end
 
     def model_class=(val)
       unless val.is_a? Class
@@ -31,7 +35,7 @@ class DomainModel
 
       define_method "#{assoc_name}=" do |val|
         @domain_associations ||= {}
-        @domain_associations[assoc_name] = DomainModel.attr_type(assoc_name.to_sym).new.coerce(val)
+        @domain_associations[assoc_name] = DomainModel.attr_type(other_model.to_sym).new().coerce(val)
       end
     end
 
@@ -42,8 +46,11 @@ class DomainModel
       end
 
       define_method "#{collection_name}=" do |val|
+        unless val.respond_to? :each
+          val = [val]
+        end
         @domain_collections ||= {}
-        @domain_collections[collection_name] = DomainCollection[DomainModel.attr_type(other_model.to_sym).new.coerce(val)]
+        @domain_collections[collection_name] = DomainCollection.coerce(other_model, val)
       end
     end
 
@@ -57,13 +64,23 @@ class DomainModel
     def attr_type(type_class)
       @generated_attribute_classes ||= {}
       @generated_attribute_classes[type_class] ||= Class.new(Virtus::Attribute) do
+        define_method :initialize do |*args|
+          unless args.empty?
+            super(*args)
+          end
+        end
+
         define_method :type do
           type_class.to_s.constantize
         end
 
         define_method :coerce do |value|
-          if value.present? && !value.is_a?(type)
-            value = type.query {|m| m.find(value) }
+          if value.present?
+            if value.is_a? ActiveRecord::Base
+              value = type.new(value)
+            elsif !value.is_a?(type)
+              value = type.query {|m| m.find(value) }
+            end
           end
           value
         end

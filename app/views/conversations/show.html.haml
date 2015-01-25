@@ -1,4 +1,4 @@
 %section#conversation
   = render partial: 'toolbar/messages'
-  = render @conversation, partial: 'conversation_full'
-= link_to 'Back', conversations_path
+  = render partial: 'conversation_full'
+= link_to t('back'), conversations_path

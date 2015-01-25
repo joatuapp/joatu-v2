@@ -23,8 +23,21 @@ en:
   hello: "Hello world"
   or: "or"
   back: "Back"
+  show: "Show"
+  edit: "Edit"
+  destroy: "Destroy"
   time:
     ago: "%{time} ago"
+  communities:
+    index_header: "Communities"
+    editing_header: "Editing community"
+    name: "Name"
+    destroy_confirm: "Are you sure?"
+    new_link: "New Community"
+    new_header: "New Community"
+  conversations:
+    index_header: "Conversations"
+    participants: "Participants"
   nav:
     benefits: "Benefits"
     how_it_works: "How It Works"
@@ -37,6 +50,8 @@ en:
     subject: "Subject"
     delete: "Delete"
     delete_confirm: "Are you sure you want to delete this message?"
+  mailboxer:
+    sent: "Message sent!"
   devise:
     resend_confirmation_instructions: "Resend confirmation instructions"
     change_password_header: "Change your password"
