@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 # Mailboxer, handle messaging between users
-gem 'mailboxer', git: 'https://github.com/div/mailboxer.git', branch: 'rails42-foreigner'
+gem 'mailboxer', '~> 0.12.5'
 gem 'kaminari'
 
 # Rails frontend specific gems:
