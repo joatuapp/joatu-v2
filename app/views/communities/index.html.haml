@@ -13,8 +13,8 @@
       %tr
         %td= community.name
         %td= link_to t('show'), community
-        %td= link_to t('edit'), edit_community_path(community)
-        %td= link_to t('destroy'), community, :method => :delete, :data => { :confirm => t('communities.destroy_confirm') }
+        %td= link_to t('edit'), edit_community_path(community) if Pundit.policy(current_user, community).edit?
+        %td= link_to t('destroy'), community, :method => :delete, :data => { :confirm => t('communities.destroy_confirm') } if Pundit.policy(current_user, community).destroy?
 
 %br
 

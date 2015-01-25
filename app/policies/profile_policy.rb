@@ -5,7 +5,7 @@ class ProfilePolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    user.present? && user.profile.blank?
   end
 
   def update?

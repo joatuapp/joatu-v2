@@ -4,7 +4,7 @@
 = form_tag messages_path, method: :post, class: :new_message do
   - if @receipt && @receipt.errors.any?
     .alert.alert-warning.alert-dismissable{role: :alert}
-      %button.close{type: :button, 'data-dismiss': :alert, 'aria-label': "Close"}
+      %button.close{type: :button, 'data-dismiss': :alert, 'aria-label': t('close')}
         %span{'aria-hidden': true}
           &times;
       %h2

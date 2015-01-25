@@ -6,16 +6,17 @@ class OfferPolicy < ApplicationPolicy
 
   def update?
     user.present? && 
-      scope.where(id: record.id).exists?
+      record.user_id == user.id
+  end
+
+  def destroy?
+    user.present? && 
+      record.user_id == user.id
   end
 
   class Scope < ApplicationPolicy::Scope
     def resolve
-      if user.present?
-        scope.owned_by(user)
-      else
-        scope.none
-      end
+      scope
     end
   end
 end

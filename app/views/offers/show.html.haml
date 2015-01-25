@@ -1,15 +1,16 @@
 %p#notice= notice
 
 %p
-  %b Title:
+  %b= "#{t('offers.title')}:"
   = @offer.title
 %p
-  %b Summary:
+  %b= "#{t('offers.summary')}:"
   = @offer.summary
 %p
-  %b Description:
+  %b= "#{t('offers.description')}:"
   = @offer.description
 
-= link_to 'Edit', edit_offer_path(@offer)
-\|
-= link_to 'Back', offers_path
+- if Pundit.policy(current_user, @offer).edit?
+  = link_to t('edit'), edit_offer_path(@offer) 
+  \|
+= link_to t('back'), offers_path

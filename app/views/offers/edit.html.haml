@@ -1,7 +1,7 @@
-%h1 Editing offer
+%h1= t('offers.editing_header')
 
 = render 'form'
 
-= link_to 'Show', @offer
+= link_to t('show'), @offer
 \|
-= link_to 'Back', offers_path
+= link_to t('back'), offers_path

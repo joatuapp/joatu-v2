@@ -29,11 +29,19 @@ class ConversationsController < ApplicationController
     end
     
     if params[:reply_all].present?
-      @receipt = @conversation.reply_to_all(current_user, params[:message][:body])
+      @form = MessageForm.new(Message.new)
+      if @form.validate(params[:message])
+        @form.save do |message_data|
+          @receipt = @conversation.reply_to_all(current_user, message_data[:body])
+        end
+        @messages = @conversation.read_messages_for_user_and_box!(current_user, @box)
+        redirect_to action: :show
+      else
+        @reply = @form
+        render :show
+      end
     end
 
-    @messages = @conversation.read_messages_for_user_and_box!(current_user, @box)
-    redirect_to action: :show
   end
 
   def destroy

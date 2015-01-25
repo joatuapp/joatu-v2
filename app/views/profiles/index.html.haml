@@ -1,11 +1,11 @@
-%h1 Listing profiles
+%h1= t('profiles.index_header')
 
 %table
   %thead
     %tr
-      %th Given name
-      %th Surname
-      %th About me
+      %th= t('profiles.given_name')
+      %th= t('profiles.surname')
+      %th= t('profiles.about_me')
       %th
       %th
       %th
@@ -16,10 +16,6 @@
         %td= profile.given_name
         %td= profile.surname
         %td= profile.about_me
-        %td= link_to 'Show', profile
-        %td= link_to 'Edit', edit_profile_path(profile)
-        %td= link_to 'Destroy', profile, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Profile', new_profile_path
+        %td= link_to t('show'), profile
+        %td= link_to t('edit'), edit_profile_path(profile) if Pundit.policy(current_user, profile).edit?
+        %td= link_to t('profiles.destroy'), profile, :method => :delete, :data => { :confirm => t('profiles.destroy_confirm') } if Pundit.policy(current_user, profile).destroy?

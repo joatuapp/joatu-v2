@@ -4,6 +4,7 @@
   %b= "#{t('communities.name')}:"
   = @community.name
 
-= link_to t('edit'), edit_community_path(@community)
-\|
+- if Pundit.policy(current_user, @community).edit?
+  = link_to t('edit'), edit_community_path(@community) 
+  \|
 = link_to t('back'), communities_path

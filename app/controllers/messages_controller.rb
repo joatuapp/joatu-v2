@@ -4,12 +4,6 @@ class MessagesController < ApplicationController
 
   respond_to :html
 
-  def show
-    @message = Message.query {|m| m.find(params[:id]) }
-    authorize @message
-    redirect_to conversation_path(@message.conversation, box: box, anchor: "message_#{@message.id}")
-  end
-
   def new
     @form = MessageForm.new(Message.new)
     if params[:receiver].present?
@@ -18,9 +12,6 @@ class MessagesController < ApplicationController
     end
     authorize @form.model
     @message = @form
-  end
-
-  def edit
   end
 
   def create
@@ -33,12 +24,6 @@ class MessagesController < ApplicationController
     else
       render action: :new
     end
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private

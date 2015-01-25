@@ -1,17 +1,18 @@
 %p#notice= notice
 
 %p
-  %b Given name:
+  %b= "#{t('profiles.given_name')}:"
   = @profile.given_name
 %p
-  %b Surname:
+  %b= "#{t('profiles.surname')}:"
   = @profile.surname
 %p
-  %b About me:
+  %b= "#{t('profiles.about_me')}:"
   = @profile.about_me
 
-= link_to 'Send Message', new_message_path(receiver: @profile.user.id)
+= link_to t('profiles.send_message'), new_message_path(receiver: @profile.user.id)
 \|
-= link_to 'Edit', edit_profile_path(@profile)
-\|
-= link_to 'Back', profiles_path
+- if Pundit.policy(current_user, @profile).edit?
+  = link_to t('edit'), edit_profile_path(@profile) 
+  \|
+= link_to t('back'), profiles_path

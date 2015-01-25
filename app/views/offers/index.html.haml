@@ -1,11 +1,11 @@
-%h1 Listing offers
+%h1= t('offers.index_header')
 
 %table
   %thead
     %tr
-      %th Title
-      %th Summary
-      %th Description
+      %th= t('offers.title')
+      %th= t('offers.summary')
+      %th= t('offers.description')
       %th
       %th
       %th
@@ -16,10 +16,10 @@
         %td= offer.title
         %td= offer.summary
         %td= offer.description
-        %td= link_to 'Show', offer
-        %td= link_to 'Edit', edit_offer_path(offer)
-        %td= link_to 'Destroy', offer, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to t('show'), offer
+        %td= link_to t('edit'), edit_offer_path(offer) if Pundit.policy(current_user, offer).edit?
+        %td= link_to t('destroy'), offer, :method => :delete, :data => { :confirm => t('offers.destroy_confirm') } if Pundit.policy(current_user, offer).destroy?
 
 %br
 
-= link_to 'New Offer', new_offer_path
+= link_to t('offers.new_link'), new_offer_path
