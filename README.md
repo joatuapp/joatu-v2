@@ -45,7 +45,7 @@ The following commands will get you set up to begin develpment on JoatU:
 On subsequent runs, simply change to the app directory and run `foreman start`
 to start the app. In the terminal window while the app is running, hit Ctl+C at
 any point to shut down the app. The JoatU app uses a custom postgres database
-(stored in vendor/postgresql) and will start that database on boot. If `foreman
-start` fails and you are running postgres for other projects, please try
-shutting down any other instances of postgrss, and then running `foreman start`
-again.
+(stored in vendor/postgresql) and will start that database when `foreman start`
+is run. If `foreman start` fails and you are running postgres for other 
+projects, please try shutting down any other instances of postgrss, and then 
+running `foreman start` again.
