@@ -32,7 +32,7 @@ gem 'kaminari'
 # Rails frontend specific gems:
 gem 'simple_form', '~> 3.1.0'
 
-# Use Unicorn as the app server
+# Use puma as the app server
 gem 'puma'
 
 # Use Capistrano for deployment
