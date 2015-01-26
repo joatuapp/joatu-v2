@@ -16,7 +16,6 @@
 /db/*.sqlite3-journal
 /log/*.log
 /tmp
-database.yml
 doc/
 *.swp
 *~
@@ -26,3 +25,8 @@ doc/
 .env
 .DS_Store
 vendor/postgresql
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

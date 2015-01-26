@@ -26,14 +26,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 # Mailboxer, handle messaging between users
-gem 'mailboxer', git: 'https://github.com/div/mailboxer.git', branch: 'rails42-foreigner'
+gem 'mailboxer', '~> 0.12.5'
 gem 'kaminari'
 
 # Rails frontend specific gems:
 gem 'simple_form', '~> 3.1.0'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
+# Use puma as the app server
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
