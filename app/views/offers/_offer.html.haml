@@ -1,0 +1,10 @@
+= div_for offer, class: "panel panel-default" do
+  .panel-heading
+    %h3.panel-title= offer.title
+  .panel-body
+    = offer.summary
+    .btn-group-sm.pull-right
+      = link_to new_message_path(receiver: offer.user.id), class: 'btn btn-primary' do
+        %span.glyphicon.glyphicon-envelope.pull-right
+      = link_to offer, class: 'btn btn-default' do
+        %span.glyphicon.glyphicon-arrow-right.pull-right

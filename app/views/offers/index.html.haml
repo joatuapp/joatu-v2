@@ -1,25 +1,11 @@
-%h1= t('offers.index_header')
+%h1.text-center= t('offers.index_header')
+.row
+  .col-sm-12
+    = link_to new_offer_path, class: 'btn btn-success pull-right' do
+      %i.glyphicon.glyphicon-plus
+      = t('offers.new_link') 
 
-%table
-  %thead
-    %tr
-      %th= t('offers.title')
-      %th= t('offers.summary')
-      %th= t('offers.description')
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @offers.each do |offer|
-      %tr
-        %td= offer.title
-        %td= offer.summary
-        %td= offer.description
-        %td= link_to t('show'), offer
-        %td= link_to t('edit'), edit_offer_path(offer) if Pundit.policy(current_user, offer).edit?
-        %td= link_to t('destroy'), offer, :method => :delete, :data => { :confirm => t('offers.destroy_confirm') } if Pundit.policy(current_user, offer).destroy?
-
-%br
-
-= link_to t('offers.new_link'), new_offer_path
+.row
+  - @offers.each do |offer|
+    .col-sm-4
+      = render offer
