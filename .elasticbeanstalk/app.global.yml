@@ -1,7 +1,0 @@
-global:
-  application_name: '"JoatU demo"'
-  default_ec2_keyname: aws-eb
-  default_platform: Ruby 2.1 (Puma)
-  default_region: us-west-2
-  profile: eb-cli
-  sc: git
