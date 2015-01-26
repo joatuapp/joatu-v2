@@ -29,28 +29,24 @@ class DomainModel
 
     def association(assoc_name, other_model, options = {})
       define_method assoc_name do
-        @domain_associations ||= {}
-        @domain_associations[assoc_name] ||= other_model.to_s.constantize.new(model.send(assoc_name))
+        domain_associations[assoc_name] ||= other_model.to_s.constantize.new(model.send(assoc_name))
       end
 
       define_method "#{assoc_name}=" do |val|
-        @domain_associations ||= {}
-        @domain_associations[assoc_name] = DomainModel.attr_type(other_model.to_sym).new().coerce(val)
+        domain_associations[assoc_name] = DomainModel.attr_type(other_model.to_sym).new().coerce(val)
       end
     end
 
     def collection(collection_name, other_model, options = {})
       define_method collection_name do
-        @domain_collections ||= {}
-        @domain_collections[collection_name] ||= DomainCollection.new(other_model, model.send(collection_name))
+        domain_collections[collection_name] ||= DomainCollection.new(other_model, model.send(collection_name))
       end
 
       define_method "#{collection_name}=" do |val|
         unless val.respond_to? :each
           val = [val]
         end
-        @domain_collections ||= {}
-        @domain_collections[collection_name] = DomainCollection.coerce(other_model, val)
+        domain_collections[collection_name] = DomainCollection.coerce(other_model, val)
       end
     end
 
@@ -118,7 +114,7 @@ class DomainModel
   def persist!
     raise "Cannot persist a destroyed object!" if destroyed?
 
-    attrs = self.attributes.inject({}) do |hash, (attr, val)|
+    attrs = self.attributes.merge(domain_associations).merge(domain_collections).inject({}) do |hash, (attr, val)|
       if val.is_a? DomainModel
         hash[attr] = val.model
       else
@@ -149,6 +145,13 @@ class DomainModel
   private
 
   attr_writer :model
+
+  def domain_associations
+    @domain_associations ||= {}
+  end
+  def domain_collections
+    @domain_collections ||= {}
+  end
 
   def populate_from_model!
     attributes.keys.each do |attr|
