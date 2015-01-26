@@ -53,13 +53,13 @@
         .col-md-9
           = bootstrap_flash
           = yield
-        .col-md-3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "#"
-              %li= link_to "Link 2", "#"
-              %li= link_to "Link 3", "#"
+        - if user_signed_in?
+          .col-md-3
+            .well.sidebar-nav
+              %h3= t('nav.side_header')
+              %ul.nav.nav-list
+                %li= link_to t('nav.people'), profiles_path
+                %li= link_to t('nav.offers'), offers_path
+                %li= link_to t('nav.conversations'), conversations_path
       %footer
         %p &copy; JoatU 2014
