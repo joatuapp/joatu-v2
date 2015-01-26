@@ -21,6 +21,12 @@ Things you may want to cover:
 
 * Deployment instructions
 
+To create an Elastic Beanstalk environment:
+`eb create -db.engine=postgres ENV_NAME`
+
+Where ENV_NAME is the name of the environment you wish to create. Other options
+may be added, but the db.engine option is required or AWS will default to postgres.
+
 * ...
 
 
