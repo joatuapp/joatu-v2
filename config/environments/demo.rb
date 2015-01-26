@@ -1,5 +1,3 @@
-ENV['APP_HOST'] = "joatu-v2-env-mhmpvrbebr.elasticbeanstalk.com"
-
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
