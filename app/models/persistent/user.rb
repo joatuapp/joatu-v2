@@ -19,6 +19,12 @@ class Persistent::User < Persistent::Base
     end
   end
 
+  # Return false if we should not send an email for 'object_to_send' otherwise,
+  # return the email address to send to:
+  def mailboxer_email(object_to_send)
+    email
+  end
+
   # Over-ride for devise asking it to use ActionMailer's "deliver later"
   # feature, so that emails will be queued when we configure a queueing
   # service.

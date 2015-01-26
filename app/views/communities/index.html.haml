@@ -18,4 +18,4 @@
 
 %br
 
-= link_to t('communities.new_link'), new_community_path
+= link_to t('communities.new_link'), new_community_path if Pundit.policy(current_user, @communities).new?

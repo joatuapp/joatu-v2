@@ -3,7 +3,7 @@
   - unless @box == 'trash'
     = link_to conversation_path(@conversation), location: 'conversation', box: @box, method: :delete do
       %i.glyphicon.glyphicon-trash
-%h4= t('message.participants')
+%h4= t('conversations.participants')
 .participants
   - @conversation.recipients.each do |recp|
     = link_to recp.name, profile_path(recp)
