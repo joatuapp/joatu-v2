@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
 
   def show
     authorize @profile
+    @offers = Offer.query {|m| @profile.model.user.offers.page(params[:page]).per(3) }
     respond_with(@profile)
   end
 
