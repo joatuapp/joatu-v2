@@ -1,4 +1,5 @@
 class OffersController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
   skip_after_action :verify_authorized, only: [:index, :search]
 

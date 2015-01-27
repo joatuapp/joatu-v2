@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 # Mailboxer, handle messaging between users
-gem 'mailboxer', '~> 0.12.5'
+gem 'mailboxer', github: 'div/mailboxer', branch: 'rails42-foreigner'
 gem 'kaminari'
 
 # Rails frontend specific gems:
@@ -57,6 +57,7 @@ gem 'foreman', '~> 0.75'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
 gem 'devise', '~> 3.4.1'
+gem 'devise_invitable', '~> 1.4.0'
 gem 'pundit', '~> 0.3.0'
 gem 'use_case', '~> 1.0.2'
 gem 'reform', '~> 1.2.5'
