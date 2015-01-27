@@ -1,11 +1,20 @@
 %h1.text-center= t('offers.index_header')
 .row
-  .col-sm-12
+  .col-sm-8
+    = simple_form_for @search_form, url: search_offers_path, wrapper: :inline_form, html: {method: :get, class: 'form-inline'} do |f|
+      = f.input :search
+      = f.button :submit, t('offers.search')
+
+  .col-sm-4
     = link_to new_offer_path, class: 'btn btn-success pull-right' do
       %i.glyphicon.glyphicon-plus
       = t('offers.new_link') 
 
-.row
-  - @offers.each do |offer|
-    .col-sm-4
-      = render offer
+.row.offers-list
+  - if @offers.empty?
+    .col-sm-12
+      = t('offers.empty')
+  - else
+    - @offers.each do |offer|
+      .col-sm-4
+        = render offer

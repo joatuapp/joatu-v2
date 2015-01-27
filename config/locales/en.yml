@@ -70,6 +70,8 @@ en:
     destroy_confirm: "Are you sure you want to delete this offer?"
     new_link: "Add A New Offer"
     new_header: "Offer something new!"
+    search: "Search!"
+    empty: "There aren't any offers yet!"
   profiles:
     editing_header: "Edit Profile"
     index_header: "JoatU Users"

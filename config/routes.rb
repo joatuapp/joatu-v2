@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   resources :profiles
 
-  resources :offers
+  resources :offers do
+    collection do
+      get 'search'
+    end
+  end
 
   devise_for :users, class_name: "Persistent::User"
   root 'static_page#home'
