@@ -62,5 +62,7 @@
                 %li= link_to t('nav.people'), profiles_path
                 %li= link_to t('nav.offers'), offers_path
                 %li= link_to t('nav.conversations'), conversations_path
+                - if Pundit.policy(current_user, :invitation).send?
+                  %li= link_to t('nav.invite'), new_user_invitation_path
       %footer
         %p &copy; JoatU 2014

@@ -55,6 +55,7 @@ en:
     side_header: "Navigation"
     offers: "Offers"
     conversations: "Conversations"
+    invite: "Invite New Users"
   messages:
     from: "From"
     subject: "Subject"

@@ -7,4 +7,6 @@ class User < DomainModel
 
   collection :offers, :Offer
   collection :communities, :Community
+
+  delegate :is_admin?, to: :model
 end
