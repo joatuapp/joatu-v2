@@ -7,7 +7,7 @@ class OffersController < ApplicationController
   SearchQuery = Struct.new(:search, :order_by)
 
   def index
-    @offers = Offer.query {|m| policy_scope m.all.page(params[:page]) }
+    @offers = Offer.query {|m| policy_scope m.includes(user: [:profile]).all.page(params[:page]) }
     @search_form = OfferSearchForm.new(SearchQuery.new)
     respond_with(@offers)
   end
@@ -56,7 +56,7 @@ class OffersController < ApplicationController
     @search_form = OfferSearchForm.new(SearchQuery.new)
     if @search_form.validate(params[:offer_search])
       @search_form.save do |search_data|
-        @offers = Offer.query {|m| policy_scope m.where("title LIKE ?", "#{search_data[:search]}%").page(params[:page]) }
+        @offers = Offer.query {|m| policy_scope m.includes(user: [:profile]).where("title LIKE ?", "#{search_data[:search]}%").page(params[:page]) }
         render :index
       end
     else
