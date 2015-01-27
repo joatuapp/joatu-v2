@@ -72,6 +72,9 @@ en:
     new_header: "Offer something new!"
     search: "Search!"
     empty: "There aren't any offers yet!"
+    created: "Created"
+    search_placeholder: "Search..."
+    invalid_search: "Whoa, invalid search!"
   profiles:
     editing_header: "Edit Profile"
     index_header: "JoatU Users"

@@ -2,7 +2,8 @@
 .row
   .col-sm-8
     = simple_form_for @search_form, url: search_offers_path, wrapper: :inline_form, html: {method: :get, class: 'form-inline'} do |f|
-      = f.input :search
+      = f.input :search, placeholder: t('offers.search_placeholder')
+      = f.input :order_by, collection: {t('offers.title') => :title, t('offers.created') => :created_at}, default: :title, wrapper: :horizontal_form
       = f.button :submit, t('offers.search')
 
   .col-sm-4
