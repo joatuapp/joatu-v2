@@ -1,5 +1,5 @@
 class InvitationPolicy < Struct.new(:user, :invitation)
   def send?
-    user.is_admin?
+    user.present? && user.is_admin?
   end
 end
