@@ -1,10 +1,14 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  skip_after_action :verify_authorized, only: [:index, :search]
 
   respond_to :html
 
+  SearchQuery = Struct.new(:search, :order_by)
+
   def index
-    @offers = Offer.query {|m| policy_scope m.all }
+    @offers = Offer.query {|m| policy_scope m.includes(user: [:profile]).all.page(params[:page]) }
+    @search_form = OfferSearchForm.new(SearchQuery.new)
     respond_with(@offers)
   end
 
@@ -46,6 +50,18 @@ class OffersController < ApplicationController
     authorize @offer
     @offer.destroy
     respond_with(@offer)
+  end
+
+  def search
+    @search_form = OfferSearchForm.new(SearchQuery.new)
+    if @search_form.validate(params[:offer_search])
+      @search_form.save do |search_data|
+        @offers = Offer.query {|m| policy_scope m.includes(user: [:profile]).where("title LIKE ?", "#{search_data[:search]}%").page(params[:page]) }
+        render :index
+      end
+    else
+      redirect_to offers_path
+    end
   end
 
   private
