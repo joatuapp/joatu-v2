@@ -40,8 +40,9 @@
             = form_tag(destroy_user_session_path, method: :delete, class: "navbar-form navbar-right") do
               %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.form.log_out')
           - else
-            = form_tag(new_user_registration_path, method: :get, class: "navbar-form navbar-right") do
-              %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.form.sign_up')
+            - if respond_to? :new_user_registration_path # Only include registration link if user registration is enabled!
+              = form_tag(new_user_registration_path, method: :get, class: "navbar-form navbar-right") do
+                %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.form.sign_up')
             = form_tag(new_user_session_path, class: "navbar-form navbar-right") do
               .form-group
                 %input.form-control.input-sm{name: "user[email]", type: "text", placeholder: t('devise.form.email')}
@@ -61,5 +62,7 @@
                 %li= link_to t('nav.people'), profiles_path
                 %li= link_to t('nav.offers'), offers_path
                 %li= link_to t('nav.conversations'), conversations_path
+                - if Pundit.policy(current_user, :invitation).send?
+                  %li= link_to t('nav.invite'), new_user_invitation_path
       %footer
         %p &copy; JoatU 2014

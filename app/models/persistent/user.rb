@@ -1,7 +1,7 @@
 class Persistent::User < Persistent::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, #:registerable, # Commenting registerable to make it invite only.
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   acts_as_messageable
