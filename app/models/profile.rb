@@ -1,6 +1,3 @@
-class Profile < DomainModel
-  association :user, :User
-  attribute :given_name
-  attribute :surname
-  attribute :about_me
+class Profile < Base
+  belongs_to :user
 end

@@ -1,2 +1,0 @@
-class Mailbox < DomainModel
-end

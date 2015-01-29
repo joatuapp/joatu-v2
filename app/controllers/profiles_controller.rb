@@ -5,13 +5,13 @@ class ProfilesController < ApplicationController
   respond_to :html
 
   def index
-    @profiles = Profile.query {|m| policy_scope m.all }
+    @profiles = policy_scope Profile.page(params[:page])
     respond_with(@profiles)
   end
 
   def show
     authorize @profile
-    @offers = Offer.query {|m| @profile.model.user.offers.page(params[:page]).per(3) }
+    @offers = @profile.user.offers.page(params[:page]).per(3)
     respond_with(@profile)
   end
 
@@ -52,6 +52,6 @@ class ProfilesController < ApplicationController
   private
 
   def set_profile
-    @profile = Profile.query {|m| m.find(params[:id]) }
+    @profile = Profile.find(params[:id])
   end
 end

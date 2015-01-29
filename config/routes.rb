@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, class_name: "Persistent::User"
+  devise_for :users
+
   root 'static_page#home'
   get 'static_page/home'
 

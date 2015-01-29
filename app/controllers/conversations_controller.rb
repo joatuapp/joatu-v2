@@ -2,6 +2,7 @@ class ConversationsController < ApplicationController
 
   before_filter :authenticate_user!
   before_filter :get_mailbox, :get_box
+  before_filter :get_conversation, only: [:show, :update, :destroy]
 
   # We look up conversations by user, no need to scope it too.
   skip_after_filter :verify_policy_scoped, only: :index
@@ -9,20 +10,18 @@ class ConversationsController < ApplicationController
   respond_to :html
 
   def index
-    @conversations = Conversation.query {|m| m.user_conversations(current_user, @box).page(params[:page]) }
+    @conversations = Conversation.user_conversations(current_user, @box).page(params[:page])
     respond_with(@conversations)
   end
 
   def show
     @reply = MessageForm.new(Message.new)
-    @conversation = Conversation.query {|m| m.find(params[:id]) }
     @messages = @conversation.read_messages_for_user_and_box!(current_user, @box)
     authorize @conversation
     respond_with(@conversation)
   end
 
   def update
-    @conversation = Conversation.query {|m| m.find_by_id(params[:id]) }
     authorize @conversation
     if params[:untrash].present?
       @conversation.untrash(current_user)
@@ -45,7 +44,6 @@ class ConversationsController < ApplicationController
   end
 
   def destroy
-    @conversation = Conversation.query {|m| m.find(params[:id]) }
     authorize @conversation
     @conversation.destroy!(current_user)
 
@@ -57,6 +55,10 @@ class ConversationsController < ApplicationController
   end
 
   private
+
+  def get_conversation
+    @conversation = Conversation.find(params[:id])
+  end
 
   def get_mailbox
     @mailbox = current_user.mailbox

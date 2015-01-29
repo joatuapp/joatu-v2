@@ -5,7 +5,7 @@ class CommunitiesController < ApplicationController
   respond_to :html
 
   def index
-    @communities = Community.query {|m| policy_scope m.all }
+    @communities = policy_scope Community.page(params[:page])
     respond_with(@communities)
   end
 
@@ -51,6 +51,6 @@ class CommunitiesController < ApplicationController
 
   private
     def set_community
-      @community = Community.query {|m| m.find(params[:id]) }
+      @community = Community.find params[:id]
     end
 end

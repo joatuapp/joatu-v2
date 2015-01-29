@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   def new
     @form = MessageForm.new(Message.new)
     if params[:receiver].present?
-      receiver = User.query {|m| m.find(params[:receiver]) }
+      receiver = User.find(params[:receiver])
       @form.recipients = receiver.id
     end
     authorize @form.model
@@ -15,10 +15,17 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @form = MessageForm.new(Message.new(sender: current_user))
+    @form = MessageForm.new(Message.new)
     if @form.validate(params[:message])
       authorize @form.model
-      @message = @form.save
+      @form.save do |form_data|
+        receipt = current_user.send_message(
+          form_data[:recipients],
+          form_data[:body],
+          form_data[:subject],
+        )
+        @message = receipt.message
+      end
       flash[:success] = t('mailboxer.sent')
       redirect_to conversation_path(@message.conversation, :box => :sentbox)
     else

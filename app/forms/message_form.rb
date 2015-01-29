@@ -3,7 +3,7 @@ class MessageForm < ApplicationForm
     MessagePolicy
   end
 
-  property :recipients, type: Array[DomainModel.attr_type(:User)]
+  property :recipients, type: Array[User]
   property :subject, validates: {presence: true}
   property :body, validates: {presence: true}
 end
