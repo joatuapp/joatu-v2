@@ -5,13 +5,13 @@ class ProfilesController < ApplicationController
   respond_to :html
 
   def index
-    @profiles = policy_scope Profile.page(params[:page])
+    @profiles = Profile.available_to(current_user, PaginationOptions.new(params[:page]))
     respond_with(@profiles)
   end
 
   def show
     authorize @profile
-    @offers = @profile.user.offers.page(params[:page]).per(3)
+    @offers = Offer.owned_by(current_user, PaginationOptions.new(params[:page], 3))
     respond_with(@profile)
   end
 

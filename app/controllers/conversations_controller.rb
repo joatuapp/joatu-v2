@@ -1,7 +1,7 @@
 class ConversationsController < ApplicationController
 
   before_filter :authenticate_user!
-  before_filter :get_mailbox, :get_box
+  before_filter :get_box
   before_filter :get_conversation, only: [:show, :update, :destroy]
 
   # We look up conversations by user, no need to scope it too.
@@ -10,7 +10,7 @@ class ConversationsController < ApplicationController
   respond_to :html
 
   def index
-    @conversations = Conversation.user_conversations(current_user, @box).page(params[:page])
+    @conversations = Conversation.send("user_#{@box}", current_user, PaginationOptions.new(params[:page]))
     respond_with(@conversations)
   end
 
@@ -45,7 +45,7 @@ class ConversationsController < ApplicationController
 
   def destroy
     authorize @conversation
-    @conversation.destroy!(current_user)
+    @conversation.move_to_trash(current_user)
 
     if params[:location].present? and params[:location] == 'conversation'
       redirect_to conversations_path(:box => :trash)
@@ -58,10 +58,6 @@ class ConversationsController < ApplicationController
 
   def get_conversation
     @conversation = Conversation.find(params[:id])
-  end
-
-  def get_mailbox
-    @mailbox = current_user.mailbox
   end
 
   def get_box

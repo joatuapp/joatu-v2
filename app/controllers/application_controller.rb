@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   after_action :verify_authorized, :except => :index, unless: -> { is_a? DeviseController }
-  after_action :verify_policy_scoped, :only => :index, unless: -> { is_a? DeviseController }
-
 
   protected
   

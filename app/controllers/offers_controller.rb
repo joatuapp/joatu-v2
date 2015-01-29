@@ -8,7 +8,7 @@ class OffersController < ApplicationController
   SearchQuery = Struct.new(:search, :order_by) do include ActiveModel::Model; end
 
   def index
-    @offers = policy_scope Offer.includes(user: [:profile]).page(params[:page])
+    @offers = Offer.available_to(current_user, PaginationOptions.new(params[:page]))
     @search_form = OfferSearchForm.new(SearchQuery.new)
     respond_with(@offers)
   end
@@ -57,7 +57,7 @@ class OffersController < ApplicationController
     @search_form = OfferSearchForm.new(SearchQuery.new)
     if @search_form.validate(params[:offer_search])
       @search_form.save do |search_data|
-        @offers = Offer.includes(user: [:profile]).text_search(search_data[:search]).page(params[:page])
+        @offers = Offer.search_results(search_data, current_user, PaginationOptions.new(params[:page]))
         render :index
       end
     else

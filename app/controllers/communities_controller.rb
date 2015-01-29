@@ -5,7 +5,7 @@ class CommunitiesController < ApplicationController
   respond_to :html
 
   def index
-    @communities = policy_scope Community.page(params[:page])
+    @communities = Community.available_to(current_user, PaginationOptions.new(params[:page]))
     respond_with(@communities)
   end
 
