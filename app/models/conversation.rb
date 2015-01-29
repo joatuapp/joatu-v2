@@ -1,9 +1,9 @@
 class Conversation < Mailboxer::Conversation
   def read_messages_for_user_and_box!(user_model, box)
     box_type = (box == 'trash') ? 'trash' : 'not_trash'
-    receipts = user_model.mailbox.receipts_for(self.model).send(box_type)
+    receipts = user_model.mailbox.receipts_for(self).send(box_type)
     receipts.mark_as_read
-    receipts.map(&:message).map {|m| Message.new(m)}
+    receipts.map(&:message)
   end
 
   def reply_to_all(user_model, body)

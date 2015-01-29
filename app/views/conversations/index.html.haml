@@ -1,6 +1,6 @@
 = render partial: 'toolbar/messages'
 %h1= t('conversations.index_header')
 %section#conversations
-  = render @conversations
+  = render partial: "conversations/conversation", collection: @conversations
 
   = paginate @conversations

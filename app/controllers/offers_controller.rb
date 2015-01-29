@@ -5,7 +5,7 @@ class OffersController < ApplicationController
 
   respond_to :html
 
-  SearchQuery = Struct.new(:search, :order_by)
+  SearchQuery = Struct.new(:search, :order_by) do include ActiveModel::Model; end
 
   def index
     @offers = policy_scope Offer.includes(user: [:profile]).page(params[:page])

@@ -10,7 +10,7 @@
 %hr/
 .messages
   - @messages.each do |message|
-    = render message
+    = render partial: "messages/message", object: message
 
   - unless @box == 'trash'
     %br/
