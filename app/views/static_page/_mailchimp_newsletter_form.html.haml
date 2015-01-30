@@ -1,0 +1,9 @@
+%form(action="//joatu.us3.list-manage.com/subscribe/post?u=6ecb9879cbdb4a555e09ca127&amp;id=ccbbcd52d1" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-inline validate" target="_blank" novalidate)
+  .input-group
+    %input.form-control{type: "email", name:"EMAIL", id: "mce-EMAIL", placeholder: t('mailchimp.newsletter.email'), required: nil}
+    %span.input-group-btn
+      %button.btn.btn-default{type: "submit", name: "subscribe"}
+        = t('mailchimp.newsletter.subscribe')
+  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+  %div(style="position: absolute; left: -5000px;")
+    %input{type: "text", name: "b_6ecb9879cbdb4a555e09ca127_ccbbcd52d1", tabindex: "-1", value: ""}

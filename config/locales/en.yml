@@ -59,6 +59,9 @@ en:
   flash:
     not_authorized: "You are not authorized to perform this action."
   mailchimp:
+    newsletter:
+      email: "Email Address"
+      subscribe: "Subscribe"
     preregister:
       header: "Receive Updates When We Launch"
       email: "Email Address"
