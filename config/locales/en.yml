@@ -36,6 +36,13 @@ en:
     JoatU also encourages local community activities and will reward you with community experience points"
   flash:
     not_authorized: "You are not authorized to perform this action."
+  mailchimp:
+    preregister:
+      header: "Receive Updates When We Launch"
+      email: "Email Address"
+      first_name: "First Name"
+      last_name: "Last Name"
+      indicates_required: "indicates required"
   communities:
     index_header: "Communities"
     editing_header: "Editing community"
