@@ -45,4 +45,7 @@
                     - if current_user.is_admin?
                       %li= link_to t('nav.admin'), admin_root_path, "data-no-turbolink" => true
 
-      = render "components/footer"
+      - if content_for? :footer
+        = yield :footer
+      - else
+        = render "components/footer"

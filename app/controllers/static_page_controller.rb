@@ -3,4 +3,7 @@ class StaticPageController < ApplicationController
 
   def home
   end
+
+  def alpha_signup
+  end
 end

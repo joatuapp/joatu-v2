@@ -1,14 +1,17 @@
   $brand-primary: #6CB26F;
   $brand-info: #6CCC70;
+  $body-bg: #eeeeee;
 
   @import "bootstrap-sprockets";
+  @import "bootstrap/variables";
   @import "bootstrap";
+
   @import "font-awesome";
 
   @import "footer";
 
   @import "offers";
-  @import "home";
+  @import "static_page";
   @import "nav";
 
   body {

@@ -1,9 +1,12 @@
+- content_for :main_nav do
+  = render "components/sign_out_nav"
+
 .home_page
   %section#intro.scrollspy-offset
     .row
       .col-sm-6.col-sm-offset-3
-        %h1.text-center= t('home.intro.header_html')
-        %button.btn.btn-default.btn-lg.center-block= t('home.intro.request_an_invite_link')
+        %h1= t('home.intro.header_html')
+        %a.btn.btn-default.btn-lg(href=alpha_signup_path)= t('home.intro.request_an_invite_link')
 
   %section#benefits.scrollspy-offset
     .row
