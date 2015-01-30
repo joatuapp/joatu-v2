@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+if ENV["INITIAL_ADMIN_PASSWORD"]
+  unless User.find_by_email("alex@undergroundwebdevelopment").present?
+    User.create({
+      email: "alex@undergroundwebdevelopment.com",
+      password: ENV["INITIAL_ADMIN_PASSWORD"],
+      password_confirmation: ENV["INITIAL_ADMIN_PASSWORD"],
+      is_admin: true,
+      confirmed_at: Time.now,
+    })
+  end
+end

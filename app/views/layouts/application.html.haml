@@ -64,5 +64,7 @@
                 %li= link_to t('nav.conversations'), conversations_path
                 - if Pundit.policy(current_user, :invitation).send?
                   %li= link_to t('nav.invite'), new_user_invitation_path
+                - if current_user.is_admin?
+                  %li= link_to t('nav.admin'), admin_root_path, "data-no-turbolink" => true
       %footer
         %p &copy; JoatU 2014

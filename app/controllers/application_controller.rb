@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  after_action :verify_authorized, :except => :index, unless: -> { is_a? DeviseController }
+  after_action :verify_authorized, :except => :index, unless: -> { is_a?(DeviseController) || is_a?(ActiveAdmin::BaseController) }
 
   protected
   
