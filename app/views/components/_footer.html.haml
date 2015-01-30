@@ -1,2 +1,18 @@
-%footer
-  %p &copy; JoatU 2014
+%footer.inverse
+  .row
+    .col-sm-4
+      %h5= t('footer.join_us.header')
+      %p
+        = t('footer.join_us.content_html')
+        = mail_to('jobs@joatu.com')
+    .col-sm-4
+      %h5= t('footer.mail_us.header')
+      %p
+        = t('footer.mail_us.content_html')
+        = mail_to('info@joatu.com')
+    .col-sm-4
+      %h5= t('footer.follow_us.header')
+
+  .row
+    .col-sm-12
+      %p.copyright &copy; JoatU 2014

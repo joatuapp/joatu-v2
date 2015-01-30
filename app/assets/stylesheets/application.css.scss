@@ -1,6 +1,11 @@
+  $brand-primary: #6CB26F;
+  $brand-info: #6CCC70;
+
   @import "bootstrap-sprockets";
   @import "bootstrap";
   @import "font-awesome";
+
+  @import "footer";
 
   @import "offers";
   @import "home";

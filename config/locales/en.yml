@@ -30,6 +30,15 @@ en:
   alpha: "Alpha"
   time:
     ago: "%{time} ago"
+  footer:
+    join_us:
+      header: "Join Us"
+      content_html: "We could use your help!<br /> Send us your CV's"
+    mail_us:
+      header: "Mail Us"
+      content_html: ""
+    follow_us:
+      header: "Follow Us"
   home:
     intro:
       header_html: "Trade your skills and goods,<br /> meet your needs, and <br />create vibrant communities!"

@@ -1,0 +1,18 @@
+footer {
+  margin-top: -50px; // Counteract the body offset for fixed header
+
+  .row {
+    color: $navbar-default-color;
+    background-color: $navbar-default-bg;
+    padding-bottom: 20px;
+  }
+
+  &.inverse .row {
+    color: $navbar-inverse-color;
+    background-color: $navbar-inverse-bg;
+  }
+
+  p.copyright {
+    text-align: center;
+  }
+}
