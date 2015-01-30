@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   after_action :verify_authorized, :except => :index, unless: -> { is_a?(DeviseController) || is_a?(ActiveAdmin::BaseController) }
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   protected
   
   # Devise invitable gem uses this method to determine whether someone can
@@ -14,5 +16,10 @@ class ApplicationController < ActionController::Base
   def authenticate_inviter!
     authenticate_user!
     raise Pundit::NotAuthorizedError unless Pundit.policy!(current_user, :invitation).send?
+  end
+
+  def user_not_authorized
+    flash[:alert] = t('flash.not_authorized')
+    redirect_to(request.referrer || root_path)
   end
 end

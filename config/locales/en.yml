@@ -34,6 +34,8 @@ en:
     intro: "The Jack Of All Trade Universe is a site dedicated to let you and your neighbors exchange skills and products that you might want to sell, trade, rent, lend or give away.
 
     JoatU also encourages local community activities and will reward you with community experience points"
+  flash:
+    not_authorized: "You are not authorized to perform this action."
   communities:
     index_header: "Communities"
     editing_header: "Editing community"
