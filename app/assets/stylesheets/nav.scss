@@ -1,6 +1,10 @@
 .navbar-brand {
   margin-right: 10px;
 
+  img {
+    max-height: 40px;
+  }
+
   img, .mini-logo {
     display: inline-block;
   }
