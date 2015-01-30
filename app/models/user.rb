@@ -1,7 +1,7 @@
 class User < Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, #:registerable, # Commenting registerable to make it invite only.
+  devise :invitable, :database_authenticatable, # # Commenting registerable to make it invite only.
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   acts_as_messageable
@@ -30,5 +30,9 @@ class User < Base
   # service.
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def is_admin?
+    is_admin
   end
 end

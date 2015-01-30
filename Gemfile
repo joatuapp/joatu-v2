@@ -38,6 +38,8 @@ gem 'puma'
 gem 'newrelic_rpm'
 gem 'rack-tracker'
 
+gem 'activeadmin', github: 'activeadmin'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
