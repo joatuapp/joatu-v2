@@ -56,6 +56,7 @@ en:
     offers: "Offers"
     conversations: "Conversations"
     invite: "Invite New Users"
+    admin: "Manage JoatU"
   messages:
     from: "From"
     subject: "Subject"
