@@ -32,7 +32,7 @@ en:
     ago: "%{time} ago"
   home:
     intro:
-      header: "Trade your skills and goods, meet your needs and create vibrant communities!"
+      header_html: "Trade your skills and goods,<br /> meet your needs, and <br />create vibrant communities!"
       request_an_invite_link: "Request an Invitation"
     benefits:
       header: "Build Bonds, Share Skills, Develop Community"

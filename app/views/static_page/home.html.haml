@@ -1,47 +1,74 @@
-%section#intro.scrollspy-offset
-  .row
-    .col-sm-6.col-sm-offset-3
-      %h1.text-center= t('home.intro.header')
-      %button.btn.btn-default.center-block= t('home.intro.request_an_invite_link')
+.home_page
+  %section#intro.scrollspy-offset
+    .row
+      .col-sm-6.col-sm-offset-3
+        %h1.text-center= t('home.intro.header_html')
+        %button.btn.btn-default.btn-lg.center-block= t('home.intro.request_an_invite_link')
 
-%section#benefits.scrollspy-offset
-  %h2= t('home.benefits.header')
-  .row
-    .col-sm-4
-      %h3= t('home.benefits.hyperlocal_header')
-      %p= t('home.benefits.hyperlocal_desc')
-    .col-sm-4
-      %h3= t('home.benefits.build_bonds_header')
-      %p= t('home.benefits.build_bonds_desc')
-    .col-sm-4
-      %h3= t('home.benefits.offer_skills_header')
-      %p= t('home.benefits.offer_skills_desc')
+  %section#benefits.scrollspy-offset
+    .row
+      .col-sm-10.col-sm-offset-1
+        %h2= t('home.benefits.header')
+    .row
+      .col-sm-10.col-sm-offset-1
+        .col-sm-4
+          .icon-container-circle.center-block
+            = fa_icon "book 3x"
+          %h3= t('home.benefits.hyperlocal_header')
+          %p= t('home.benefits.hyperlocal_desc')
+        .col-sm-4
+          .icon-container-circle.center-block
+            = fa_icon "sitemap 3x"
+          %h3= t('home.benefits.build_bonds_header')
+          %p= t('home.benefits.build_bonds_desc')
+        .col-sm-4
+          .icon-container-circle.center-block
+            = fa_icon "trophy 3x"
+          %h3= t('home.benefits.offer_skills_header')
+          %p= t('home.benefits.offer_skills_desc')
 
-%section#features.scrollspy-offset
-  %h2
-    = t('home.features.header')
-    %small= t('home.features.subheader')
-  .row
-    .col-sm-6
-      = image_tag 'networkofpeople.png'
-    .col-sm-6
-      %ul
-        %li= t('home.features.choose_walking_distance')
-        %li= t('home.features.build_reputation')
-        %li= t('home.features.propose_community_projects')
+  %section#features.scrollspy-offset
+    .row
+      .col-sm-10.col-sm-offset-1
+        %h2
+          = t('home.features.header')
+          %br/
+          %small= t('home.features.subheader')
+    .row
+      .col-sm-5.col-sm-offset-1
+        = image_tag 'networkofpeople.png'
+      .col-sm-5
+        %ul
+          %li
+            = fa_icon "map-marker"
+            %div= t('home.features.choose_walking_distance')
+          %li
+            = fa_icon "star"
+            %div= t('home.features.build_reputation')
+          %li
+            = fa_icon "thumbs-o-up"
+            %div= t('home.features.propose_community_projects')
 
-%section#how-it-works.scrollspy-offset
-  %h2
-    = t('home.how_it_works.header')
-    %small= t('home.how_it_works.subheader')
+  %section#how-it-works.scrollspy-offset
+    .row
+      .col-sm-10.col-sm-offset-1
+        %h2
+          = t('home.how_it_works.header')
+          %br/
+          %small= t('home.how_it_works.subheader')
 
-    .embed-responsive.embed-responsive-16by9
-      %iframe(width="560" height="315" src="https://www.youtube.com/embed/cGVmRwljfy0" allowfullscreen)
+    .row
+      .col-sm-8.col-sm-offset-2
+        .embed-responsive.embed-responsive-16by9
+          %iframe(width="560" height="315" src="https://www.youtube.com/embed/cGVmRwljfy0" allowfullscreen)
 
-%section#subscribe.scrollspy-offset
-  %h2
-    = t('home.subscribe.header')
-    %small= t('home.subscribe.subheader')
-  .row
-    .col-sm-6.col-sm-offset-3
-      = render 'mailchimp_preregister_form'
+  %section#subscribe.scrollspy-offset
+    .row
+      .col-sm-12
+        %h2
+          = t('home.subscribe.header')
+          %br/
+          %small= t('home.subscribe.subheader')
+    .row
+      .col-sm-6.col-sm-offset-3
+        = render 'mailchimp_preregister_form'

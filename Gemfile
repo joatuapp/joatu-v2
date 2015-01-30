@@ -69,6 +69,7 @@ gem 'reform', '~> 1.2.5'
 gem 'virtus', '~> 1.0.4'
 gem 'haml-rails', '~> 0.7.0'
 gem 'bootstrap-sass-extras', '~> 0.0.6'
+gem "font-awesome-rails"
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
