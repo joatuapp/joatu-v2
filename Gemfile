@@ -35,6 +35,8 @@ gem 'simple_form', '~> 3.1.0'
 # Use puma as the app server
 gem 'puma'
 
+gem 'newrelic_rpm'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
