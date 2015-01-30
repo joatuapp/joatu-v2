@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, ActiveAdmin::Devise.config
+  devise_for :users
   ActiveAdmin.routes(self)
 
   root 'static_page#home'
