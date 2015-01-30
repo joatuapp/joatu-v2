@@ -177,6 +177,10 @@ GEM
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack-tracker (0.3.0)
+      activesupport (>= 3.0)
+      rack (>= 1.4.0)
+      tilt (~> 1.4.1)
     rails (4.2.0)
       actionmailer (= 4.2.0)
       actionpack (= 4.2.0)
@@ -319,6 +323,7 @@ DEPENDENCIES
   pry-rails
   puma
   pundit (~> 0.3.0)
+  rack-tracker
   rails (= 4.2.0)
   reform (~> 1.2.5)
   rspec
