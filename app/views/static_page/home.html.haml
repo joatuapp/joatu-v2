@@ -1,6 +1,47 @@
-%h1= t('home.header')
-%p= t('home.intro')
+%section#intro.scrollspy-offset
+  .row
+    .col-sm-6.col-sm-offset-3
+      %h1.text-center= t('home.intro.header')
+      %button.btn.btn-default.center-block= t('home.intro.request_an_invite_link')
 
-.row
-  .col-sm-6.col-sm-offset-3
-    = render 'mailchimp_preregister_form'
+%section#benefits.scrollspy-offset
+  %h2= t('home.benefits.header')
+  .row
+    .col-sm-4
+      %h3= t('home.benefits.hyperlocal_header')
+      %p= t('home.benefits.hyperlocal_desc')
+    .col-sm-4
+      %h3= t('home.benefits.build_bonds_header')
+      %p= t('home.benefits.build_bonds_desc')
+    .col-sm-4
+      %h3= t('home.benefits.offer_skills_header')
+      %p= t('home.benefits.offer_skills_desc')
+
+%section#features.scrollspy-offset
+  %h2
+    = t('home.features.header')
+    %small= t('home.features.subheader')
+  .row
+    .col-sm-6
+      = image_tag 'networkofpeople.png'
+    .col-sm-6
+      %ul
+        %li= t('home.features.choose_walking_distance')
+        %li= t('home.features.build_reputation')
+        %li= t('home.features.propose_community_projects')
+
+%section#how-it-works.scrollspy-offset
+  %h2
+    = t('home.how_it_works.header')
+    %small= t('home.how_it_works.subheader')
+
+    .embed-responsive.embed-responsive-16by9
+      %iframe(width="560" height="315" src="https://www.youtube.com/embed/cGVmRwljfy0" allowfullscreen)
+
+%section#subscribe.scrollspy-offset
+  %h2
+    = t('home.subscribe.header')
+    %small= t('home.subscribe.subheader')
+  .row
+    .col-sm-6.col-sm-offset-3
+      = render 'mailchimp_preregister_form'

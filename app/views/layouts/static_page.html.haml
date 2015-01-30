@@ -1,0 +1,10 @@
+- content_for :main_nav do
+  = render "components/sign_out_nav"
+
+- content_for :content do
+  .row
+    .col-md-12
+      = bootstrap_flash
+      = yield
+
+= render template: "layouts/application"

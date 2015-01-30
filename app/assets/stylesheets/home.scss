@@ -1,0 +1,20 @@
+#intro {
+  background-image: url(image-path("apple_chop.jpg"));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  margin-left: $grid-gutter-width / 2 * -1;
+  padding-left: $grid-gutter-width / 2;
+  margin-right: $grid-gutter-width / 2 * -1;
+  padding-right: $grid-gutter-width / 2;
+  height: 700px;
+
+  .row {
+    margin-top: 150px;
+  }
+
+  h1 {
+    color: #FFF;
+    text-shadow: 1px 1px 1px #000;
+  }
+}

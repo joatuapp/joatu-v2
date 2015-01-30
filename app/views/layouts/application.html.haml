@@ -18,53 +18,31 @@
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
 
-  %body
-    %nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(role="navigation")
-      .container
-        .navbar-header
-          %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand(href="#")
-            = image_tag('logo_white.png')
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-            %li.active= link_to t('nav.benefits'), "#"
-            %li= link_to t('nav.how_it_works'), "#"
-            %li= link_to t('nav.team'), "#"
-            %li= link_to t('nav.contact'), "#"
-            %li= link_to t('nav.press'), "#"
-            %li= link_to t('nav.blog'), "#"
-          - if user_signed_in?
-            = form_tag(destroy_user_session_path, method: :delete, class: "navbar-form navbar-right") do
-              %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.form.log_out')
-          - else
-            - if respond_to? :new_user_registration_path # Only include registration link if user registration is enabled!
-              = form_tag(new_user_registration_path, method: :get, class: "navbar-form navbar-right") do
-                %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.form.sign_up')
-            = form_tag(new_user_session_path, class: "navbar-form navbar-right") do
-              .form-group
-                %input.form-control.input-sm{name: "user[email]", type: "text", placeholder: t('devise.form.email')}
-                %input.form-control.input-sm{name: "user[password]", type: "password", placeholder: t('devise.form.password')}
-              %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.form.log_in')
+  %body(data-spy="scroll" data-target="#main-nav" data-offset=50)
+    - if content_for? :main_nav
+      = yield :main_nav
+    - else
+      = render "components/main_nav"
 
-    .container
-      .row
-        .col-md-9
-          = bootstrap_flash
-          = yield
-        - if user_signed_in?
-          .col-md-3
-            .well.sidebar-nav
-              %h3= t('nav.side_header')
-              %ul.nav.nav-list
-                %li= link_to t('nav.people'), profiles_path
-                %li= link_to t('nav.offers'), offers_path
-                %li= link_to t('nav.conversations'), conversations_path
-                - if Pundit.policy(current_user, :invitation).send?
-                  %li= link_to t('nav.invite'), new_user_invitation_path
-                - if current_user.is_admin?
-                  %li= link_to t('nav.admin'), admin_root_path, "data-no-turbolink" => true
-      %footer
-        %p &copy; JoatU 2014
+    .container-fluid
+      - if content_for? :content
+        = yield :content
+      - else
+        .row
+          .col-md-9
+            = bootstrap_flash
+            = yield
+            - if user_signed_in?
+              .col-md-3
+                .well.sidebar-nav
+                  %h3= t('nav.side_header')
+                  %ul.nav.nav-list
+                    %li= link_to t('nav.people'), profiles_path
+                    %li= link_to t('nav.offers'), offers_path
+                    %li= link_to t('nav.conversations'), conversations_path
+                    - if Pundit.policy(current_user, :invitation).send?
+                      %li= link_to t('nav.invite'), new_user_invitation_path
+                    - if current_user.is_admin?
+                      %li= link_to t('nav.admin'), admin_root_path, "data-no-turbolink" => true
+
+      = render "components/footer"

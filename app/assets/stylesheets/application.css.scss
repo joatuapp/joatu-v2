@@ -1,9 +1,16 @@
   @import "bootstrap-sprockets";
   @import "bootstrap";
   @import "offers";
+  @import "home";
+  @import "nav";
 
   body {
     margin-top: 50px;
+  }
+
+  .scrollspy-offset {
+    padding-top: 50px;
+    margin-top: -50px;
   }
 
   .navbar-brand {
