@@ -159,6 +159,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.10.1)
+    newrelic_rpm (3.6.9.171)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -176,6 +177,10 @@ GEM
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack-tracker (0.3.0)
+      activesupport (>= 3.0)
+      rack (>= 1.4.0)
+      tilt (~> 1.4.1)
     rails (4.2.0)
       actionmailer (= 4.2.0)
       actionpack (= 4.2.0)
@@ -313,10 +318,12 @@ DEPENDENCIES
   kaminari
   mail_safe
   mailboxer!
+  newrelic_rpm
   pg
   pry-rails
   puma
   pundit (~> 0.3.0)
+  rack-tracker
   rails (= 4.2.0)
   reform (~> 1.2.5)
   rspec
