@@ -30,55 +30,59 @@ fr:
   alpha: "Alpha"
   time:
     ago: "il y a %{time}"
-  language:
+ language:
     en: "English"
-    fr: "French"
+    fr: "Français"
   footer:
     join_us:
-      header: "Join Us"
-      content_html: "We could use your help!<br /> Send us your CV's"
+      header: "Joignez-vous à nous !"
+      content_html: "Votre aide serait grandement appréciée !<br /> Envoyez-nous votre CV !"
     mail_us:
-      header: "Mail Us"
+      header: "Écrivez-nous"
       content_html: ""
     follow_us:
-      header: "Follow Us"
+      header: "Suivez-nous"
   home:
     intro:
-      header_html: "Trade your skills and goods,<br /> meet your needs, and <br />create vibrant communities!"
-      request_an_invite_link: "Request an Invitation"
+      header_html: "Échangez des biens et des services,<br />comblez vos besoins et <br />créez de vibrantes communautés !"
+      request_an_invite_link: "Demandez une invitation"
     benefits:
-      header: "Build Bonds, Share Skills, Develop Community"
-      hyperlocal_header: "HyperLocal Resources Directory"
-      hyperlocal_desc: "Access a pool of resources and dive in!
-        Skill offers, goods and products for trade/rent/sale and even given away!"
-      build_bonds_header: "Build bonds with your neighbors"
-      build_bonds_desc: "Meet community-minded members in a casual setting and build alliances. 
-      Free-to-attend local skillshares, clothing swaps, cookoffs, game nights, concerts, and educational classes."
-      offer_skills_header: "Offer your skills and be rewarded"
-      offer_skills_desc: "Give a hand to your neighbors, contribute to your hyperlocal economy and get paid. Volunteer at a non-profit, plant community gardens, teach classes, and be rewarded with JoatU’s exclusive Community Action Points."
+      # ***** I added 'enrichissez' (enrich)
+      header: "Créez des liens, partagez des savoir-faire, développez et enrichissez la communauté"
+      hyperlocal_header: "Répertoire de ressources hyperlocal"
+      hyperlocal_desc: "Accédez à un bassin de ressources et... plongez !
+        Talents offerts, produits et objets à échanger/louer/vendre — ou même à donner !"
+      build_bonds_header: "Tissez des liens avec vos voisins"
+      # ***** I was a bit imaginative for this one ;)
+      build_bonds_desc: "Rencontrez des personnes à l'esprit communautaire dans leur environnement naturel et faites des alliances !
+      Ateliers gratuits de partage de connaissances et autres rencontres en tout genre : échanges de vêtements, cuisines collectives, soirées de jeux, concerts, cours..."
+      offer_skills_header: "Offrez vos talents et soyez récompensé(e)"
+      # ***** Here I removed 'exclusive' and the mention of JoatU. I think
+      # ***** it is a little... awkward.
+      offer_skills_desc: "Donnez un coup de main à vos voisins, contribuez à l'économie hyperlocale et soyez payé(e). Participez bénévolement à des organisations non lucratives, créez des jardins communautaires, enseignez —  et soyez récompensé(e) par des points d'action communautaire."
     features:
-      header: "Features You'll Love"
-      subheader: "with more on the way"
-      choose_walking_distance: "Choose your walking distance for making exchanges."
-      build_reputation: "Build up your reputation with our easy to use reference system"
-      propose_community_projects: "Propose Community Projects like feeding the hungry or planting a community garden, and get support with labour, materials and financing in CAPS!"
+      header: "Des outils bien pratiques"
+      subheader: "(d'autres sont en gestation)"
+      choose_walking_distance: "Déterminez votre rayon d'action"
+      build_reputation: "Établissez votre réputation grâce à un système de références facile à utiliser"
+      propose_community_projects: "Proposez des projets communautaires (ex.: nourrir les affamés ou démarrer un jardin communautaire) et obtenez de l'aide, du matériel et du financement en points D'acc (points d'action communautaire) !" # ***** 'D'acc !', or 'D'accord !' means 'Alright !'
     how_it_works:
-      header: "Understand JoatU Better!"
-      subheader: "Watch our animated video"
+      header: "Un aperçu de JoatU !"
+      subheader: "Regardez notre animation de présentation"
     subscribe:
-      header: "Subscribe To Our Newsletter"
-      subheader: "Don't miss a thing"
+      header: "Inscrivez-vous à notre bulletin d'information"
+      subheader: "Restez informé(e) !"
   mailchimp:
     newsletter:
-      email: "Email Address"
-      subscribe: "Subscribe"
+      email: "Adresse courrielle"
+      subscribe: "Inscrivez-vous"
     preregister:
-      header_html: "Sign Up for an <br />Invitation to JoatU Beta"
-      email: "Email Address"
-      postal: "Postal / Zip Code"
-      indicates_required: "indicates required"
-      signup: "Add me to the waiting list!"
-      explanation: "JoatU is currently undergoing early testing in a closed Alpha release. Pleae enter your email address and postal code below and we would be happy to notify you when JoatU becomes available in your city."
+      header_html: "Demandez une invitation <br />à joindre JoatU Beta"
+      email: "Adresse courrielle"
+      postal: "Code postal"
+      indicates_required: "information requise"
+      signup: "Ajoutez-moi à la file d'attente !"
+      explanation: "JoatU est présentement en période de rodage sous la forme d'une version Alpha limitée. Si vous nous laissez votre adresse courrielle ainsi que votre code postal (voir ci-dessous), il nous fera plaisir de vous avertir lorsque JoatU sera disponible dans votre ville."
   communities:
     index_header: "Communautés"
     editing_header: "Modifier une communauté"

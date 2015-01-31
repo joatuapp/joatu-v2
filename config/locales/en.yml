@@ -30,7 +30,7 @@ en:
   alpha: "Alpha"
   language:
     en: "English"
-    fr: "French"
+    fr: "Français"
   time:
     ago: "%{time} ago"
   footer:
