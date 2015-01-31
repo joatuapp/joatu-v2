@@ -49,7 +49,7 @@ fr:
     benefits:
       # ***** I added 'enrichissez' (enrich)
       header: "Créez des liens, partagez des savoir-faire, développez et enrichissez la communauté"
-      hyperlocal_header: "Répertoire de ressources hyperlocal"
+      hyperlocal_header: "Répertoire de ressources hyperlocales"
       hyperlocal_desc: "Accédez à un bassin de ressources et... plongez !
         Talents offerts, produits et objets à échanger/louer/vendre — ou même à donner !"
       build_bonds_header: "Tissez des liens avec vos voisins"
