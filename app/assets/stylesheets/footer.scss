@@ -15,4 +15,13 @@ footer {
   p.copyright {
     text-align: center;
   }
+
+  ul {
+    list-style: none;
+    padding-left: 0px;
+
+    li {
+      display: inline-block;
+    }
+  }
 }
