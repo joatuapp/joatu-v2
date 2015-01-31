@@ -6,24 +6,40 @@
     .row
       .col-sm-6.col-sm-offset-3
         %h1= t('home.intro.header_html')
-        %a.btn.btn-default.btn-lg(href=alpha_signup_path)= t('home.intro.request_an_invite_link')
+        %a.btn.btn-primary.btn-lg(href=alpha_signup_path)= t('home.intro.request_an_invite_link')
+
+  %section#how-it-works.scrollspy-offset
+    .row
+      .col-sm-10.col-sm-offset-1
+        %h2
+          = t('home.how_it_works.header')
+          %br/
+          %small= t('home.how_it_works.subheader')
+
+    .row
+      .col-sm-8.col-sm-offset-2
+        .embed-responsive.embed-responsive-16by9
+          %iframe(width="560" height="315" src="https://www.youtube.com/embed/cGVmRwljfy0" allowfullscreen)
 
   %section#benefits.scrollspy-offset
     .row
       .col-sm-10.col-sm-offset-1
-        %h2= t('home.benefits.header')
+        %h2
+          = t('home.benefits.header')
+          %br/
+          %small= t('home.benefits.subheader')
     .row
       .col-sm-10.col-sm-offset-1
-        .col-sm-4
-          .icon-container-circle.center-block
-            = fa_icon "book 3x"
-          %h3= t('home.benefits.hyperlocal_header')
-          %p= t('home.benefits.hyperlocal_desc')
         .col-sm-4
           .icon-container-circle.center-block
             = fa_icon "sitemap 3x"
           %h3= t('home.benefits.build_bonds_header')
           %p= t('home.benefits.build_bonds_desc')
+        .col-sm-4
+          .icon-container-circle.center-block
+            = fa_icon "book 3x"
+          %h3= t('home.benefits.hyperlocal_header')
+          %p= t('home.benefits.hyperlocal_desc')
         .col-sm-4
           .icon-container-circle.center-block
             = fa_icon "trophy 3x"
@@ -51,19 +67,6 @@
           %li
             = fa_icon "thumbs-o-up"
             %div= t('home.features.propose_community_projects')
-
-  %section#how-it-works.scrollspy-offset
-    .row
-      .col-sm-10.col-sm-offset-1
-        %h2
-          = t('home.how_it_works.header')
-          %br/
-          %small= t('home.how_it_works.subheader')
-
-    .row
-      .col-sm-8.col-sm-offset-2
-        .embed-responsive.embed-responsive-16by9
-          %iframe(width="560" height="315" src="https://www.youtube.com/embed/cGVmRwljfy0" allowfullscreen)
 
   %section#subscribe.scrollspy-offset
     .row

@@ -36,7 +36,7 @@ fr:
   footer:
     join_us:
       header: "Joignez-vous à nous !"
-      content_html: "Votre aide serait grandement appréciée !<br /> Envoyez-nous votre CV !"
+      content_html: "JoatU est <a href='https://github.com/joatuapp/joatu-v2/'>100% open source</a> et est toujours à l'affût de coups de main supplémentaires sur tous les fronts !"
     mail_us:
       header: "Écrivez-nous"
       content_html: ""
@@ -44,11 +44,11 @@ fr:
       header: "Suivez-nous"
   home:
     intro:
-      header_html: "Échangez des biens et des services,<br />comblez vos besoins et <br />créez de vibrantes communautés !"
+      header_html: "Échangez biens et services pour répondre à vos besoins et créer de vibrantes communautés !"
       request_an_invite_link: "Demandez une invitation"
     benefits:
-      # ***** I added 'enrichissez' (enrich)
       header: "Créez des liens, partagez des savoir-faire, développez et enrichissez la communauté"
+      subheader: "Rejoignez votre marché hyperlocal de biens et services"
       hyperlocal_header: "Répertoire de ressources hyperlocales"
       hyperlocal_desc: "Accédez à un bassin de ressources et... plongez !
         Talents offerts, produits et objets à échanger/louer/vendre — ou même à donner !"
@@ -56,7 +56,7 @@ fr:
       # ***** I was a bit imaginative for this one ;)
       build_bonds_desc: "Rencontrez des personnes à l'esprit communautaire dans leur environnement naturel et faites des alliances !
       Ateliers gratuits de partage de connaissances et autres rencontres en tout genre : échanges de vêtements, cuisines collectives, soirées de jeux, concerts, cours..."
-      offer_skills_header: "Offrez vos talents et soyez récompensé(e)"
+      offer_skills_header: "Donnez et recevez de l'aide"
       # ***** Here I removed 'exclusive' and the mention of JoatU. I think
       # ***** it is a little... awkward.
       offer_skills_desc: "Donnez un coup de main à vos voisins, contribuez à l'économie hyperlocale et soyez payé(e). Participez bénévolement à des organisations non lucratives, créez des jardins communautaires, enseignez —  et soyez récompensé(e) par des points d'action communautaire."
@@ -67,7 +67,7 @@ fr:
       build_reputation: "Établissez votre réputation grâce à un système de références facile à utiliser"
       propose_community_projects: "Proposez des projets communautaires (ex.: nourrir les affamés ou démarrer un jardin communautaire) et obtenez de l'aide, du matériel et du financement en points D'acc (points d'action communautaire) !" # ***** 'D'acc !', or 'D'accord !' means 'Alright !'
     how_it_works:
-      header: "Un aperçu de JoatU !"
+      header: "Bienvenue sur JoatU (Jack of all trades Universe) !"
       subheader: "Regardez notre animation de présentation"
     subscribe:
       header: "Inscrivez-vous à notre bulletin d'information"

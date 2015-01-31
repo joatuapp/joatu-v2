@@ -10,6 +10,7 @@
 
   #intro {
     text-align: center;
+    margin-bottom: 0px;
 
     .row {
       padding-top: 150px;
@@ -27,6 +28,12 @@
     }
   }
 
+  #how-it-works {
+    .row {
+      background-color: #fff;
+    }
+  }
+
   #benefits {
     .icon-container-circle {
       border-radius: 500px;
@@ -40,7 +47,7 @@
 
   #features {
     .row {
-      background-color: $gray-lighter;
+      background-color: #fff;
     }
 
     img {

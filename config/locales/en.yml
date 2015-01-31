@@ -36,7 +36,7 @@ en:
   footer:
     join_us:
       header: "Join Us"
-      content_html: "We could use your help!<br /> Send us your CV's"
+      content_html: "JoatU is <a href='https://github.com/joatuapp/joatu-v2/'>100% open source</a> and is always looking for more help on all fronts!"
     mail_us:
       header: "Mail Us"
       content_html: ""
@@ -44,17 +44,18 @@ en:
       header: "Follow Us"
   home:
     intro:
-      header_html: "Trade your skills and goods,<br /> meet your needs, and <br />create vibrant communities!"
+      header_html: "Trade skills and goods to meet your needs, and create vibrant communities!"
       request_an_invite_link: "Request an Invitation"
     benefits:
       header: "Build Bonds, Share Skills, Develop Community"
+      subheader: "Join your hyperlocal marketplace for skills and goods"
       hyperlocal_header: "HyperLocal Resources Directory"
       hyperlocal_desc: "Access a pool of resources and dive in!
         Skill offers, goods and products for trade/rent/sale and even given away!"
       build_bonds_header: "Build bonds with your neighbors"
       build_bonds_desc: "Meet community-minded members in a casual setting and build alliances. 
       Free-to-attend local skillshares, clothing swaps, cookoffs, game nights, concerts, and educational classes."
-      offer_skills_header: "Offer your skills and be rewarded"
+      offer_skills_header: "Help others and be helped"
       offer_skills_desc: "Give a hand to your neighbors, contribute to your hyperlocal economy and get paid. Volunteer at a non-profit, plant community gardens, teach classes, and be rewarded with JoatU’s exclusive Community Action Points."
     features:
       header: "Features You'll Love"
@@ -63,7 +64,7 @@ en:
       build_reputation: "Build up your reputation with our easy to use reference system"
       propose_community_projects: "Propose Community Projects like feeding the hungry or planting a community garden, and get support with labour, materials and financing in CAPS!"
     how_it_works:
-      header: "Understand JoatU Better!"
+      header: "Welcome to the Jack of all trades Universe!"
       subheader: "Watch our animated video"
     subscribe:
       header: "Subscribe To Our Newsletter"

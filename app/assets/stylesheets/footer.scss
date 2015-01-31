@@ -7,9 +7,28 @@ footer {
     padding-bottom: 20px;
   }
 
-  &.inverse .row {
-    color: $navbar-inverse-color;
-    background-color: $navbar-inverse-bg;
+  a {
+    color: $navbar-default-link-color;
+  }
+
+  a:hover {
+    color: $navbar-default-link-hover-color
+  }
+
+
+  &.inverse {
+    .row {
+      color: $navbar-inverse-color;
+      background-color: $navbar-inverse-bg;
+    }
+
+    a {
+      color: $navbar-inverse-link-color;
+    }
+
+    a:hover {
+      color: $navbar-inverse-link-hover-color
+    }
   }
 
   p.copyright {

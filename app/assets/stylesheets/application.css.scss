@@ -1,6 +1,11 @@
-  $brand-primary: #6CB26F;
+  $brand-primary: #638701;
   $brand-info: #6CCC70;
   $body-bg: #eeeeee;
+  // $navbar-inverse-bg: #638701;
+  // $navbar-inverse-bg: #2B3F01;
+  $navbar-inverse-bg: darken($brand-primary, 20%);
+  $navbar-inverse-link-color: $brand-primary;
+  $navbar-inverse-link-hover-color: lighten($navbar-inverse-link-color, 15%);
 
   @import "bootstrap-sprockets";
   @import "bootstrap/variables";
