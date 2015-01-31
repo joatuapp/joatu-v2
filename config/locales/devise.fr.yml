@@ -1,0 +1,63 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+fr:
+  devise:
+    confirmations:
+      confirmed: "Votre adresse courrielle a été validée avec succès."
+      send_instructions: "Vous recevrez d'ici quelques minutes un courriel contenant les instructions pour valider votre adresse courrielle."
+      send_paranoid_instructions: "Si votre adresse courrielle existe dans notre base de données, vous recevrez d'ici quelques minutes un courriel contenant les instructions pour la valider."
+    failure:
+      already_authenticated: "Vous êtes déjà connecté(e)."
+      inactive: "Votre compte n'est pas encore activé."
+      invalid: "%{authentication_keys} ou mot de passe incorrect(s)."
+      locked: "Votre compte est verrouillé."
+      last_attempt: "Si la prochaine tentative de connexion est infructueuse, votre compte sera verrouillé."
+      not_found_in_database: "%{authentication_keys} ou mot de passe incorrect(s)."
+      timeout: "Votre session a expiré. Veuillez vous reconnecter pour continuer."
+      unauthenticated: "Vous devez vous connecter (et peut-être, préalablement, vous créer un compte) avant de pouvoir continuer."
+      unconfirmed: "Il vous faut valider votre adresse courrielle avant de pouvoir continuer."
+    mailer:
+      confirmation_instructions:
+        subject: "Instructions pour valider votre adresse courrielle"
+      reset_password_instructions:
+        subject: "Instructions pour modifier votre mot de passe"
+      unlock_instructions:
+        subject: "Instructions pour déverrouiller votre compte"
+    omniauth_callbacks:
+      failure: "Impossible de vous connecter via %{kind} pour la raison suivante : \"%{reason}\"."
+      success: "La connexion via votre compte %{kind} a réussi."
+    passwords:
+      no_token: "Cette page ne peut être accédée que via l'hyperlien de réinitialisation de votre mot de passe que vous avez reçu par courriel. Si vous copiez cet hyperlien, vérifiez que vous l'avez d'abord sélectionné dans son entièreté."
+      send_instructions: "D'ici quelques minutes, vous recevrez un courriel contenant les instructions pour réinitialiser votre mot de passe."
+      send_paranoid_instructions: "Si votre adresse courrielle existe dans notre base de données, vous recevrez d'ici quelques minutes un courriel contenant un hyperlien vous permettant de réinitialiser votre mot de passe."
+      updated: "Votre mot de passe a été réinitialisé avec succès. Vous êtes maintenant connecté(e)."
+      updated_not_active: "Votre mot de passe a été réinitialisé avec succès."
+    registrations:
+      destroyed: "Votre compte a été supprimé avec succès. Au revoir !"
+      signed_up: "Bienvenue ! Votre compte a été créé avec succès."
+      signed_up_but_inactive: "Votre compte a été créé avec succès. Cependant, puisqu'il n'est pas encore activé, vous n'avez pas pu être connecté(e)."
+      signed_up_but_locked: "Votre compte a été créé avec succès. Cependant, vous n'avez pas pu être connecté(e) parce qu'il est verrouillé."
+      signed_up_but_unconfirmed: "Un message contenant un hyperlien de validation vous a été envoyé par courriel. Veuillez cliquez sur cet hyperlien pour activer votre compte."
+      update_needs_confirmation: "Votre compte a été mis à jour avec succès. Cependant, votre nouvelle adresse courrielle doit être validée. Pour ce faire, veuillez cliquer sur l'hyperlien que nous venons de vous envoyer par courriel."
+      updated: "Votre compte a été mis à jour avec succès."
+    sessions:
+      signed_in: "Vous êtes maintenant connecté(e)."
+      signed_out: "Vous êtes maintenant déconnecté(e)."
+      already_signed_out: "Vous étiez déjà déconnecté(e)."
+    unlocks:
+      send_instructions: "D'ici quelques minutes, vous recevrez un courriel contenant les instructions pour déverrouiller votre compte."
+      send_paranoid_instructions: "Si votre compte existe, vous recevrez d'ici quelques minutes un courriel contenant des instructions pour le déverrouiller."
+      unlocked: "Votre compte a été déverrouillé avec succès. Veuillez vous connecter pour continuer."
+  errors:
+    messages:
+      # ??? Not sure if subject is feminine (validée, une) 
+      # or masculine (validé, un) :
+      already_confirmed: "a déjà été validé(e). Veuillez essayer de vous connecter."
+      confirmation_period_expired: "doit être validé(e) à l'intérieur de %{period} ; veuillez en demander un(e) autre."
+      expired: "a expiré ; veuillez en demander un(e) autre." 
+      not_found: "introuvable"
+      not_locked: "n'était pas verrouillé"
+      not_saved:
+        # ??? Not sure if feminine (cette, sauvegardée) or masculine (ce, sauvegardé) :
+        one: "Une erreur a empêché ce(tte) %{resource} d'être sauvegardé(e) :"
+        other: "%{count} erreurs ont empêché ce(tte) %{resource} d'être sauvegardé(e) :"

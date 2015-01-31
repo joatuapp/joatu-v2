@@ -28,6 +28,9 @@ en:
   destroy: "Destroy"
   close: "Close"
   alpha: "Alpha"
+  language:
+    en: "English"
+    fr: "French"
   time:
     ago: "%{time} ago"
   footer:

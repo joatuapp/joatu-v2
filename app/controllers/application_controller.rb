@@ -4,9 +4,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :set_locale
   after_action :verify_authorized, :except => :index, unless: -> { is_a?(DeviseController) || is_a?(ActiveAdmin::BaseController) }
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  # Default locale to be included with each request:
+  def default_url_options(options = {})
+    { locale: I18n.locale }.merge options
+  end
 
   protected
   
@@ -21,5 +27,9 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:alert] = t('flash.not_authorized')
     redirect_to(request.referrer || root_path)
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 end

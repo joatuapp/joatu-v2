@@ -3,26 +3,30 @@ Rails.application.routes.draw do
     get '(page/:page)', :action => :index, :on => :collection, :as => ''
   end
 
-  resources :communities
+  scope "(:locale)", locale: /en|fr/ do
+    resources :communities
 
-  resources :messages, only: [:new, :create]
+    resources :messages, only: [:new, :create]
 
-  resources :conversations, only: [:index, :show, :update, :destroy]
+    resources :conversations, only: [:index, :show, :update, :destroy]
 
-  resources :profiles
+    resources :profiles
 
-  resources :offers, concerns: :paginatable do
-    collection do
-      get 'search/(page/:page)', :action => :search, :as => 'search'
+    resources :offers, concerns: :paginatable do
+      collection do
+        get 'search/(page/:page)', :action => :search, :as => 'search'
+      end
     end
+
+    devise_for :users
+    ActiveAdmin.routes(self)
+
+    get 'home', to: 'static_page#home'
+    get 'alpha_signup', to: 'static_page#alpha_signup'
+
+    get '/:locale', to: 'static_page#home'
+    root 'static_page#home'
   end
-
-  devise_for :users
-  ActiveAdmin.routes(self)
-
-  root 'static_page#home'
-  get 'home', to: 'static_page#home'
-  get 'alpha_signup', to: 'static_page#alpha_signup'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

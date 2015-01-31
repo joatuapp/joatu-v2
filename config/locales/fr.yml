@@ -1,0 +1,187 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+fr:
+  hello: "Salut tout le monde !"
+  or: "ou"
+  back: "Revenir"
+  show: "Montrer"
+  edit: "Modifier"
+  destroy: "Supprimer"
+  close: "Fermer"
+  alpha: "Alpha"
+  time:
+    ago: "il y a %{time}"
+  language:
+    en: "English"
+    fr: "French"
+  footer:
+    join_us:
+      header: "Join Us"
+      content_html: "We could use your help!<br /> Send us your CV's"
+    mail_us:
+      header: "Mail Us"
+      content_html: ""
+    follow_us:
+      header: "Follow Us"
+  home:
+    intro:
+      header_html: "Trade your skills and goods,<br /> meet your needs, and <br />create vibrant communities!"
+      request_an_invite_link: "Request an Invitation"
+    benefits:
+      header: "Build Bonds, Share Skills, Develop Community"
+      hyperlocal_header: "HyperLocal Resources Directory"
+      hyperlocal_desc: "Access a pool of resources and dive in!
+        Skill offers, goods and products for trade/rent/sale and even given away!"
+      build_bonds_header: "Build bonds with your neighbors"
+      build_bonds_desc: "Meet community-minded members in a casual setting and build alliances. 
+      Free-to-attend local skillshares, clothing swaps, cookoffs, game nights, concerts, and educational classes."
+      offer_skills_header: "Offer your skills and be rewarded"
+      offer_skills_desc: "Give a hand to your neighbors, contribute to your hyperlocal economy and get paid. Volunteer at a non-profit, plant community gardens, teach classes, and be rewarded with JoatU’s exclusive Community Action Points."
+    features:
+      header: "Features You'll Love"
+      subheader: "with more on the way"
+      choose_walking_distance: "Choose your walking distance for making exchanges."
+      build_reputation: "Build up your reputation with our easy to use reference system"
+      propose_community_projects: "Propose Community Projects like feeding the hungry or planting a community garden, and get support with labour, materials and financing in CAPS!"
+    how_it_works:
+      header: "Understand JoatU Better!"
+      subheader: "Watch our animated video"
+    subscribe:
+      header: "Subscribe To Our Newsletter"
+      subheader: "Don't miss a thing"
+  mailchimp:
+    newsletter:
+      email: "Email Address"
+      subscribe: "Subscribe"
+    preregister:
+      header_html: "Sign Up for an <br />Invitation to JoatU Beta"
+      email: "Email Address"
+      postal: "Postal / Zip Code"
+      indicates_required: "indicates required"
+      signup: "Add me to the waiting list!"
+      explanation: "JoatU is currently undergoing early testing in a closed Alpha release. Pleae enter your email address and postal code below and we would be happy to notify you when JoatU becomes available in your city."
+  communities:
+    index_header: "Communautés"
+    editing_header: "Modifier une communauté"
+    name: "Nom"
+    destroy_confirm: "Voulez-vous réellement faire cela ?"
+    new_link: "Nouvelle communauté"
+    new_header: "Nouvelle communauté"
+  conversations:
+    index_header: "Conversations"
+    participants: "Participants"
+  nav:
+    benefits: "Avantages"
+    features: "Features"
+    how_it_works: "Comment ça marche"
+    team: "Équipe"
+    contact: "Contact"
+    press: "Presse"
+    blog: "Blog"
+    people: "Personnes"
+    side_header: "Navigation"
+    offers: "Offres"
+    conversations: "Conversations"
+    invite: "Invitez de nouveaux utilisateurs"
+  messages:
+    from: "De"
+    subject: "Sujet"
+    delete: "Supprimer"
+    delete_confirm: "Voulez-vous réellement supprimer ce message ?"
+    new_title: "Message pour %{name}"
+  offers:
+    editing_header: "Modifier une offre"
+    index_header: "Offres courantes"
+    title: "Titre"
+    summary: "Résumé"
+    description: "Description"
+    destroy_confirm: "Voulez-vous réellement supprimer cette offre ?"
+    new_link: "Ajouter une nouvelle offre"
+    new_header: "Offrez quelque chose de nouveau !"
+    search: "Rechercher !"
+    empty: "Il n'y a encore aucune offre !"
+    created: "Créé(e)"
+    search_placeholder: "Recherche..."
+    invalid_search: "Oups ! Veuillez reformuler votre recherche."
+  profiles:
+    editing_header: "Modifier votre profil"
+    index_header: "Utilisateurs de JoatU"
+    given_name: "Nom réel"
+    surname: "Pseudonyme"
+    about_me: "À propos de moi"
+    destroy: "Supprimer votre profil"
+    destroy_confirm: "Voulez-vous réellement supprimer votre profil ? Cette opération est irréversible !"
+    new_header: "Créer votre profil JoatU"
+    send_message: "Envoyer le message"
+  mailboxer:
+    sent: "Message envoyé !"
+  devise:
+    resend_confirmation_instructions: "Réenvoyer les instructions de confirmation"
+    change_password_header: "Modifier votre mot de passe"
+    forgot_password_header: "Mot de passe oublié ?"
+    edit_header: "Modifier %{resource_name}"
+    confirmation_notice: "Confirmation en attente pour : %{email}"
+    cancel_account_header: "Supprimer mon compte"
+    unhappy: "Insatisfait(e) ?"
+    cancel_account_link: "Supprimer mon compte"
+    cancel_account_link_confirm: "Voulez-vous réellement faire cela ?"
+    sign_up_header: "Créer un compte"
+    password_length_hint: "Le mot de passe doit avoir au moins %{min_length} caractères."
+    log_in_header: "Accéder à votre compte"
+    resend_unlock_header: "Réenvoyer les instructions de déverrouillage"
+    links:
+      log_in: "Accéder à votre compte"
+      sign_up: "Créer un compte"
+      forgot_password: "Mot de passe oublié ?"
+      no_confirm_instructions: "Vous n'avez pas reçu les instructions de confirmation ?"
+      no_unlock_instructions: "Vous n'avez pas reçu les instructions de déverrouillage ?"
+      sign_in_with_provider: "Connectez-vous via %{provider}"
+    form:
+      new_password: "Nouveau mot de passe"
+      confirm_new_password: "Confirmez votre nouveau mot de passe"
+      change_password_btn: "Modifier mon mot de passe"
+      send_new_password: "Recevoir les instructions de réinitialisation du mot de passe"
+      new_password_hint: "Laissez en blanc si vous ne désirez pas le modifier." 
+      current_password_hint: "Votre mot de passe actuel est requis pour confirmer la modification." # ??? Singular ok ?
+      update: "Mise à jour"
+      sign_up: "Créer un compte"
+      log_in: "Accéder à votre compte"
+      log_out: "Déconnexion"
+      email: "Adresse courielle"
+      password: "Mot de passe"
+      resend_unlock: "Réenvoyer les instructions de déverrouillage"
+
+    email:
+      confirm_greeting: "Bienvenue, %{email} !"
+      confirm_instructions: "Vous pouvez confirmer l'adresse courrielle liée à votre compte en suivant l'hyperlien ci-dessous :"
+      confirm_link: "Valider mon compte"
+
+      reset_pw_greeting: "Hello %{email}!"
+      reset_pw_instructions_1: "Quelqu'un a demandé à modifier votre mot de passe, ce qui peut être fait en suivant l'hyperlien ci-dessous."
+      reset_pw_instructions_2: "Si ce n'est pas vous qui avez fait cette demande, veuillez ne pas tenir compte du présent message."
+      reset_pw_instructions_3: "Votre mot de passe ne sera pas modifié avant que vous ayez suivi l'hyperlien ci-dessus et procédé à la modification."
+      reset_pw_link: "Changer mon mot de passe"
+
+      unlock_greeting: "Hello %{email}"
+      unlock_instructions_1: "Votre compte a été verrouillé suite à un trop grand nombre de tentatives de connexion infructueuses."
+      unlock_instructions_2: "Cliquez sur l'hyperlien ci-dessous pour déverrouiller votre compte."
+      unlock_link: "Déverrouiller mon compte"

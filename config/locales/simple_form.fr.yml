@@ -1,0 +1,26 @@
+fr:
+  simple_form:
+    "yes": "Oui"     # ??? Not sure if must be translated.
+    "no": "Non"      # ??? Not sure if must be translated.
+    required:
+      text: "requis" # ??? Not sure if must be translated.
+      mark: "*"
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "S'il vous plait, voyez aux problèmes ci-dessous :"
+    # Labels and hints examples
+    # labels:
+    #   defaults:
+    #     password: "Mot de passe."
+    #   user:
+    #     new:
+    #       email: "Adresse courrielle utilisée pour la connexion."
+    #     edit:
+    #       email: "Adresse courrielle."
+    # hints:
+    #   defaults:
+    #     username: 'Nom d'utilisateur utilisé pour la connexion."
+    #     password: "Pas de caractères spéciaux, s'il vous plait."
+

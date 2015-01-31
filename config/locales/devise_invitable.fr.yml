@@ -1,0 +1,23 @@
+fr:
+  devise:
+    failure:
+      invited: "Vous avez une invitation en attente ; acceptez-la afin de compléter la création de votre compte."
+    invitations:
+      send_instructions: "Une invitation a été envoyée à %{email}."
+      invitation_token_invalid: "Le code d'invitation fourni est incorrect !"
+      updated: "Votre mot de passe est enregistré. Vous êtes maintenant connecté(e)."
+      no_invitations_remaining: "Il ne reste plus d'invitations"
+      invitation_removed: "L'invitation a été annulée."
+      new:
+        header: "Envoyer une invitation"
+        submit_button: "Envoyer une invitation"
+      edit:
+        header: "Enregistrer votre mot de passe"
+        submit_button: "Enregistrer mon mot de passe"
+    mailer:
+      invitation_instructions:
+        subject: "Instructions pour faire des invitations"
+        hello: "Hello %{email}"
+        someone_invited_you: "Quelqu'un vous a invité(e) sur %{url} ; vous pouvez l'accepter en suivant l'hyperlien ci-dessous."
+        accept: "Accepter l'invitation"
+        ignore: "Si vous ne souhaitez pas accepter l'invitation, veuillez ne pas tenir compte du présent message. <br/> Votre compte ne sera pas créé avant que vous ayez suivi l'hyperlien ci-dessus et enregistré votre mot de passe."
