@@ -83,6 +83,14 @@ production:
   <<: *default
   url: <%= ENV['DATABASE_URI'] %>
 
+alpha:
+  <<: *default
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
+
 demo:
   <<: *default
   database: <%= ENV['RDS_DB_NAME'] %>
