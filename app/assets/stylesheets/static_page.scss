@@ -13,11 +13,12 @@
     margin-bottom: 0px;
 
     .row {
+      padding-top: 75px;
       background-image: url(image-path("apple_chop.jpg"));
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-      height: 350px;
+      height: 600px;
     }
 
     h1 {
@@ -26,7 +27,7 @@
       font-size: 2.75em;
     }
 
-    @media screen and (min-width: $screen-lg-min) {
+    @media screen and (min-width: $screen-md-min) {
       .row {
         height: 700px;
         padding-top: 150px;
@@ -40,6 +41,9 @@
       .row {
         height: 1080px;
         padding-top: 350px;
+      }
+      h1 {
+        font-size: 3.6em;
       }
     }
   }
@@ -67,7 +71,7 @@
     }
 
     img {
-      max-height: 300px;
+      width: 100%;
       display: block;
       margin-left: auto;
       margin-right: auto;
