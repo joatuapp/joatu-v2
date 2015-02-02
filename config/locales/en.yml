@@ -113,6 +113,8 @@ en:
     my_account: "My Account"
     create_my_profile: "Create My Profile"
     edit_account: "Edit Account"
+    my_profile: "My Profile"
+    edit_my_profile: "Edit My Profile"
   messages:
     from: "From"
     subject: "Subject"
