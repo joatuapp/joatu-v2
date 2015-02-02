@@ -41,3 +41,13 @@
   .navbar-brand {
     padding: 5px;
   }
+
+  .top-container {
+    @media screen and (min-width: $screen-md-min) {
+      min-height: 450px;
+    }
+
+    @media screen and (min-width: 1680px) {
+      min-height: 800px;
+    }
+  }

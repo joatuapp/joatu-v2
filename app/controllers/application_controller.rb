@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }.merge options
   end
 
+  def after_sign_in_path_for(resource)
+    dashboard_path
+  end
+
   protected
   
   # Devise invitable gem uses this method to determine whether someone can
