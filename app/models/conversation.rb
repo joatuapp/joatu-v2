@@ -9,7 +9,7 @@ class Conversation < Mailboxer::Conversation
     user.mailbox.sentbox.page(pagination.page).per(pagination.per)
   end
 
-  def self.user_trash(user, page)
+  def self.user_trash(user, pagination)
     user.mailbox.trash.page(pagination.page).per(pagination.per)
   end
 
