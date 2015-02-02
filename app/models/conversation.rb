@@ -1,14 +1,16 @@
 class Conversation < Mailboxer::Conversation
+  include Paginatable
+
   def self.user_inbox(user, pagination)
-    user.mailbox.inbox.paginate(pagination)
+    user.mailbox.inbox.page(pagination.page).per(pagination.per)
   end
 
   def self.user_sentbox(user, pagination)
-    user.mailbox.sentbox.paginate(pagination)
+    user.mailbox.sentbox.page(pagination.page).per(pagination.per)
   end
 
   def self.user_trash(user, page)
-    user.mailbox.trash.paginate(pagination)
+    user.mailbox.trash.page(pagination.page).per(pagination.per)
   end
 
   def read_messages_for_user_and_box!(user_model, box)
