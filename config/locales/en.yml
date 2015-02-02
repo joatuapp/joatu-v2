@@ -42,6 +42,9 @@ en:
       content_html: ""
     follow_us:
       header: "Follow Us"
+    support_us:
+      header: "Support us with Bitcoin"
+      bitcoin: "Wallet: %{wallet_id}"
   home:
     intro:
       header_html: "Trade skills and goods to meet your needs, and create vibrant communities!"

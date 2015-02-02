@@ -14,6 +14,14 @@
   @import "static_page";
 
   @font-face {
+    font-family: "Bebas Neue Regular";
+    src: font-url("BebasNeueRegular.otf");
+    src: font-url("BebasNeueRegular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
     font-family: "Bebas Neue Light";
     src: font-url("BebasNeueLight.otf");
     src: font-url("BebasNeueLight.ttf") format("truetype");

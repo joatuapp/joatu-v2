@@ -98,4 +98,5 @@ Rails.application.routes.draw do
   get '/what-i-learned-at-the-hopex-hacker-conference', to: redirect("https://joatu.wordpress.com/2014/07/23/what-i-learned-at-the-hopex-hacker-conference/")
   get '/joatu-relaunches-its-campaign-3500-to-goal', to: redirect("https://joatu.wordpress.com/2014/07/10/joatu-relaunches-its-campaign-3500-to-goal/")
   get '/press-release-apr15-2014-crowd-funding-campaign-launch', to: redirect("https://joatu.wordpress.com/2014/04/15/press-release-apr15-2014-crowd-funding-campaign-launch/")
+  get '/joatu-org-invitation', to: redirect("https://joatu.wordpress.com/2015/02/02/joatu-org-opens-up-invitations/")
 end
