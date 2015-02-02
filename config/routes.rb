@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     devise_for :users
     ActiveAdmin.routes(self)
 
+    get 'dashboard', to: "dashboard#index"
+
     get 'home', to: 'static_page#home'
     get 'alpha_signup', to: 'static_page#alpha_signup'
 
