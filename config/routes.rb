@@ -23,7 +23,6 @@ Rails.application.routes.draw do
     end
 
     devise_for :users
-    ActiveAdmin.routes(self)
 
     get 'dashboard', to: "dashboard#index"
 
@@ -34,6 +33,7 @@ Rails.application.routes.draw do
     root 'static_page#home'
   end
 
+  ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
