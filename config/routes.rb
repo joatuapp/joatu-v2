@@ -14,8 +14,6 @@ Rails.application.routes.draw do
 
     resources :profiles
 
-    resources :users, only: [:edit, :update, :destroy]
-
     resources :offers, concerns: :paginatable do
       collection do
         get 'search/(page/:page)', :action => :search, :as => 'search'
@@ -23,6 +21,7 @@ Rails.application.routes.draw do
     end
 
     devise_for :users
+    resources :users, only: [:edit, :update, :destroy]
 
     get 'dashboard', to: "dashboard#index"
 
