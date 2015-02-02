@@ -1,11 +1,5 @@
-  $brand-primary: #638701;
-  $brand-info: #6CCC70;
-  $body-bg: #eeeeee;
-  // $navbar-inverse-bg: #638701;
-  // $navbar-inverse-bg: #2B3F01;
-  $navbar-inverse-bg: darken($brand-primary, 20%);
-  $navbar-inverse-link-color: $brand-primary;
-  $navbar-inverse-link-hover-color: lighten($navbar-inverse-link-color, 15%);
+  // Contains customized Bootstrap variables:
+  @import "variable_overrides";
 
   @import "bootstrap-sprockets";
   @import "bootstrap/variables";
@@ -13,11 +7,19 @@
 
   @import "font-awesome";
 
+  @import "nav";
   @import "footer";
 
   @import "offers";
   @import "static_page";
-  @import "nav";
+
+  @font-face {
+    font-family: "Bebas Neue Light";
+    src: font-url("BebasNeueLight.otf");
+    src: font-url("BebasNeueLight.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
 
   body {
     margin-top: 50px;

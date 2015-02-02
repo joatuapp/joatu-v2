@@ -6,6 +6,10 @@
     margin-top: 8px;
     margin-bottom: 8px;
   }
+
+  .nav li {
+    font-weight: bold;
+  }
 }
 
 .navbar-brand {
@@ -21,5 +25,9 @@
 
   .mini-logo {
     font-size: 10px;
+    color: #FFF; // To match joatu logo.
+    :hover {
+      color: inherit;
+    }
   }
 }
