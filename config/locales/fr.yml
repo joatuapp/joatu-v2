@@ -43,8 +43,8 @@ fr:
     follow_us:
       header: "Suivez-nous"
     support_us:
-      header: "Support us with Bitcoin"
-      bitcoin: "Wallet: %{wallet_id}"
+      header: "Encouragez-nous avec Bitcoin"
+      bitcoin: "Portefeuille: %{wallet_id}"
   home:
     intro:
       header_html: "Échangez biens et services pour répondre à vos besoins et créer de vibrantes communautés !"
