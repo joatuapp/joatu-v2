@@ -1,0 +1,29 @@
+%nav#main-nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse(role="navigation")
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand(href=root_path)
+        = image_tag('logo_white.png')
+        .mini-logo= t('alpha')
+    .navbar-collapse.collapse.navbar-responsive-collapse
+      %ul.nav.navbar-nav
+        %li= link_to t('nav.people'), profiles_path
+        %li= link_to t('nav.offers'), offers_path
+        %li= link_to t('nav.conversations'), conversations_path
+        - if current_user.is_admin?
+          // Todo: create admin links
+          // %li= link_to t('nav.admin')
+          // %li= link_to t('nav.invite'), new_user_invitation_path
+          // %li= link_to t('nav.admin'), admin_root_path, "data-no-turbolink" => true
+
+      = link_to(destroy_user_session_path, method: :delete, class: "navbar-right btn btn-default btn-sm") do
+        = t('devise.form.log_out')
+      - if I18n.locale.to_s == "en"
+        = link_to(url_for(locale: "fr"), class: "navbar-right btn btn-default btn-sm") do
+          = t('language.fr')
+      - else
+        = link_to(url_for(locale: "en"), class: "navbar-right btn btn-default btn-sm") do
+          = t('language.en')
