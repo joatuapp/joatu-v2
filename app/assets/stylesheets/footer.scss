@@ -1,9 +1,8 @@
 footer {
-  margin-top: -50px; // Counteract the body offset for fixed header
-
   .row {
     color: $navbar-default-color;
     background-color: $navbar-default-bg;
+    padding-top: 20px;
     padding-bottom: 20px;
   }
 

@@ -24,13 +24,14 @@
     - else
       = render "components/header"
 
-    .container-fluid
+    .top-container.container-fluid
       - if content_for? :content
         = yield :content
       - else
         = bootstrap_flash
         = yield
 
+    .container-fluid.clearfix
       - if content_for? :footer
         = yield :footer
       - else

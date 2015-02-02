@@ -109,6 +109,10 @@ en:
     conversations: "Conversations"
     invite: "Invite New Users"
     admin: "Manage JoatU"
+    requests: "Requests"
+    my_account: "My Account"
+    create_my_profile: "Create My Profile"
+    edit_account: "Edit Account"
   messages:
     from: "From"
     subject: "Subject"

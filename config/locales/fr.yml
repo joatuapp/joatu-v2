@@ -109,6 +109,10 @@ fr:
     offers: "Offres"
     conversations: "Conversations"
     invite: "Invitez de nouveaux utilisateurs"
+    requests: "Requests"
+    my_account: "My Account"
+    create_my_profile: "Create My Profile"
+    edit_account: "Edit Account"
   messages:
     from: "De"
     subject: "Sujet"
