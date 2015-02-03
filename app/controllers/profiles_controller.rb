@@ -17,12 +17,13 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = ProfileForm.new(Profile.new)
-    authorize @profile
+    authorize @profile.model
     respond_with(@profile)
   end
 
   def edit
     authorize @profile
+    ProfileForm.new(@profile)
   end
 
   def create
