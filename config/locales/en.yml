@@ -135,6 +135,18 @@ en:
     created: "Created"
     search_placeholder: "Search..."
     invalid_search: "Whoa, invalid search!"
+  requests:
+    index_header: "Current Requests"
+    search_placeholder: "Search..."
+    search: "Search!"
+    new_link: "Add A New Request"
+    empty: "There aren't any requests yet!"
+    new_header: "Request Something From the Community!"
+    title: "Title"
+    summary: "Summary"
+    description: "Description"
+    editing_header: "Edit Request"
+
   profiles:
     editing_header: "Edit Profile"
     index_header: "JoatU Users"

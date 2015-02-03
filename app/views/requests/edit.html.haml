@@ -1,7 +1,7 @@
-%h1 Editing request
+%h1= t('requests.editing_header')
 
 = render 'form'
 
-= link_to 'Show', @request
+= link_to t('show'), @user_request
 \|
-= link_to 'Back', requests_path
+= link_to t('back'), requests_path

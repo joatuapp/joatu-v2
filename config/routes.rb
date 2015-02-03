@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :requests
 
   concern :paginatable do
     get '(page/:page)', :action => :index, :on => :collection, :as => ''
@@ -13,6 +12,12 @@ Rails.application.routes.draw do
     resources :conversations, only: [:index, :show, :update, :destroy]
 
     resources :profiles
+
+    resources :requests, concerns: :paginatable do
+      collection do
+        get 'search/(page/:page)', :action => :search, :as => 'search'
+      end
+    end
 
     resources :offers, concerns: :paginatable do
       collection do

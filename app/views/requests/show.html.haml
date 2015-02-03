@@ -1,6 +1,16 @@
 %p#notice= notice
 
+%p
+  %b= "#{t('requests.title')}:"
+  = @user_request.title
+%p
+  %b= "#{t('requests.summary')}:"
+  = @user_request.summary
+%p
+  %b= "#{t('requests.description')}:"
+  = @user_request.description
 
-= link_to 'Edit', edit_request_path(@request)
-\|
-= link_to 'Back', requests_path
+- if Pundit.policy(current_user, @user_request).edit?
+  = link_to t('edit'), edit_request_path(@user_request) 
+  \|
+= link_to t('back'), requests_path

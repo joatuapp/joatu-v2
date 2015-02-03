@@ -1,19 +1,22 @@
-%h1 Listing requests
+%h1.text-center= t('requests.index_header')
+.row
+  .col-sm-8
+    = simple_form_for @search_form, url: search_requests_path, wrapper: :inline_form, html: {method: :get, class: 'form-inline'} do |f|
+      = f.input :search, placeholder: t('requests.search_placeholder')
+      = f.button :submit, t('requests.search')
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @requests.each do |request|
-      %tr
-        %td= link_to 'Show', request
-        %td= link_to 'Edit', edit_request_path(request)
-        %td= link_to 'Destroy', request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  .col-sm-4
+    = link_to new_request_path, class: 'btn btn-success pull-right' do
+      %i.glyphicon.glyphicon-plus
+      = t('requests.new_link') 
 
-%br
+.row.offers-list
+  - if @user_requests.empty?
+    .col-sm-12
+      = t('requests.empty')
+  - else
+    - @user_requests.each do |user_request|
+      .col-sm-4
+        = render user_request
 
-= link_to 'New Request', new_request_path
+= paginate @user_requests
