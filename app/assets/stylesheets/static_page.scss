@@ -14,7 +14,7 @@
 
     .row {
       padding-top: 75px;
-      background-image: url(image-path("apple_chop.jpg"));
+      background-image: url(image-path("apple_chop_xs.jpg"));
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
@@ -34,13 +34,26 @@
 
     }
 
+    @media screen and (min-width: $screen-sm-min) {
+      .row {
+        background-image: url(image-path("apple_chop_sm.jpg"));
+      }
+    }
+
     @media screen and (min-width: $screen-md-min) {
       .row {
         height: 700px;
         padding-top: 150px;
+        background-image: url(image-path("apple_chop_md.jpg"));
       }
       h1 {
         font-size: 4em;
+      }
+    }
+
+    @media screen and (min-width: $screen-lg-min) {
+      .row {
+        background-image: url(image-path("apple_chop.jpg"));
       }
     }
 

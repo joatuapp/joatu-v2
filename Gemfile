@@ -43,6 +43,10 @@ gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
 
 gem 'activeadmin', github: 'activeadmin'
 
+# Use action caching to cache the home page and alpha_signup page,
+# both of which are static, to improve performance.
+gem 'actionpack-action_caching'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
