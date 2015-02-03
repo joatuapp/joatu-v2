@@ -1,2 +1,5 @@
-%h1 User#edit
-%p Find me in app/views/user/edit.html.haml
+%h1= t('users.editing_header')
+
+= render 'form'
+
+= link_to t('users.delete_button'), user_path(@user), method: :delete, class: "btn btn-danger", data: {confirm: t('users.delete_confirm_message')}

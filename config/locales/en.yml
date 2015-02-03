@@ -157,6 +157,12 @@ en:
     destroy_confirm: "Are you sure you want to delete your profile? This cannot be undone!"
     new_header: "Create your JoatU profile"
     send_message: "Send message"
+  users:
+    leave_password_blank_to_not_change: "Leave blank to leave unchanged."
+    editing_header: "Edit Account"
+    delete_button: "Delete Account"
+    delete_confirm_message: "Are you sure you want to delete your account? This cannot be undone!"
+    user_updated: "Account updated successfully!"
   mailboxer:
     sent: "Message sent!"
   devise:

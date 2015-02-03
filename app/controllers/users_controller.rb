@@ -2,19 +2,29 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_filter :set_user
 
+  respond_to :html
+
   def edit
     authorize @user
-    @form = UserForm.new(@user)
+    @user = UserForm.new(@user)
   end
 
   def update
     @form = UserForm.new(@user)
     if @form.validate(params[:user])
       authorize @form.model
-      @form.save
+      @form.save do |vals|
+        @form.model.email = vals[:email]
+        if vals[:password].present? || vals[:password_confirmation].present?
+          @form.model.password = vals[:password]
+          @form.model.password_confirmation = vals[:password_confirmation]
+        end
+        @form.model.save!
+        flash[:notice] = t('users.user_updated')
+      end
     end
 
-    respond_with(@user = @form)
+    respond_with(@user = @form, location: edit_user_path(@user))
   end
 
   def destroy

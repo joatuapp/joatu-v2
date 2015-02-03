@@ -1,0 +1,10 @@
+= simple_form_for(@user) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :email
+    = f.input :password, hint: t('users.leave_password_blank_to_not_change')
+    = f.input :password_confirmation, hint: t('users.leave_password_blank_to_not_change')
+
+  .form-actions
+    = f.button :submit
