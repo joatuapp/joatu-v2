@@ -11,6 +11,8 @@ class User < Base
   has_many :community_memberships
   has_many :communities, through: :community_memberships
 
+  validates_acceptance_of :tou_agreement, message: I18n.t('tou.form.error_message')
+
   def name
     if profile.present? && (profile.given_name.present? || profile.surname.present?)
       "#{profile.given_name} #{profile.surname}".strip

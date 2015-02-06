@@ -6,6 +6,7 @@
       = f.input :email, required: true, autofocus: true
       = f.input :password, required: true, hint: (t('devise.password_length_hint', min_length: @minimum_password_length) if @validatable)
       = f.input :password_confirmation, required: true
+      = f.input :tou_agreement, as: :boolean, label: t('tou.form.label_html', link: link_to(t('tou.form.link'), tou_path ))
     .form-actions
       = f.button :submit, t('devise.form.sign_up')
   = render "devise/shared/links"

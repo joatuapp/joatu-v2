@@ -10,6 +10,9 @@ class StaticPageController < ApplicationController
   def alpha_signup
   end
 
+  def tou
+  end
+
   private
   def redirect_if_signed_in
     redirect_to dashboard_path if user_signed_in?

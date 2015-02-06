@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_locale
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+
   after_action :set_csrf_cookie, if: -> { protect_against_forgery? }
   after_action :verify_authorized, :except => :index, unless: -> { is_a?(DeviseController) || is_a?(ActiveAdmin::BaseController) }
 
@@ -44,5 +46,9 @@ class ApplicationController < ActionController::Base
       value: form_authenticity_token,
       expires: 1.day.from_now,
     }
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:accept_invitation).concat [:tou_agreement]
   end
 end

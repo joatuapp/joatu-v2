@@ -2,8 +2,8 @@
   .panel-body
     %h2= t 'devise.invitations.edit.header'
     = simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f|
-      = devise_error_messages!
       = f.hidden_field :invitation_token
       = f.input :password
       = f.input :password_confirmation
+      = f.input :tou_agreement, as: :boolean, label: t('tou.form.label_html', link: link_to(t('tou.form.link'), tou_path ))
       = f.button :submit, t("devise.invitations.edit.submit_button")

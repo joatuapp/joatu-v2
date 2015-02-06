@@ -165,6 +165,11 @@ en:
     user_updated: "Account updated successfully!"
   mailboxer:
     sent: "Message sent!"
+  tou:
+    form:
+      label_html: "I agree to the %{link}"
+      link: "terms of use"
+      error_message: "You must agree with the Terms of Use in order to user JoatU!"
   devise:
     resend_confirmation_instructions: "Resend confirmation instructions"
     change_password_header: "Change your password"
