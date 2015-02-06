@@ -84,7 +84,7 @@ en:
       postal: "Postal / Zip Code"
       indicates_required: "indicates required"
       signup: "Add me to the waiting list!"
-      explanation: "JoatU is currently undergoing early testing in a closed Alpha release. Pleae enter your email address and postal code below and we would be happy to notify you when JoatU becomes available in your city."
+      explanation: "JoatU is currently undergoing early testing in a closed Alpha release. Please enter your email address and postal code below and we would be happy to notify you when JoatU becomes available in your city."
   communities:
     index_header: "Communities"
     editing_header: "Editing community"
