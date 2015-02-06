@@ -7,7 +7,7 @@
       %h3= "#{t('profiles.about_me')}:"
       %br/
       = @profile.about_me
-      - unless @profile.accepted_currencies.empty?
+      - if @profile.accepted_currencies.present?
         %h3= t('profiles.accepted_currencies_header')
         %ul
         - @profile.accepted_currencies.each do |currency_key|
