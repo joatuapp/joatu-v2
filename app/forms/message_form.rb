@@ -4,7 +4,7 @@ class MessageForm < ApplicationForm
   end
 
   property :recipients, type: Array[User]
-  property :subject, validates: {presence: true}
+  property :subject
   property :body, validates: {presence: true}
 
   def recipients= (val)

@@ -36,6 +36,7 @@ class ConversationsController < ApplicationController
         @messages = @conversation.read_messages_for_user_and_box!(current_user, @box)
         redirect_to action: :show
       else
+        @messages = @conversation.read_messages_for_user_and_box!(current_user, @box)
         @reply = @form
         render :show
       end

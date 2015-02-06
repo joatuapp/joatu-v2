@@ -21,7 +21,7 @@ class Conversation < Mailboxer::Conversation
   end
 
   def reply_to_all(user_model, body)
-    last_receipt = user_model.mailbox.receipts_for(self.model).last
+    last_receipt = user_model.mailbox.receipts_for(self).last
     user_model.reply_to_all(last_receipt, body)
   end
 
