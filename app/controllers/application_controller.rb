@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_locale
+  after_action :set_csrf_cookie, if: -> { protect_against_forgery? }
   after_action :verify_authorized, :except => :index, unless: -> { is_a?(DeviseController) || is_a?(ActiveAdmin::BaseController) }
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -35,5 +36,13 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def set_csrf_cookie
+    # Transmit CSRF token via cookie to fascilitate caching: 
+    cookies[:csrftoken] = {
+      value: form_authenticity_token,
+      expires: 1.day.from_now,
+    }
   end
 end
