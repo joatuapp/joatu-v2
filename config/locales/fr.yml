@@ -66,15 +66,15 @@ fr:
     features:
       header: "Des outils bien pratiques"
       subheader: "(d'autres sont en gestation)"
-      choose_walking_distance: "Déterminez votre rayon d'action"
-      build_reputation: "Établissez votre réputation grâce à un système de références facile à utiliser"
-      propose_community_projects: "Proposez des projets communautaires (ex.: nourrir les affamés ou démarrer un jardin communautaire) et obtenez de l'aide, du matériel et du financement en points D'acc (points d'action communautaire) !" # ***** 'D'acc !', or 'D'accord !' means 'Alright !'
+      choose_walking_distance: "Déterminez votre rayon d'action."
+      build_reputation: "Établissez votre réputation grâce à un système de références facile à utiliser."
+      propose_community_projects: "Proposez des projets communautaires (ex.: nourrir les affamés ou démarrer un jardin communautaire) et obtenez de l'aide, du matériel et du financement en points d'ACC (points d'action communautaire) !" # ***** 'D'acc !', or 'D'accord !' means 'Alright !'
     how_it_works:
       header: "Bienvenue sur JoatU (Jack of all trades Universe) !"
-      subheader: "Regardez notre animation de présentation"
+      subheader: "Animation de présentation"
     subscribe:
-      header: "Inscrivez-vous à notre bulletin d'information"
-      subheader: "Restez informé(e) !"
+      header: "Restez informé(e) !"
+      subheader: "Inscrivez-vous à notre bulletin d'information"
   mailchimp:
     newsletter:
       email: "Adresse courrielle"
