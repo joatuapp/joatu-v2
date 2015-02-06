@@ -4,9 +4,15 @@
 .row
   .col-sm-8
     %p
-      %b= "#{t('profiles.about_me')}:"
+      %h3= "#{t('profiles.about_me')}:"
       %br/
       = @profile.about_me
+      - unless @profile.accepted_currencies.empty?
+        %h3= t('profiles.accepted_currencies_header')
+        %ul
+        - @profile.accepted_currencies.each do |currency_key|
+          %li= acceptable_currency_translated(currency_key)
+
   .col-sm-4
     = link_to new_message_path(receiver: @profile.user.id), class: 'btn btn-primary' do
       %span.glyphicon.glyphicon-envelope
@@ -17,7 +23,7 @@
         = t('edit') 
 
 
-%h2= t('offers.index_header')
+%h3= t('offers.index_header')
 .row.offers-list
   - if @offers.empty?
     .col-sm-12

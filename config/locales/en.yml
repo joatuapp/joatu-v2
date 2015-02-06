@@ -148,6 +148,7 @@ en:
     editing_header: "Edit Request"
 
   profiles:
+    accepted_currencies_header: "Accepted Currencies"
     editing_header: "Edit Profile"
     index_header: "JoatU Users"
     given_name: "Given name"
@@ -165,6 +166,12 @@ en:
     user_updated: "Account updated successfully!"
   mailboxer:
     sent: "Message sent!"
+  currencies:
+    cash: "Cash"
+    cheque: "Cheque"
+    bitcoin: "Bitcoin"
+    trade: "Trade"
+    caps: "CAPs"
   tou:
     form:
       label_html: "I agree to the %{link}"
