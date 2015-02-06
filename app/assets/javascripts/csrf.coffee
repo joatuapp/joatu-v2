@@ -10,3 +10,5 @@ $(document).on "page:change", (e)->
     .attr('name', 'csrf-token')
     .attr('content', token)
     .appendTo('head')
+
+  $('input[name="authenticity_token"]').val(token)
