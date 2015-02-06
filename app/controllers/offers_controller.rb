@@ -54,6 +54,7 @@ class OffersController < ApplicationController
   end
 
   def search
+    params[:offer_search] ||= {}
     @search_form = OfferSearchForm.new(SearchQuery.new)
     if @search_form.validate(params[:offer_search])
       @search_form.save do |search_data|

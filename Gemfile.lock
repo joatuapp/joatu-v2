@@ -232,6 +232,10 @@ GEM
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     pg (0.18.1)
+    pg_search (0.7.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     pry (0.10.1)
@@ -403,6 +407,7 @@ DEPENDENCIES
   mailboxer!
   newrelic_rpm
   pg
+  pg_search
   pry-rails
   puma
   pundit (~> 0.3.0)

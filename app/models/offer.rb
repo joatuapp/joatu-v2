@@ -1,5 +1,33 @@
 class Offer < Base
+  include PgSearch
+
   belongs_to :user
+
+  pg_search_scope :en_text_search, against: {
+    title: "A",
+    summary: "B",
+    description: "D",
+  },
+  ignoring: :accents,
+  using: {
+    tsearch: {
+      dictionary: "english",
+      any_word: true,
+    }
+  }
+
+  pg_search_scope :fr_text_search, against: {
+    title: "A",
+    summary: "B",
+    description: "D",
+  },
+  ignoring: :accents,
+  using: {
+    tsearch: {
+      dictionary: "french",
+      any_word: true,
+    }
+  }
 
   def self.owned_by(user, pagination)
     where(user_id: user.id).paginate(pagination)
@@ -10,6 +38,11 @@ class Offer < Base
   end
 
   def self.search_results(search_data, user, pagination)
-    where("title LIKE ?", "#{search_data[:search]}%").available_to(user, pagination)
+    case I18n.locale
+    when :fr
+      fr_text_search(search_data[:search]).available_to(user, pagination)
+    else
+      en_text_search(search_data[:search]).available_to(user, pagination)
+    end
   end
 end
