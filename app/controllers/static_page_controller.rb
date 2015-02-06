@@ -1,6 +1,6 @@
 class StaticPageController < ApplicationController
   skip_after_action :verify_authorized
-  before_action :redirect_if_signed_in
+  before_action :redirect_if_signed_in, only: [:home, :alpha_signup]
 
   caches_action :home, :alpha_signup
 
