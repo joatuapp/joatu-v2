@@ -31,7 +31,7 @@ class ReferencesController < ApplicationController
     if @form.validate(params[:reference])
       @form.save
     end
-    respond_with(@reference = @form, location: profile_path(@reference.to_user.profile))
+    respond_with(@reference = @form, location: profile_path(@reference.model.to_user.profile))
   end
 
   def update
