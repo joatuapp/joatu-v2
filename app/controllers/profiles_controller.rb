@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
 
   def show
     authorize @profile
-    @offers = Offer.owned_by(current_user, PaginationOptions.new(params[:page], 3))
+    @offers = Offer.owned_by(@profile, PaginationOptions.new(params[:page], 3))
     @references = Reference.to_user(@profile.user, PaginationOptions.new(params[:page], 5))
     @reference = ReferenceForm.new(Reference.new)
     respond_with(@profile)
