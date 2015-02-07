@@ -1,2 +1,4 @@
-$("#reference_modal .modal-header").append("<h2 class='modal-title'><%= t('references.new_header') %></h2>")
-$("#reference_modal .modal-body").html("<%= j render("references/form") %>")
+populate_modal(
+    "<%= j render("references/form") %>",
+    "<h2 class='modal-title'><%= t('references.new_header') %></h2>"
+    )

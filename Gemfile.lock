@@ -167,6 +167,7 @@ GEM
     formtastic_i18n (0.1.1)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
+    gravatarify (3.0.0)
     haml (4.0.6)
       tilt
     haml-rails (0.7.0)
@@ -399,6 +400,7 @@ DEPENDENCIES
   faker
   font-awesome-rails
   foreman (~> 0.75)
+  gravatarify (~> 3.0.0)
   haml-rails (~> 0.7.0)
   i18n-tasks (~> 0.7.11)
   jquery-cookie-rails

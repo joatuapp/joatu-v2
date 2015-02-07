@@ -29,6 +29,15 @@
       - else
         = bootstrap_flash
         = yield
+      #joatu_modal.modal.fade(role="dialog" tabindex="-1")
+        .modal-dialog
+          .modal-content
+            .modal-header
+              %button.close(type="button" data-dismiss="modal" aria-label="close")
+                %span(aria-hidden=true) &times;
+              .modal-title
+            .modal-body
+              Loading...
 
     .container-fluid.clearfix
       - if content_for? :footer

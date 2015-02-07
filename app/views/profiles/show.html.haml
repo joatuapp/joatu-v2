@@ -1,55 +1,58 @@
 %p#notice= notice
 
-%h1= "#{@profile.given_name} #{@profile.surname}".strip
 .row
   .col-sm-8
-    %p
-      %h3= "#{t('profiles.about_me')}:"
-      %br/
-      = @profile.about_me
-      - if @profile.accepted_currencies.present?
-        %h3= t('profiles.accepted_currencies_header')
-        %ul
-        - @profile.accepted_currencies.each do |currency_key|
-          %li= acceptable_currency_translated(currency_key)
-
+    .media
+      .media-left
+        = gravatar_tag @profile.user, :profile
+      .media-body.media-middle
+        %h1.media-heading
+          = "#{@profile.given_name} #{@profile.surname}".strip
+          %small= @profile.tagline
   .col-sm-4
-    = link_to new_message_path(receiver: @profile.user.id), class: 'btn btn-primary' do
-      %span.glyphicon.glyphicon-envelope
-      = t('profiles.send_message')
+    - if policy(@profile.user).send_message_to?
+      = link_to new_message_path(receiver: @profile.user.id), class: 'btn btn-primary' do
+        %span.glyphicon.glyphicon-envelope
+        = t('profiles.send_message')
     - if Pundit.policy(current_user, @profile).edit?
       = link_to edit_profile_path(@profile), class: 'btn btn-default' do
         %span.glyphicon.glyphicon-pencil
         = t('edit') 
-
-
-.row.offers-list
+.row
   .col-sm-6
-    %h3= t('offers.index_header')
-    - if @offers.empty?
-      .col-sm-12
-        = t('offers.empty')
-    - else
-      - @offers.each do |offer|
-        .col-sm-6
-          = render offer
-      = paginate @offers
+    .panel.panel-default
+      .panel-heading= "#{t('profiles.about_me')}:"
+      .panel-body
+        = sanitize @profile.about_me
+    - if @profile.accepted_currencies.present?
+      .panel.panel-default
+        .panel-heading= t('profiles.accepted_currencies_header')
+        .panel-body
+          %ul
+          - @profile.accepted_currencies.each do |currency_key|
+            %li= acceptable_currency_translated(currency_key)
+
   .col-sm-6
-    %h3= t('references.index_header')
-    - if @references.empty?
-      = t('references.empty')
-    - else
-      - @references.each do |reference|
-        = render reference
-      = paginate @references
-    %br/
-    = link_to t('references.new_link'), new_reference_path(to_user_id: @profile.user.id), remote: true, data: {toggle: "modal", target: "#reference_modal"}
-    #reference_modal.modal.fade(role="dialog" tabindex="-1")
-      .modal-dialog
-        .modal-content
-          .modal-header
-            %button.close(type="button" data-dismiss="modal" aria-label="close")
-              %span(aria-hidden=true) &times;
-            .modal-title
-          .modal-body
-            Loading...
+    .panel.panel-default
+      .panel-heading= t('offers.index_header')
+      .panel-body
+        - if @offers.empty?
+          .col-sm-12
+            = t('offers.empty')
+        - else
+          - @offers.each do |offer|
+            .col-sm-6
+              = render offer
+          = paginate @offers
+  .col-sm-6
+    .panel.panel-default
+      .panel-heading= t('references.index_header')
+      .panel-body
+        - if @references.empty?
+          = t('references.empty')
+        - else
+          - @references.each do |reference|
+            = render reference
+          = paginate @references
+        %br/
+        = link_to t('references.new_link'), new_reference_path(to_user_id: @profile.user.id), remote: true, data: {toggle: "modal", target: "#joatu_modal"}

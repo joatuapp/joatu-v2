@@ -15,6 +15,8 @@ class MessagesController < ApplicationController
   end
 
   def create
+    # TODO: Add permissions handling to check against the UserPolicy
+    # send_message_to? method.
     @form = MessageForm.new(Message.new)
     if @form.validate(params[:message])
       authorize @form.model
