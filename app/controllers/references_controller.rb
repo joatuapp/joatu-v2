@@ -3,7 +3,7 @@ class ReferencesController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_reference, only: [:edit, :update, :destroy] 
 
-  respond_to :html
+  respond_to :html, :js
 
   def new
     if params[:to_user_id]
@@ -21,6 +21,7 @@ class ReferencesController < ApplicationController
 
   def edit
     authorize @reference
+    @to_user_offers = @reference.to_user.offers
     @reference = ReferenceForm.new(@reference)
   end
 
@@ -45,7 +46,7 @@ class ReferencesController < ApplicationController
   def destroy
     authorize @reference
     @reference.destroy
-    respond_with(@reference)
+    respond_with(@reference, location: profile_path(@reference.model.to_user.profile))
   end
 
   private

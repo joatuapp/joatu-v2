@@ -42,3 +42,14 @@
       - @references.each do |reference|
         = render reference
       = paginate @references
+    %br/
+    = link_to t('references.new_link'), new_reference_path(to_user_id: @profile.user.id), remote: true, data: {toggle: "modal", target: "#reference_modal"}
+    #reference_modal.modal.fade(role="dialog" tabindex="-1")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %button.close(type="button" data-dismiss="modal" aria-label="close")
+              %span(aria-hidden=true) &times;
+            .modal-title
+          .modal-body
+            Loading...

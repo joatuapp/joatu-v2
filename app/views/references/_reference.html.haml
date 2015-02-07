@@ -9,3 +9,7 @@
           = "From: #{reference.from_user.name}"
       - else
         From: anonymous
+    - if Pundit.policy(current_user, reference).edit?
+      = link_to t('references.edit_link'), edit_reference_path(reference), remote: true, data: {toggle: "modal", target: "#reference_modal"}
+    - if Pundit.policy(current_user, reference).destroy?
+      = link_to t('references.destroy_link'), reference, method: :delete, data: {confirm: t('references.destroy_confirm')}
