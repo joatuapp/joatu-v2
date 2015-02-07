@@ -20,39 +20,50 @@
         = t('edit') 
 .row
   .col-sm-6
-    .panel.panel-default
-      .panel-heading= "#{t('profiles.about_me')}:"
-      .panel-body
-        = sanitize @profile.about_me
+    .row
+      .col-sm-12
+        .panel.panel-default
+          .panel-heading= "#{t('profiles.about_me')}:"
+          .panel-body
+            = sanitize @profile.about_me
     - if @profile.accepted_currencies.present?
-      .panel.panel-default
-        .panel-heading= t('profiles.accepted_currencies_header')
-        .panel-body
-          %ul
-          - @profile.accepted_currencies.each do |currency_key|
-            %li= acceptable_currency_translated(currency_key)
+      .row
+        .col-sm-12
+          .panel.panel-default
+            .panel-heading= t('profiles.accepted_currencies_header')
+            .panel-body
+              %ul
+              - @profile.accepted_currencies.each do |currency_key|
+                %li= acceptable_currency_translated(currency_key)
 
   .col-sm-6
-    .panel.panel-default
-      .panel-heading= t('offers.index_header')
-      .panel-body
-        - if @offers.empty?
-          .col-sm-12
-            = t('offers.empty')
-        - else
-          - @offers.each do |offer|
-            .col-sm-6
-              = render offer
-          = paginate @offers
-  .col-sm-6
-    .panel.panel-default
-      .panel-heading= t('references.index_header')
-      .panel-body
-        - if @references.empty?
-          = t('references.empty')
-        - else
-          - @references.each do |reference|
-            = render reference
-          = paginate @references
-        %br/
-        = link_to t('references.new_link'), new_reference_path(to_user_id: @profile.user.id), remote: true, data: {toggle: "modal", target: "#joatu_modal"}
+    .row
+      .col-sm-12
+        .panel.panel-default
+          .panel-heading= t('offers.index_header')
+          .panel-body
+            - if @offers.empty?
+              .col-sm-12
+                = t('offers.empty')
+            - else
+              .row
+                - @offers.each do |offer|
+                  .col-sm-6
+                    = render offer
+              .row
+                .text-center
+                  = paginate @offers, param_name: :offers_page
+    .row
+      .col-sm-12
+        .panel.panel-default
+          .panel-heading= t('references.index_header')
+          .panel-body
+            - if @references.empty?
+              = t('references.empty')
+            - else
+              - @references.each do |reference|
+                = render reference
+              .text-center
+                = paginate @references, param_name: :references_page
+            %br/
+            = link_to t('references.new_link'), new_reference_path(to_user_id: @profile.user.id), remote: true, data: {toggle: "modal", target: "#joatu_modal"}
