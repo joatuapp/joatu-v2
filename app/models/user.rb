@@ -11,6 +11,9 @@ class User < Base
   has_many :community_memberships
   has_many :communities, through: :community_memberships
 
+  has_many :written_references, class: Reference, foreign_key: :from_user_id
+  has_many :received_references, class: Reference, foreign_key: :to_user_id
+
   validates_acceptance_of :tou_agreement, message: I18n.t('tou.form.error_message')
 
   def name

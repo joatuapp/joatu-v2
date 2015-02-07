@@ -1,0 +1,12 @@
+= simple_form_for(@reference) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :to_user_id, as: :hidden
+    = f.input :reference
+    = f.input :rating, collection: 1..5
+    - if @to_user_offers.present?
+      = f.input :offer_id, collection: @to_user_offers.inject({}) {|h, offer| h[offer.title] = offer.id; h }, include_blank: true
+
+  .form-actions
+    = f.button :submit

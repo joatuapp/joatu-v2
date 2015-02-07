@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206230223) do
+ActiveRecord::Schema.define(version: 20150206235701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,20 @@ ActiveRecord::Schema.define(version: 20150206230223) do
     t.integer  "user_id",             null: false
     t.json     "accepted_currencies"
   end
+
+  create_table "references", force: :cascade do |t|
+    t.integer  "from_user_id"
+    t.integer  "to_user_id"
+    t.text     "reference"
+    t.integer  "rating"
+    t.integer  "offer_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.datetime "deleted_at"
+  end
+
+  add_index "references", ["offer_id"], name: "index_references_on_offer_id", using: :btree
+  add_index "references", ["to_user_id", "from_user_id"], name: "index_references_on_to_user_id_and_from_user_id", unique: true, using: :btree
 
   create_table "requests", force: :cascade do |t|
     t.string   "title"

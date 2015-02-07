@@ -23,13 +23,22 @@
         = t('edit') 
 
 
-%h3= t('offers.index_header')
 .row.offers-list
-  - if @offers.empty?
-    .col-sm-12
-      = t('offers.empty')
-  - else
-    - @offers.each do |offer|
-      .col-sm-4
-        = render offer
-= paginate @offers
+  .col-sm-6
+    %h3= t('offers.index_header')
+    - if @offers.empty?
+      .col-sm-12
+        = t('offers.empty')
+    - else
+      - @offers.each do |offer|
+        .col-sm-6
+          = render offer
+      = paginate @offers
+  .col-sm-6
+    %h3= t('references.index_header')
+    - if @references.empty?
+      = t('references.empty')
+    - else
+      - @references.each do |reference|
+        = render reference
+      = paginate @references

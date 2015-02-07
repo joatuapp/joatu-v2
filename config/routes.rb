@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|fr/ do
     resources :communities
 
+    resources :references, except: [:index, :show]
+
     resources :messages, only: [:new, :create]
 
     resources :conversations, only: [:index, :show, :update, :destroy]

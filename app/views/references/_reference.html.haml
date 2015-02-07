@@ -1,0 +1,11 @@
+= div_for reference, class: "panel panel-default" do
+  .panel-heading
+    %h3.panel-title= "Rating: #{reference.rating}"
+  .panel-body
+    %p= reference.reference
+    %p 
+      - if reference.from_user.profile.present? && reference.from_user.profile.id.present?
+        = link_to profile_path(id: reference.from_user.profile.id) do
+          = "From: #{reference.from_user.name}"
+      - else
+        From: anonymous

@@ -147,6 +147,11 @@ en:
     description: "Description"
     editing_header: "Edit Request"
 
+  references:
+    index_header: "References"
+    empty: "No references yet"
+    new_header: "New Reference"
+    edit_header: "Edit a Reference"
   profiles:
     accepted_currencies_header: "Accepted Currencies"
     editing_header: "Edit Profile"
