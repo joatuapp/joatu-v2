@@ -156,6 +156,7 @@ en:
     edit_link: "edit"
     destroy_link: "delete"
     destroy_confirm: "Are you sure you want to delete this reference? This cannot be undone!"
+    from_name: "From: %{name}"
   profiles:
     accepted_currencies_header: "Accepted Currencies"
     editing_header: "Edit Profile"

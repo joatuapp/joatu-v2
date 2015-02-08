@@ -7,6 +7,10 @@ class UserPolicy < ApplicationPolicy
     user != record
   end
 
+  def leave_reference_for?
+    user != record
+  end
+
   def update?
     user.id == record.id || super
   end

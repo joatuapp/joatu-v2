@@ -1,14 +1,13 @@
 = div_for reference, class: "panel panel-default" do
   .panel-heading
-    %h3.panel-title= "Rating: #{reference.rating}"
+    - if reference.from_user.profile.present? && reference.from_user.profile.id.present?
+      = link_to profile_path(id: reference.from_user.profile.id) do
+        = t("references.from_name", name: reference.from_user.name)
+    - else
+      = t("references.from_name", name: reference.from_user.name)
   .panel-body
     %p= reference.reference
     %p 
-      - if reference.from_user.profile.present? && reference.from_user.profile.id.present?
-        = link_to profile_path(id: reference.from_user.profile.id) do
-          = "From: #{reference.from_user.name}"
-      - else
-        From: anonymous
     - if Pundit.policy(current_user, reference).edit?
       = link_to t('references.edit_link'), edit_reference_path(reference), remote: true, data: {toggle: "modal", target: "#reference_modal"}
     - if Pundit.policy(current_user, reference).destroy?

@@ -6,9 +6,11 @@ class Reference < ActiveRecord::Base
   belongs_to :from_user, class: User
   belongs_to :offer
 
-  validates :to_user, uniqueness: {scope: :from_user}
-
   def self.to_user(user, pagination)
     where(to_user_id: user.id).paginate(pagination)
+  end
+
+  def reciprocal
+    self.class.where(to_user: from_user, from_user: to_user).take
   end
 end

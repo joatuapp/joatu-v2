@@ -66,4 +66,5 @@
               .text-center
                 = paginate @references, param_name: :references_page
             %br/
-            = link_to t('references.new_link'), new_reference_path(to_user_id: @profile.user.id), remote: true, data: {toggle: "modal", target: "#joatu_modal"}
+            - if policy(@profile.user).leave_reference_for?
+              = link_to t('references.new_link'), new_reference_path(to_user_id: @profile.user.id), remote: true, data: {toggle: "modal", target: "#joatu_modal"}, class: "btn btn-default pull-right"

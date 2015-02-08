@@ -46,7 +46,7 @@ class ReferencesController < ApplicationController
   def destroy
     authorize @reference
     @reference.destroy
-    respond_with(@reference, location: profile_path(@reference.model.to_user.profile))
+    respond_with(@reference, location: profile_path(@reference.to_user.profile))
   end
 
   private
