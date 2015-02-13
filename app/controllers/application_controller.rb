@@ -23,20 +23,23 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # Rather than returning nil if nobody is logged in, we are going to return an
-  # instance of GuestUser. guest_instance ensures we get the same guest user
-  # accross the scope of the request.
-  def current_user
-    super || guest_instance
+  # We're using a separate Authentication object to handle retrieving the current user,
+  # determining who (if anyone) is signed in, etc. Because many rails systems
+  # that interface with devise expect a current_user and user_signed_in? helper
+  # at the controller level, we're including them here and having them call out
+  # to this custom object.
+  def authentication
+    Authentication.instance_or_build do |config|
+      config.warden = request.env["warden"]
+    end
   end
 
-  # I'm overriding the user_signed_in method here as well, allowing the current
-  # user object to over-ride whether it is signed in or not by defining a
-  # signed_in? call. This will be used by the guest user so that even though it
-  # is present the code still correctly behaves in a "logged out" manner:
+  def current_user
+    authentication.user
+  end
+
   def user_signed_in?
-    return current_user.signed_in? if current_user.respond_to? :signed_in?
-    super
+    authentication.user_signed_in?
   end
 
   # Devise invitable gem uses this method to determine whether someone can

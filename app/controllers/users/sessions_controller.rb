@@ -5,6 +5,12 @@ class Users::SessionsController < Devise::SessionsController
 
   def create
     super do |user|
+      # On successful sign in, force a rebuild of our Authentication singleton
+      # with the new state:
+      Authentication.rebuild! do |config|
+        config.warden = request.env["warden"]
+      end
+      
       # If the locale parameter is set to the default locale, do NOT use it,
       # which will cause set_locale to fall back on the logged in user's saved
       # locale. This means if your saved language is french but you're browsing
@@ -15,6 +21,16 @@ class Users::SessionsController < Devise::SessionsController
         params[:locale] = nil
       end
       set_locale
+    end
+  end
+
+  def destroy
+    super do
+      # On successful termination of the devise session, force a rebuild of our
+      # Authentication singleton with the new state!
+      Authentication.rebuild! do |config|
+        config.warden = request.env["warden"]
+      end
     end
   end
 end

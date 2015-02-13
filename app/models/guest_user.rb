@@ -15,8 +15,4 @@ GuestUser = Naught.build do |config|
     # persisted will always just use defaults.
     @preferences ||= User::Preferences.new
   end
-
-  def signed_in?
-    false
-  end
 end
