@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @pod.name
+%p
+  %b Description:
+  = @pod.description
+%p
+  %b Focus area:
+  = @pod.focus_area
+%p
+  %b Hub:
+  = @pod.hub_id
+
+= link_to 'Edit', edit_pod_path(@pod)
+\|
+= link_to 'Back', pods_path

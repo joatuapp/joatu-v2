@@ -1,0 +1,27 @@
+%h1 Listing pods
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Focus area
+      %th Hub
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @pods.each do |pod|
+      %tr
+        %td= pod.name
+        %td= pod.description
+        %td= pod.focus_area
+        %td= pod.hub_id
+        %td= link_to 'Show', pod
+        %td= link_to 'Edit', edit_pod_path(pod)
+        %td= link_to 'Destroy', pod, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Pod', new_pod_path

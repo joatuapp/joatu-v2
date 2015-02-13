@@ -1,0 +1,11 @@
+= simple_form_for(@pod) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :description
+    = f.input :focus_area
+    = f.input :hub_id
+
+  .form-actions
+    = f.button :submit
