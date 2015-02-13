@@ -5,6 +5,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def create
     super do |user|
+      yield if block_given?
       # On successful sign in, force a rebuild of our Authentication singleton
       # with the new state:
       Authentication.rebuild! do |config|
@@ -26,6 +27,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def destroy
     super do
+      yield if block_given?
       # On successful termination of the devise session, force a rebuild of our
       # Authentication singleton with the new state!
       Authentication.rebuild! do |config|
