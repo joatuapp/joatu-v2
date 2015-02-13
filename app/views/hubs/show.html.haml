@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @hub.name
+%p
+  %b Description:
+  = @hub.description
+%p
+  %b Latlng:
+  = @hub.latlng
+
+= link_to 'Edit', edit_hub_path(@hub)
+\|
+= link_to 'Back', hubs_path

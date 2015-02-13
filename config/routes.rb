@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :hubs
+
   resources :pods
 
   concern :paginatable do
