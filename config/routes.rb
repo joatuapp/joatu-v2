@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :hubs
-
-  resources :pods
-
   concern :paginatable do
     get '(page/:page)', :action => :index, :on => :collection, :as => ''
   end
@@ -29,10 +25,14 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :hubs
+
     devise_for :users
     resources :users, only: [:edit, :update, :destroy]
 
-    get 'dashboard', to: "dashboard#index"
+    get 'pods/home', controller: :pods, action: :home, as: :home_pod
+    resources :pods do
+    end
 
     get 'home', to: 'static_page#home'
     get 'alpha_signup', to: 'static_page#alpha_signup'
