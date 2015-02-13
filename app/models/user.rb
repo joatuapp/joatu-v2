@@ -8,8 +8,9 @@ class User < Base
 
   has_many :offers
   has_one :profile
-  has_many :community_memberships
-  has_many :communities, through: :community_memberships
+
+  has_one :home_pod, through: :pod_membership, source: :pod
+  has_one :pod_membership
 
   has_many :written_references, class: Reference, foreign_key: :from_user_id
   has_many :received_references, class: Reference, foreign_key: :to_user_id

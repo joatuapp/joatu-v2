@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20150213210257) do
   end
 
   add_index "hubs", ["latlng"], name: "index_hubs_on_latlng", using: :gist
-  add_index "hubs", ["pod_id"], name: "index_hubs_on_pod_id", using: :btree
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.integer "unsubscriber_id"
@@ -208,10 +207,13 @@ ActiveRecord::Schema.define(version: 20150213210257) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "hubs", "pods"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "offers", "users", on_delete: :cascade
+  add_foreign_key "pod_memberships", "pods"
+  add_foreign_key "pod_memberships", "users"
   add_foreign_key "profiles", "users", on_delete: :cascade
   add_foreign_key "requests", "users", on_delete: :cascade
 end
