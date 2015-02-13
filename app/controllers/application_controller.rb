@@ -34,6 +34,32 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def sign_in(*args)
+    super
+
+    Authentication.rebuild! do |config|
+      config.warden = request.env["warden"]
+    end
+    
+    # If the locale parameter is set to the default locale, do NOT use it,
+    # which will cause set_locale to fall back on the logged in user's saved
+    # locale. This means if your saved language is french but you're browsing
+    # the home page in English, when you sign in, you'll start seeing French.
+    # If you're browsing the home page in Italian before you sign in,
+    # however, you'll still see italian _after_ signing in.
+    if params[:locale] == I18n.default_locale.to_s
+      params[:locale] = nil
+    end
+    set_locale
+  end
+
+  def sign_out
+    super
+    Authentication.rebuild! do |config|
+      config.warden = request.env["warden"]
+    end
+  end
+
   def current_user
     authentication.user
   end
