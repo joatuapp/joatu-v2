@@ -4,7 +4,8 @@ class CreatePods < ActiveRecord::Migration
       t.string :name, null: false
       t.text :description
       t.st_polygon :focus_area, null: false
-      t.integer :hub_id, null: false
+
+      t.index :focus_area, using: :gist
 
       t.timestamps null: false
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213205839) do
+ActiveRecord::Schema.define(version: 20150213210257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,13 +33,32 @@ ActiveRecord::Schema.define(version: 20150213205839) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
+  create_table "addresses", force: :cascade do |t|
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "province"
+    t.string   "country"
+    t.string   "postal_code"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
+
   create_table "hubs", force: :cascade do |t|
     t.string   "name",        null: false
     t.text     "description"
     t.point    "latlng",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "pod_id"
   end
+
+  add_index "hubs", ["latlng"], name: "index_hubs_on_latlng", using: :gist
+  add_index "hubs", ["pod_id"], name: "index_hubs_on_pod_id", using: :btree
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.integer "unsubscriber_id"
@@ -103,14 +122,22 @@ ActiveRecord::Schema.define(version: 20150213205839) do
     t.integer  "user_id",     null: false
   end
 
+  create_table "pod_memberships", id: false, force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "pod_id",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pods", force: :cascade do |t|
     t.string   "name",                                             null: false
     t.text     "description"
     t.geometry "focus_area",  limit: {:srid=>0, :type=>"polygon"}, null: false
-    t.integer  "hub_id",                                           null: false
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
   end
+
+  add_index "pods", ["focus_area"], name: "index_pods_on_focus_area", using: :gist
 
   create_table "profiles", force: :cascade do |t|
     t.string   "given_name"

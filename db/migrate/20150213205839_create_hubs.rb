@@ -5,6 +5,8 @@ class CreateHubs < ActiveRecord::Migration
       t.text :description
       t.point :latlng, null: false
 
+      t.index :latlng, using: :gist
+
       t.timestamps null: false
     end
   end
