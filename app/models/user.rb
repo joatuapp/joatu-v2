@@ -16,12 +16,18 @@ class User < Base
 
   validates_acceptance_of :tou_agreement, message: I18n.t('tou.form.error_message')
 
+  before_save :write_preferences
+
   def name
     if profile.present? && (profile.given_name.present? || profile.surname.present?)
       "#{profile.given_name} #{profile.surname}".strip
     else
       "<anon>"
     end
+  end
+
+  def preferences
+    @preferences ||= User::Preferences.new(super)
   end
 
   # Return false if we should not send an email for 'object_to_send' otherwise,
@@ -39,5 +45,11 @@ class User < Base
 
   def is_admin?
     is_admin
+  end
+
+  private
+
+  def write_preferences
+    write_attribute(:preferences, preferences.to_json)
   end
 end

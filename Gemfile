@@ -43,6 +43,8 @@ gem 'puma'
 
 gem 'newrelic_rpm'
 
+gem 'naught', github: 'avdi/naught'
+
 gem 'i18n-tasks', '~> 0.7.11'
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
 

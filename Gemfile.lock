@@ -17,6 +17,12 @@ GIT
       sass-rails
 
 GIT
+  remote: git://github.com/avdi/naught.git
+  revision: ee4c8b412e65224401aee15d901bbb7d0f0821e4
+  specs:
+    naught (1.0.0)
+
+GIT
   remote: git://github.com/div/mailboxer.git
   revision: 41c9d8de2e0ad4dc511718074228d40a1ba96ebe
   branch: rails42-foreigner
@@ -409,6 +415,7 @@ DEPENDENCIES
   kaminari
   mail_safe
   mailboxer!
+  naught!
   newrelic_rpm
   paranoia
   pg

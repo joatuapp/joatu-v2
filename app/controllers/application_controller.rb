@@ -21,8 +21,24 @@ class ApplicationController < ActionController::Base
     dashboard_path
   end
 
-  protected
-  
+  private
+
+  # Rather than returning nil if nobody is logged in, we are going to return an
+  # instance of GuestUser. guest_instance ensures we get the same guest user
+  # accross the scope of the request.
+  def current_user
+    super || guest_instance
+  end
+
+  # I'm overriding the user_signed_in method here as well, allowing the current
+  # user object to over-ride whether it is signed in or not by defining a
+  # signed_in? call. This will be used by the guest user so that even though it
+  # is present the code still correctly behaves in a "logged out" manner:
+  def user_signed_in?
+    return current_user.signed_in? if current_user.respond_to? :signed_in?
+    super
+  end
+
   # Devise invitable gem uses this method to determine whether someone can
   # send invitations. Here we're just having it redirect to pundit, so that
   # all our authorization is in one place.
@@ -37,7 +53,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    current_user.preferences.locale = params[:locale]
+    current_user.save! # Save any changes. Will no-op if nothing changed.
+    I18n.locale = current_user.preferences.locale.to_sym
   end
 
   def set_csrf_cookie
@@ -50,5 +68,9 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:accept_invitation).concat [:tou_agreement]
+  end
+
+  def guest_instance
+    @guest_instance ||= GuestUser.new
   end
 end
