@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "hubs/show", :type => :view do
+RSpec.describe "organizations/show", :type => :view do
   before(:each) do
-    @hub = assign(:hub, Hub.create!(
+    @organization = assign(:organization, Organization.create!(
       :name => "Name",
       :description => "MyText",
       :latlng => ""

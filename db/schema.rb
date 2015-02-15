@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213210257) do
+ActiveRecord::Schema.define(version: 20150214213807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,17 +47,6 @@ ActiveRecord::Schema.define(version: 20150213210257) do
   end
 
   add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
-
-  create_table "hubs", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.text     "description"
-    t.point    "latlng",      null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "pod_id"
-  end
-
-  add_index "hubs", ["latlng"], name: "index_hubs_on_latlng", using: :gist
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.integer "unsubscriber_id"
@@ -121,11 +110,32 @@ ActiveRecord::Schema.define(version: 20150213210257) do
     t.integer  "user_id",     null: false
   end
 
+  create_table "organizations", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.point    "latlng"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "organizations", ["latlng"], name: "index_organizations_on_latlng", using: :gist
+
   create_table "pod_memberships", id: false, force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "pod_id",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",                       null: false
+    t.integer  "pod_id",                        null: false
+    t.string   "membership_types", default: [],              array: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "pod_memberships", ["membership_types"], name: "index_pod_memberships_on_membership_types", using: :gin
+
+  create_table "pod_organization_relations", id: false, force: :cascade do |t|
+    t.integer  "pod_id",          null: false
+    t.integer  "organization_id", null: false
+    t.string   "type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "pods", force: :cascade do |t|
@@ -207,13 +217,14 @@ ActiveRecord::Schema.define(version: 20150213210257) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "hubs", "pods"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "offers", "users", on_delete: :cascade
   add_foreign_key "pod_memberships", "pods"
   add_foreign_key "pod_memberships", "users"
+  add_foreign_key "pod_organization_relations", "organizations"
+  add_foreign_key "pod_organization_relations", "pods"
   add_foreign_key "profiles", "users", on_delete: :cascade
   add_foreign_key "requests", "users", on_delete: :cascade
 end

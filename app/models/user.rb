@@ -9,13 +9,17 @@ class User < Base
   has_many :offers
   has_one :profile
 
-  has_one :home_pod, through: :pod_membership, source: :pod
-  has_one :pod_membership
+  has_one :home_pod, through: :home_pod_membership, source: :pod
+  has_one :home_pod_membership, -> { where("'home_pod' = ANY(membership_types)") }, class: PodMembership
 
   has_many :written_references, class: Reference, foreign_key: :from_user_id
   has_many :received_references, class: Reference, foreign_key: :to_user_id
 
   validates_acceptance_of :tou_agreement, message: I18n.t('tou.form.error_message')
+  
+  # TODO: Remove on: :create stipulation once all existing users are migrated 
+  # to have a home pod!
+  validates_presence_of :home_pod, on: :create 
 
   before_save :write_preferences
 

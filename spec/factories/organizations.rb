@@ -1,9 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :hub do
-    name "MyString"
-    description "MyText"
-    latlng ""
+  factory :organization do
+    name { Faker::Company.name }
   end
 end

@@ -51,10 +51,16 @@ gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
 
 gem 'activeadmin', github: 'activeadmin'
 
+gem 'underscore-rails'
+
 # Use action caching to cache the home page and alpha_signup page,
 # both of which are static, to improve performance.
 gem 'actionpack-action_caching'
 
+gem 'rgeo-geojson'
+gem 'gmaps4rails'
+
+gem 'render_anywhere', :require => false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -86,7 +92,7 @@ gem 'haml-rails', '~> 0.7.0'
 gem 'bootstrap-sass-extras', '~> 0.0.6'
 gem "font-awesome-rails"
 group :development, :test do
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
   gem 'rspec'
   gem 'rspec-rails'

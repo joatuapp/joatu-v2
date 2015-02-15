@@ -1,0 +1,4 @@
+%li.map.input.required{'id' => "#{method}_map_area_input", 'data-map-area' => method, 'data-geojson' => geojson}
+  %label.label= method.to_s.titleize
+  .map-container{'id' => "#{method}_map"}
+  %input.map-area-coords-input{'id' => "#{method}_input", name: method, type: "hidden"}

@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe "hubs/index", :type => :view do
+RSpec.describe "organizations/index", :type => :view do
   before(:each) do
-    assign(:hubs, [
-      Hub.create!(
+    assign(:organizations, [
+      Organization.create!(
         :name => "Name",
         :description => "MyText",
         :latlng => ""
       ),
-      Hub.create!(
+      Organization.create!(
         :name => "Name",
         :description => "MyText",
         :latlng => ""
@@ -16,7 +16,7 @@ RSpec.describe "hubs/index", :type => :view do
     ])
   end
 
-  it "renders a list of hubs" do
+  it "renders a list of organizations" do
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2

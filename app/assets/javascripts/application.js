@@ -15,4 +15,5 @@
 //= require jquery.cookie
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require gmaps/google
 //= require_tree .

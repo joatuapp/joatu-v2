@@ -1,0 +1,2 @@
+class PodHubRelation < PodOrganizationRelation
+end
