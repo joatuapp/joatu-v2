@@ -3,8 +3,24 @@
   = @pod.name
 .row
   .col-sm-8
-    %p
-      = @pod.description
+    - if @pod.description.present?
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title
+            = t('pods.about')
+        .panel-body
+          = @pod.description
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          = t('pods.events')
+      .panel-body
+        - if @pod.events.any?
+          .row
+            = render partial: "events/event", collection: @pod.events, layout: "components/three_column"
+        - else
+          = t('pods.no_events_message')
+      
   .col-sm-4.hub
     .panel.panel-default
       .panel-heading

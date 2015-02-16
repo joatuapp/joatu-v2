@@ -1,0 +1,7 @@
+= div_for event, class: "panel panel-default" do
+  .panel-heading
+    %h3.panel-title= event.name
+  .panel-body
+    %p= event.description
+    %p= "#{t('events.starts_at')}: #{event.starts_at}"
+    %p= "#{t('events.ends_at')}: #{event.ends_at}"

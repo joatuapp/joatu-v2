@@ -49,6 +49,12 @@ en:
     pod: "Pod"
     hub: "Hub"
     map: "Map"
+    about: "About this Pod"
+    events: "Events"
+    no_events_message: "Nothing to see here... yet!"
+  events:
+    starts_at: "Starts"
+    ends_at: "Ends"
   home:
     intro:
       header_html: "Trade skills and goods to meet your needs, and create vibrant communities!"
