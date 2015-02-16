@@ -1,7 +1,7 @@
 class Authentication
   Config = Struct.new(:warden, :user)
   def self.instance_or_build
-    @@auth ||= begin
+    @auth ||= begin
       config = Config.new
       yield(config)
       self.build(config)
@@ -9,7 +9,7 @@ class Authentication
   end
 
   def self.rebuild!(&block)
-    @@auth = nil
+    @auth = nil
     instance_or_build(&block)
   end
 
