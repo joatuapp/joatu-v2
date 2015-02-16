@@ -120,17 +120,18 @@ ActiveRecord::Schema.define(version: 20150214213807) do
 
   add_index "organizations", ["latlng"], name: "index_organizations_on_latlng", using: :gist
 
-  create_table "pod_memberships", id: false, force: :cascade do |t|
-    t.integer  "user_id",                       null: false
+  create_table "pod_memberships", force: :cascade do |t|
     t.integer  "pod_id",                        null: false
+    t.integer  "user_id",                       null: false
     t.string   "membership_types", default: [],              array: true
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
 
   add_index "pod_memberships", ["membership_types"], name: "index_pod_memberships_on_membership_types", using: :gin
+  add_index "pod_memberships", ["pod_id", "user_id"], name: "index_pod_memberships_on_pod_id_and_user_id", unique: true, using: :btree
 
-  create_table "pod_organization_relations", id: false, force: :cascade do |t|
+  create_table "pod_organization_relations", force: :cascade do |t|
     t.integer  "pod_id",          null: false
     t.integer  "organization_id", null: false
     t.string   "type"

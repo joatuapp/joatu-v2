@@ -1,18 +1,16 @@
-%p#notice= notice
-
-%p
-  %b Name:
+%h1
+  = "#{t('pods.pod')}: "
   = @pod.name
-%p
-  %b Description:
-  = @pod.description
-%p
-  %b Focus area:
-  = @pod.focus_area
-%p
-  %b Hub:
-  = @pod.hub_id
-
-= link_to 'Edit', edit_pod_path(@pod)
-\|
-= link_to 'Back', pods_path
+.row
+  .col-sm-8
+    %p
+      = @pod.description
+    .pod-map{"data-map" => true, "data-geojson" => @pod.to_geojson, "data-bounds" => @pod.map_bounds }
+      #hub-map.map-container
+  .col-sm-4.hub.panel.panel-info
+    .panel-heading
+      %h3.panel-title
+        = "#{t('pods.hub')}: "
+        = @pod.hub.name
+    .panel-body
+      = @pod.hub.description

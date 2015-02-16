@@ -1,0 +1,2 @@
+class PodPolicy < ApplicationPolicy
+end

@@ -45,6 +45,9 @@ en:
     support_us:
       header: "Support us with Bitcoin"
       bitcoin: "Wallet: %{wallet_id}"
+  pods:
+    pod: "Pod"
+    hub: "Hub"
   home:
     intro:
       header_html: "Trade skills and goods to meet your needs, and create vibrant communities!"

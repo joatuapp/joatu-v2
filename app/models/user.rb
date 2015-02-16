@@ -1,4 +1,6 @@
 class User < Base
+  HOME_POD_TYPE = 'home_pod'
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, # # Commenting registerable to make it invite only.
@@ -10,7 +12,7 @@ class User < Base
   has_one :profile
 
   has_one :home_pod, through: :home_pod_membership, source: :pod
-  has_one :home_pod_membership, -> { where("'home_pod' = ANY(membership_types)") }, class: PodMembership
+  has_one :home_pod_membership, -> { where("'#{HOME_POD_TYPE}' = ANY(membership_types)") }, class: PodMembership
 
   has_many :written_references, class: Reference, foreign_key: :from_user_id
   has_many :received_references, class: Reference, foreign_key: :to_user_id
@@ -50,6 +52,14 @@ class User < Base
 
   def is_admin?
     is_admin
+  end
+
+  def home_pod=(new_home_pod)
+    if home_pod_membership
+      home_pod_membership.pod = new_home_pod
+    else
+      self.build_home_pod_membership(pod: new_home_pod, membership_types: [HOME_POD_TYPE]).pod
+    end
   end
 
   private
