@@ -5,10 +5,11 @@ class MapAreaInput
   include RenderAnywhere
 
   def to_html
-    geojson = @object.send("#{@method}_geojson")
+    geojson = @object.to_geojson
     render template: "inputs/map_area", layout: false, locals: {
       geojson: geojson,
       method: @method,
+      object_name: @object_name,
     }
   end
 end

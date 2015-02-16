@@ -1,51 +1,62 @@
 setup_map_areas = ->
   $('[data-map-area]').each(->
-    previous_overlay = null
-    feature = null
+    visible_overlay = null
 
     data_map = this
 
     data = $(data_map).data('geojson')
 
-    new_overlay = (overlay)->
-      overlay = overlay.overlay
-      if previous_overlay
-        previous_overlay.setVisible(false)
-      previous_overlay = overlay
+    update_from_feature = (feature)->
+      if !visible_overlay
+        visible_overlay = new google.maps.Polygon
+        visible_overlay.setMap(handler.map.serviceObject)
+        visible_overlay.setEditable(true)
+        google.maps.event.addListener(visible_overlay, 'mouseup', (mouse_event)=>
+          update_from_overlay({overlay: visible_overlay})
+        )
+      paths = []
+      _.each(feature.getGeometry().getArray(), (path)->
+        paths.push path.getArray()
+      )
+      visible_overlay.setPaths(paths)
 
-      overlay.setEditable(true)
-
-      google.maps.event.addListener(overlay, 'mouseup', (mouse_event)=>
-        update_feature(overlay)
+      feature.toGeoJson((json)->
+        $(data_map).find('.map-area-coords-input').val(JSON.stringify(json))
       )
 
-      update_feature(overlay)
+    update_from_overlay = (overlay)->
+      unless overlay.overlay == visible_overlay
+        visible_overlay.setMap(null)
+        visible_overlay.unbindAll()
 
+      visible_overlay = overlay.overlay
+      visible_overlay.setEditable(true)
 
-    update_feature = (overlay)->
+      google.maps.event.addListener(visible_overlay, 'mouseup', (mouse_event)=>
+        update_from_overlay({overlay: visible_overlay})
+      )
+
+      feature_from_overlay(visible_overlay).toGeoJson((json)->
+        $(data_map).find('.map-area-coords-input').val(JSON.stringify(json))
+      )
+      
+    feature_from_overlay = (overlay) ->
       rings = []
       overlay.getPaths().forEach((path) ->
         rings.push new google.maps.Data.LinearRing(path.getArray())
       )
       geo = new google.maps.Data.Polygon(rings) 
-      if !feature
-        feature = new google.maps.Data.Feature
-        feature.setGeometry(geo)
-      else
-        feature.setGeometry(geo)
-
-      feature.toGeoJson((json)->
-        $(data_map).find('.map-area-coords-input').val(JSON.stringify(json))
-      )
-      
+      feature = new google.maps.Data.Feature
+      feature.setGeometry(geo)
+      return feature
 
     handler = Gmaps.build('Google')
 
     handler.buildMap({ provider: {}, internal: {id: $(this).find('.map-container').attr('id')}}, =>
       if data
-        features = handler.map.serviceObject.data.addGeoJson(data)
-        feature = features.first
-        feature.getGeometry().editable = true
+        feature = handler.map.serviceObject.data.addGeoJson(data)[0]
+        update_from_feature(feature)
+        handler.map.serviceObject.data.remove(feature)
 
       drawingManager = new google.maps.drawing.DrawingManager({
         drawingMode: google.maps.drawing.OverlayType.POLYGON,
@@ -70,7 +81,7 @@ setup_map_areas = ->
       })
       drawingManager.setMap(handler.map.serviceObject)
 
-      google.maps.event.addListener(drawingManager, 'overlaycomplete', new_overlay)
+      google.maps.event.addListener(drawingManager, 'overlaycomplete', update_from_overlay)
     )
   )
 

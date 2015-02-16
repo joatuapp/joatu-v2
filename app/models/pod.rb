@@ -12,11 +12,18 @@ class Pod < ActiveRecord::Base
   has_many :members, -> { select("DISTINCT ON (users.id) users.*") }, class: User, through: :pod_memberships, source: :user
   has_many :pod_memberships
 
-  def focus_area_geojson
+  def to_geojson
     return "" if self.new_record?
 
-    sql = "SELECT ST_asgeojson(focus_area) FROM #{self.class.table_name} where id = #{self.id}"
-    cursor = self.class.connection.execute(sql)
-    cursor.first["st_asgeojson"]
+    feature = RGeo::GeoJSON::Feature.new(self.focus_area)
+    RGeo::GeoJSON.encode(feature).to_json
+  end
+
+  def hub_id
+    hub.try(:id)
+  end
+
+  def hub_id=(val)
+    self.hub = Organization.find(val)
   end
 end
