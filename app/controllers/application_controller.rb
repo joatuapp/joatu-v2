@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   # at the controller level, we're including them here and having them call out
   # to this custom object.
   def authentication
-    Authentication.instance_or_build do |config|
+    @authentication ||= Authentication.build do |config|
       config.warden = request.env["warden"]
     end
   end
@@ -37,9 +37,7 @@ class ApplicationController < ActionController::Base
   def sign_in(*args)
     super
 
-    Authentication.rebuild! do |config|
-      config.warden = request.env["warden"]
-    end
+    @authentication = nil
     
     # If the locale parameter is set to the default locale, do NOT use it,
     # which will cause set_locale to fall back on the logged in user's saved
@@ -55,9 +53,7 @@ class ApplicationController < ActionController::Base
 
   def sign_out
     super
-    Authentication.rebuild! do |config|
-      config.warden = request.env["warden"]
-    end
+    @authentication = nil
   end
 
   def current_user
