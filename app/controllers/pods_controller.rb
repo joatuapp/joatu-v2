@@ -1,4 +1,4 @@
-class PodsController < InheritedResources::Base
+class PodsController < ApplicationController
 
   # Show's the user's home pod.
   def home

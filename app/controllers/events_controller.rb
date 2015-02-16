@@ -1,4 +1,4 @@
-class EventsController < InheritedResources::Base
+class EventsController < ApplicationController
 
   private
 

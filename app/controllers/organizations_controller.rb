@@ -1,4 +1,4 @@
-class OrganizationsController < InheritedResources::Base
+class OrganizationsController < ApplicationController
 
   private
 
