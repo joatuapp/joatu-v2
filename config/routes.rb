@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :events
+
   resources :organizations
 
   concern :paginatable do
