@@ -5,12 +5,18 @@
   .col-sm-8
     %p
       = @pod.description
-    .pod-map{"data-map" => true, "data-geojson" => @pod.to_geojson, "data-bounds" => @pod.map_bounds }
-      #hub-map.map-container
-  .col-sm-4.hub.panel.panel-info
-    .panel-heading
-      %h3.panel-title
-        = "#{t('pods.hub')}: "
-        = @pod.hub.name
-    .panel-body
-      = @pod.hub.description
+  .col-sm-4.hub
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          = t('pods.map')
+      .panel-body
+        .pod-map.embed-responsive.embed-responsive-16by9{"data-map" => true, "data-geojson" => @pod.to_geojson, "data-bounds" => @pod.map_bounds }
+          #pod-map.map-container
+    .panel.panel-info
+      .panel-heading
+        %h3.panel-title
+          = "#{t('pods.hub')}: "
+          = @pod.hub.name
+      .panel-body
+        = @pod.hub.description

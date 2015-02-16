@@ -48,6 +48,7 @@ en:
   pods:
     pod: "Pod"
     hub: "Hub"
+    map: "Map"
   home:
     intro:
       header_html: "Trade skills and goods to meet your needs, and create vibrant communities!"
