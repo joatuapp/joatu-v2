@@ -12,6 +12,8 @@ class Pod < ActiveRecord::Base
   has_many :members, -> { select("DISTINCT ON (users.id) users.*") }, class: User, through: :pod_memberships, source: :user
   has_many :pod_memberships
 
+  has_many :events, dependent: :destroy
+
   def to_geojson
     return "" if self.new_record?
 
