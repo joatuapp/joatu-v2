@@ -1,5 +1,7 @@
 class CreatePods < ActiveRecord::Migration
   def change
+    enable_extension "postgis"
+
     create_table :pods do |t|
       t.string :name, null: false
       t.text :description
