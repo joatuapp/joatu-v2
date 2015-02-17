@@ -14,6 +14,21 @@ class Pod < ActiveRecord::Base
 
   has_many :events, dependent: :destroy
 
+  # Returns the current "best pod" for the user, based on "our algorythm".
+  # Really just tries to geocode a point from the user's postal code, and then
+  # find any pods that focus on that point. If there's a match, the first pod
+  # wins. Otherwise we return an instance of UncreatedPod.
+  def self.best_for_user(user)
+    return UncreatedPod.new if user.postal_code.blank?
+
+    lat,lng = Geocoder.coordinates(user.postal_code)
+    return UnCreatedPod.new if lat.blank? || lng.blank?
+
+    pods = where("ST_Contains(focus_area, ST_PointFromText('POINT(#{lng} #{lat})'))")
+
+    pods.first || UncreatedPod.new
+  end
+
   def to_geojson
     return "" if self.new_record?
 

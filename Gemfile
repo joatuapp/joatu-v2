@@ -59,6 +59,7 @@ gem 'actionpack-action_caching'
 
 gem 'rgeo-geojson'
 gem 'gmaps4rails'
+gem 'geocoder'
 
 gem 'render_anywhere', :require => false
 # Use Capistrano for deployment

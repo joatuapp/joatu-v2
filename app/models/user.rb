@@ -1,4 +1,7 @@
 class User < Base
+  NullObject = Naught.build
+  include NullObject::Conversions
+
   HOME_POD_TYPE = 'home_pod'
 
   # Include default devise modules. Others available are:
@@ -19,10 +22,7 @@ class User < Base
 
   validates_acceptance_of :tou_agreement, message: I18n.t('tou.form.error_message')
   
-  # TODO: Remove on: :create stipulation once all existing users are migrated 
-  # to have a home pod!
-  validates_presence_of :home_pod, on: :create 
-
+  before_validation :retrieve_home_pod, on: :create, if: ->(u){ Actual(u.home_pod).blank? }
   before_save :write_preferences
 
   def name
@@ -54,7 +54,22 @@ class User < Base
     is_admin
   end
 
+  def home_pod_id
+    home_pod.id
+  end
+
+  def home_pod_id=(val)
+    self.home_pod = Pod.find(val)
+  end
+
+  def home_pod
+    super || UncreatedPod.new
+  end
+
   def home_pod=(new_home_pod)
+    new_home_pod = Actual(new_home_pod)
+    return if new_home_pod.blank?
+
     if home_pod_membership
       home_pod_membership.pod = new_home_pod
     else
@@ -63,6 +78,10 @@ class User < Base
   end
 
   private
+
+  def retrieve_home_pod
+    self.home_pod = Pod.best_for_user(self)
+  end
 
   def write_preferences
     write_attribute(:preferences, preferences.to_json)

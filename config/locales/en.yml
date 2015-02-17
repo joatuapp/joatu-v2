@@ -248,3 +248,8 @@ en:
       unlock_instructions_1: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
       unlock_instructions_2: "Click the link below to unlock your account:"
       unlock_link: "Unlock my account"
+  devise:
+    invitations:
+      new:
+        home_pod_hint: "Set to '<auto by postal code>' to automatically assign users to a pod based on their postal code when they join."
+

@@ -5,4 +5,5 @@
       = devise_error_messages!
       - resource.class.invite_key_fields.each do |field|
         = f.input field
+      = f.input :home_pod_id, collection: Pod.all, prompt: '<auto by postal code>', hint: t('devise.invitations.new.home_pod_hint')
       = f.button :submit, t("devise.invitations.new.submit_button")
