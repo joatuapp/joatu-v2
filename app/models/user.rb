@@ -21,8 +21,10 @@ class User < Base
   has_many :received_references, class: Reference, foreign_key: :to_user_id
 
   validates_acceptance_of :tou_agreement, message: I18n.t('tou.form.error_message')
+
+  validates_presence_of :postal_code, on: :create # Apply only to new records, so we don't break existing records on deploy.
   
-  before_validation :retrieve_home_pod, on: :create, if: ->(u){ Actual(u.home_pod).blank? }
+  after_validation :retrieve_home_pod, on: :create, if: ->(u){ Actual(u.home_pod).blank? }
   before_save :write_preferences
 
   def name
@@ -59,7 +61,7 @@ class User < Base
   end
 
   def home_pod_id=(val)
-    self.home_pod = Pod.find(val)
+    self.home_pod = Pod.find_by_id(val)
   end
 
   def home_pod
