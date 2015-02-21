@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221172449) do
+ActiveRecord::Schema.define(version: 20150221193432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150221172449) do
     t.datetime  "created_at",                                                                     null: false
     t.datetime  "updated_at",                                                                     null: false
     t.geography "location",           limit: {:srid=>4326, :type=>"geometry", :geographic=>true}
-    t.json      "address"
+    t.json      "address_json"
     t.integer   "created_by_user_id"
     t.integer   "organization_id"
   end
@@ -110,12 +110,24 @@ ActiveRecord::Schema.define(version: 20150221172449) do
     t.integer  "user_id",     null: false
   end
 
+  create_table "organization_memberships", force: :cascade do |t|
+    t.integer  "organization_id",               null: false
+    t.integer  "user_id",                       null: false
+    t.string   "membership_types", default: [],              array: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "organization_memberships", ["membership_types"], name: "index_organization_memberships_on_membership_types", using: :gin
+  add_index "organization_memberships", ["organization_id", "user_id"], name: "index_organization_memberships_on_organization_id_and_user_id", unique: true, using: :btree
+
   create_table "organizations", force: :cascade do |t|
-    t.string   "name",                                           null: false
+    t.string   "name",                                            null: false
     t.text     "description"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-    t.geometry "latlng",      limit: {:srid=>0, :type=>"point"}
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.geometry "latlng",       limit: {:srid=>0, :type=>"point"}
+    t.json     "address_json"
   end
 
   add_index "organizations", ["latlng"], name: "index_organizations_on_latlng", using: :gist
@@ -209,7 +221,7 @@ ActiveRecord::Schema.define(version: 20150221172449) do
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
     t.boolean  "is_admin",               default: false, null: false
-    t.json     "preferences"
+    t.json     "preferences_json"
     t.string   "postal_code"
   end
 
@@ -225,6 +237,8 @@ ActiveRecord::Schema.define(version: 20150221172449) do
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "offers", "users", on_delete: :cascade
+  add_foreign_key "organization_memberships", "organizations"
+  add_foreign_key "organization_memberships", "users"
   add_foreign_key "pod_memberships", "pods"
   add_foreign_key "pod_memberships", "users"
   add_foreign_key "pod_organization_relations", "organizations"

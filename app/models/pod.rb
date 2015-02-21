@@ -12,8 +12,6 @@ class Pod < ActiveRecord::Base
   has_many :members, -> { select("DISTINCT ON (users.id) users.*") }, class: User, through: :pod_memberships, source: :user
   has_many :pod_memberships
 
-  has_many :events, dependent: :destroy
-
   # Returns the current "best pod" for the user, based on "our algorythm".
   # Really just tries to geocode a point from the user's postal code, and then
   # find any pods that focus on that point. If there's a match, the first pod

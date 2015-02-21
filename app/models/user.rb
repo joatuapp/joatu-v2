@@ -1,9 +1,4 @@
 class User < Base
-  NullObject = Naught.build
-  include NullObject::Conversions
-
-  HOME_POD_TYPE = 'home_pod'
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, # # Commenting registerable to make it invite only.
@@ -11,28 +6,10 @@ class User < Base
 
   acts_as_messageable
 
-  has_many :offers
-  has_one :profile
-
-  has_one :home_pod, through: :home_pod_membership, source: :pod
-  has_one :home_pod_membership, -> { where("'#{HOME_POD_TYPE}' = ANY(membership_types)") }, class: PodMembership
-
-  has_many :written_references, class: Reference, foreign_key: :from_user_id
-  has_many :received_references, class: Reference, foreign_key: :to_user_id
-  
-  after_validation :retrieve_home_pod, on: :create, if: ->(u){ Actual(u.home_pod).blank? }
-  before_save :write_preferences
+  composed_of :preferences, class_name: "User::Preferences", mapping: %w(preferences_json to_json)
 
   def name
-    if profile.present? && (profile.given_name.present? || profile.surname.present?)
-      "#{profile.given_name} #{profile.surname}".strip
-    else
-      "<anon>"
-    end
-  end
-
-  def preferences
-    @preferences ||= User::Preferences.new(super)
+    "<anon>"
   end
 
   # Return false if we should not send an email for 'object_to_send' otherwise,
@@ -50,39 +27,5 @@ class User < Base
 
   def is_admin?
     is_admin
-  end
-
-  def home_pod_id
-    home_pod.id
-  end
-
-  def home_pod_id=(val)
-    self.home_pod = Pod.find_by_id(val)
-  end
-
-  def home_pod
-    super || UncreatedPod.new
-  end
-
-  def home_pod=(new_home_pod)
-    new_home_pod = Actual(new_home_pod)
-    return if new_home_pod.blank?
-
-    if home_pod_membership
-      home_pod_membership.pod = new_home_pod
-    else
-      self.build_home_pod_membership(pod: new_home_pod, membership_types: [HOME_POD_TYPE]).pod
-    end
-  end
-
-  private
-
-
-  def retrieve_home_pod
-    self.home_pod = Pod.best_for_user(self)
-  end
-
-  def write_preferences
-    write_attribute(:preferences, preferences.to_json)
   end
 end
