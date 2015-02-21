@@ -147,7 +147,7 @@ fr:
     send_message: "Envoyer le message"
   mailboxer:
     sent: "Message envoyé !"
-  devise:
+  auth:
     resend_confirmation_instructions: "Réenvoyer les instructions de confirmation"
     change_password_header: "Modifier votre mot de passe"
     forgot_password_header: "Mot de passe oublié ?"

@@ -34,7 +34,7 @@
               %li= link_to t('nav.admin'), admin_root_path, "data-no-turbolink" => true
 
       = link_to(destroy_user_session_path, method: :delete, class: "navbar-right btn btn-default btn-sm") do
-        = t('devise.form.log_out')
+        = t('auth.form.log_out')
       - if I18n.locale.to_s == "en"
         = link_to(url_for(locale: "fr"), class: "navbar-right btn btn-default btn-sm") do
           = t('language.fr')

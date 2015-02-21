@@ -12,7 +12,7 @@
       %ul.nav.navbar-nav
       - if respond_to? :new_user_registration_path # Only include registration link if user registration is enabled!
         = link_to(new_user_registration_path, class: "navbar-right btn btn-default btn-sm") do
-          = t('devise.form.sign_up')
+          = t('auth.form.sign_up')
       - if I18n.locale.to_s == "en"
         = link_to(url_for(locale: "fr"), class: "navbar-right btn btn-default btn-sm") do
           = t('language.fr')
@@ -21,6 +21,6 @@
           = t('language.en')
       = form_tag(new_user_session_path, class: "navbar-form navbar-right") do
         .form-group
-          %input.form-control.input-sm{name: "user[email]", type: "text", placeholder: t('devise.form.email')}
-          %input.form-control.input-sm{name: "user[password]", type: "password", placeholder: t('devise.form.password')}
-        %button.btn.btn-default.btn-sm{type: "submit"}= t('devise.form.log_in')
+          %input.form-control.input-sm{name: "user[email]", type: "text", placeholder: t('auth.form.email')}
+          %input.form-control.input-sm{name: "user[password]", type: "password", placeholder: t('auth.form.password')}
+        %button.btn.btn-default.btn-sm{type: "submit"}= t('auth.form.log_in')

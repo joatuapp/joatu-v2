@@ -1,12 +1,12 @@
 .col-sm-6.col-sm-offset-3
-  %h2= t('devise.change_password_header')
+  %h2= t('auth.change_password_header')
   = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
     = f.error_notification
     = f.input :reset_password_token, as: :hidden
     = f.full_error :reset_password_token
     .form-inputs
-      = f.input :password, label: t('devise.form.new_password'), required: true, autofocus: true
-      = f.input :password_confirmation, label: t('devise.form.confirm_new_password'), required: true
+      = f.input :password, label: t('auth.form.new_password'), required: true, autofocus: true
+      = f.input :password_confirmation, label: t('auth.form.confirm_new_password'), required: true
     .form-actions
-      = f.button :submit, t('devise.form.change_password_btn')
+      = f.button :submit, t('auth.form.change_password_btn')
   = render "devise/shared/links"

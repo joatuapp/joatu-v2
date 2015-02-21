@@ -197,7 +197,7 @@ en:
       label_html: "I agree to the %{link}"
       link: "terms of use"
       error_message: "You must agree with the Terms of Use in order to user JoatU!"
-  devise:
+  auth:
     resend_confirmation_instructions: "Resend confirmation instructions"
     change_password_header: "Change your password"
     forgot_password_header: "Forgot your password?"

@@ -1,9 +1,9 @@
 .col-sm-6.col-sm-offset-3
-  %h2= t('devise.forgot_password_header')
+  %h2= t('auth.forgot_password_header')
   = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
     = f.error_notification
     .form-inputs
       = f.input :email, required: true, autofocus: true
     .form-actions
-      = f.button :submit, t('devise.form.send_new_password')
+      = f.button :submit, t('auth.form.send_new_password')
   = render "devise/shared/links"

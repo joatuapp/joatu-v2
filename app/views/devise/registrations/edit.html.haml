@@ -1,17 +1,17 @@
-%h2= t('devise.edit_header', resource_name: resource_name.to_s.humanize)
+%h2= t('auth.edit_header', resource_name: resource_name.to_s.humanize)
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = f.error_notification
   .form-inputs
     = f.input :email, required: true, autofocus: true
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %p= t('devise.confirmation_notice', email: resource.unconfirmed_email)
-    = f.input :password, autocomplete: "off", hint: t('devise.form.new_password_hint'), required: false
+      %p= t('auth.confirmation_notice', email: resource.unconfirmed_email)
+    = f.input :password, autocomplete: "off", hint: t('auth.form.new_password_hint'), required: false
     = f.input :password_confirmation, required: false
-    = f.input :current_password, hint: t('devise.form.current_password_hint'), required: true
+    = f.input :current_password, hint: t('auth.form.current_password_hint'), required: true
   .form-actions
-    = f.button :submit, t('devise.form.update')
-%h3= t('devise.cancel_account_header')
+    = f.button :submit, t('auth.form.update')
+%h3= t('auth.cancel_account_header')
 %p
-  = t('devise.unhappy')
-  = link_to t('devise.cancel_account_link'), registration_path(resource_name), data: { confirm: t('devise.cancel_account_link_confirm') }, method: :delete}
+  = t('auth.unhappy')
+  = link_to t('auth.cancel_account_link'), registration_path(resource_name), data: { confirm: t('auth.cancel_account_link_confirm') }, method: :delete}
 = link_to t('back'), :back
