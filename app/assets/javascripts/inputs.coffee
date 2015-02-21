@@ -25,7 +25,7 @@ setup_map_areas = ->
       )
 
     update_from_overlay = (overlay)->
-      unless overlay.overlay == visible_overlay
+      if visible_overlay && overlay.overlay != visible_overlay
         visible_overlay.setMap(null)
         visible_overlay.unbindAll()
 

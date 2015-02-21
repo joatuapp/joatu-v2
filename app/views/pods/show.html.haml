@@ -15,9 +15,9 @@
         %h3.panel-title
           = t('pods.events')
       .panel-body
-        - if @pod.events.any?
+        - if @events.any?
           .row
-            = render partial: "events/event", collection: @pod.events, layout: "components/three_column"
+            = render partial: "events/event", collection: @events, layout: "components/three_column"
         - else
           = t('pods.no_events_message')
       
@@ -29,10 +29,11 @@
       .panel-body
         .pod-map.embed-responsive.embed-responsive-16by9{"data-map" => true, "data-geojson" => @pod.to_geojson, "data-bounds" => @pod.map_bounds }
           #pod-map.map-container
-    .panel.panel-info
-      .panel-heading
-        %h3.panel-title
-          = "#{t('pods.hub')}: "
-          = @pod.hub.name
-      .panel-body
-        = @pod.hub.description
+    - if @hub.present?
+      .panel.panel-info
+        .panel-heading
+          %h3.panel-title
+            = "#{t('pods.hub')}: "
+            = @hub.name
+        .panel-body
+          = @hub.description

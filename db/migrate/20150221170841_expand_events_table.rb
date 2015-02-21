@@ -1,6 +1,5 @@
 class ExpandEventsTable < ActiveRecord::Migration
   def up
-    remove_column :events, :pod_id
     add_column :events, :location, :geometry, geographic: true
     add_index :events, :location, using: :gist
     
@@ -18,6 +17,5 @@ class ExpandEventsTable < ActiveRecord::Migration
     remove_column :events, :created_by_user_id
     remove_column :events, :address, :json
     remove_column :events, :location, :geometry, geographic: true
-    add_column :events, :pod_id, :integer
   end
 end

@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150221193432) do
     t.datetime  "ends_at"
     t.datetime  "created_at",                                                                     null: false
     t.datetime  "updated_at",                                                                     null: false
+    t.integer   "pod_id"
     t.geography "location",           limit: {:srid=>4326, :type=>"geometry", :geographic=>true}
     t.json      "address_json"
     t.integer   "created_by_user_id"
