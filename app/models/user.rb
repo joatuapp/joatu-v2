@@ -19,10 +19,6 @@ class User < Base
 
   has_many :written_references, class: Reference, foreign_key: :from_user_id
   has_many :received_references, class: Reference, foreign_key: :to_user_id
-
-  validates_acceptance_of :tou_agreement, message: I18n.t('tou.form.error_message')
-
-  validates_presence_of :postal_code, on: :create # Apply only to new records, so we don't break existing records on deploy.
   
   after_validation :retrieve_home_pod, on: :create, if: ->(u){ Actual(u.home_pod).blank? }
   before_save :write_preferences
@@ -80,6 +76,7 @@ class User < Base
   end
 
   private
+
 
   def retrieve_home_pod
     self.home_pod = Pod.best_for_user(self)

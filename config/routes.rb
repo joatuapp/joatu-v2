@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
     resources :hubs
 
-    devise_for :users
+    devise_for :users, controllers: { invitations: 'users/invitations' }
     resources :users, only: [:edit, :update, :destroy]
 
     get 'pods/home', controller: :pods, action: :home, as: :home_pod
