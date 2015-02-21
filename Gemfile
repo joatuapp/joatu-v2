@@ -61,6 +61,8 @@ gem 'rgeo-geojson'
 gem 'gmaps4rails'
 gem 'geocoder'
 
+gem 'country_select', '~> 2.1.1'
+
 gem 'render_anywhere', :require => false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

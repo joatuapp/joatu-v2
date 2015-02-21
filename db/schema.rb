@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216230150) do
+ActiveRecord::Schema.define(version: 20150221172449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,30 +33,20 @@ ActiveRecord::Schema.define(version: 20150216230150) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
-  create_table "addresses", force: :cascade do |t|
-    t.string   "address1"
-    t.string   "address2"
-    t.string   "city"
-    t.string   "province"
-    t.string   "country"
-    t.string   "postal_code"
-    t.integer  "addressable_id"
-    t.string   "addressable_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
-
   create_table "events", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "starts_at"
-    t.datetime "ends_at"
-    t.integer  "pod_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string    "name"
+    t.text      "description"
+    t.datetime  "starts_at"
+    t.datetime  "ends_at"
+    t.datetime  "created_at",                                                                     null: false
+    t.datetime  "updated_at",                                                                     null: false
+    t.geography "location",           limit: {:srid=>4326, :type=>"geometry", :geographic=>true}
+    t.json      "address"
+    t.integer   "created_by_user_id"
+    t.integer   "organization_id"
   end
+
+  add_index "events", ["location"], name: "index_events_on_location", using: :gist
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.integer "unsubscriber_id"
@@ -121,11 +111,11 @@ ActiveRecord::Schema.define(version: 20150216230150) do
   end
 
   create_table "organizations", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",                                           null: false
     t.text     "description"
-    t.point    "latlng"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.geometry "latlng",      limit: {:srid=>0, :type=>"point"}
   end
 
   add_index "organizations", ["latlng"], name: "index_organizations_on_latlng", using: :gist
@@ -229,7 +219,8 @@ ActiveRecord::Schema.define(version: 20150216230150) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "events", "pods"
+  add_foreign_key "events", "organizations"
+  add_foreign_key "events", "users", column: "created_by_user_id"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"

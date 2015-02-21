@@ -24,13 +24,11 @@ ActiveAdmin.register Pod do
   controller do
     def create
       params[:pod][:focus_area] = RGeo::GeoJSON.decode(params[:pod][:focus_area], json_parser: :json).geometry.to_s
-      Rails.logger.debug "Params after meddling: #{params.inspect}"
       super
     end
 
     def update
       params[:pod][:focus_area] = RGeo::GeoJSON.decode(params[:pod][:focus_area], json_parser: :json).geometry.to_s
-      Rails.logger.debug "Params after meddling: #{params.inspect}"
       super
     end
   end
