@@ -3,7 +3,9 @@ module Paginatable
 
   module ClassMethods
     def paginate(pagination)
-      page(pagination.page).per(pagination.per)
+      unless pagination.per == :all
+        page(pagination.page).per(pagination.per)
+      end
     end
   end
 end

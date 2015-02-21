@@ -3,7 +3,7 @@ class PodsController < ApplicationController
 
   # Show's the user's home pod.
   def home
-    @pod = current_user.home_pod
+    @pod = Pod.home_pod_for_user(current_user)
     authorize @pod, :show?
     render :show
   end

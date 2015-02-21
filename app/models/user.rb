@@ -7,6 +7,8 @@ class User < Base
   acts_as_messageable
 
   composed_of :preferences, class_name: "User::Preferences", mapping: %w(preferences_json to_json)
+  
+  has_one :profile
 
   def name
     "<anon>"
