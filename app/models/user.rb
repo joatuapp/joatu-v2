@@ -12,7 +12,8 @@ class User < Base
   
   has_one :profile
 
-  after_save :publish_location_updated, if: :postal_code_changed?
+  before_validation :update_home_location, if: :postal_code_changed?
+  after_save :publish_location_updated, if: :home_location_changed?
 
   def name
     "<anon>"
@@ -36,6 +37,11 @@ class User < Base
   end
 
   private
+
+  def update_home_location
+    lat,lng = Geocoder.coordinates(self.postal_code)
+    self.home_location = "POINT(#{lng} #{lat})"
+  end
   
   def publish_location_updated
     broadcast(:user_location_updated, self)

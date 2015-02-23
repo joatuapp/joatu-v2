@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221193432) do
+ActiveRecord::Schema.define(version: 20150223175807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,12 +197,12 @@ ActiveRecord::Schema.define(version: 20150221193432) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: ""
+    t.string   "email",                                                     default: "",    null: false
+    t.string   "encrypted_password",                                        default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",                                             default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -220,13 +220,15 @@ ActiveRecord::Schema.define(version: 20150221193432) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
-    t.integer  "invitations_count",      default: 0
-    t.boolean  "is_admin",               default: false, null: false
+    t.integer  "invitations_count",                                         default: 0
+    t.boolean  "is_admin",                                                  default: false, null: false
     t.json     "preferences_json"
     t.string   "postal_code"
+    t.geometry "home_location",          limit: {:srid=>0, :type=>"point"}
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["home_location"], name: "index_users_on_home_location", using: :gist
   add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
   add_index "users", ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree

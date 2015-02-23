@@ -14,12 +14,9 @@ class Pod < ActiveRecord::Base
   # find any pods that focus on that point. If there's a match, the first pod
   # wins. Otherwise we return an instance of UncreatedPod.
   def self.best_for_user(user)
-    return UncreatedPod.new if user.postal_code.blank?
+    return UncreatedPod.new if user.home_location.blank?
 
-    lat,lng = Geocoder.coordinates(user.postal_code)
-    return UnCreatedPod.new if lat.blank? || lng.blank?
-
-    pods = where("ST_Contains(focus_area, ST_PointFromText('POINT(#{lng} #{lat})'))")
+    pods = where("ST_Contains(focus_area, ST_PointFromText('POINT(#{user.home_location.x} #{user.home_location.y})'))")
 
     pods.first || UncreatedPod.new
   end
