@@ -1,3 +1,8 @@
+[![Code
+Climate](https://codeclimate.com/github/joatuapp/joatu-v2/badges/gpa.svg)](https://codeclimate.com/github/joatuapp/joatu-v2)
+[![Build
+Status](https://semaphoreapp.com/api/v1/projects/f723d0c2-dcfd-4b6a-9b3e-f4e30e0189ba/357065/badge.png)](https://semaphoreapp.com/joatu/joatu-v2)
+
 # JoatU
 
 ## About the Project

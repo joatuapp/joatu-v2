@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223175807) do
+ActiveRecord::Schema.define(version: 20150223233950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,20 +34,20 @@ ActiveRecord::Schema.define(version: 20150223175807) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "events", force: :cascade do |t|
-    t.string    "name"
-    t.text      "description"
-    t.datetime  "starts_at"
-    t.datetime  "ends_at"
-    t.datetime  "created_at",                                                                     null: false
-    t.datetime  "updated_at",                                                                     null: false
-    t.integer   "pod_id"
-    t.geography "location",           limit: {:srid=>4326, :type=>"geometry", :geographic=>true}
-    t.json      "address_json"
-    t.integer   "created_by_user_id"
-    t.integer   "organization_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+    t.integer  "pod_id"
+    t.json     "address_json"
+    t.integer  "created_by_user_id"
+    t.integer  "organization_id"
+    t.geometry "latlng",             limit: {:srid=>0, :type=>"point"}
   end
 
-  add_index "events", ["location"], name: "index_events_on_location", using: :gist
+  add_index "events", ["latlng"], name: "index_events_on_latlng", using: :gist
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.integer "unsubscriber_id"
@@ -123,11 +123,11 @@ ActiveRecord::Schema.define(version: 20150223175807) do
   add_index "organization_memberships", ["organization_id", "user_id"], name: "index_organization_memberships_on_organization_id_and_user_id", unique: true, using: :btree
 
   create_table "organizations", force: :cascade do |t|
-    t.string   "name",                                            null: false
+    t.string   "name",                                               null: false
     t.text     "description"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.geometry "latlng",       limit: {:srid=>0, :type=>"point"}
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.geometry "latlng",       limit: {:srid=>0, :type=>"geometry"}
     t.json     "address_json"
   end
 
@@ -153,11 +153,11 @@ ActiveRecord::Schema.define(version: 20150223175807) do
   end
 
   create_table "pods", force: :cascade do |t|
-    t.string   "name",                                             null: false
+    t.string   "name",                                              null: false
     t.text     "description"
-    t.geometry "focus_area",  limit: {:srid=>0, :type=>"polygon"}, null: false
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.geometry "focus_area",  limit: {:srid=>0, :type=>"geometry"}, null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
   end
 
   add_index "pods", ["focus_area"], name: "index_pods_on_focus_area", using: :gist
@@ -197,12 +197,12 @@ ActiveRecord::Schema.define(version: 20150223175807) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                                                     default: "",    null: false
-    t.string   "encrypted_password",                                        default: ""
+    t.string   "email",                                                        default: "",    null: false
+    t.string   "encrypted_password",                                           default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                             default: 0,     null: false
+    t.integer  "sign_in_count",                                                default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -220,11 +220,11 @@ ActiveRecord::Schema.define(version: 20150223175807) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
-    t.integer  "invitations_count",                                         default: 0
-    t.boolean  "is_admin",                                                  default: false, null: false
+    t.integer  "invitations_count",                                            default: 0
+    t.boolean  "is_admin",                                                     default: false, null: false
     t.json     "preferences_json"
     t.string   "postal_code"
-    t.geometry "home_location",          limit: {:srid=>0, :type=>"point"}
+    t.geometry "home_location",          limit: {:srid=>0, :type=>"geometry"}
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
