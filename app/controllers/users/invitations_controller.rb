@@ -28,7 +28,6 @@ class Users::InvitationsController < Devise::InvitationsController
   # of resource class
   def accept_form
     resource = resource_class.find_by_invitation_token(update_resource_params[:invitation_token], false)
-    Rails.logger.debug "Resource: #{resource}"
     @form = NewUserForm.new(resource)
     if @form.validate(update_resource_params)
       @form.save do |data|
@@ -37,7 +36,6 @@ class Users::InvitationsController < Devise::InvitationsController
         @form.model.accept_invitation!
       end
     end
-    Rails.logger.debug "Errors: #{@form.errors.inspect}"
     
     @form
   end
