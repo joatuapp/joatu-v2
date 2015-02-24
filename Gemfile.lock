@@ -32,14 +32,6 @@ GIT
       rails (>= 3.2.0)
 
 GIT
-  remote: git://github.com/rgeo/activerecord-postgis-adapter.git
-  revision: 8b9e4e0832c7bccd1eac20ff22489419bdae8d24
-  specs:
-    activerecord-postgis-adapter (3.0.0.beta1)
-      activerecord (~> 4.2)
-      rgeo-activerecord (~> 2.1)
-
-GIT
   remote: git://github.com/svenfuchs/rails-i18n.git
   revision: d01f64822695cc0674ec1d8998f466af4d25548a
   branch: master
@@ -82,6 +74,9 @@ GEM
       activemodel (= 4.2.0)
       activesupport (= 4.2.0)
       arel (~> 6.0)
+    activerecord-postgis-adapter (3.0.0.beta1)
+      activerecord (~> 4.2)
+      rgeo-activerecord (~> 2.1)
     activesupport (4.2.0)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
@@ -424,7 +419,7 @@ PLATFORMS
 DEPENDENCIES
   actionpack-action_caching
   activeadmin!
-  activerecord-postgis-adapter!
+  activerecord-postgis-adapter (~> 3.0.0.beta1)
   autoprefixer-rails
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.1)
