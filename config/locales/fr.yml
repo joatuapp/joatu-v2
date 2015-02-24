@@ -20,13 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
-  hello: "Salut tout le monde !"
-  or: "ou"
   back: "Revenir"
   show: "Montrer"
   edit: "Modifier"
   destroy: "Supprimer"
-  close: "Fermer"
   alpha: "Alpha"
   time:
     ago: "il y a %{time}"
@@ -83,16 +80,8 @@ fr:
       header_html: "Demandez une invitation <br />à joindre JoatU Beta"
       email: "Adresse courrielle"
       postal: "Code postal"
-      indicates_required: "information requise"
       signup: "Ajoutez-moi à la file d'attente !"
       explanation: "JoatU est présentement en période de rodage sous la forme d'une version Alpha limitée. Si vous nous laissez votre adresse courrielle ainsi que votre code postal (voir ci-dessous), il nous fera plaisir de vous avertir lorsque JoatU sera disponible dans votre ville."
-  communities:
-    index_header: "Communautés"
-    editing_header: "Modifier une communauté"
-    name: "Nom"
-    destroy_confirm: "Voulez-vous réellement faire cela ?"
-    new_link: "Nouvelle communauté"
-    new_header: "Nouvelle communauté"
   conversations:
     index_header: "Conversations"
     participants: "Participants"
@@ -100,12 +89,6 @@ fr:
     benefits: "Avantages"
     features: "Outils"
     how_it_works: "Comment ça marche"
-    team: "Équipe"
-    contact: "Contact"
-    press: "Presse"
-    blog: "Blog"
-    people: "Personnes"
-    side_header: "Navigation"
     offers: "Offres"
     conversations: "Conversations"
     invite: "Invitez de nouveaux utilisateurs"
@@ -118,23 +101,17 @@ fr:
   messages:
     from: "De"
     subject: "Sujet"
-    delete: "Supprimer"
-    delete_confirm: "Voulez-vous réellement supprimer ce message ?"
-    new_title: "Message pour %{name}"
   offers:
     editing_header: "Modifier une offre"
     index_header: "Offres courantes"
     title: "Titre"
     summary: "Résumé"
     description: "Description"
-    destroy_confirm: "Voulez-vous réellement supprimer cette offre ?"
     new_link: "Ajouter une nouvelle offre"
     new_header: "Offrez quelque chose de nouveau !"
     search: "Rechercher !"
     empty: "Il n'y a encore aucune offre !"
-    created: "Créé(e)"
     search_placeholder: "Recherche..."
-    invalid_search: "Oups ! Veuillez reformuler votre recherche."
   profiles:
     editing_header: "Modifier votre profil"
     index_header: "Utilisateurs de JoatU"

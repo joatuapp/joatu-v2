@@ -1,5 +1,5 @@
 .col-sm-6.col-sm-offset-3
-  %h2= t('auth.resent_unlock_header')
+  %h2= t('auth.resend_unlock_header')
   = simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
     = f.error_notification
     = f.full_error :unlock_token
