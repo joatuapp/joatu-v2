@@ -22,7 +22,7 @@
       - else
         = link_to(url_for(locale: "en"), class: "navbar-right btn btn-default btn-sm") do
           = t('language.en')
-      = form_tag(new_user_session_path, class: "navbar-form navbar-right") do
+      = form_tag(new_user_session_path, class: "navbar-form navbar-right", id: "nav_signin_form") do
         .form-group
           %input.form-control.input-sm{name: "user[email]", type: "text", placeholder: t('auth.form.email')}
           %input.form-control.input-sm{name: "user[password]", type: "password", placeholder: t('auth.form.password')}
