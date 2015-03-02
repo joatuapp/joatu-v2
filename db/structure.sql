@@ -281,7 +281,6 @@ ALTER SEQUENCE mailboxer_receipts_id_seq OWNED BY mailboxer_receipts.id;
 CREATE TABLE offers_and_requests (
     id integer NOT NULL,
     title character varying,
-    summary character varying,
     description text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -1232,4 +1231,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150223233950');
 INSERT INTO schema_migrations (version) VALUES ('20150302173356');
 
 INSERT INTO schema_migrations (version) VALUES ('20150302181034');
+
+INSERT INTO schema_migrations (version) VALUES ('20150302182226');
 
