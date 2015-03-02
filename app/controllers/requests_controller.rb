@@ -63,7 +63,7 @@ class RequestsController < ApplicationController
         render :index
       end
     else
-      redirect_to offers_path
+      redirect_to requests_path
     end
   end
 

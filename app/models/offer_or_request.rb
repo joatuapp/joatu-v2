@@ -11,8 +11,7 @@ class OfferOrRequest < Base
 
   pg_search_scope :en_text_search, against: {
     title: "A",
-    summary: "B",
-    description: "D",
+    description: "C",
   },
   ignoring: :accents,
   using: {
@@ -24,8 +23,7 @@ class OfferOrRequest < Base
 
   pg_search_scope :fr_text_search, against: {
     title: "A",
-    summary: "B",
-    description: "D",
+    description: "C",
   },
   ignoring: :accents,
   using: {
