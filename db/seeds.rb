@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 if ENV["INITIAL_ADMIN_PASSWORD"]
-  unless User.find_by_email("alex@undergroundwebdevelopment").present?
+  unless User.find_by_email("alex@undergroundwebdevelopment.com").present?
     User.create({
       email: "alex@undergroundwebdevelopment.com",
       password: ENV["INITIAL_ADMIN_PASSWORD"],
@@ -37,7 +37,8 @@ unless Pod.exists?
   first_pod = Pod.create(first_pod_params)
 
   User.find_each do |user|
-    user.home_pod = first_pod unless user.home_pod
-    user.save
+    membership = PodMembership.home_membership_for_user(user)
+    membership.pod = first_pod
+    membership.save!
   end
 end
