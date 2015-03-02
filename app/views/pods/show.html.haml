@@ -3,13 +3,20 @@
   = @pod.name
 .row
   .col-sm-8
-    - if @pod.description.present?
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title
-            = t('pods.about')
-        .panel-body
-          = @pod.description
+    - if @display_add_offers_and_requests
+      .alert.alert-info.alert-dismissible{role: "alert"}
+        %button.close{type: "button", data: {dismiss: 'alert'}}
+          %span{'aria-hidden' => true} &times;
+        %strong
+          = t('pods.few_offers_header')
+        = t('pods.few_offers_content_html', offers_link: link_to(t('pods.offers_link_text'), new_offer_path, class: 'alert-link'), requests_link: link_to(t('pods.requests_link_text'), new_request_path, class: 'alert-link'))
+
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title
+          = t('pods.about')
+      .panel-body
+        = @pod.description
     .panel.panel-default
       .panel-heading
         %h3.panel-title

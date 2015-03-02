@@ -54,6 +54,10 @@ en:
     about: "About this Pod"
     events: "Events"
     no_events_message: "Nothing to see here... yet!"
+    few_offers_header: "Welcome to JoatU!"
+    few_offers_content_html: "Get started by adding more %{requests_link} and %{offers_link}."
+    offers_link_text: "Offers"
+    requests_link_text: "Requests"
   events:
     starts_at: "Starts"
     ends_at: "Ends"
