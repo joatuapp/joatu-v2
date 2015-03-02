@@ -9,5 +9,5 @@
           %span.glyphicon.glyphicon-user.pull-right
       = link_to new_message_path(receiver: offer.user.id), class: 'btn btn-primary' do
         %span.glyphicon.glyphicon-envelope.pull-right
-      = link_to offer, class: 'btn btn-default' do
+      = link_to offer_path(offer.id), class: 'btn btn-default' do
         %span.glyphicon.glyphicon-arrow-right.pull-right

@@ -17,6 +17,6 @@
   - else
     - @offers.each do |offer|
       .col-sm-4
-        = render offer
+        = render partial: "offer", object: offer
 
 = paginate @offers

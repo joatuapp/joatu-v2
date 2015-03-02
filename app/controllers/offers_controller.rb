@@ -20,12 +20,14 @@ class OffersController < ApplicationController
 
   def new
     @form = OfferForm.new(Offer.new)
+    @offer_types = Offer.type_options
     authorize @form.model
     respond_with(@offer = @form)
   end
 
   def edit
     authorize @offer
+    @offer_types = Offer.type_options
     @offer = OfferForm.new(@offer)
   end
 

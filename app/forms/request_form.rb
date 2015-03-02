@@ -5,4 +5,5 @@ class RequestForm < ApplicationForm
 
   property :title, validates: {presence: true}
   property :description
+  property :type, validates: {inclusion: { in: Request.valid_types } }
 end

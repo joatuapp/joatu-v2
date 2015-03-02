@@ -17,6 +17,6 @@
   - else
     - @user_requests.each do |user_request|
       .col-sm-4
-        = render user_request
+        = render partial: "request", object: user_request
 
 = paginate @user_requests

@@ -130,6 +130,7 @@ en:
     search: "Search!"
     empty: "There aren't any offers yet!"
     search_placeholder: "Search..."
+    type_label: "I am offering"
   requests:
     index_header: "Current Requests"
     search_placeholder: "Search..."
@@ -140,6 +141,7 @@ en:
     title: "Title"
     description: "Description"
     editing_header: "Edit Request"
+    type_label: "I am looking or"
 
   references:
     index_header: "References"

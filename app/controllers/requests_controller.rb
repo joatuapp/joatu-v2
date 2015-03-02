@@ -20,12 +20,14 @@ class RequestsController < ApplicationController
 
   def new
     @form = RequestForm.new(Request.new)
+    @request_types = Request.type_options
     authorize @form.model
     respond_with(@user_request = @form)
   end
 
   def edit
     authorize @user_request
+    @request_types = Request.type_options
     @user_request = RequestForm.new(@user_request)
   end
 

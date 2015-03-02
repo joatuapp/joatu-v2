@@ -1,5 +1,7 @@
-%h1= t('requests.new_header')
-
-= render 'form'
-
-= link_to t('back'), requests_path
+.row
+  .col-sm-6.col-sm-offset-3
+    .panel.panel-default
+      .panel-heading
+        %h1= t('requests.new_header')
+      .panel-body
+        = render 'form'
