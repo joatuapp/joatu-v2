@@ -275,25 +275,27 @@ ALTER SEQUENCE mailboxer_receipts_id_seq OWNED BY mailboxer_receipts.id;
 
 
 --
--- Name: offers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: offers_and_requests; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE offers (
+CREATE TABLE offers_and_requests (
     id integer NOT NULL,
     title character varying,
     summary character varying,
     description text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    user_id integer NOT NULL
+    user_id integer NOT NULL,
+    offer_or_request character varying,
+    type character varying
 );
 
 
 --
--- Name: offers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: offers_and_requests_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE offers_id_seq
+CREATE SEQUENCE offers_and_requests_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -302,10 +304,10 @@ CREATE SEQUENCE offers_id_seq
 
 
 --
--- Name: offers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: offers_and_requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE offers_id_seq OWNED BY offers.id;
+ALTER SEQUENCE offers_and_requests_id_seq OWNED BY offers_and_requests.id;
 
 
 --
@@ -547,40 +549,6 @@ ALTER SEQUENCE references_id_seq OWNED BY "references".id;
 
 
 --
--- Name: requests; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE requests (
-    id integer NOT NULL,
-    title character varying,
-    summary character varying,
-    description text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    user_id integer NOT NULL
-);
-
-
---
--- Name: requests_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE requests_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE requests_id_seq OWNED BY requests.id;
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -691,7 +659,7 @@ ALTER TABLE ONLY mailboxer_receipts ALTER COLUMN id SET DEFAULT nextval('mailbox
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY offers ALTER COLUMN id SET DEFAULT nextval('offers_id_seq'::regclass);
+ALTER TABLE ONLY offers_and_requests ALTER COLUMN id SET DEFAULT nextval('offers_and_requests_id_seq'::regclass);
 
 
 --
@@ -741,13 +709,6 @@ ALTER TABLE ONLY profiles ALTER COLUMN id SET DEFAULT nextval('profiles_id_seq':
 --
 
 ALTER TABLE ONLY "references" ALTER COLUMN id SET DEFAULT nextval('references_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY requests ALTER COLUMN id SET DEFAULT nextval('requests_id_seq'::regclass);
 
 
 --
@@ -806,11 +767,11 @@ ALTER TABLE ONLY mailboxer_receipts
 
 
 --
--- Name: offers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: offers_and_requests_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY offers
-    ADD CONSTRAINT offers_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY offers_and_requests
+    ADD CONSTRAINT offers_and_requests_pkey PRIMARY KEY (id);
 
 
 --
@@ -867,14 +828,6 @@ ALTER TABLE ONLY profiles
 
 ALTER TABLE ONLY "references"
     ADD CONSTRAINT references_pkey PRIMARY KEY (id);
-
-
---
--- Name: requests_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY requests
-    ADD CONSTRAINT requests_pkey PRIMARY KEY (id);
 
 
 --
@@ -967,6 +920,20 @@ CREATE INDEX index_mailboxer_receipts_on_notification_id ON mailboxer_receipts U
 --
 
 CREATE INDEX index_mailboxer_receipts_on_receiver_id_and_receiver_type ON mailboxer_receipts USING btree (receiver_id, receiver_type);
+
+
+--
+-- Name: index_offers_and_requests_on_offer_or_request; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_offers_and_requests_on_offer_or_request ON offers_and_requests USING btree (offer_or_request);
+
+
+--
+-- Name: index_offers_and_requests_on_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_offers_and_requests_on_type ON offers_and_requests USING btree (type);
 
 
 --
@@ -1094,7 +1061,7 @@ ALTER TABLE ONLY pod_organization_relations
 -- Name: fk_rails_426a5f5119; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY offers
+ALTER TABLE ONLY offers_and_requests
     ADD CONSTRAINT fk_rails_426a5f5119 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 
 
@@ -1112,14 +1079,6 @@ ALTER TABLE ONLY pod_organization_relations
 
 ALTER TABLE ONLY organization_memberships
     ADD CONSTRAINT fk_rails_55b4281e9c FOREIGN KEY (user_id) REFERENCES users(id);
-
-
---
--- Name: fk_rails_5922082cac; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY requests
-    ADD CONSTRAINT fk_rails_5922082cac FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 
 
 --
@@ -1269,4 +1228,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150221193432');
 INSERT INTO schema_migrations (version) VALUES ('20150223175807');
 
 INSERT INTO schema_migrations (version) VALUES ('20150223233950');
+
+INSERT INTO schema_migrations (version) VALUES ('20150302173356');
+
+INSERT INTO schema_migrations (version) VALUES ('20150302181034');
 
