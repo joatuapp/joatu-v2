@@ -105,7 +105,6 @@ fr:
     editing_header: "Modifier une offre"
     index_header: "Offres courantes"
     title: "Titre"
-    summary: "Résumé"
     description: "Description"
     new_link: "Ajouter une nouvelle offre"
     new_header: "Offrez quelque chose de nouveau !"
