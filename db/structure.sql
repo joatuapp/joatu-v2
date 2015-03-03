@@ -286,7 +286,8 @@ CREATE TABLE offers_and_requests (
     updated_at timestamp without time zone NOT NULL,
     user_id integer NOT NULL,
     offer_or_request character varying,
-    type character varying
+    type character varying,
+    pod_id integer
 );
 
 
@@ -1081,6 +1082,14 @@ ALTER TABLE ONLY organization_memberships
 
 
 --
+-- Name: fk_rails_7ef3a63bab; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY offers_and_requests
+    ADD CONSTRAINT fk_rails_7ef3a63bab FOREIGN KEY (pod_id) REFERENCES pods(id);
+
+
+--
 -- Name: fk_rails_92813fe0d5; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1233,4 +1242,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150302173356');
 INSERT INTO schema_migrations (version) VALUES ('20150302181034');
 
 INSERT INTO schema_migrations (version) VALUES ('20150302182226');
+
+INSERT INTO schema_migrations (version) VALUES ('20150303014323');
 

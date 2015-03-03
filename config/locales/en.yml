@@ -131,6 +131,10 @@ en:
     empty: "There aren't any offers yet!"
     search_placeholder: "Search..."
     type_label: "I am offering"
+    visibility:
+      global: "Global"
+      pod: "Only My Pod"
+      label: "Make this offer visible to"
   requests:
     index_header: "Current Requests"
     search_placeholder: "Search..."
@@ -142,7 +146,10 @@ en:
     description: "Description"
     editing_header: "Edit Request"
     type_label: "I am looking or"
-
+    visibility:
+      global: "Global"
+      pod: "Only My Pod"
+      label: "Make this offer visible to"
   references:
     index_header: "References"
     empty: "No references yet"

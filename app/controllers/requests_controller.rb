@@ -35,6 +35,11 @@ class RequestsController < ApplicationController
     @form = RequestForm.new(Request.new(user: current_user))
     if @form.validate(params[:request])
       authorize @form.model
+      if @form.visibility == :pod
+        @form.model.pod = Pod.home_pod_for_user(current_user)
+      else
+        @form.model.pod = nil
+      end
       @form.save
     end
     respond_with(@user_request = @form)
@@ -44,6 +49,11 @@ class RequestsController < ApplicationController
     @form = RequestForm.new(@user_request)
     if @form.validate(params[:request])
       authorize @form.model
+      if @form.visibility == :pod
+        @form.model.pod = Pod.home_pod_for_user(current_user)
+      else
+        @form.model.pod = nil
+      end
       @form.save
     end
     respond_with(@user_request = @form)

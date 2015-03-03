@@ -5,6 +5,7 @@
     = f.input :type, collection: @offer_types, as: :radio_buttons, label: "#{t('offers.type_label')}:"
     = f.input :title
     = f.input :description, as: :text
+    = f.input :visibility, collection: {t('offers.visibility.global') => "global", t('offers.visibility.pod') => "pod"}, as: :select, label: "#{t('offers.visibility.label')}:"
 
   .form-actions
     = f.button :submit, class: 'pull-right btn-primary'

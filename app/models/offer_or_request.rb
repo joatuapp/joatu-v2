@@ -8,6 +8,7 @@ class OfferOrRequest < Base
   include PgSearch
 
   belongs_to :user
+  belongs_to :pod
 
   pg_search_scope :en_text_search, against: {
     title: "A",
@@ -33,12 +34,17 @@ class OfferOrRequest < Base
     }
   }
 
+  def self.visible_to_pod(pod)
+    where(pod_id: [nil, pod.id])
+  end
+
   def self.owned_by(user, pagination)
     where(user_id: user.id).paginate(pagination)
   end
 
   def self.available_to(user, pagination)
-    includes(user: [:profile]).paginate(pagination)
+    pod = Pod.home_pod_for_user(user)
+    visible_to_pod(pod).includes(user: [:profile]).paginate(pagination)
   end
 
   def self.search_results(search_data, user, pagination)
