@@ -32,9 +32,11 @@ class RequestsController < ApplicationController
   end
 
   def create
+    @request_types = Request.type_options
+
     @form = RequestForm.new(Request.new(user: current_user))
+    authorize @form.model
     if @form.validate(params[:request])
-      authorize @form.model
       if @form.visibility == :pod
         @form.model.pod = Pod.home_pod_for_user(current_user)
       else
@@ -46,9 +48,11 @@ class RequestsController < ApplicationController
   end
 
   def update
+    @request_types = Request.type_options
+
     @form = RequestForm.new(@user_request)
+    authorize @form.model
     if @form.validate(params[:request])
-      authorize @form.model
       if @form.visibility == :pod
         @form.model.pod = Pod.home_pod_for_user(current_user)
       else

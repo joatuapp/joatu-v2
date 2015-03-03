@@ -5,11 +5,15 @@ class OfferForm < ApplicationForm
 
   property :title, validates: {presence: true}
   property :description
-  property :type, validates: {inclusion: { in: Offer.valid_types } }
+  property :type, validates: {presence: true, inclusion: { in: Offer.valid_types } }
   property :visibility, virtual: true
 
   def visibility
-    super || :pod
+    if model.new_record?
+      :pod
+    else
+      model.pod_id.present? ? :pod : :global
+    end
   end
 
   def visibility=(val)

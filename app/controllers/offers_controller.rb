@@ -33,8 +33,9 @@ class OffersController < ApplicationController
 
   def create
     @form = OfferForm.new(Offer.new(user: current_user))
+    @offer_types = Offer.type_options
+    authorize @form.model
     if @form.validate(params[:offer])
-      authorize @form.model
       if @form.visibility == :pod
         @form.model.pod = Pod.home_pod_for_user(current_user)
       else
@@ -47,8 +48,9 @@ class OffersController < ApplicationController
 
   def update
     @form = OfferForm.new(@offer)
+    @offer_types = Offer.type_options
+    authorize @form.model
     if @form.validate(params[:offer])
-      authorize @form.model
       if @form.visibility == :pod
         @form.model.pod = Pod.home_pod_for_user(current_user)
       else

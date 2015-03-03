@@ -42,6 +42,13 @@ en:
     support_us:
       header: "Support us with Bitcoin"
       bitcoin: "Wallet: %{wallet_id}"
+  activerecord:
+    errors:
+      models:
+        offer:
+          blank: "Please choose an offer type!"
+        request:
+          blank: "Please choose a request type!"
   active_admin:
     dashboard: "Dashboard"
     dashboard_welcome:
@@ -132,7 +139,7 @@ en:
     search_placeholder: "Search..."
     type_label: "I am offering"
     visibility:
-      global: "Global"
+      global: "Everyone"
       pod: "Only My Pod"
       label: "Make this offer visible to"
   requests:
@@ -147,7 +154,7 @@ en:
     editing_header: "Edit Request"
     type_label: "I am looking or"
     visibility:
-      global: "Global"
+      global: "Everyone"
       pod: "Only My Pod"
       label: "Make this offer visible to"
   references:
