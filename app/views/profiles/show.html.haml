@@ -49,7 +49,7 @@
               .row
                 - @offers.each do |offer|
                   .col-sm-6
-                    = render offer
+                    = render partial: 'offers/offer', object: offer
               .row
                 .text-center
                   = paginate @offers, param_name: :offers_page
