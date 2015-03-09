@@ -142,6 +142,15 @@ en:
       global: "Everyone"
       pod: "Only My Pod"
       label: "Make this offer visible to"
+    send_message: "Message %{offerer} about this Offer"
+    offered_by:
+      header: "Offered by %{offerer}"
+      about_header: "About this user"
+      requests:
+        header: "Requests"
+        has_no_requests: "%{offerer} has no current requests."
+        has_open_requests: "%{offerer} has these open requests. Perhaps you can arrange a trade?"
+      references_header: "References"
   requests:
     index_header: "Current Requests"
     search_placeholder: "Search..."
@@ -157,6 +166,15 @@ en:
       global: "Everyone"
       pod: "Only My Pod"
       label: "Make this offer visible to"
+    send_message: "Message %{requester} about this Request"
+    requested_by:
+      header: "Requested by %{requester}"
+      about_header: "About this user"
+      offers:
+        header: "Offers"
+        has_no_offers: "%{requester} has no current offers."
+        has_open_offers: "%{requester} has these open offers. Perhaps you can arrange a trade?"
+      references_header: "References"
   references:
     index_header: "References"
     empty: "No references yet"

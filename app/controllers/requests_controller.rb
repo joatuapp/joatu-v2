@@ -15,6 +15,9 @@ class RequestsController < ApplicationController
 
   def show
     authorize @user_request
+    @requester = @user_request.user
+    @requester_offers = Offer.owned_by(@requester, PaginationOptions.new(params[:offers_page], 5))
+    @requester_references = Reference.to_user(@requester, PaginationOptions.new(params[:references_page], 5))
     respond_with(@user_request)
   end
 

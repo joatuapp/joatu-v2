@@ -1,13 +1,13 @@
-= div_for request, class: "panel panel-default" do
+= div_for request_model, class: "panel panel-default" do
   .panel-heading
-    %h3.panel-title= request.title
+    %h3.panel-title= request_model.title
   .panel-body
-    = request.description
+    = request_model.description
     .btn-group-sm.pull-right
-      - if request.user.profile.present? && request.user.profile.id.present?
-        = link_to profile_path(id: request.user.profile.id), class: 'btn btn-primary' do
+      - if request_model.user.profile.present? && request_model.user.profile.id.present?
+        = link_to profile_path(id: request_model.user.profile.id), class: 'btn btn-primary' do
           %span.glyphicon.glyphicon-user.pull-right
-      = link_to new_message_path(receiver: request.user.id), class: 'btn btn-primary' do
+      = link_to new_message_path(receiver: request_model.user.id), class: 'btn btn-primary' do
         %span.glyphicon.glyphicon-envelope.pull-right
-      = link_to request_path(request.id), class: 'btn btn-default' do
+      = link_to request_path(request_model.id), class: 'btn btn-default' do
         %span.glyphicon.glyphicon-arrow-right.pull-right

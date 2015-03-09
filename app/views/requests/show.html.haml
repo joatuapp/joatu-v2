@@ -1,13 +1,51 @@
 %p#notice= notice
 
-%p
-  %b= "#{t('requests.title')}:"
-  = @user_request.title
-%p
-  %b= "#{t('requests.description')}:"
-  = @user_request.description
+.row
+  .col-sm-6
+    %h1
+      = @user_request.title
 
-- if Pundit.policy(current_user, @user_request).edit?
-  = link_to t('edit'), edit_request_path(@user_request) 
-  \|
-= link_to t('back'), requests_path
+      .pull-right
+        - if Pundit.policy(current_user, @user_request).edit?
+          = link_to t('edit'), edit_offer_path(@user_request), class: 'btn btn-info'
+        - if Pundit.policy(current_user, @user_request).destroy?
+          = link_to t('destroy'), offer_path(@user_request), method: :delete, class: 'btn btn-danger'
+    .panel.panel-default
+      .panel-heading= t('requests.description')
+      .panel-body
+        = @user_request.description
+        .pull-right
+          = link_to new_message_path(receiver: @user_request.user.id), class: 'btn btn-primary btn-large' do
+            = t('requests.send_message', requester: @requester.profile.full_name)
+  .col-sm-6
+    .panel.panel-info
+      .panel-heading
+        = link_to profile_path(@requester.profile) do
+          .media
+            .media-left
+              = gravatar_tag @requester, :profile
+            .media-body.media-middle
+              %h3= t('requests.requested_by.header', requester: @requester.profile.full_name)
+      .panel-body
+        %h4= "#{t('requests.requested_by.about_header')}:"
+        %p
+          = @requester.profile.about_me
+        .row
+          .col-sm-6
+            .panel.panel-default
+              .panel-heading= t('requests.requested_by.offers.header')
+              .panel-body
+                - if @requester_offers.empty?
+                  %p= t('requests.requested_by.offers.has_no_offers', requester: @requester.profile.full_name)
+                - else
+                  %p= t('requests.requested_by.offers.has_open_offers', requester: @requester.profile.full_name)
+              .list-group
+                = render partial: 'offers/offer_list_item', collection: @requester_offers, as: :offer
+                = paginate @requester_offers, param_name: :offers_page
+
+          .col-sm-6
+            .panel.panel-default
+              .panel-heading= t('requests.requested_by.references_header')
+              .list-group
+                = render partial: 'references/reference_list_item', collection: @requester_references, as: :reference
+                = paginate @requester_references, param_name: :references_page
