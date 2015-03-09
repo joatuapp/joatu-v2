@@ -130,7 +130,6 @@ en:
   offers:
     editing_header: "Edit Offer"
     index_header: "Current Offers"
-    title: "Title"
     description: "Description"
     new_link: "Add A New Offer"
     new_header: "Offer something new!"
@@ -158,7 +157,6 @@ en:
     new_link: "Add A New Request"
     empty: "There aren't any requests yet!"
     new_header: "Request Something From the Community!"
-    title: "Title"
     description: "Description"
     editing_header: "Edit Request"
     type_label: "I am looking or"
