@@ -187,7 +187,6 @@ en:
     from_name: "From: %{name}"
   profiles:
     caps_balance: "CAPS Balance: %{balance}"
-    accepted_currencies_header: "Accepted Currencies"
     editing_header: "Edit Profile"
     index_header: "JoatU Users"
     given_name: "Given name"
