@@ -42,6 +42,8 @@ en:
     support_us:
       header: "Support us with Bitcoin"
       bitcoin: "Wallet: %{wallet_id}"
+    tou_message_html: "Read our %{link}"
+    tou_link: "terms of use"
   activerecord:
     errors:
       models:
