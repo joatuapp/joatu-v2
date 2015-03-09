@@ -1,72 +1,68 @@
 %p#notice= notice
 
 .row
-  .col-sm-8
-    .media
-      .media-left
-        = gravatar_tag @profile.user, :profile
-      .media-body.media-middle
-        %h1.media-heading
-          = "#{@profile.given_name} #{@profile.surname}".strip
-          %small= @profile.tagline
-  .col-sm-4
-    - if policy(@profile.user).send_message_to?
-      = link_to new_message_path(receiver: @profile.user.id), class: 'btn btn-primary' do
-        %span.glyphicon.glyphicon-envelope
-        = t('profiles.send_message')
-    - if Pundit.policy(current_user, @profile).edit?
-      = link_to edit_profile_path(@profile), class: 'btn btn-default' do
-        %span.glyphicon.glyphicon-pencil
-        = t('edit') 
-.row
   .col-sm-6
-    .row
-      .col-sm-12
-        .panel.panel-default
-          .panel-heading= "#{t('profiles.about_me')}:"
-          .panel-body
-            = sanitize @profile.about_me
-            - if Pundit.policy(current_user, @profile.user).view_caps_balance?
-              %p= t('profiles.caps_balance', balance: @profile.user.caps_balance)
-    - if @profile.accepted_currencies.present?
-      .row
-        .col-sm-12
-          .panel.panel-default
-            .panel-heading= t('profiles.accepted_currencies_header')
-            .panel-body
-              %ul
-              - @profile.accepted_currencies.each do |currency_key|
-                %li= acceptable_currency_translated(currency_key)
+    .panel.panel-primary
+      .panel-heading
+        .media
+          .media-left
+            = gravatar_tag @profile.user, :profile
+          .media-body.media-middle
+            %h1.media-heading
+              = "#{@profile.given_name} #{@profile.surname}".strip
+              %small= @profile.tagline
+      .panel-body
+        - if policy(@profile.user).send_message_to?
+          = link_to new_message_path(receiver: @profile.user.id), class: 'btn btn-primary' do
+            %span.glyphicon.glyphicon-envelope
+            = t('profiles.send_message')
+        - if Pundit.policy(current_user, @profile).edit?
+          = link_to edit_profile_path(@profile), class: 'btn btn-default' do
+            %span.glyphicon.glyphicon-pencil
+            = t('edit') 
+        %h3= "#{t('profiles.about_me')}:"
+        %p= sanitize @profile.about_me
+        - if Pundit.policy(current_user, @profile.user).view_caps_balance?
+          %h3= t('profiles.caps_balance', balance: @profile.user.caps_balance)
+    .panel.panel-default
+      .panel-heading
+        %h2= t('references.index_header')
+      .panel-body
+        - if @references.empty?
+          = t('references.empty')
+        - else
+          - @references.each do |reference|
+            = render reference
+          .text-center
+            = paginate @references, param_name: :references_page
+        %br/
+        - if policy(@profile.user).leave_reference_for?
+          = link_to t('references.new_link'), new_reference_path(to_user_id: @profile.user.id), remote: true, data: {toggle: "modal", target: "#joatu_modal"}, class: "btn btn-default pull-right"
 
-  .col-sm-6
-    .row
-      .col-sm-12
-        .panel.panel-default
-          .panel-heading= t('offers.index_header')
-          .panel-body
-            - if @offers.empty?
-              .col-sm-12
-                = t('offers.empty')
-            - else
-              .row
-                - @offers.each do |offer|
-                  .col-sm-6
-                    = render partial: 'offers/offer', object: offer
-              .row
-                .text-center
-                  = paginate @offers, param_name: :offers_page
-    .row
-      .col-sm-12
-        .panel.panel-default
-          .panel-heading= t('references.index_header')
-          .panel-body
-            - if @references.empty?
-              = t('references.empty')
-            - else
-              - @references.each do |reference|
-                = render reference
-              .text-center
-                = paginate @references, param_name: :references_page
-            %br/
-            - if policy(@profile.user).leave_reference_for?
-              = link_to t('references.new_link'), new_reference_path(to_user_id: @profile.user.id), remote: true, data: {toggle: "modal", target: "#joatu_modal"}, class: "btn btn-default pull-right"
+  .col-sm-3
+    .panel.panel-default
+      .panel-heading
+        %h2= t('offers.index_header')
+      .panel-body
+        - if @offers.empty?
+          = t('offers.empty')
+      .list-group
+        - unless @offers.empty?
+          - @offers.each do |offer|
+            = render partial: 'offers/offer_list_item', locals: {offer: offer}
+          .text-center
+            = paginate @offers, param_name: :offers_page
+  .col-sm-3
+    .panel.panel-default
+      .panel-heading
+        %h2= t('requests.index_header')
+      .panel-body
+        - if @requests.empty?
+          .col-sm-12
+            = t('requests.empty')
+      .list-group
+        - unless @requests.empty?
+          - @requests.each do |request_obj|
+            = render partial: 'requests/request_list_item', locals: {request_model: request_obj}
+          .text-center
+            = paginate @requests, param_name: :requests_page
