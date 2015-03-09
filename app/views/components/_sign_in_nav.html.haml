@@ -32,6 +32,9 @@
             %ul.dropdown-menu(role="menu")
               %li= link_to t('nav.invite'), new_user_invitation_path
               %li= link_to t('nav.admin'), admin_root_path, "data-no-turbolink" => true
+        %li
+          = link_to help_path do
+            %span.glyphicon.glyphicon-question-sign 
 
       = link_to(destroy_user_session_path, method: :delete, class: "navbar-right btn btn-default btn-sm") do
         = t('auth.form.log_out')

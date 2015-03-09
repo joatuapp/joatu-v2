@@ -13,6 +13,10 @@ class StaticPageController < ApplicationController
   def tou
   end
 
+  def help
+    @joatu_admin = User.find_by_email('jamie@joatu.com') || User.first
+  end
+
   private
   def redirect_if_signed_in
     redirect_to home_pod_path if user_signed_in?

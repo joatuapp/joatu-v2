@@ -56,6 +56,10 @@ en:
     dashboard_welcome:
       welcome: "Welcome to the JoatU Admin Area"
       call_to_action: "\"With great power comes great responsibility\""
+  help:
+    header: "Help & FAQs"
+    intro: "JoatU is a community-created platform and we welcome your feedback and suggestions!"
+    send_admin_message: "Send JoatU A Message"
   pods:
     pod: "Pod"
     hub: "Hub"

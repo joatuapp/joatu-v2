@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get 'home', to: 'static_page#home'
     get 'alpha_signup', to: 'static_page#alpha_signup'
     get 'tou', to: 'static_page#tou', as: :tou
+    get 'help', to: 'static_page#help', as: :help
 
     get '/:locale', to: 'static_page#home'
     root 'static_page#home'
