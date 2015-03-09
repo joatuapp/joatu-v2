@@ -590,7 +590,8 @@ CREATE TABLE users (
     is_admin boolean DEFAULT false NOT NULL,
     preferences_json json,
     postal_code character varying(32),
-    home_location geometry(Point)
+    home_location geometry(Point),
+    caps_balance integer DEFAULT 0 NOT NULL
 );
 
 
@@ -1244,4 +1245,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150302181034');
 INSERT INTO schema_migrations (version) VALUES ('20150302182226');
 
 INSERT INTO schema_migrations (version) VALUES ('20150303014323');
+
+INSERT INTO schema_migrations (version) VALUES ('20150309221553');
 

@@ -26,6 +26,8 @@
           .panel-heading= "#{t('profiles.about_me')}:"
           .panel-body
             = sanitize @profile.about_me
+            - if Pundit.policy(current_user, @profile.user).view_caps_balance?
+              %p= t('profiles.caps_balance', balance: @profile.user.caps_balance)
     - if @profile.accepted_currencies.present?
       .row
         .col-sm-12

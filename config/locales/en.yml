@@ -186,6 +186,7 @@ en:
     destroy_confirm: "Are you sure you want to delete this reference? This cannot be undone!"
     from_name: "From: %{name}"
   profiles:
+    caps_balance: "CAPS Balance: %{balance}"
     accepted_currencies_header: "Accepted Currencies"
     editing_header: "Edit Profile"
     index_header: "JoatU Users"

@@ -11,6 +11,10 @@ class UserPolicy < ApplicationPolicy
     user != record
   end
 
+  def view_caps_balance?
+    user == record || user.is_admin?
+  end
+
   def update?
     user.id == record.id || super
   end
