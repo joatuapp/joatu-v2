@@ -445,6 +445,7 @@ DEPENDENCIES
   jquery-cookie-rails
   jquery-rails
   jquery-turbolinks
+  jquery-ui-rails
   kaminari
   mail_safe
   mailboxer!

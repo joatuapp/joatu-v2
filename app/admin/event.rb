@@ -5,7 +5,7 @@ ActiveAdmin.register Event do
     :ends_at, 
     :created_by_user_id, 
     :organization_id,
-    address: [:address1, :address2, :city, :province, :country, :postal_code]
+    :address_json
 
   index do
     selectable_column
@@ -27,8 +27,8 @@ ActiveAdmin.register Event do
     f.inputs "Events" do
       f.input :name
       f.input :description
-      f.input :starts_at
-      f.input :ends_at
+      f.input :starts_at, :as => :string, :input_html => {:class => "hasDatetimePicker"}
+      f.input :ends_at, :as => :string, :input_html => {:class => "hasDatetimePicker"}
       f.input :creator
       f.input :organization
       f.inputs "Address", for: [:address, f.object.address] do |af|
@@ -41,5 +41,17 @@ ActiveAdmin.register Event do
       end
     end
     f.actions
+  end
+
+  controller do
+    def create
+      params[:event][:address_json] = params[:event].delete(:address).to_json
+      super
+    end
+
+    def update
+      params[:event][:address_json] = params[:event].delete(:address).to_json
+      super
+    end
   end
 end

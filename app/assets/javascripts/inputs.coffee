@@ -84,8 +84,20 @@ setup_map_areas = ->
     )
   )
 
+setup_datetime_pickers = ->
+  $('input.hasDatetimePicker').datetimepicker({
+    dateFormat: "dd/mm/yyyy",
+    beforeShow: ->
+      setTimeout(->
+        $('#ui-datepicker-div').css('z-index', 3000)
+      )
+  })
+
+
 
 $(document).on "page:change", (e) ->
   setup_map_areas()
+  setup_datetime_pickers()
 $(document).on "ready", (e) ->
   setup_map_areas()
+  setup_datetime_pickers()
