@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :'recipients', as: :hidden
     = f.input :subject
-    = f.input :body
+    = f.input :body, as: :text
 
   .form-actions
     = f.button :submit
