@@ -35,10 +35,15 @@ class OfferOrRequest < Base
   }
 
   def self.visible_to_pod(pod)
-    where(pod_id: [nil, pod.id])
+    if Actual(pod)
+      where(pod_id: [nil, pod.id])
+    else
+      where(pod_id: nil)
+    end
   end
 
   def self.owned_by(user, pagination)
+    Just(user)
     where(user_id: user.id).paginate(pagination)
   end
 
