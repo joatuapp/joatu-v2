@@ -1043,11 +1043,35 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
--- Name: fk_rails_0c04ce1071; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_14c4175c9a; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY events
-    ADD CONSTRAINT fk_rails_0c04ce1071 FOREIGN KEY (pod_id) REFERENCES pods(id);
+    ADD CONSTRAINT fk_rails_14c4175c9a FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE SET NULL;
+
+
+--
+-- Name: fk_rails_1e460d0870; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY events
+    ADD CONSTRAINT fk_rails_1e460d0870 FOREIGN KEY (created_by_user_id) REFERENCES users(id) ON DELETE SET NULL;
+
+
+--
+-- Name: fk_rails_2f7a21261b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY pod_memberships
+    ADD CONSTRAINT fk_rails_2f7a21261b FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
+
+
+--
+-- Name: fk_rails_3ac22443e0; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY organization_memberships
+    ADD CONSTRAINT fk_rails_3ac22443e0 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 
 
 --
@@ -1059,14 +1083,6 @@ ALTER TABLE ONLY pod_organization_relations
 
 
 --
--- Name: fk_rails_426a5f5119; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY offers_and_requests
-    ADD CONSTRAINT fk_rails_426a5f5119 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
-
-
---
 -- Name: fk_rails_4a66f25904; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1075,43 +1091,19 @@ ALTER TABLE ONLY pod_organization_relations
 
 
 --
--- Name: fk_rails_55b4281e9c; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY organization_memberships
-    ADD CONSTRAINT fk_rails_55b4281e9c FOREIGN KEY (user_id) REFERENCES users(id);
-
-
---
--- Name: fk_rails_7ef3a63bab; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_54d95b05c2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY offers_and_requests
-    ADD CONSTRAINT fk_rails_7ef3a63bab FOREIGN KEY (pod_id) REFERENCES pods(id);
+    ADD CONSTRAINT fk_rails_54d95b05c2 FOREIGN KEY (pod_id) REFERENCES pods(id) ON DELETE SET NULL;
 
 
 --
--- Name: fk_rails_92813fe0d5; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY events
-    ADD CONSTRAINT fk_rails_92813fe0d5 FOREIGN KEY (created_by_user_id) REFERENCES users(id);
-
-
---
--- Name: fk_rails_9813cc3ade; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY events
-    ADD CONSTRAINT fk_rails_9813cc3ade FOREIGN KEY (organization_id) REFERENCES organizations(id);
-
-
---
--- Name: fk_rails_b280496516; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_8b205d6f94; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY pod_memberships
-    ADD CONSTRAINT fk_rails_b280496516 FOREIGN KEY (user_id) REFERENCES users(id);
+    ADD CONSTRAINT fk_rails_8b205d6f94 FOREIGN KEY (pod_id) REFERENCES pods(id) ON DELETE CASCADE;
 
 
 --
@@ -1123,19 +1115,27 @@ ALTER TABLE ONLY profiles
 
 
 --
--- Name: fk_rails_c75eb29908; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_baa9388a8c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY events
+    ADD CONSTRAINT fk_rails_baa9388a8c FOREIGN KEY (pod_id) REFERENCES pods(id) ON DELETE SET NULL;
+
+
+--
+-- Name: fk_rails_d30e756f11; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY offers_and_requests
+    ADD CONSTRAINT fk_rails_d30e756f11 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
+
+
+--
+-- Name: fk_rails_e9619923bd; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY organization_memberships
-    ADD CONSTRAINT fk_rails_c75eb29908 FOREIGN KEY (organization_id) REFERENCES organizations(id);
-
-
---
--- Name: fk_rails_f1bfeb1b51; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY pod_memberships
-    ADD CONSTRAINT fk_rails_f1bfeb1b51 FOREIGN KEY (pod_id) REFERENCES pods(id);
+    ADD CONSTRAINT fk_rails_e9619923bd FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
 
 
 --
@@ -1247,4 +1247,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150302182226');
 INSERT INTO schema_migrations (version) VALUES ('20150303014323');
 
 INSERT INTO schema_migrations (version) VALUES ('20150309221553');
+
+INSERT INTO schema_migrations (version) VALUES ('20150312035146');
 
