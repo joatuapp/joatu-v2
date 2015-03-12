@@ -5,8 +5,9 @@
 
       %header
         %h5
-          = "#{t('messages.from')}:"
-          = link_to truncate(conversation.last_sender.name, length: 15), profile_path(conversation.last_sender)
+          - if conversation.last_sender.present?
+            = "#{t('messages.from')}:"
+            = link_to truncate(conversation.last_sender.name, length: 15), profile_path(conversation.last_sender)
         .date
           = t('time.ago', time: time_ago_in_words(conversation.updated_at))
     
