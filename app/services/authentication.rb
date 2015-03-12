@@ -21,8 +21,6 @@ class Authentication
   end
 
   def user_signed_in?
-    out = !user.is_a?(GuestUser)
-    Rails.logger.debug "User: #{user} signed in? #{out.inspect}"
-    out
+    !user.is_a?(GuestUser)
   end
 end
