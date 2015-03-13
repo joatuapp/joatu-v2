@@ -13,4 +13,12 @@ class Reference < ActiveRecord::Base
   def reciprocal
     self.class.where(to_user: from_user, from_user: to_user).take
   end
+
+  def from_user
+    super || GuestUser.new
+  end
+
+  def to_user
+    super || GuestUser.new
+  end
 end
