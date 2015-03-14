@@ -10,11 +10,12 @@ class ConversationsController < ApplicationController
   respond_to :html
 
   def index
-    @conversations = Conversation.send("user_#{@box}", current_user, PaginationOptions.new(params[:page]))
+    get_conversations
     respond_with(@conversations)
   end
 
   def show
+    get_conversations
     @reply = MessageForm.new(Message.new)
     @messages = @conversation.read_messages_for_user_and_box!(current_user, @box)
     authorize @conversation
@@ -56,6 +57,10 @@ class ConversationsController < ApplicationController
   end
 
   private
+
+  def get_conversations
+    @conversations = Conversation.send("user_#{@box}", current_user, PaginationOptions.new(params[:page]))
+  end
 
   def get_conversation
     @conversation = Conversation.find(params[:id])

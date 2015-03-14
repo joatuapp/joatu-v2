@@ -1,10 +1,13 @@
+- sender = message.sender || DeletedUser.new
 = div_for(message, class: (message.is_unread?(current_user) ? 'unread' : '')) do
-  .media
-    .media-heading.name
-      .name
-        = link_to truncate(message.sender.name, length: 30), profile_path(message.sender)
-      .date
-        = t('time.ago', time: time_ago_in_words(message.updated_at))
-  .media-body
-    .word-break.pre-message
-      = raw(message.body)
+  .message_header
+    .name.pull-left
+      = "#{t('messages.from')}:"
+      - if message.sender
+        = link_to truncate(sender.name, length: 30), profile_path(sender)
+      - else
+        = truncate(sender.name, length: 30)
+    .date.pull-right
+      = t('time.ago', time: time_ago_in_words(message.updated_at))
+  .message-body
+    = raw(message.body)

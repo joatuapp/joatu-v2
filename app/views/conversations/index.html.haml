@@ -1,8 +1,1 @@
-.row
-  .col-sm-6.col-sm-offset-3
-    = render partial: 'components/messages_toolbar'
-    %h1= t('conversations.index_header')
-    .list-group
-      = render partial: "conversations/conversation", collection: @conversations
-
-      = paginate @conversations
+= render partial: "conversations/conversations"

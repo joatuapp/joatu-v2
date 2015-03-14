@@ -114,8 +114,15 @@ en:
       signup: "Add me to the waiting list!"
       explanation: "JoatU is currently undergoing early testing in a closed Alpha release. Please enter your email address and postal code below and we would be happy to notify you when JoatU becomes available in your city."
   conversations:
-    index_header: "Conversations"
     participants: "Participants"
+    reply: "Reply"
+    send: "Send"
+    no_conversations: "No conversations in this folder"
+    choose_a_conversation: "Choose a conversation from the list at the left."
+    index_header:
+      inbox: "Received Conversations"
+      sentbox: "Sent Conversations"
+      trash: "Deleted Conversations"
   nav:
     benefits: "Benefits"
     features: "Features"

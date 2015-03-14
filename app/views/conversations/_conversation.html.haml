@@ -1,19 +1,21 @@
 %a.list-group-item{href:  conversation_path(conversation.id, box: @box, page: params[:page]), class: "#{ 'unread' if conversation.is_unread? current_user }"}
-  .media
+  .media.col-sm-10
     .media-left
-      = gravatar_tag conversation.last_sender, :conversation
+      = gravatar_tag conversation.last_sender, size: 40
     .media-body
       %h5.media-heading
         = "#{t('messages.subject')}:"
         = conversation.subject
+        %br
         %small
           = "- "
           = "#{t('messages.from')}:"
-          = truncate(conversation.last_sender.name, length: 15)
+          = truncate(conversation.last_sender.try(:name), length: 15)
         %small.date.pull-right
           = t('time.ago', time: time_ago_in_words(conversation.updated_at))
       = raw(truncate(strip_tags(conversation.last_message.body), length: 50))
-    - unless @box == 'trash'
-      .action
-        = button_to(conversation_path(conversation, location: @box, box: @box, page: params[:page]), method: :delete, class: 'pull-right btn btn-danger') do
-          %i.glyphicon.glyphicon-trash
+  - unless @box == 'trash'
+    .action.col-sm-2
+      = button_to(conversation_path(conversation, location: @box, box: @box, page: params[:page]), method: :delete, class: 'pull-right btn btn-danger') do
+        %i.glyphicon.glyphicon-trash
+  .clearfix
