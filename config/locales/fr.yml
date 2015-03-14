@@ -83,7 +83,6 @@ fr:
       signup: "Ajoutez-moi à la file d'attente !"
       explanation: "JoatU est présentement en période de rodage sous la forme d'une version Alpha limitée. Si vous nous laissez votre adresse courrielle ainsi que votre code postal (voir ci-dessous), il nous fera plaisir de vous avertir lorsque JoatU sera disponible dans votre ville."
   conversations:
-    index_header: "Conversations"
     participants: "Participants"
   nav:
     benefits: "Avantages"
