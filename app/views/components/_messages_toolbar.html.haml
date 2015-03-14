@@ -1,9 +1,6 @@
 %section#toolbar.toolbar-conversations
   %nav.toolbar_menu
     %ul.nav.nav-pills
-      %li{role: "presentation", class: "#{'active' if controller.action_name == 'new'}"}
-        = link_to new_message_path do
-          %i.glyphicon.glyphicon-pencil
       %li{role: "presentation", class: "#{'active' if params[:box] == 'inbox'}"}
         = link_to conversations_path(box: :inbox) do
           %i.glyphicon.glyphicon-inbox

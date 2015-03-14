@@ -1,25 +1,21 @@
-= div_for(conversation, class: "#{ 'unread' if conversation.is_unread? current_user }") do
-  .row
-    .col-sm-3
-      .avatar
-
-      %header
-        %h5
-          - if conversation.last_sender.present?
-            = "#{t('messages.from')}:"
-            = link_to truncate(conversation.last_sender.name, length: 15), profile_path(conversation.last_sender)
-        .date
-          = t('time.ago', time: time_ago_in_words(conversation.updated_at))
-    
-    .col-sm-8
-      .subject
+%a.list-group-item{href:  conversation_path(conversation.id, box: @box, page: params[:page]), class: "#{ 'unread' if conversation.is_unread? current_user }"}
+  .media.col-sm-10
+    .media-left
+      = gravatar_tag conversation.last_sender, size: 40
+    .media-body
+      %h5.media-heading
         = "#{t('messages.subject')}:"
-        = link_to(truncate(conversation.subject, length: 55), conversation_path(conversation.id, box: @box, page: params[:page]))
-
-      .briefing
-        = raw(truncate(strip_tags(conversation.last_message.body), length: 50))
-    - unless @box == 'trash'
-      .col-sm-1
-        .action
-          = link_to(conversation_path(conversation, location: @box, box: @box, page: params[:page]), method: :delete) do
-            %i.glyphicon.glyphicon-trash
+        = conversation.subject
+        %br
+        %small
+          = "- "
+          = "#{t('messages.from')}:"
+          = truncate(conversation.last_sender.try(:name), length: 15)
+        %small.date.pull-right
+          = t('time.ago', time: time_ago_in_words(conversation.updated_at))
+      = raw(truncate(strip_tags(conversation.last_message.body), length: 50))
+  - unless @box == 'trash'
+    .action.col-sm-2
+      = button_to(conversation_path(conversation, location: @box, box: @box, page: params[:page]), method: :delete, class: 'pull-right btn btn-danger') do
+        %i.glyphicon.glyphicon-trash
+  .clearfix

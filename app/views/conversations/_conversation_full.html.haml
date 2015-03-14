@@ -1,22 +1,20 @@
 %h3= @conversation.subject
-.action
-  - unless @box == 'trash'
-    = link_to conversation_path(@conversation), location: 'conversation', box: @box, method: :delete do
-      %i.glyphicon.glyphicon-trash
 %h4= t('conversations.participants')
 .participants
-  - @conversation.recipients.each do |recp|
-    = link_to recp.name, profile_path(recp)
+  - participants = @conversation.recipients.map do |recp|
+    - link_to recp.name, profile_path(recp)
+  = raw(participants.join(', '))
 %hr/
 .messages
   - @messages.each do |message|
     = render partial: "messages/message", object: message
+    %hr/
 
   - unless @box == 'trash'
     %br/
     = simple_form_for(@reply, url: conversation_path(@conversation), html: {method: :put}) do |f|
       = f.error_notification
       .form-inputs
-        = f.input :body
+        = f.input :body, label: t('conversations.reply'), as: :text
       .form-actions
-        = f.button :submit, name: :reply_all
+        = f.button :submit, t('conversations.send'), name: :reply_all, class: 'pull-right btn btn-primary'

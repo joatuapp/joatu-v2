@@ -15,8 +15,12 @@ class User < Base
   before_validation :update_home_location, if: :postal_code_changed?
   after_save :publish_location_updated, if: :home_location_changed?
 
+  def profile
+    super || AnonymousProfile.new
+  end
+
   def name
-    "<anon>"
+    profile.full_name
   end
 
   # Return false if we should not send an email for 'object_to_send' otherwise,

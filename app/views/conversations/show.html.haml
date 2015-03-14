@@ -1,4 +1,1 @@
-%section#conversation
-  = render partial: 'components/messages_toolbar'
-  = render partial: 'conversation_full'
-= link_to t('back'), conversations_path
+= render partial: "conversations/conversations", collection: @conversations
