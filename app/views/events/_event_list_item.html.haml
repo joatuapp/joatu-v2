@@ -1,0 +1,8 @@
+- event = event_list_item
+
+%a.list-group-item{href: event_path(event)}
+  %h4= event.name
+  .times
+    %p
+      = t('events.times', start: l(event.starts_at), end: l(event.ends_at))
+  %p= truncate(event.description, length: 100)

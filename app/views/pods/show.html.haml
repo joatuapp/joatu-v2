@@ -23,10 +23,11 @@
           = t('pods.events')
       .panel-body
         - if @events.any?
-          .row
-            = render partial: "events/event", collection: @events, layout: "components/three_column"
+          = "#{t('pods.events_intro', pod_name: @pod.name)}:"
         - else
           = t('pods.no_events_message')
+      .list-group
+        = render partial: "events/event_list_item", collection: @events
       
   .col-sm-4.hub
     .panel.panel-default

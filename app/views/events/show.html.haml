@@ -1,18 +1,13 @@
 %p#notice= notice
 
+%h1= @event.name 
 %p
-  %b Name:
-  = @event.name
-%p
-  %b Description:
+  %b= "#{t('events.description')}:"
+  %br
   = @event.description
 %p
-  %b Starts at:
-  = @event.starts_at
+  %b= "#{t('events.starts_at')}:"
+  = l(@event.starts_at)
 %p
-  %b Ends at:
-  = @event.ends_at
-
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Back', events_path
+  %b= "#{t('events.ends_at')}:"
+  = l(@event.ends_at)

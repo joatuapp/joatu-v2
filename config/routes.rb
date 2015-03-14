@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :events
-
-  resources :organizations
-
   concern :paginatable do
     get '(page/:page)', :action => :index, :on => :collection, :as => ''
   end
 
   scope "(:locale)", locale: /en|fr/ do
+    resources :events
+
+    resources :organizations
+
     resources :references, except: [:index, :show]
 
     resources :messages, only: [:new, :create]

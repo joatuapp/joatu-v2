@@ -71,9 +71,12 @@ en:
     few_offers_content_html: "Get started by adding more %{requests_link} and %{offers_link}."
     offers_link_text: "Offers"
     requests_link_text: "Requests"
+    events_intro: "Explore these upcoming events at %{pod_name}"
   events:
-    starts_at: "Starts"
-    ends_at: "Ends"
+    times: "From %{start} to %{end}"
+    description: "About This Event"
+    starts_at: "Starts at"
+    ends_at: "Ends at"
   home:
     intro:
       header_html: "Trade skills and goods to meet your needs, and create vibrant communities!"
