@@ -1,13 +1,16 @@
 %p#notice= notice
 
-%h1= @event.name 
-%p
-  %b= "#{t('events.description')}:"
-  %br
-  = @event.description
-%p
-  %b= "#{t('events.starts_at')}:"
-  = l(@event.starts_at)
-%p
-  %b= "#{t('events.ends_at')}:"
-  = l(@event.ends_at)
+.panel.panel-default
+  .panel-heading
+    %h1= @event.name 
+  .panel-body
+    %p
+      %b= "#{t('events.starts_at')}:"
+      = l(@event.starts_at)
+    %p
+      %b= "#{t('events.ends_at')}:"
+      = l(@event.ends_at)
+    %p
+      %b= "#{t('events.description')}:"
+      %br
+      = @event.description
