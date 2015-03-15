@@ -1,5 +1,2 @@
-= render partial: 'components/messages_toolbar'
-
-%section#new_message
-  .conversation
-    = render partial: 'form'
+- @conversations_header = t('messages.new_header')
+= render partial: 'form', layout: "conversations/conversations"

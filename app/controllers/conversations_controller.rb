@@ -52,14 +52,14 @@ class ConversationsController < ApplicationController
     if params[:location].present? and params[:location] == 'conversation'
       redirect_to conversations_path(:box => :trash)
     else
-      redirect_to conversations_path(:box => @box,:page => params[:page])
+      redirect_to conversations_path(:box => @box, :conversations_page => params[:conversations_page])
     end
   end
 
   private
 
   def get_conversations
-    @conversations = Conversation.send("user_#{@box}", current_user, PaginationOptions.new(params[:page]))
+    @conversations = Conversation.send("user_#{@box}", current_user, PaginationOptions.new(params[:conversations_page]))
   end
 
   def get_conversation

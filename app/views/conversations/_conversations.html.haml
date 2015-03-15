@@ -4,21 +4,17 @@
   .col-sm-9
     %h3
       - box = @box || 'inbox'
-      = t("conversations.index_header.#{@box}")
+      = @conversations_header || t("conversations.index_header.#{box}")
 
 .row
   .col-sm-3
     .list-group
-      - if @conversations.empty?
+      - if @conversations.blank?
         .list-group-item= t('conversations.no_conversations')
       - else
         = render partial: "conversations/conversation", collection: @conversations
-
-      = paginate @conversations
+        = paginate @conversations, param_name: :conversations_page
   .col-sm-9
     .panel.panel-default
       .panel-body
-        -if @conversation
-          = render partial: 'conversations/conversation_full', locals: { conversation: @conversatoin }
-        - else
-          %p= t('conversations.choose_a_conversation')
+        = yield

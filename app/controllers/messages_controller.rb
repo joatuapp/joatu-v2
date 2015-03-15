@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   respond_to :html
 
   def new
+    @conversations = Conversation.user_inbox(current_user, PaginationOptions.new(params[:conversations_page]))
     @form = MessageForm.new(Message.new)
     if params[:receiver].present?
       receiver = User.find(params[:receiver])

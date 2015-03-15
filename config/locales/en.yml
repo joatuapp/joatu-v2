@@ -141,6 +141,7 @@ en:
     my_profile: "My Profile"
     edit_my_profile: "Edit My Profile"
   messages:
+    new_header: "Send Message"
     from: "From"
     subject: "Subject"
   offers:
