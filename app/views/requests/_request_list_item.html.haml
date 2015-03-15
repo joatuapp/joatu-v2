@@ -1,4 +1,7 @@
 - request_model ||= request_list_item
 %a.list-group-item.request-list-group-item{href: request_path(request_model), class: "#{request_model.type_class}"}
-  %h4= request_model.title
-  %p= request_model.description
+  %h4
+    = request_model.title
+    %br
+    %small= t('requests.requester_label', requester: request_model.user.name)
+  %p= truncate(request_model.description, length: 100)

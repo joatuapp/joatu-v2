@@ -1,4 +1,7 @@
 - offer ||= offer_list_item
 %a.list-group-item.offer-list-group-item{href: offer_path(offer), class: "#{offer.type_class}"}
-  %h4= offer.title
-  %p= offer.description
+  %h4
+    = offer.title
+    %br
+    %small= t('offers.offerer_label', offerer: offer.user.name)
+  %p= truncate(offer.description, length: 100)

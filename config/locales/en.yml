@@ -153,6 +153,7 @@ en:
     empty: "There aren't any offers yet!"
     search_placeholder: "Search..."
     type_label: "I am offering"
+    offerer_label: "Offered by: %{offerer}"
     visibility:
       global: "Everyone"
       pod: "Only My Pod"
@@ -176,6 +177,7 @@ en:
     description: "Description"
     editing_header: "Edit Request"
     type_label: "I am looking or"
+    requester_label: "Requested by: %{requester}"
     visibility:
       global: "Everyone"
       pod: "Only My Pod"
