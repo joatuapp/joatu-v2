@@ -21,6 +21,7 @@ a [pull request](https://github.com/joatuapp/joatu-v2/pulls)!
 - Ruby 2.1.3+
 - Bundler
 - Postgres 9.3+
+- Postgis (Postgres Geo Extension) 2.1+
 
 ### Setup
 The following commands will get you set up to begin develpment on JoatU:
