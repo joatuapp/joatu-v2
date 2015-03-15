@@ -1,22 +1,24 @@
-%h1.text-center= t('requests.index_header')
-.row
-  .col-sm-8
-    = simple_form_for @search_form, url: search_requests_path, wrapper: :inline_form, html: {method: :get, class: 'form-inline'} do |f|
-      = f.input :search, placeholder: t('requests.search_placeholder')
-      = f.button :submit, t('requests.search')
-
+.row.requests-list
   .col-sm-4
-    = link_to new_request_path, class: 'btn btn-success pull-right' do
-      %i.glyphicon.glyphicon-plus
-      = t('requests.new_link') 
+    .panel.panel-info
+      .panel-heading
+        %h2.text-center Search
+      .panel-body
+        = simple_form_for @search_form, url: search_requests_path, wrapper: :inline_form, html: {method: :get, class: 'form-inline'} do |f|
+          = f.input :search, placeholder: t('requests.search_placeholder')
+          = f.button :submit, t('requests.search')
 
-.row.offers-list
-  - if @user_requests.empty?
-    .col-sm-12
-      = t('requests.empty')
-  - else
-    - @user_requests.each do |user_request|
-      .col-sm-4
-        = render partial: "request", object: user_request, as: :request_model
-
-= paginate @user_requests
+        %br
+        = link_to new_request_path, class: 'btn btn-success pull-right' do
+          %i.glyphicon.glyphicon-plus
+          = t('requests.new_link') 
+  .col-sm-8
+    .panel.panel-default
+      .panel-heading
+        %h1.text-center= t('requests.index_header')
+      - if @user_requests.empty?
+        .panel-body
+          = t('requests.empty')
+      .list-group
+        = render partial: "requests/request_list_item", collection: @user_requests
+        = paginate @user_requests

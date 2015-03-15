@@ -1,0 +1,30 @@
+// Place all the styles related to the offers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.offers-list, .requests-list {
+  margin-top: 20px;
+}
+
+.offer-list-group-item, .request-list-group-item {
+  &.knowledge {
+    background-color: $alt-color-1;
+
+    &:hover {
+      background-color: lighten($alt-color-1, 10%);
+    }
+  }
+
+  &.physical_goods {
+    background-color: $alt-color-2;
+    &:hover {
+      background-color: lighten($alt-color-2, 10%);
+    }
+  }
+
+  &.skills_and_time {
+    background-color: $alt-color-3;
+    &:hover {
+      background-color: lighten($alt-color-3, 10%);
+    }
+  }
+}

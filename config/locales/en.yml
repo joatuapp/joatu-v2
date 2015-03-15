@@ -145,7 +145,7 @@ en:
     subject: "Subject"
   offers:
     editing_header: "Edit Offer"
-    index_header: "Current Offers"
+    index_header: "Offers"
     description: "Description"
     new_link: "Add A New Offer"
     new_header: "Offer something new!"

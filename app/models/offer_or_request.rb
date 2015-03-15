@@ -60,4 +60,8 @@ class OfferOrRequest < Base
       en_text_search(search_data[:search]).available_to(user, pagination)
     end
   end
+
+  def type_class
+    self.class.name.demodulize.underscore
+  end
 end
