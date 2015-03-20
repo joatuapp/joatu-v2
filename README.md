@@ -48,6 +48,13 @@ The following commands will get you set up to begin develpment on JoatU:
   - `foreman start`
   - Visit [localhost:3000](http://localhost:3000) to see the app!
 
+5. Create an initial admin user and log in:
+  - `INITIAL_ADMIN_EMAIL=test@example.com INITIAL_ADMIN_PASSWORD=foobar rake
+    db:seed`
+  - Log in to JoatU using email test@example.com, password foobar.
+  - Once logged in, you will have access to administration tools from within
+    the "Manage JoatU" menu.
+
 On subsequent runs, simply change to the app directory and run `foreman start`
 to start the app. In the terminal window while the app is running, hit Ctl+C at
 any point to shut down the app. The JoatU app uses a custom postgres database
