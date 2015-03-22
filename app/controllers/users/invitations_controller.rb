@@ -23,6 +23,13 @@ class Users::InvitationsController < Devise::InvitationsController
 
   private
 
+  # Called when creating an invitation:
+  def invite_resource
+    resource = super
+    resource.update!(confirmed_at: Time.now)
+    resource
+  end
+
   # this is called when accepting invitation
   # should return a form holding an instance 
   # of resource class
