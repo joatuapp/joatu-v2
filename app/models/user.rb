@@ -8,6 +8,10 @@ class User < Base
 
   acts_as_messageable
 
+  # Not strictly necessary to specify the currency is caps here, as the app
+  # default is caps, but this keeps things explicit, and doesn't hurt.
+  monetize :caps_cents, with_currency: :caps 
+
   composed_of :preferences, class_name: "User::Preferences", mapping: %w(preferences_json to_json)
   
   has_one :profile

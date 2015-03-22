@@ -23,7 +23,7 @@
         %h3= "#{t('profiles.about_me')}:"
         %p= sanitize @profile.about_me
         - if Pundit.policy(current_user, @profile.user).view_caps_balance?
-          %h3= t('profiles.caps_balance', balance: @profile.user.caps_balance)
+          %h3= t('profiles.caps_balance', balance: humanized_money_with_symbol(@profile.user.caps))
     .panel.panel-default
       .panel-heading
         %h2= t('references.index_header')

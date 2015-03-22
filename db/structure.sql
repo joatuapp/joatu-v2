@@ -94,6 +94,40 @@ ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
 
 
 --
+-- Name: caps_transactions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE caps_transactions (
+    id integer NOT NULL,
+    source_id integer,
+    source_type character varying,
+    destination_id integer,
+    destination_type character varying,
+    caps_cents integer DEFAULT 0 NOT NULL,
+    message_from_source text
+);
+
+
+--
+-- Name: caps_transactions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE caps_transactions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: caps_transactions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE caps_transactions_id_seq OWNED BY caps_transactions.id;
+
+
+--
 -- Name: events; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -591,7 +625,7 @@ CREATE TABLE users (
     preferences_json json,
     postal_code character varying(32),
     home_location geometry(Point),
-    caps_balance integer DEFAULT 0 NOT NULL
+    caps_cents integer DEFAULT 0 NOT NULL
 );
 
 
@@ -619,6 +653,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 --
 
 ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('active_admin_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caps_transactions ALTER COLUMN id SET DEFAULT nextval('caps_transactions_id_seq'::regclass);
 
 
 --
@@ -725,6 +766,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY active_admin_comments
     ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: caps_transactions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY caps_transactions
+    ADD CONSTRAINT caps_transactions_pkey PRIMARY KEY (id);
 
 
 --
@@ -858,6 +907,20 @@ CREATE INDEX index_active_admin_comments_on_namespace ON active_admin_comments U
 --
 
 CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON active_admin_comments USING btree (resource_type, resource_id);
+
+
+--
+-- Name: index_caps_transactions_on_destination_type_and_destination_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_caps_transactions_on_destination_type_and_destination_id ON caps_transactions USING btree (destination_type, destination_id);
+
+
+--
+-- Name: index_caps_transactions_on_source_type_and_source_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_caps_transactions_on_source_type_and_source_id ON caps_transactions USING btree (source_type, source_id);
 
 
 --
@@ -1249,4 +1312,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150303014323');
 INSERT INTO schema_migrations (version) VALUES ('20150309221553');
 
 INSERT INTO schema_migrations (version) VALUES ('20150312035146');
+
+INSERT INTO schema_migrations (version) VALUES ('20150322203034');
+
+INSERT INTO schema_migrations (version) VALUES ('20150322213400');
 
