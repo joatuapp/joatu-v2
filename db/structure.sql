@@ -388,7 +388,8 @@ CREATE TABLE organizations (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     latlng geometry(Point),
-    address_json json
+    address_json json,
+    caps_cents_cents integer DEFAULT 0 NOT NULL
 );
 
 
@@ -1316,4 +1317,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150312035146');
 INSERT INTO schema_migrations (version) VALUES ('20150322203034');
 
 INSERT INTO schema_migrations (version) VALUES ('20150322213400');
+
+INSERT INTO schema_migrations (version) VALUES ('20150322221028');
+
+INSERT INTO schema_migrations (version) VALUES ('20150322233427');
 
