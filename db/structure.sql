@@ -389,7 +389,7 @@ CREATE TABLE organizations (
     updated_at timestamp without time zone NOT NULL,
     latlng geometry(Point),
     address_json json,
-    caps_cents_cents integer DEFAULT 0 NOT NULL
+    caps_cents integer DEFAULT 0 NOT NULL
 );
 
 
