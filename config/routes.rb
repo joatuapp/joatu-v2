@@ -47,6 +47,11 @@ Rails.application.routes.draw do
     root 'static_page#home'
   end
 
+  namespace :admin do
+    get '/generate_caps', to: 'caps_controller#new'
+    post '/generate_caps', to: 'caps_controller#create'
+  end
+
   ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
