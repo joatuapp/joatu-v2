@@ -17,7 +17,7 @@ class Users::InvitationsController < Devise::InvitationsController
       sign_in(resource_name, resource)
       respond_with resource, :location => after_accept_path_for(resource)
     else
-      respond_with_navigational(form){ render :edit }
+      respond_with_navigational(resource){ render :edit }
     end
   end
 
