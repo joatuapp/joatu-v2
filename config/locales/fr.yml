@@ -47,18 +47,18 @@ fr:
   active_admin:
     dashboard: "Tableau de bord"
     dashboard_welcome:
-      call_to_action: "« Avec de grands pouvoirs viennent de grandes responsabilités. »"
+      call_to_action: "« Avec de grands pouvoirs viennent de grandes responsabilités. »"
       welcome: "Bienvenue à la section administrative de JoatU"
   activerecord:
     errors:
       models:
         offer:
-          blank: "Veuillez choisir un type d'offre !"
+          blank: "Veuillez choisir un type d'offre !"
         request:
-          blank: "Veuillez choisir un type de demande !"
+          blank: "Veuillez choisir un type de demande !"
   home:
     intro:
-      header_html: "Échangez biens et services pour répondre à vos besoins et créer de vibrantes communautés !"
+      header_html: "Échangez biens et services pour répondre à vos besoins, et créez de vibrantes communautés !"
       request_an_invite_link: "Demandez une invitation"
     benefits:
       header: "Créez des liens, partagez des savoir-faire, développez et enrichissez la communauté"
@@ -95,12 +95,12 @@ fr:
     not_authorized: "Vous n'avez pas l'autorisation d'effectuer cette opération."
   tou:
     form:
-      error_message: "Vous devez souscrire aux conditions d'utilisation pour utiliser JoatU !"
+      error_message: "Vous devez souscrire aux conditions d'utilisation pour utiliser JoatU !"
       label_html: "Je souscris aux %{link}"
       link: "conditions d'utilisation"
   help:
-    header: "Aide et « foire aux questions »"
-    intro: "JoatU, une plateforme communautaire, est ouverte à vos commentaires et suggestions !"
+    header: "Aide et « foire aux questions »"
+    intro: "JoatU, une plateforme communautaire, est ouverte à vos commentaires et suggestions !"
     send_admin_message: "Envoyer un message à JoatU"
   mailchimp:
     newsletter:
@@ -152,7 +152,7 @@ fr:
     new_link: "Ajouter une nouvelle offre"
     new_header: "Offrez quelque chose de nouveau !"
     search: "Rechercher !"
-    empty: "Il n'y a encore aucune offre !"
+    empty: "Il n'y a encore aucune offre !"
     search_placeholder: "Recherche..."
     offered_by:
       about_header: "À propos de cet usager"
@@ -163,7 +163,7 @@ fr:
         has_no_requests: "%{offerer} n'a présentement aucune demande."
         has_open_requests: "%{offerer} a formulé les demandes ci-dessous. Peut-être un échange est-il envisageable ?"
         header: "Demandes"
-    offerer_label: "Offert par : %{offerer}"
+    offerer_label: "Offert par : %{offerer}"
     send_message: "Envoyer un message à %{offerer} à propos de cette offre"
     type_label: "J'offre"
     visibility:
@@ -171,12 +171,12 @@ fr:
       label: "Rendre cette offre visible à"
       pod: "Seulement mon secteur"
   references:
-    destroy_confirm: "Voulez-vous vraiment supprimer cette référence ? Cette opération est irréversible !"
+    destroy_confirm: "Voulez-vous vraiment supprimer cette référence ? Cette opération est irréversible !"
     destroy_link: "supprimer"
     edit_header: "Modifier une référence"
     edit_link: "modifier"
     empty: "Pas de références pour l'instant"
-    from_name: "De : %{name}"
+    from_name: "De : %{name}"
     index_header: "Références"
     new_header: "Nouvelle référence"
     new_link: "Ajouter une référence"
@@ -185,9 +185,9 @@ fr:
     editing_header: "Modifier la demande"
     empty: "Il n'y a pas de demandes pour l'instant."
     index_header: "Demandes courantes"
-    new_header: "Adresser une demande à la communauté !"
+    new_header: "Adresser une demande à la communauté !"
     new_link: "Ajouter une nouvelle demande"
-    requester_label: "Demandé par : %{requester}"
+    requester_label: "Demandé par : %{requester}"
     requested_by:
       references_header: "Références"
       about_header: "À propos de cet usager"
@@ -196,7 +196,7 @@ fr:
         has_no_offers: "%{requester} n'offre rien pour l'instant."
         has_open_offers: "%{requester} propose les offres ci-dessous. Peut-être un échange est-il envisageable ?"
         header: "Offres"
-    search: "Rechercher !"
+    search: "Rechercher !"
     search_placeholder: "Recherche en cours..."
     send_message: "Envoyer un message à %{requester} concernant cette demand"
     type_label: "Je cherche"
@@ -209,19 +209,19 @@ fr:
     events: "Évènements"
     events_intro: "Prenez connaissance de ces évènements à venir dans le secteur %{pod_name}"
     few_offers_content_html: "Débutez en ajoutant des %{requests_link} et des %{offers_link}."
-    few_offers_header: "Bienvenue sur JoatU !"
+    few_offers_header: "Bienvenue sur JoatU !"
     hub: "Point de ralliement"
     map: "Plan"
-    no_events_message: "Rien ici... pour l'instant !"
+    no_events_message: "Rien ici... pour l'instant !"
     offers_link_text: "Offres"
     pod: "Secteur"
     requests_link_text: "Demandes"
   users:
     delete_button: "Supprimer votre compte"
-    delete_confirm_message: "Voulez-vous vraiment supprimer votre compte ? Cette opération est irréversible !"
+    delete_confirm_message: "Voulez-vous vraiment supprimer votre compte ? Cette opération est irréversible !"
     editing_header: "Modifier le compte"
     leave_password_blank_to_not_change: "Laissez vide si vous ne désirez pas le modifier."
-    user_updated: "Votre compte a été mis à jour avec succès !"
+    user_updated: "Votre compte a été mis à jour avec succès !"
   profiles:
     editing_header: "Modifier votre profil"
     index_header: "Utilisateurs de JoatU"
@@ -232,7 +232,7 @@ fr:
     destroy_confirm: "Voulez-vous réellement supprimer votre profil ? Cette opération est irréversible !"
     new_header: "Créer votre profil JoatU"
     send_message: "Envoyer le message"
-    caps_balance: "Points d'ACC : %{balance}"
+    caps_balance: "Points d'ACC : %{balance}"
   mailboxer:
     sent: "Message envoyé !"
   auth:
@@ -262,7 +262,7 @@ fr:
       change_password_btn: "Modifier mon mot de passe"
       send_new_password: "Recevoir les instructions de réinitialisation du mot de passe"
       new_password_hint: "Laissez en blanc si vous ne désirez pas le modifier." 
-      current_password_hint: "Votre mot de passe actuel est requis pour confirmer la modification." # ??? Singular ok ?
+      current_password_hint: "Votre mot de passe actuel est requis pour confirmer la modification." # ??? Singular ok ?
       update: "Mise à jour"
       sign_up: "Créer un compte"
       log_in: "Accéder à votre compte"
@@ -272,8 +272,8 @@ fr:
       resend_unlock: "Réenvoyer les instructions de déverrouillage"
 
     email:
-      confirm_greeting: "Bienvenue, %{email} !"
-      confirm_instructions: "Vous pouvez confirmer l'adresse courrielle liée à votre compte en suivant l'hyperlien ci-dessous :"
+      confirm_greeting: "Bienvenue, %{email} !"
+      confirm_instructions: "Vous pouvez confirmer l'adresse courrielle liée à votre compte en suivant l'hyperlien ci-dessous :"
       confirm_link: "Valider mon compte"
 
       reset_pw_greeting: "Hello %{email}!"
