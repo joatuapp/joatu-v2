@@ -34,9 +34,10 @@ class Users::InvitationsController < Devise::InvitationsController
   # should return a form holding an instance 
   # of resource class
   def accept_form
-    resource = resource_class.find_by_invitation_token(update_resource_params[:invitation_token], false)
+    update_params = update_resource_params
+    resource = resource_class.find_by_invitation_token(update_params.delete(:invitation_token), false)
     @form = NewUserForm.new(resource)
-    if @form.validate(update_resource_params)
+    if @form.validate(update_params)
       @form.save do |data|
         data = data.reject {|k,v| %w(tou_agreement).include? k }
         @form.model.update(data)
