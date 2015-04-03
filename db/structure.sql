@@ -104,7 +104,8 @@ CREATE TABLE caps_transactions (
     destination_id integer,
     destination_type character varying,
     caps_cents integer DEFAULT 0 NOT NULL,
-    message_from_source text
+    message_from_source text,
+    CONSTRAINT check_caps_cents CHECK ((caps_cents >= 0))
 );
 
 
@@ -389,7 +390,8 @@ CREATE TABLE organizations (
     updated_at timestamp without time zone NOT NULL,
     latlng geometry(Point),
     address_json json,
-    caps_cents integer DEFAULT 0 NOT NULL
+    caps_cents integer DEFAULT 0 NOT NULL,
+    CONSTRAINT check_caps_cents CHECK ((caps_cents >= 0))
 );
 
 
@@ -626,7 +628,8 @@ CREATE TABLE users (
     preferences_json json,
     postal_code character varying(32),
     home_location geometry(Point),
-    caps_cents integer DEFAULT 0 NOT NULL
+    caps_cents integer DEFAULT 0 NOT NULL,
+    CONSTRAINT check_caps_cents CHECK ((caps_cents >= 0))
 );
 
 
@@ -1321,4 +1324,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150322213400');
 INSERT INTO schema_migrations (version) VALUES ('20150322221028');
 
 INSERT INTO schema_migrations (version) VALUES ('20150322233427');
+
+INSERT INTO schema_migrations (version) VALUES ('20150403184634');
 

@@ -4,32 +4,22 @@
 
 class CapsGenerator
   include Singleton
+  include FakeArModel
 
-  # Required to match AR interface, so this can be set as a polymorphic
-  # relation.
-  def self.primary_key
-    :id
-  end
-
-  # Required to match AR interface, so this can be set as a polymorphic
-  # relation.
-  def self.base_class
-    self
-  end
-
-  # Required to match AR interface, so this can be set as a polymorphic
-  # relation.
-  def [](val)
-    if val == :id
-      1
-    end
-  end
-
+  # NOTE: These caps & caps_cents accessors are basically all null-operations,
+  # but cause this class to behave like it has a caps balance than can be added
+  # to & subtracted from, just like other objects. The catch here is that the
+  # CapsGenerator will never run out of caps.
   def caps_cents
-    Float::INFINITY
+    100_000_000_000 # A really big, constant number.
+  end
+  
+  def caps
+    Money.new(caps_cents, "CAPS")
   end
 
   def caps_cents=(val)
     # No-op
   end
+  alias caps= caps_cents=
 end

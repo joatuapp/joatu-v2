@@ -50,8 +50,6 @@ gem 'puma'
 
 gem 'newrelic_rpm'
 
-gem 'naught', github: 'avdi/naught'
-
 gem 'i18n-tasks', '~> 0.7.11'
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
 
@@ -74,6 +72,13 @@ gem 'wisper'
 gem 'render_anywhere', :require => false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+
+gem 'simple_usecase', path: "~/workspace/simple_usecase"
+
+gem 'naught', github: 'avdi/naught'
+gem 'contracts' # https://github.com/egonSchiele/contracts.ruby
+
 
 group :development, :test do
   gem "codeclimate-test-reporter"

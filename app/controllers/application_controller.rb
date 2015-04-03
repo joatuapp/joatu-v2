@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   after_action :set_csrf_cookie, if: -> { protect_against_forgery? }
   after_action :verify_authorized, :except => :index, unless: -> { is_a?(DeviseController) || is_a?(ActiveAdmin::BaseController) }
 
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from Pundit::NotAuthorizedError, UnauthorizedError, with: :user_not_authorized
 
   # Default locale to be included with each request:
   def default_url_options(options = {})

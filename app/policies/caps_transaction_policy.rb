@@ -5,7 +5,7 @@ class CapsTransactionPolicy < ApplicationPolicy
       # A caps transaction whose source is the CapsGenerator is
       # creating brand new Caps. As such, only Admins should be allowed to
       # do this:
-      user.admin?
+      user.is_admin?
     else
       # Otherwise, users can only spend their own caps:
       user == record.source

@@ -36,6 +36,10 @@ module JoatuV2
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    # Include errors dir in autolaod
+    config.autoload_paths += %W(#{config.root}/lib/errors)
+    config.autoload_paths += %W(#{config.root}/app/services/concerns)
+
     # TODO: Using sql schema due to bugs in the (beta) postgres activerecord adapter.
     # Once a stable version is released we should be able to remve this and
     # regenerate the schema in Ruby format.

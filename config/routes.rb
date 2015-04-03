@@ -48,8 +48,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get '/generate_caps', to: 'caps_controller#new'
-    post '/generate_caps', to: 'caps_controller#create'
+    get '/generate_caps', to: 'caps#new'
+    post '/generate_caps', to: 'caps#create'
   end
 
   ActiveAdmin.routes(self)
