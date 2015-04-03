@@ -99,10 +99,10 @@ ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
 
 CREATE TABLE caps_transactions (
     id integer NOT NULL,
-    source_id integer,
-    source_type character varying,
-    destination_id integer,
-    destination_type character varying,
+    source_id integer NOT NULL,
+    source_type character varying NOT NULL,
+    destination_id integer NOT NULL,
+    destination_type character varying NOT NULL,
     caps_cents integer DEFAULT 0 NOT NULL,
     message_from_source text,
     CONSTRAINT check_caps_cents CHECK ((caps_cents >= 0))
@@ -1326,4 +1326,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150322221028');
 INSERT INTO schema_migrations (version) VALUES ('20150322233427');
 
 INSERT INTO schema_migrations (version) VALUES ('20150403184634');
+
+INSERT INTO schema_migrations (version) VALUES ('20150403233351');
 

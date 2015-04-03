@@ -22,11 +22,12 @@ module FakeArModel
       end
     end
 
-    def lock
+    def with_lock
+      yield
     end
 
     def id
-      [:id]
+      self.send(:[], :id)
     end
 
     def destroyed?
