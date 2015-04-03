@@ -1,6 +1,5 @@
 class TransferCaps
-  include SimpleUsecase::Usecase
-  include SimpleUsecase::Preparable
+  include SimpleUsecase::All
 
   attr_accessor :form
 
