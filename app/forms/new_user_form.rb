@@ -1,6 +1,6 @@
 class NewUserForm < ApplicationForm
   property :email, validates: {presence: true}
-  property :password, validates: {presence: true, confirmation: true}
+  property :password, validates: {presence: true, confirmation: true, length: { minimum: 8 } }
   property :postal_code, validates: {presence: true}
 
   property :tou_agreement, virtual: true

@@ -17,19 +17,27 @@ class Users::InvitationsController < Devise::InvitationsController
       sign_in(resource_name, resource)
       respond_with resource, :location => after_accept_path_for(resource)
     else
-      respond_with_navigational(form){ render :edit }
+      respond_with_navigational(resource){ render :edit }
     end
   end
 
   private
 
+  # Called when creating an invitation:
+  def invite_resource
+    resource = super
+    resource.update!(confirmed_at: Time.now)
+    resource
+  end
+
   # this is called when accepting invitation
   # should return a form holding an instance 
   # of resource class
   def accept_form
-    resource = resource_class.find_by_invitation_token(update_resource_params[:invitation_token], false)
+    update_params = update_resource_params
+    resource = resource_class.find_by_invitation_token(update_params.delete(:invitation_token), false)
     @form = NewUserForm.new(resource)
-    if @form.validate(update_resource_params)
+    if @form.validate(update_params)
       @form.save do |data|
         data = data.reject {|k,v| %w(tou_agreement).include? k }
         @form.model.update(data)
