@@ -54,6 +54,7 @@ PATH
   remote: ~/workspace/simple_usecase
   specs:
     simple_usecase (0.0.1)
+      activesupport (>= 3.0.0)
 
 GEM
   remote: https://rubygems.org/
