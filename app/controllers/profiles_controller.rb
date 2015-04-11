@@ -14,6 +14,10 @@ class ProfilesController < ApplicationController
     @offers = Offer.owned_by(@profile.user, PaginationOptions.new(params[:offers_page], 5))
     @requests = Request.owned_by(@profile.user, PaginationOptions.new(params[:requests_page], 5))
     @references = Reference.to_user(@profile.user, PaginationOptions.new(params[:references_page], 5))
+    @tip_transaction = CapsTransactionForm.new(CapsTransaction.new(
+      source: current_user,
+      destination: @profile.user,
+    ))
     respond_with(@profile)
   end
 

@@ -1,5 +1,3 @@
-%p#notice= notice
-
 .row
   .col-sm-6
     .panel.panel-primary
@@ -24,6 +22,12 @@
         %p= sanitize @profile.about_me
         - if Pundit.policy(current_user, @profile.user).view_caps_balance?
           %h3= t('profiles.caps_balance', balance: humanized_money_with_symbol(@profile.user.caps))
+        = simple_form_for @tip_transaction, url: caps_transactions_path, wrapper: :inline_form  do |f|
+          .col-sm-9
+            = f.input :caps, hint: "Want to show your appreciation? Send a tip with CAPs!"
+            = f.input :destination_user_id, as: :hidden
+          .col-sm-3
+            = f.button :submit, class: 'pull-right btn-primary', value: "Send Tip", data: { confirm: "Are you sure you want to send a tip to #{@profile.user.name}?" }
     .panel.panel-default
       .panel-heading
         %h2= t('references.index_header')

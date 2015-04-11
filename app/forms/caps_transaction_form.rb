@@ -11,7 +11,7 @@ class CapsTransactionForm < ApplicationForm
   property :message_from_source, type: String
   property :caps, type: Money
 
-  validate :caps_not_negative_or_zero, :source_can_spend
+  validate :caps_not_negative_or_zero, :source_can_spend, :cant_send_to_self
 
   def caps=(val)
     if val.is_a? Money
@@ -44,7 +44,17 @@ class CapsTransactionForm < ApplicationForm
 
   def source_can_spend
     if source.present? && source.caps - caps < 0
-      errors.add(:source, "#{source.class.name.humanize} #{source.id}'s current balance of #{humanized_money_with_symbol(source.caps)} #{source.caps.currency.iso_code} is not sufficient for this transfer. Requested transfer: #{humanized_money_with_symbol(caps)} #{source.caps.currency.iso_code}.")
+      if source.is_a? User
+        errors.add(:base, "#{source.name}'s current balance of #{humanized_money_with_symbol(source.caps)} #{source.caps.currency.iso_code} is not sufficient for this transfer. Requested transfer: #{humanized_money_with_symbol(caps)} #{source.caps.currency.iso_code}.")
+      else
+        errors.add(:source, "#{source.class.name.humanize} #{source.id}'s current balance of #{humanized_money_with_symbol(source.caps)} #{source.caps.currency.iso_code} is not sufficient for this transfer. Requested transfer: #{humanized_money_with_symbol(caps)} #{source.caps.currency.iso_code}.")
+      end
+    end
+  end
+
+  def cant_send_to_self
+    if source.present? && destination.present? && source == destination
+      errors.add(:base, "Cannot send CAPs to yourself!")
     end
   end
 end

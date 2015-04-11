@@ -29,6 +29,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :caps_transactions, only: [:create]
+
     resources :hubs
 
     devise_for :users, controllers: { invitations: 'users/invitations' }
