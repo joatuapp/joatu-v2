@@ -6,6 +6,10 @@ class CapsGenerator
   include Singleton
   include FakeArModel
 
+  def name
+    "Caps Generator"
+  end
+
   # NOTE: These caps & caps_cents accessors are basically all null-operations,
   # but cause this class to behave like it has a caps balance than can be added
   # to & subtracted from, just like other objects. The catch here is that the

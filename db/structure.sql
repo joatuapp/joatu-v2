@@ -105,6 +105,8 @@ CREATE TABLE caps_transactions (
     destination_type character varying NOT NULL,
     caps_cents integer DEFAULT 0 NOT NULL,
     message_from_source text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     CONSTRAINT check_caps_cents CHECK ((caps_cents >= 0))
 );
 
@@ -1328,4 +1330,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150322233427');
 INSERT INTO schema_migrations (version) VALUES ('20150403184634');
 
 INSERT INTO schema_migrations (version) VALUES ('20150403233351');
+
+INSERT INTO schema_migrations (version) VALUES ('20150411164831');
 
