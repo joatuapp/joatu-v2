@@ -68,3 +68,8 @@ end
 RSpec.configure do |config|
     config.include FactoryGirl::Syntax::Methods
 end
+
+# Disables the contracts gem (https://github.com/egonSchiele/contracts.ruby)
+# during tests, as it (correctly) blocks mock objects from being used with contracted methods. Would love a better solution:
+ENV['NO_CONTRACTS'] = 'true'
+
