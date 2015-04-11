@@ -1,0 +1,10 @@
+= simple_form_for(@caps_transaction, url: admin_generate_caps_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :destination_user_id, collection: @users, as: :select, label: "#{t('admin.caps.destination_label')}:"
+    = f.input :caps, label: "#{t('admin.caps.caps_amount')}:"
+    = f.input :message_from_source, as: :text
+
+  .form-actions
+    = f.button :submit, class: 'pull-right btn-primary'

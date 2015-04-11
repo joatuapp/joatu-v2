@@ -13,7 +13,7 @@ class CapsTransaction < ActiveRecord::Base
   end
 
   def destination
-    if source_type == "CapsGenerator"
+    if destination_type == "CapsGenerator"
       CapsGenerator.instance
     else
       super

@@ -30,6 +30,12 @@ en:
     fr: "Français"
   time:
     ago: "%{time} ago"
+  admin:
+    caps:
+      new_header: "Generate new CAPs"
+      destination_label: "Awared new caps to"
+      caps_amount: "CAPs Amount"
+      caps_awarded_successfully_message: "Successfully awarded %{caps} to %{recipient_name}"
   footer:
     join_us:
       header: "Join Us"
