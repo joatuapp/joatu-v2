@@ -74,7 +74,7 @@ gem 'render_anywhere', :require => false
 # gem 'capistrano-rails', group: :development
 
 
-gem 'simple_usecase', path: "~/workspace/simple_usecase"
+gem 'simple_usecase', github: "sweettooth/simple_usecase"
 
 gem 'naught', github: 'avdi/naught'
 gem 'contracts' # https://github.com/egonSchiele/contracts.ruby
