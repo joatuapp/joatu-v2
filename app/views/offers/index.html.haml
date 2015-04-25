@@ -7,7 +7,7 @@
         = simple_form_for @search_form, url: search_offers_path, wrapper: :horizontal_form, html: {method: :get, class: 'form-horizontal'} do |f|
           = f.input :search, placeholder: t('offers.search_placeholder')
           = f.input :order_by, collection: @order_options
-          = f.input :types_filter, collection: @offer_type_options, as: :check_boxes, label: t('requests.types_filter_label'), wrapper: :horizontal_radio_and_checkboxes
+          = f.input :types_filter, collection: @offer_type_options, as: :check_boxes, label: t('offers.types_filter_label'), wrapper: :horizontal_radio_and_checkboxes
           = f.button :submit, t('offers.search'), class: 'pull-right'
 
         .clearfix
