@@ -895,6 +895,13 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: collection_select_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX collection_select_index ON offers_and_requests USING btree (offer_or_request, pod_id, created_at);
+
+
+--
 -- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -993,20 +1000,6 @@ CREATE INDEX index_mailboxer_receipts_on_receiver_id_and_receiver_type ON mailbo
 
 
 --
--- Name: index_offers_and_requests_on_offer_or_request; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_offers_and_requests_on_offer_or_request ON offers_and_requests USING btree (offer_or_request);
-
-
---
--- Name: index_offers_and_requests_on_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_offers_and_requests_on_type ON offers_and_requests USING btree (type);
-
-
---
 -- Name: index_organization_memberships_on_membership_types; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1102,6 +1095,13 @@ CREATE INDEX index_users_on_invited_by_id ON users USING btree (invited_by_id);
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: type_collection_select_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX type_collection_select_index ON offers_and_requests USING btree (type, pod_id, created_at);
 
 
 --
@@ -1332,4 +1332,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150403184634');
 INSERT INTO schema_migrations (version) VALUES ('20150403233351');
 
 INSERT INTO schema_migrations (version) VALUES ('20150411164831');
+
+INSERT INTO schema_migrations (version) VALUES ('20150424210041');
 

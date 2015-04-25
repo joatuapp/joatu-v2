@@ -10,28 +10,30 @@ class OfferOrRequest < Base
   belongs_to :user
   belongs_to :pod
 
-  pg_search_scope :en_text_search, against: {
-    title: "A",
-    description: "C",
-  },
-  ignoring: :accents,
-  using: {
-    tsearch: {
-      dictionary: "english",
-      any_word: true,
+  pg_search_scope :text_search, lambda {|query, lang, order = nil|
+    dictionary = (lang == :fr) ? "french" : "english"
+    search_scope = {
+      query: query,
+      against: {
+        title: "A",
+        description: "C",
+      },
+      ignoring: :accents,
+      using: {
+        tsearch: {
+          dictionary: dictionary,
+          any_word: true,
+        }
+      }
     }
-  }
+    case order
+    when :created_at_desc
+      search_scope[:order_within_rank] = "#{self.table_name}.created_at DESC"
+    when :created_at_asc
+      search_scope[:order_within_rank] = "#{self.table_name}.created_at ASC"
+    end
 
-  pg_search_scope :fr_text_search, against: {
-    title: "A",
-    description: "C",
-  },
-  ignoring: :accents,
-  using: {
-    tsearch: {
-      dictionary: "french",
-      any_word: true,
-    }
+    search_scope
   }
 
   def self.visible_to_pod(pod)
@@ -53,12 +55,30 @@ class OfferOrRequest < Base
   end
 
   def self.search_results(search_data, user, pagination)
-    case I18n.locale
-    when :fr
-      fr_text_search(search_data[:search]).available_to(user, pagination)
+    query = self
+
+    # Only add text search conditions if a search key is given:
+    if search_data[:search].present?
+      query = query.text_search(search_data[:search], I18n.locale, search_data[:order_by])
     else
-      en_text_search(search_data[:search]).available_to(user, pagination)
+      # NOTE: This search is in an "else" block, as the text_search scope will
+      # handle order for us, IF it is used. This is a fallback for ordering
+      # when not doing a text search:
+      case search_data[:order_by]
+      when :created_at_desc
+        query = query.order(created_at: :desc)
+      when :created_at_asc
+        query = query.order(created_at: :asc)
+      end
     end
+
+    if search_data[:types_filter].present?
+      query = query.where(type: search_data[:types_filter])
+    end
+
+    query = query.available_to(user, pagination)
+
+    query
   end
 
   def type_class

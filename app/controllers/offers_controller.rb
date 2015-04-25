@@ -1,15 +1,18 @@
 class OffersController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_action :set_search_options, only: [:index, :search]
   skip_after_action :verify_authorized, only: [:index, :search]
 
   respond_to :html
 
-  SearchQuery = Struct.new(:search, :order_by) do include ActiveModel::Model; end
+  SearchQuery = Struct.new(:search, :order_by, :types_filter) do include ActiveModel::Model; end
 
   def index
-    @offers = Offer.available_to(current_user, PaginationOptions.new(params[:page]))
     @search_form = OfferSearchForm.new(SearchQuery.new)
+    @search_form.save do |search_data|
+      @offers = Offer.search_results(search_data, current_user, PaginationOptions.new(params[:page]))
+    end
     respond_with(@offers)
   end
 
@@ -73,6 +76,7 @@ class OffersController < ApplicationController
   def search
     params[:offer_search] ||= {}
     @search_form = OfferSearchForm.new(SearchQuery.new)
+
     if @search_form.validate(params[:offer_search])
       @search_form.save do |search_data|
         @offers = Offer.search_results(search_data, current_user, PaginationOptions.new(params[:page]))
@@ -86,5 +90,13 @@ class OffersController < ApplicationController
   private
     def set_offer
       @offer = Offer.find(params[:id])
+    end
+
+    def set_search_options
+      @order_options = {
+        "Newest First" => :created_at_desc,
+        "Oldest First" => :created_at_asc
+      }
+      @offer_type_options = Offer.type_options
     end
 end

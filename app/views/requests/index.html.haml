@@ -4,10 +4,13 @@
       .panel-heading
         %h2.text-center Search
       .panel-body
-        = simple_form_for @search_form, url: search_requests_path, wrapper: :inline_form, html: {method: :get, class: 'form-inline'} do |f|
+        = simple_form_for @search_form, url: search_requests_path, wrapper: :horizontal_form, html: {method: :get, class: 'form-horizontal'} do |f|
           = f.input :search, placeholder: t('requests.search_placeholder')
-          = f.button :submit, t('requests.search')
+          = f.input :order_by, collection: @order_options
+          = f.input :types_filter, collection: @request_type_options, as: :check_boxes, label: t('requests.types_filter_label'), wrapper: :horizontal_radio_and_checkboxes
+          = f.button :submit, t('requests.search'), class: 'pull-right'
 
+        .clearfix
         %br
         = link_to new_request_path, class: 'btn btn-success pull-right' do
           %i.glyphicon.glyphicon-plus

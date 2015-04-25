@@ -152,7 +152,6 @@ fr:
     new_link: "Ajouter une nouvelle offre"
     new_header: "Offrez quelque chose de nouveau !"
     search: "Rechercher !"
-    empty: "Il n'y a encore aucune offre !"
     search_placeholder: "Recherche..."
     offered_by:
       about_header: "À propos de cet usager"
@@ -183,7 +182,6 @@ fr:
   requests:
     description: "Description"
     editing_header: "Modifier la demande"
-    empty: "Il n'y a pas de demandes pour l'instant."
     index_header: "Demandes courantes"
     new_header: "Adresser une demande à la communauté !"
     new_link: "Ajouter une nouvelle demande"

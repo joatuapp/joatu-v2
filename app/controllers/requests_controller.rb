@@ -1,15 +1,18 @@
 class RequestsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_request, only: [:show, :edit, :update, :destroy]
+  before_action :set_search_options, only: [:index, :search]
   skip_after_action :verify_authorized, only: [:index, :search]
 
   respond_to :html
 
-  SearchQuery = Struct.new(:search, :order_by) do include ActiveModel::Model; end
+  SearchQuery = Struct.new(:search, :order_by, :types_filter) do include ActiveModel::Model; end
 
   def index
-    @user_requests = Request.available_to(current_user, PaginationOptions.new(params[:page]))
     @search_form = RequestSearchForm.new(SearchQuery.new)
+    @search_form.save do |search_data|
+      @user_requests = Request.search_results(search_data, current_user, PaginationOptions.new(params[:page]))
+    end
     respond_with(@user_requests)
   end
 
@@ -73,6 +76,7 @@ class RequestsController < ApplicationController
   end
 
   def search
+    params[:request_search] ||= {}
     @search_form = RequestSearchForm.new(SearchQuery.new)
     if @search_form.validate(params[:request_search])
       @search_form.save do |search_data|
@@ -80,6 +84,7 @@ class RequestsController < ApplicationController
         render :index
       end
     else
+      Rails.logger.debug "Errors: #{@search_form.errors.full_messages.inspect}"
       redirect_to requests_path
     end
   end
@@ -87,5 +92,13 @@ class RequestsController < ApplicationController
   private
     def set_request
       @user_request = Request.find(params[:id])
+    end
+
+    def set_search_options
+      @order_options = {
+        "Newest First" => :created_at_desc,
+        "Oldest First" => :created_at_asc
+      }
+      @request_type_options = Request.type_options
     end
 end
