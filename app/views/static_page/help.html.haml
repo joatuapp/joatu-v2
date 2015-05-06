@@ -3,3 +3,8 @@
 = link_to new_message_path(receiver: @joatu_admin.id), class: 'btn btn-primary' do
   %span.glyphicon.glyphicon-envelope
   = t('help.send_admin_message')
+
+%h2= t('help.faqs')
+
+:markdown
+  #{render "static_page/faqs_#{I18n.locale}.md"}

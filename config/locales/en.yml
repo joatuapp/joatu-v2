@@ -66,6 +66,7 @@ en:
     header: "Help & FAQs"
     intro: "JoatU is a community-created platform and we welcome your feedback and suggestions!"
     send_admin_message: "Send JoatU A Message"
+    faqs: "FAQs"
   caps:
     caps_sent_successfully_message: "Successfully sent %{caps} to %{recipient_name}"
     caps_failed_to_send: "Could not send tip due to errors: %{error_message}"

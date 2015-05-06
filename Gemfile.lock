@@ -332,6 +332,7 @@ GEM
       polyamorous (~> 1.1)
     rdoc (4.2.0)
       json (~> 1.4)
+    redcarpet (3.2.3)
     reform (1.2.5)
       activemodel
       disposable (~> 0.0.5)
@@ -487,6 +488,7 @@ DEPENDENCIES
   pundit (~> 0.3.0)
   rails (= 4.2.0)
   rails-i18n!
+  redcarpet (~> 3.2)
   reform (~> 1.2.5)
   render_anywhere
   rgeo-geojson
