@@ -5,6 +5,11 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
+
+    column "Pod" do |user|
+      Pod.home_pod_for_user(user).name
+    end
+
     column :is_admin
     column :current_sign_in_at
     column :sign_in_count

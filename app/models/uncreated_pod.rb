@@ -7,7 +7,7 @@ UncreatedPod = Naught.build do |config|
   end
 
   def description
-    "There aren't enough JoatU'ers in your area to form a Pod yet, but stay tuned! As more people join the site there's sure to be a Pod opening up in your neighbourhood soon!"
+    "Oops! You have selected a postal code without a designated pod. Please email info@joatu.com with the postal code that you entered and we'll fix the problem for you as soon as possible."
   end
 
   # Supports using this as an existing value for a select input:
