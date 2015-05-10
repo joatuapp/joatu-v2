@@ -22,8 +22,6 @@ gem 'jquery-rails'
 gem 'jquery-cookie-rails'
 gem 'jquery-turbolinks'
 
-gem 'jquery-ui-rails'
-
 # Handles money support, with migration / DB integration.
 gem 'money-rails', github: "joatuapp/money-rails"
 
@@ -44,6 +42,9 @@ gem 'kaminari'
 # Rails frontend specific gems:
 gem 'simple_form', '~> 3.1.0'
 gem 'gravatarify', '~> 3.0.0'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+
 
 # Use puma as the app server
 gem 'puma'

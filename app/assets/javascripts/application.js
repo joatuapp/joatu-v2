@@ -11,9 +11,12 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require jquery.cookie
 //= require turbolinks
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require gmaps/google
+//= require moment
+//= require bootstrap-datetimepicker
+//= require moment/fr
+//= require pickers
 //= require_tree .

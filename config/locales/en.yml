@@ -30,6 +30,8 @@ en:
     fr: "Français"
   time:
     ago: "%{time} ago"
+  community_offers:
+    new_header: "Create a new Community Offer"
   admin:
     caps:
       new_header: "Generate new CAPs"

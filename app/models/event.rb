@@ -3,6 +3,9 @@ class Event < Base
   belongs_to :organization
   belongs_to :pod
 
+  has_one :community_offer_detail # 0 or 1, actually.
+  accepts_nested_attributes_for :community_offer_detail
+
   composed_of :address, mapping: %w(address_json to_json)
 
   def self.available_for_organization(org, pagination)

@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
     resources :hubs
 
+    resources :community_offers, only: [:new, :create]
+
     devise_for :users, controllers: { invitations: 'users/invitations' }
     resources :users, only: [:edit, :update, :destroy]
 

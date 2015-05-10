@@ -131,6 +131,41 @@ ALTER SEQUENCE caps_transactions_id_seq OWNED BY caps_transactions.id;
 
 
 --
+-- Name: community_offer_details; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE community_offer_details (
+    id integer NOT NULL,
+    event_id integer,
+    value_to_society text,
+    producer_qualifications text,
+    estimated_hours_of_work integer,
+    requirements_provided text,
+    requirements_requested text,
+    requests text
+);
+
+
+--
+-- Name: community_offer_details_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE community_offer_details_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: community_offer_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE community_offer_details_id_seq OWNED BY community_offer_details.id;
+
+
+--
 -- Name: events; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -146,7 +181,9 @@ CREATE TABLE events (
     address_json json,
     created_by_user_id integer,
     organization_id integer,
-    latlng geometry(Point)
+    latlng geometry(Point),
+    status character varying DEFAULT 'approved'::character varying NOT NULL,
+    capacity integer DEFAULT 0
 );
 
 
@@ -672,6 +709,13 @@ ALTER TABLE ONLY caps_transactions ALTER COLUMN id SET DEFAULT nextval('caps_tra
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY community_offer_details ALTER COLUMN id SET DEFAULT nextval('community_offer_details_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::regclass);
 
 
@@ -780,6 +824,14 @@ ALTER TABLE ONLY active_admin_comments
 
 ALTER TABLE ONLY caps_transactions
     ADD CONSTRAINT caps_transactions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: community_offer_details_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY community_offer_details
+    ADD CONSTRAINT community_offer_details_pkey PRIMARY KEY (id);
 
 
 --
@@ -1208,6 +1260,14 @@ ALTER TABLE ONLY organization_memberships
 
 
 --
+-- Name: fk_rails_f634527362; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY community_offer_details
+    ADD CONSTRAINT fk_rails_f634527362 FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE;
+
+
+--
 -- Name: mb_opt_outs_on_conversations_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1334,4 +1394,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150403233351');
 INSERT INTO schema_migrations (version) VALUES ('20150411164831');
 
 INSERT INTO schema_migrations (version) VALUES ('20150424210041');
+
+INSERT INTO schema_migrations (version) VALUES ('20150509205154');
+
+INSERT INTO schema_migrations (version) VALUES ('20150509205227');
 

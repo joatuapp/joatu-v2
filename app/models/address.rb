@@ -1,6 +1,8 @@
 class Address
+  include ActiveModel::Model
   include Virtus.model
 
+  attribute :name, String
   attribute :address1, String
   attribute :address2, String
   attribute :city, String

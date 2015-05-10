@@ -57,6 +57,15 @@ GIT
     simple_usecase (0.0.1)
       activesupport (>= 3.0.0)
 
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: c5405f3486b57a52416caf93b79fc09d56930a82
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (4.7.15)
+      momentjs-rails (>= 2.9.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -268,6 +277,8 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.5.1)
+    momentjs-rails (2.10.2)
+      railties (>= 3.1)
     monetize (1.1.0)
       money (~> 6.5.0)
     money (6.5.1)
@@ -457,6 +468,7 @@ DEPENDENCIES
   contracts
   country_select (~> 2.1.1)
   database_cleaner
+  datetimepicker-rails!
   devise (~> 3.4.1)
   devise_invitable (~> 1.4.0)
   dotenv-rails
@@ -472,11 +484,11 @@ DEPENDENCIES
   jquery-cookie-rails
   jquery-rails
   jquery-turbolinks
-  jquery-ui-rails
   kaminari
   mail_safe
   mailboxer!
   mandrill-api
+  momentjs-rails (>= 2.9.0)
   money-rails!
   naught!
   newrelic_rpm

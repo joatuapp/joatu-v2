@@ -1,0 +1,29 @@
+= simple_form_for @community_offer, as: :community_offer, url: community_offers_path do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :description, as: :text
+    = f.input :starts_at, as: :datetime_picker
+    = f.input :ends_at, as: :datetime_picker
+    = f.input :capacity, as: :integer
+
+    = f.simple_fields_for :address do |af|
+      = af.input :location_name
+      = af.input :address1
+      = af.input :address2
+      = af.input :city
+      = af.input :province
+      = af.input :country
+      = af.input :postal_code
+
+    = f.simple_fields_for :details do |df|
+      = df.input :value_to_society, as: :text
+      = df.input :producer_qualifications, as: :text
+      = df.input :estimated_hours_of_work, as: :integer
+      = df.input :requirements_provided, as: :text
+      = df.input :requirements_requested, as: :text
+      = df.input :requests, as: :text
+
+  .form-actions
+    = f.button :submit, class: 'pull-right btn-primary'
