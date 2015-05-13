@@ -2,28 +2,32 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name
-    = f.input :description, as: :text
-    = f.input :starts_at, as: :datetime_picker
-    = f.input :ends_at, as: :datetime_picker
-    = f.input :capacity, as: :integer
+    = f.input :name, label: t('community_offers.name_label')
+    = f.input :description, as: :text, label: t('community_offers.description_label')
+    = f.input :starts_at, as: :datetime_picker, label: t('community_offers.start_date_time_label')
+    = f.input :ends_at, as: :datetime_picker, label: t('community_offers.end_date_time_label')
+    = f.input :capacity, as: :integer, label: t('community_offers.capacity_label')
 
+    %h3= t('community_offers.address_label')
     = f.simple_fields_for :address do |af|
-      = af.input :location_name
-      = af.input :address1
-      = af.input :address2
-      = af.input :city
-      = af.input :province
-      = af.input :country
-      = af.input :postal_code
+      = af.input :location_name, label: t('community_offers.address_name_label')
+      = af.input :address1, label: t('community_offers.address1_label')
+      = af.input :address2, label: nil
+      = af.input :city, label: t('community_offers.city_label')
+      = af.input :province, label: t('community_offers.province_label')
+      = af.input :country, label: t('community_offers.country_label')
+      = af.input :postal_code, label: t('community_offers.postal_code_label')
 
+    %h3= t('community_offers.about_offer_label')
     = f.simple_fields_for :details do |df|
-      = df.input :value_to_society, as: :text
-      = df.input :producer_qualifications, as: :text
-      = df.input :estimated_hours_of_work, as: :integer
-      = df.input :requirements_provided, as: :text
-      = df.input :requirements_requested, as: :text
-      = df.input :requests, as: :text
+      = df.input :value_to_society, as: :text, label: t('community_offers.value_to_society_label')
+      = df.input :producer_qualifications, as: :text, label: t('community_offers.qualifications_label')
+      = df.input :estimated_hours_of_work, as: :integer, label: t('community_offers.estimated_hours_label')
+      = df.input :requirements_provided, as: :text, label: t('community_offers.requirements_provided_label')
+      = df.input :requirements_requested, as: :text, label: t('community_offers.requirements_needed_label')
+      = df.input :requests, as: :text, label: t('community_offers.requests_label')
+      = df.input :question_or_comment, as: :text, label: t('community_offers.question_or_comment_label')
 
   .form-actions
-    = f.button :submit, class: 'pull-right btn-primary'
+    = f.button :submit, class: 'pull-right btn-primary', value: t('community_offers.create')
+  %small= t('community_offers.subject_to_approval')

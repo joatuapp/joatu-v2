@@ -11,10 +11,8 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
-@import "jquery.datetimepicker";
-@import "jquery-ui";
-
 @import "inputs";
+@import "bootstrap-datetimepicker";
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:

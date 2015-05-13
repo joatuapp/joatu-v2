@@ -5,7 +5,9 @@ ActiveAdmin.register Event do
     :ends_at, 
     :created_by_user_id, 
     :organization_id,
-    :address_json
+    :pod_id,
+    :address_json,
+    :status,
 
   index do
     selectable_column
@@ -13,6 +15,7 @@ ActiveAdmin.register Event do
     column :name
     column :starts_at
     column :ends_at
+    column :status
     column :creator
     column :created_at
     actions
@@ -27,10 +30,12 @@ ActiveAdmin.register Event do
     f.inputs "Events" do
       f.input :name
       f.input :description
-      f.input :starts_at, :as => :string, :input_html => {:class => "hasDatetimePicker"}
-      f.input :ends_at, :as => :string, :input_html => {:class => "hasDatetimePicker"}
+      f.input :status, as: :select, collection: ['pending_approval', 'approved']
+      f.input :starts_at, :as => :string, :input_html => {:class => "datetimepicker"}
+      f.input :ends_at, :as => :string, :input_html => {:class => "datetimepicker"}
       f.input :creator
       f.input :organization
+      f.input :pod
       f.inputs "Address", for: [:address, f.object.address] do |af|
         af.input :address1
         af.input :address2

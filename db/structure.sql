@@ -142,7 +142,8 @@ CREATE TABLE community_offer_details (
     estimated_hours_of_work integer,
     requirements_provided text,
     requirements_requested text,
-    requests text
+    requests text,
+    question_or_comment text
 );
 
 
@@ -1398,4 +1399,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150424210041');
 INSERT INTO schema_migrations (version) VALUES ('20150509205154');
 
 INSERT INTO schema_migrations (version) VALUES ('20150509205227');
+
+INSERT INTO schema_migrations (version) VALUES ('20150513021218');
 

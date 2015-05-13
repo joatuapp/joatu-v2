@@ -12,6 +12,7 @@
       %ul.nav.navbar-nav
         %li= link_to t('nav.offers'), offers_path
         %li= link_to t('nav.requests'), requests_path
+        %li= link_to t('nav.new_community_offer'), new_community_offer_path
         %li= link_to t('nav.conversations'), conversations_path
         %li.dropdown
           = link_to edit_user_path(current_user), :class => "dropdown-toggle", 'data-toggle' => 'dropdown', 'role' => 'button' do
