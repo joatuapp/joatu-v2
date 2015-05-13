@@ -8,6 +8,16 @@ ActiveAdmin.register Event do
     :pod_id,
     :address_json,
     :status,
+    community_offer_detail_attributes: [
+      :id,
+      :value_to_society,
+      :producer_qualifications,
+      :estimated_hours_of_work,
+      :requirements_provided,
+      :requirements_requested,
+      :requests,
+      :question_or_comment,
+    ]
 
   index do
     selectable_column
@@ -31,8 +41,8 @@ ActiveAdmin.register Event do
       f.input :name
       f.input :description
       f.input :status, as: :select, collection: ['pending_approval', 'approved']
-      f.input :starts_at, :as => :string, :input_html => {:class => "datetimepicker"}
-      f.input :ends_at, :as => :string, :input_html => {:class => "datetimepicker"}
+      f.input :starts_at, :as => :string
+      f.input :ends_at, :as => :string
       f.input :creator
       f.input :organization
       f.input :pod
@@ -43,6 +53,17 @@ ActiveAdmin.register Event do
         af.input :province
         af.input :country, as: :country
         af.input :postal_code
+      end
+
+      f.inputs "Details", for: [:community_offer_detail_attributes, f.object.community_offer_detail] do |df|
+        df.input :id, as: :hidden
+        df.input :value_to_society
+        df.input :producer_qualifications
+        df.input :estimated_hours_of_work
+        df.input :requirements_provided
+        df.input :requirements_requested
+        df.input :requests
+        df.input :question_or_comment
       end
     end
     f.actions
