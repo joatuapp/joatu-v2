@@ -111,6 +111,13 @@ en:
     description: "About This Event"
     starts_at: "Starts at"
     ends_at: "Ends at"
+    location: "Location"
+    value_to_society: "Value to Society"
+    qualifications: "Your Qualifications to offer this event"
+    estimated_hours: "How many hours of work %{producer_name} will provide for this event"
+    requirements_provided: "Requirements provided"
+    requirements_needed: "Requirements need to host the event"
+    requests: "Services/Products that would help to make the event better, or help needed from the community"
   home:
     intro:
       header_html: "Trade skills and goods to meet your needs, and create vibrant communities!"

@@ -14,3 +14,42 @@
       %b= "#{t('events.description')}:"
       %br
       = @event.description
+    %p
+      %b= "#{t('events.location')}:"
+      %br
+      = @event.address.name
+      %br
+      = @event.address.address1
+      - if @event.address.address2.present?
+        %br
+        = @event.address.address2
+      %br
+      = "#{@event.address.city}, #{@event.address.province}, #{@event.address.country}"
+      %br
+      = @event.address.postal_code
+    - if @event.community_offer_detail.present?
+      %p
+        %b= "#{t('events.value_to_society')}:"
+        %br
+        = @event.community_offer_detail.value_to_society
+      %p
+        %b= "#{t('events.qualifications')}:"
+        %br
+        = @event.community_offer_detail.producer_qualifications
+      %p
+        %b= "#{t('events.estimated_hours', producer_name: @event.creator.name)}:"
+        = @event.community_offer_detail.estimated_hours_of_work
+      %p
+        %b= "#{t('events.requirements_provided')}:"
+        %br
+        = @event.community_offer_detail.requirements_provided
+      %p
+        %b= "#{t('events.requirements_needed')}:"
+        %br
+        = @event.community_offer_detail.requirements_requested
+      %p
+        %b= "#{t('events.requests')}:"
+        %br
+        = @event.community_offer_detail.requests
+
+

@@ -47,6 +47,7 @@ ActiveAdmin.register Event do
       f.input :organization
       f.input :pod
       f.inputs "Address", for: [:address, f.object.address] do |af|
+        af.input :name
         af.input :address1
         af.input :address2
         af.input :city
