@@ -14,6 +14,13 @@ class Address
     address = [address1, address2].compact.join(" ").strip
     locale = [city, province, country].compact.join(", ").strip
 
-    "#{address} #{locale} #{postal_code}"
+    addr_string = "#{name} #{address} #{locale} #{postal_code}".strip
+    addr_string.empty? ? "Address: Empty" : "Address: #{addr_string}"
   end
+
+  def blank?
+    attributes.all? {|k,v| v.blank? }
+  end
+
+  def save; end
 end

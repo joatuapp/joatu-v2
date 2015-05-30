@@ -1,15 +1,52 @@
-%p#notice= notice
+.row
+  .col-sm-12
+    %h1= @organization.name
+.row
+  .col-sm-6
+    .panel.panel-default
+      .panel-heading
+        %h3
+          = "#{t('organizations.about')}:"
+      .panel-body
+        %p= @organization.description
 
-%p
-  %b Name:
-  = @organization.name
-%p
-  %b Description:
-  = @organization.description
-%p
-  %b Latlng:
-  = @organization.latlng
+        - unless @organization.address.blank?
+          %h4= "#{t('address.header')}:"
 
-= link_to 'Edit', edit_organization_path(@organization)
-\|
-= link_to 'Back', organizations_path
+          %p
+            = @organization.address.address1
+            %br
+            - if @organization.address.address2.present?
+              = @organization.address.address2
+              %br
+            = "#{@organization.address.city}, #{@organization.address.province}, #{@organization.address.country}"
+            - if @organization.address.postal_code.present?
+              %br
+              = @organization.address.postal_code
+  .col-sm-3
+    .panel.panel-default
+      .panel-heading
+        %h2= t('offers.index_header')
+      .panel-body
+        - if @offers.empty?
+          = t('offers.empty')
+      .list-group
+        - unless @offers.empty?
+          - @offers.each do |offer|
+            = render partial: 'offers/offer_list_item', locals: {offer: offer}
+          .text-center
+            = paginate @offers, param_name: :offers_page
+  .col-sm-3
+    .panel.panel-default
+      .panel-heading
+        %h2= t('requests.index_header')
+      .panel-body
+        - if @requests.empty?
+          .col-sm-12
+            = t('requests.empty')
+      .list-group
+        - unless @requests.empty?
+          - @requests.each do |request_obj|
+            = render partial: 'requests/request_list_item', locals: {request_model: request_obj}
+          .text-center
+            = paginate @requests, param_name: :requests_page

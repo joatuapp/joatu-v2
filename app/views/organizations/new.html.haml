@@ -1,5 +1,8 @@
-%h1 New organization
+.row
+  .col-sm-12
+    %h1= t('organizations.new_header')
 
-= render 'form'
+  .col-sm-6.col-sm-offset-3
+    = render 'form'
 
-= link_to 'Back', organizations_path
+  = link_to 'Back', organizations_path

@@ -3,8 +3,15 @@
 
   .form-inputs
     = f.input :name
-    = f.input :description
-    = f.input :latlng
+    = f.input :description, as: :text, input_html: {rows: 5}
+
+    = f.simple_fields_for :address do |af|
+      = af.input :address1
+      = af.input :address2
+      = af.input :city
+      = af.input :province
+      = af.input :country
+      = af.input :postal_code
 
   .form-actions
     = f.button :submit

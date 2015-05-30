@@ -10,6 +10,10 @@
 GuestUser = Naught.build do |config|
   config.mimic example: User.new
 
+  def guest?
+    true
+  end
+
   def preferences
     # Guest users have a real preferences object, which since guests are never
     # persisted will always just use defaults.

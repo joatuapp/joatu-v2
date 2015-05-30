@@ -1,25 +1,34 @@
-%h1 Listing organizations
+%h1= t('organizations.list_header')
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Latlng
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @organizations.each do |organization|
+.clearfix
+  = link_to new_organization_path, class: "btn btn-success pull-right" do
+    %i.glyphicon.glyphicon-plus
+    = t('organizations.create_new')
+
+.table-responsive
+  %table.table.table-hover.fixed
+    %thead
       %tr
-        %td= organization.name
-        %td= organization.description
-        %td= organization.latlng
-        %td= link_to 'Show', organization
-        %td= link_to 'Edit', edit_organization_path(organization)
-        %td= link_to 'Destroy', organization, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Organization', new_organization_path
+        %th.col-sm-2= t('organizations.name')
+        %th.col-sm-7= t('organizations.description')
+        %th.col-sm-1
+        %th.col-sm-1
+        %th.col-sm-1
+        
+    %tbody
+      - @organizations.each do |organization|
+        %tr
+          %td= organization.name
+          %td= truncate(organization.description, length: 200, separator: ' ')
+          - if Pundit.policy(current_user, organization).show?
+            %td.text-center
+              = link_to organization, class: "btn btn-default" do
+                = t('organizations.show') 
+          - if Pundit.policy(current_user, organization).edit?
+            %td.text-center
+              = link_to edit_organization_path(organization), class: "btn btn-default" do
+                = t('organizations.edit') 
+          - if Pundit.policy(current_user, organization).destroy?
+            %td.text-center
+              = link_to organization, :method => :delete, :data => { :confirm => 'Are you sure? This cannot be undone!' }, :class => "btn btn-danger" do
+                = t('organizations.destroy')

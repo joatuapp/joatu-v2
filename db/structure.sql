@@ -431,6 +431,7 @@ CREATE TABLE organizations (
     latlng geometry(Point),
     address_json json,
     caps_cents integer DEFAULT 0 NOT NULL,
+    is_private boolean DEFAULT false,
     CONSTRAINT check_caps_cents CHECK ((caps_cents >= 0))
 );
 
@@ -1401,4 +1402,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150509205154');
 INSERT INTO schema_migrations (version) VALUES ('20150509205227');
 
 INSERT INTO schema_migrations (version) VALUES ('20150513021218');
+
+INSERT INTO schema_migrations (version) VALUES ('20150530161633');
 

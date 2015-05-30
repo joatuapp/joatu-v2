@@ -44,6 +44,10 @@ class User < Base
     is_admin
   end
 
+  def guest?
+    false
+  end
+
   private
 
   def update_home_location

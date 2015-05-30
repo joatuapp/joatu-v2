@@ -1,7 +1,8 @@
-%h1 Editing organization
+.row
+  .col-sm-12
+    %h1= t('organizations.edit_header')
 
-= render 'form'
+  .col-sm-6
+    = render 'form'
 
-= link_to 'Show', @organization
-\|
-= link_to 'Back', organizations_path
+  = link_to 'Back', @organization
