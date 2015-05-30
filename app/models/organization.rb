@@ -30,7 +30,7 @@ class Organization < Base
   end
 
   def has_member?(user)
-    memberships.where(user: user).any?
+    memberships.where_user_is_member(user).any?
   end
 
   def private?
