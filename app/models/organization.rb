@@ -29,6 +29,10 @@ class Organization < Base
     memberships.where_user_is_admin(user).any?
   end
 
+  def has_member?(user)
+    memberships.where(user: user).any?
+  end
+
   def private?
     is_private?
   end
