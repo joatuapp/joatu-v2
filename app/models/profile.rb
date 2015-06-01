@@ -1,8 +1,8 @@
 class Profile < Base
   belongs_to :user
 
-  def self.available_to(user, pagination)
-    paginate(pagination)
+  def self.available_to(user)
+    self
   end
 
   def full_name

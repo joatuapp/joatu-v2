@@ -49,6 +49,22 @@ class ApplicationPolicy
     def resolve
       scope
     end
+
+    private
+
+    def require_logged_in_user!
+      if !user.present? || user.guest?
+        raise UnauthorizedError
+      end
+    end
+  end
+
+  private
+
+  def require_logged_in_user!
+    unless user.present? && !user.guest?
+      raise UnauthorizedError
+    end
   end
 end
 

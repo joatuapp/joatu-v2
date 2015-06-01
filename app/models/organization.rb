@@ -10,6 +10,10 @@ class Organization < Base
   # default is caps, but this keeps things explicit, and doesn't hurt.
   monetize :caps_cents, with_currency: :caps 
 
+  def self.where_user_is_member(user)
+    where(id: OrganizationMembership.where_user_is_member(user).pluck(:organization_id))
+  end
+
   # Returns the collection of organizations that are either public
   # (visible to all JoatUers) _or_ of which the given user is a
   # member.

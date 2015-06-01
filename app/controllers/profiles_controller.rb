@@ -5,14 +5,14 @@ class ProfilesController < ApplicationController
   respond_to :html
 
   def index
-    @profiles = Profile.available_to(current_user, PaginationOptions.new(params[:page]))
+    @profiles = Profile.available_to(current_user).paginate(PaginationOptions.new(params[:page]))
     respond_with(@profiles)
   end
 
   def show
     authorize @profile
-    @offers = Offer.owned_by(@profile.user, PaginationOptions.new(params[:offers_page], 5))
-    @requests = Request.owned_by(@profile.user, PaginationOptions.new(params[:requests_page], 5))
+    @offers = Offer.owned_by(@profile.user).paginate(PaginationOptions.new(params[:offers_page], 5))
+    @requests = Request.owned_by(@profile.user).paginate(PaginationOptions.new(params[:requests_page], 5))
     @references = Reference.to_user(@profile.user, PaginationOptions.new(params[:references_page], 5))
     @tip_transaction = CapsTransactionForm.new(CapsTransaction.new(
       source: current_user,

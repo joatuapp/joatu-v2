@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|fr/ do
     resources :events
 
-    resources :organizations
+    resources :organizations do
+      resources :offers, except: [:index], controller: :organization_offers, as: 'organization_offer'
+    end
 
     resources :references, except: [:index, :show]
 

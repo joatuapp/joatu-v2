@@ -1,0 +1,16 @@
+.alert.alert-info{role: 'alert'}
+  %p= t('organizations.org_offer_warning', org_name: @organization.name)
+  = link_to t('organizations.org_offer_warning_personal_link'), new_offer_path
+    
+= simple_form_for(@offer) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :organization_id, as: :hidden
+    = f.input :detail_type, collection: @offer_types, as: :radio_buttons, label: "#{t('offers.type_label')}:"
+    = f.input :title
+    = f.input :description, as: :text
+    = f.input :visibility, collection: {t('offers.visibility.global') => "global", t('offers.visibility.pod') => "pod"}, as: :select, label: "#{t('offers.visibility.label')}:"
+
+  .form-actions
+    = f.button :submit, class: 'pull-right btn-primary'

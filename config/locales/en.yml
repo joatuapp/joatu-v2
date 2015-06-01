@@ -196,6 +196,10 @@ en:
     description: "Description"
     create_new: "New Organization"
     about: "About"
+    create_new_offer: "New Org Offer"
+    create_new_request: "New Org Request"
+    org_offer_warning: "You are creating a request on behalf of %{org_name}."
+    org_offer_warning_personal_link: "Click here to create a personal offer instead"
   address: 
     header: "Address"
     address1_label: "Street Address"
@@ -221,7 +225,7 @@ en:
     offerer_label: "Offered by: %{offerer}"
     visibility:
       global: "Everyone"
-      pod: "Only My Pod"
+      private: "Only these groups"
       label: "Make this offer visible to"
     send_message: "Message %{offerer} about this Offer"
     offered_by:

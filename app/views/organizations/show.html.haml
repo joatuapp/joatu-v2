@@ -28,8 +28,12 @@
       .panel-heading
         %h2= t('offers.index_header')
       .panel-body
+        - if Pundit.policy(current_user, @organization).create_offer?
+          = link_to new_organization_offer_path(@organization), class: "btn btn-default" do
+            %i.glyphicon.glyphicon-plus
+            = t('organizations.create_new_offer')
         - if @offers.empty?
-          = t('offers.empty')
+          %p= t('offers.empty')
       .list-group
         - unless @offers.empty?
           - @offers.each do |offer|
@@ -41,9 +45,13 @@
       .panel-heading
         %h2= t('requests.index_header')
       .panel-body
+        - if Pundit.policy(current_user, @organization).create_request?
+          = link_to new_request_path(org_id: @organization.id), class: "btn btn-default" do
+            %i.glyphicon.glyphicon-plus
+            = t('organizations.create_new_request')
         - if @requests.empty?
           .col-sm-12
-            = t('requests.empty')
+            %p= t('requests.empty')
       .list-group
         - unless @requests.empty?
           - @requests.each do |request_obj|

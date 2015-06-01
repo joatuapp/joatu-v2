@@ -10,6 +10,16 @@ class OfferOrRequest < Base
   belongs_to :user
   belongs_to :pod
 
+  has_many :offer_or_request_access_control
+
+  validates :visibility, inclusion: { in: %w(public private) }
+
+  DETAIL_TYPES = {
+    knowledge: 'knowledge',
+    physical_goods: 'physical_goods',
+    skills_and_time: 'skills_and_time',
+  }
+
   pg_search_scope :text_search, lambda {|query, lang, order = nil|
     dictionary = (lang == :fr) ? "french" : "english"
     search_scope = {
@@ -36,25 +46,25 @@ class OfferOrRequest < Base
     search_scope
   }
 
-  def self.visible_to_pod(pod)
-    if Actual(pod)
-      where(pod_id: [nil, pod.id])
+  def self.owned_by(user)
+    Just(user)
+    where(user_id: user.id)
+  end
+
+  def self.available_to(user)
+    pod_id = Pod.home_pod_for_user(user).id
+    org_ids = OrganizationMembership.where_user_is_member(user).pluck(:organization_id)
+
+    query = self.joins("LEFT OUTER JOIN offer_and_request_access_controls ON offers_and_requests.id = offer_and_request_access_controls.offer_or_request_id")
+    query = query.where("offers_and_requests.visibility = 'public' OR offer_and_request_access_controls.id IS NOT NULL")
+    if org_ids.empty?
+      query = query.where("(offer_and_request_access_controls.group_type = 'Pod' AND offer_and_request_access_controls.group_id = #{pod_id})")
     else
-      where(pod_id: nil)
+      query = query.where("(offer_and_request_access_controls.group_type = 'Pod' AND offer_and_request_access_controls.group_id = #{pod_id}) OR (offer_and_request_access_controls.group_type = 'Organization' AND offer_and_request_access_controls.group_id IN (#{org_ids.join(',')}))")
     end
   end
 
-  def self.owned_by(user, pagination)
-    Just(user)
-    where(user_id: user.id).paginate(pagination)
-  end
-
-  def self.available_to(user, pagination)
-    pod = Pod.home_pod_for_user(user)
-    visible_to_pod(pod).includes(user: [:profile]).paginate(pagination)
-  end
-
-  def self.search_results(search_data, user, pagination)
+  def self.search_results(search_data)
     query = self
 
     # Only add text search conditions if a search key is given:
@@ -76,9 +86,19 @@ class OfferOrRequest < Base
       query = query.where(type: search_data[:types_filter])
     end
 
-    query = query.available_to(user, pagination)
-
     query
+  end
+
+  def self.detail_type_options
+    {
+      "Knowledge" => DETAIL_TYPES[:knowledge],
+      "Physical Goods" => DETAIL_TYPES[:physical_goods],
+      "Skills and Time" => DETAIL_TYPES[:skills_and_time],
+    }
+  end
+
+  def self.valid_detail_types
+    DETAIL_TYPES.values
   end
 
   def type_class

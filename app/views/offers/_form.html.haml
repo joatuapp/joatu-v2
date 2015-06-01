@@ -2,10 +2,11 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :type, collection: @offer_types, as: :radio_buttons, label: "#{t('offers.type_label')}:"
+    = f.input :detail_type, collection: @offer_types, as: :radio_buttons, label: "#{t('offers.type_label')}:"
     = f.input :title
     = f.input :description, as: :text
-    = f.input :visibility, collection: {t('offers.visibility.global') => "global", t('offers.visibility.pod') => "pod"}, as: :select, label: "#{t('offers.visibility.label')}:"
-
+    = f.input :visibility, collection: {t('offers.visibility.global') => "public", t('offers.visibility.private') => "private"}, as: :select, label: "#{t('offers.visibility.label')}:"
+    = f.input :visible_to_pod, as: :check_boxes, label: "Visible to other members of my pod"
+    = f.collection_check_boxes :visible_to_orgs, Organization.where_user_is_member(current_user), :id, :name
   .form-actions
     = f.button :submit, class: 'pull-right btn-primary'

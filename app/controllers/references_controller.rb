@@ -8,7 +8,7 @@ class ReferencesController < ApplicationController
   def new
     if params[:to_user_id]
       to_user = User.find params[:to_user_id]
-      @to_user_offers = Offer.owned_by(to_user, PaginationOptions.new(1, :all))
+      @to_user_offers = Offer.owned_by(to_user).paginate(PaginationOptions.new(1, :all))
       model = Reference.new(to_user: to_user)
     else
       model = Reference.new

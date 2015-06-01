@@ -1,7 +1,7 @@
 class RequestSearchForm < ApplicationForm
   property :search, empty: true
   property :order_by, empty: true, type: Symbol, default: :created_at_desc
-  property :types_filter, empty: true, type: Array, default: Request.valid_types
+  property :types_filter, empty: true, type: Array, default: Request.valid_detail_types
 
   def types_filter= (val)
     val = Array(val)
@@ -15,10 +15,10 @@ class RequestSearchForm < ApplicationForm
   private 
   
   def types_filter_valid
-    valid_types = Request.valid_types
+    valid_detail_types = Request.valid_detail_types
 
     types_filter.each do |type|
-      unless valid_types.include? type
+      unless valid_detail_types.include? type
         errors.add(:types_filter, "is invalid. Request type #{type} not recognized.")
       end
     end
