@@ -5,12 +5,12 @@ class OfferOrRequestPolicy < ApplicationPolicy
 
   def update?
     user.present? &&
-      record.from_user == user
+      record.user == user
   end
 
   def destroy?
     user.present? &&
-      record.from_user == user
+      record.user == user
   end
 
   class Scope < ApplicationPolicy::Scope

@@ -225,7 +225,7 @@ en:
     offerer_label: "Offered by: %{offerer}"
     visibility:
       global: "Everyone"
-      private: "Only these groups"
+      private: "Only certain groups"
       label: "Make this offer visible to"
     send_message: "Message %{offerer} about this Offer"
     offered_by:

@@ -397,7 +397,7 @@ CREATE TABLE offers_and_requests (
     pod_id integer,
     organization_id integer,
     detail_type character varying,
-    visibility character varying
+    visibility character varying DEFAULT 'public'::character varying
 );
 
 
@@ -1295,6 +1295,14 @@ ALTER TABLE ONLY pod_memberships
 
 
 --
+-- Name: fk_rails_8c4060e9ae; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY offer_and_request_access_controls
+    ADD CONSTRAINT fk_rails_8c4060e9ae FOREIGN KEY (offer_or_request_id) REFERENCES offers_and_requests(id);
+
+
+--
 -- Name: fk_rails_b67ad19978; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1332,14 +1340,6 @@ ALTER TABLE ONLY organization_memberships
 
 ALTER TABLE ONLY community_offer_details
     ADD CONSTRAINT fk_rails_f634527362 FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE;
-
-
---
--- Name: fk_rails_fadbef0d9d; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY offer_and_request_access_controls
-    ADD CONSTRAINT fk_rails_fadbef0d9d FOREIGN KEY (offer_or_request_id) REFERENCES offers_and_requests(id);
 
 
 --

@@ -26,27 +26,22 @@ class OffersController < ApplicationController
 
   def new
     @form = OfferForm.new(Offer.new)
-    @offer_types = Offer.detail_type_options
+    set_form_options
     authorize @form.model
     respond_with(@offer = @form)
   end
 
   def edit
     authorize @offer
-    @offer_types = Offer.detail_type_options
+    set_form_options
     @offer = OfferForm.new(@offer)
   end
 
   def create
     @form = OfferForm.new(Offer.new(user: current_user))
-    @offer_types = Offer.detail_type_options
+    set_form_options
     authorize @form.model
     if @form.validate(params[:offer])
-      if @form.visibility == :pod
-        @form.model.pod = Pod.home_pod_for_user(current_user)
-      else
-        @form.model.pod = nil
-      end
       @form.save
     end
     respond_with(@offer = @form)
@@ -54,14 +49,9 @@ class OffersController < ApplicationController
 
   def update
     @form = OfferForm.new(@offer)
-    @offer_types = Offer.detail_type_options
+    set_form_options
     authorize @form.model
     if @form.validate(params[:offer])
-      if @form.visibility == :pod
-        @form.model.pod = Pod.home_pod_for_user(current_user)
-      else
-        @form.model.pod = nil
-      end
       @form.save
     end
     respond_with(@offer = @form)
@@ -98,5 +88,11 @@ class OffersController < ApplicationController
         "Oldest First" => :created_at_asc
       }
       @offer_type_options = Offer.detail_type_options
+    end
+
+    def set_form_options
+      @offer_types = Offer.detail_type_options
+      @user_pod = Pod.home_pod_for_user(current_user) 
+      @user_orgs = Organization.where_user_is_member(current_user)
     end
 end

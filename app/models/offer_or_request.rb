@@ -10,7 +10,10 @@ class OfferOrRequest < Base
   belongs_to :user
   belongs_to :pod
 
-  has_many :offer_or_request_access_control
+  has_many :offer_or_request_access_controls, foreign_key: "offer_or_request_id"
+
+  has_many :visible_to_pods, through: :offer_or_request_access_controls, source: :group, source_type: Pod
+  has_many :visible_to_organizations, through: :offer_or_request_access_controls, source: :group, source_type: Organization
 
   validates :visibility, inclusion: { in: %w(public private) }
 

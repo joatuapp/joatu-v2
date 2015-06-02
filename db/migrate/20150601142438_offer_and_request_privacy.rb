@@ -1,6 +1,6 @@
 class OfferAndRequestPrivacy < ActiveRecord::Migration
   def change
-    add_column :offers_and_requests, :visibility, :string
+    add_column :offers_and_requests, :visibility, :string, default: 'public'
 
     create_table :offer_and_request_access_controls do |t|
       t.integer :offer_or_request_id, null: false

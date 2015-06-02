@@ -6,7 +6,13 @@
     = f.input :title
     = f.input :description, as: :text
     = f.input :visibility, collection: {t('offers.visibility.global') => "public", t('offers.visibility.private') => "private"}, as: :select, label: "#{t('offers.visibility.label')}:"
-    = f.input :visible_to_pod, as: :check_boxes, label: "Visible to other members of my pod"
-    = f.collection_check_boxes :visible_to_orgs, Organization.where_user_is_member(current_user), :id, :name
+    .visibility-settings{class: @offer.visibility != 'private' ? 'hidden' : ''}
+      = f.label "Make visible to your pod?"
+      %br
+      = f.collection_check_boxes :visible_to_pods, [@user_pod], :id, Proc.new {|pod| "#{pod.name} (your pod)"}
+      %br
+      = f.label "Make visible to these organizations:"
+      %br
+      = f.collection_check_boxes :visible_to_organizations, @user_orgs, :id, :name
   .form-actions
     = f.button :submit, class: 'pull-right btn-primary'
