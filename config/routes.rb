@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :events
 
     resources :organizations do
-      resources :offers, except: [:index], controller: :organization_offers, as: 'organization_offer'
+      resources :offers, except: [:index], controller: :organization_offers, as: 'organization_offers'
     end
 
     resources :references, except: [:index, :show]
@@ -38,7 +38,14 @@ Rails.application.routes.draw do
     resources :community_offers, only: [:new, :create]
 
     devise_for :users, controllers: { invitations: 'users/invitations' }
-    resources :users, only: [:edit, :update, :destroy]
+    resources :users, only: [:edit, :update, :destroy] do
+      collection do
+        devise_scope :user do
+          get 'organization_invitation/:organization_id/new', controller: "users/organization_invitations", action: :new, as: 'new_org_invitation'
+          post 'organization_invitation/:organization_id', controller: "users/organization_invitations", action: :create, as: "org_invitation"
+        end
+      end
+    end
 
     get 'pods/home', controller: :pods, action: :home, as: :home_pod
     resources :pods do

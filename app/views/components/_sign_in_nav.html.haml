@@ -14,6 +14,7 @@
         %li= link_to t('nav.requests'), requests_path
         %li= link_to t('nav.new_community_offer'), new_community_offer_path
         %li= link_to t('nav.conversations'), conversations_path
+        %li= link_to t('nav.organizations'), organizations_path
         %li.dropdown
           = link_to edit_user_path(current_user), :class => "dropdown-toggle", 'data-toggle' => 'dropdown', 'role' => 'button' do
             = t('nav.my_account')
@@ -34,7 +35,6 @@
               %li= link_to t('nav.invite'), new_user_invitation_path
               %li= link_to t('nav.generate_caps'), admin_generate_caps_path
               %li= link_to t('nav.admin'), admin_root_path, "data-no-turbolink" => true
-              %li= link_to t('nav.organizations'), organizations_path
         %li
           = link_to help_path do
             %span.glyphicon.glyphicon-question-sign 

@@ -25,4 +25,8 @@ class OrganizationMembership < Base
   def self.where_user_is_admin(user)
     where(user: Just(user)).where("'#{ORG_MEMBERSHIP_TYPES[:admin]}' = ANY(membership_types)")
   end
+
+  def self.user_is_org_admin?(user)
+    where_user_is_admin(user).any?
+  end
 end

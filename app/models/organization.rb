@@ -2,6 +2,9 @@ class Organization < Base
   has_many :memberships, class: OrganizationMembership
   has_many :members, through: :memberships, source: :user
 
+  has_one :pod, through: :hub_organization_relation
+  has_one :hub_organization_relation, class: PodHubRelation, dependent: :destroy
+
   composed_of :address, mapping: %w(address_json to_json)
 
   before_validation :serialize_address
@@ -25,6 +28,10 @@ class Organization < Base
     else
       where("is_private = FALSE OR id IN(#{membership_of_ids.join(',')})")
     end
+  end
+
+  def is_hub?
+    pod.present?
   end
 
   # Returns a boolean result of whether the given user is an admin of this

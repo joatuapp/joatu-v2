@@ -227,6 +227,8 @@ en:
       global: "Everyone"
       private: "Only certain groups"
       label: "Make this offer visible to"
+      org: "Visible only to members of this organization."
+      pod: "Visible only to members of %{pod_name} pod"
     send_message: "Message %{offerer} about this Offer"
     offered_by:
       header: "Offered by %{offerer}"

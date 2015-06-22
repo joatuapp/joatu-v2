@@ -29,7 +29,7 @@
         %h2= t('offers.index_header')
       .panel-body
         - if Pundit.policy(current_user, @organization).create_offer?
-          = link_to new_organization_offer_path(@organization), class: "btn btn-default" do
+          = link_to new_organization_organization_offer_path(@organization), class: "btn btn-default" do
             %i.glyphicon.glyphicon-plus
             = t('organizations.create_new_offer')
         - if @offers.empty?

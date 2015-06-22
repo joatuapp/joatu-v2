@@ -14,5 +14,5 @@ class NewUserForm < ApplicationForm
     end
   end
 
-  property :invitation_token
+  property :invitation_token, writeable: false
 end
