@@ -1,0 +1,18 @@
+.row.dashboard
+  .col-sm-12
+    - if @display_intro
+      .alert.alert-success.alert-dismissable
+        %button{type: "button", class: "close", 'data-dismiss' => "alert", 'aria-label' => "Close"}
+          %span{'aria-hidden' => "true"}
+            &times;
+        %p
+          %strong= t('dashboard.intro_header')
+        %p= t('dashboard.intro_body')
+  .col-sm-8
+    - if @pod
+      = render 'pod_summary', locals: {pod: @pod}
+    - else
+      = render 'no_pod'
+  .col-sm-4
+    = render 'events', locals: {events: @events}
+    = render 'organizations', locals: {organizations: @organizations}

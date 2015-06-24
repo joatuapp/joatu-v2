@@ -54,6 +54,11 @@ en:
     question_or_comment_label: "Comments/Questions for JoatU"
     create: "Create Community Offer"
     subject_to_approval: "NOTE: All new community offers are subject to approval by JoatU moderators, and will not be publicly visible immediately"
+  dashboard:
+    intro_header: "Welcome to JoatU"
+    intro_body: "JoatU is designed to fascilitate community growth through mutual support and aid. JoatU allows its members to post 'offers' and 'requests' to the community and helps to coordinate the movement of goods and resources according to the principle 'from each according to their abilities, to each according to their needs'."
+    no_pod_header: "You do not yet have a home Pod."
+    no_pod_explanation: "Within JoatU, a Pod represents a neighbourhood, and allows neighbours to easily find each other's offers and requests. Nobody has started a Pod in your area yet, but you can help us grow by setting one up. Once approved, you and any of your neighbours who are already using JoatU will be automatically added to the Pod, and this space will show the latest Offers and Requests submitted by members of your Pod."
   admin:
     caps:
       new_header: "Generate new CAPs"

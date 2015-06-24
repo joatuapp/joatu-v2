@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
     resources :conversations, only: [:index, :show, :update, :destroy]
 
+    get 'dashboard', to: 'dashboard#index'
+    
     resources :profiles
 
     resources :requests, concerns: :paginatable do

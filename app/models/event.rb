@@ -21,6 +21,12 @@ class Event < Base
     self.where("organization_id = :org_id OR pod_id = :pod_id", org_id: pod.hub.id, pod_id: pod.id).where("ends_at > :now", now: Time.now).where(status: 'approved').order(:starts_at).paginate(pagination)
   end
 
+  def self.invited_or_attending(user)
+    # TODO: Complete this method, add actual logic to limit events to
+    # just those the given user has been invited to or is attending.
+    self
+  end
+
   private
 
   def serialize_address
