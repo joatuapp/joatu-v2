@@ -62,6 +62,7 @@ en:
     your_organizations: "Your Organizations"
     upcoming_events: "Upcoming Events"
     home_pod: "Home Pod"
+    pod_managed_by: "Managed by: "
   admin:
     caps:
       new_header: "Generate new CAPs"
@@ -298,6 +299,7 @@ en:
     delete_button: "Delete Account"
     delete_confirm_message: "Are you sure you want to delete your account? This cannot be undone!"
     user_updated: "Account updated successfully!"
+    postal_code_changes_pod: "Note, changing your profile's postal code may also change your home pod!"
   mailboxer:
     sent: "Message sent!"
   currencies:

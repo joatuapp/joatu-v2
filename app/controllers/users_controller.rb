@@ -14,12 +14,11 @@ class UsersController < ApplicationController
     if @form.validate(params[:user])
       authorize @form.model
       @form.save do |vals|
-        @form.model.email = vals[:email]
-        if vals[:password].present? || vals[:password_confirmation].present?
-          @form.model.password = vals[:password]
-          @form.model.password_confirmation = vals[:password_confirmation]
+        unless vals[:password].present? || vals[:password_confirmation].present?
+          vals.delete :password
+          vals.delete :password_confirmation
         end
-        @form.model.save!
+        @form.model.update! vals
         flash[:notice] = t('users.user_updated')
       end
     end

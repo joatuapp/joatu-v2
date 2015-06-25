@@ -1,5 +1,9 @@
 %p
   %strong= pod.name
+  - if pod.hub.present?
+    %br
+    = t('dashboard.pod_managed_by')
+    = link_to pod.hub.name, pod.hub
 %p= pod.description
 %ul
   - offers_and_requests.each do |offer_or_request|
