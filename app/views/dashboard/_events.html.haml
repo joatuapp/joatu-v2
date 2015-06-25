@@ -1,0 +1,10 @@
+.panel.panel-default
+  .panel-heading
+    %h3= "#{t('dashboard.upcoming_events')}:"
+  .panel-body
+    %ul
+      - @events.each do |event|
+        %li 
+          = link_to event.name, event
+          %br
+          %small= humanize_date_range(event.starts_at, event.ends_at)

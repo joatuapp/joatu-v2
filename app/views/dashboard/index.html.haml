@@ -10,9 +10,9 @@
         %p= t('dashboard.intro_body')
   .col-sm-8
     - if @pod
-      = render 'pod_summary', locals: {pod: @pod}
+      = render partial: 'pod_summary', layout: 'pod_panel', locals: {pod: @pod, offers_and_requests: @pod_offers_and_requests}
     - else
-      = render 'no_pod'
+      = render partial: 'no_pod', layout: 'pod_panel'
   .col-sm-4
     = render 'events', locals: {events: @events}
     = render 'organizations', locals: {organizations: @organizations}

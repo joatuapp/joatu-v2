@@ -15,6 +15,9 @@ class DashboardController < ApplicationController
     # The dashboard page is focused around the user's Pod, and any activity
     # taking place within it:
     @pod = Actual(Pod.home_pod_for_user(current_user))
+    if @pod
+      @pod_offers_and_requests = OfferOrRequest.summary_for_pod(@pod)
+    end
 
     # The dashboard will also prominently display a list of the user's
     # organizations, with links to the org page for more details:

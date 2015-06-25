@@ -1,0 +1,7 @@
+%p
+  %strong= pod.name
+%p= pod.description
+%ul
+  - offers_and_requests.each do |offer_or_request|
+    %li= offer_or_request.title
+

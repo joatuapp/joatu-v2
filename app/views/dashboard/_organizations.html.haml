@@ -1,0 +1,8 @@
+.panel.panel-default
+  .panel-heading
+    %h3= "#{t('dashboard.your_organizations')}:"
+  .panel-body
+    %ul
+      - @organizations.each do |org|
+        %li 
+          = link_to org.name, org

@@ -49,6 +49,13 @@ class OfferOrRequest < Base
     search_scope
   }
 
+  def self.summary_for_pod(pod)
+    # TODO: Figure out what code to put here, how do we determine what a
+    # summary of offers/ requests for a given pod is?
+    #
+    all
+  end
+
   def self.owned_by(user)
     Just(user)
     where(user_id: user.id)

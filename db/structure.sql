@@ -172,10 +172,10 @@ ALTER SEQUENCE community_offer_details_id_seq OWNED BY community_offer_details.i
 
 CREATE TABLE events (
     id integer NOT NULL,
-    name character varying,
+    name character varying NOT NULL,
     description text,
-    starts_at timestamp without time zone,
-    ends_at timestamp without time zone,
+    starts_at timestamp without time zone NOT NULL,
+    ends_at timestamp without time zone NOT NULL,
     pod_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -1483,4 +1483,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150530204111');
 INSERT INTO schema_migrations (version) VALUES ('20150530220357');
 
 INSERT INTO schema_migrations (version) VALUES ('20150601142438');
+
+INSERT INTO schema_migrations (version) VALUES ('20150625145416');
 

@@ -24,7 +24,7 @@ class Event < Base
   def self.invited_or_attending(user)
     # TODO: Complete this method, add actual logic to limit events to
     # just those the given user has been invited to or is attending.
-    self
+    all
   end
 
   private
