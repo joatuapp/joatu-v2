@@ -1,13 +1,12 @@
 class Event < Base
-  belongs_to :creator, class: User, foreign_key: :created_by_user_id
+  belongs_to :creator, class_name: "User", foreign_key: :created_by_user_id
   belongs_to :organization
   belongs_to :pod
 
   has_one :community_offer_detail # 0 or 1, actually.
   accepts_nested_attributes_for :community_offer_detail
 
-  composed_of :address, mapping: %w(address_json to_json)
-  before_validation :serialize_address
+  attribute :address, Address::Type.new
 
   def self.available_for_organization(org, pagination)
     return none unless Actual(org)
@@ -25,11 +24,5 @@ class Event < Base
     # TODO: Complete this method, add actual logic to limit events to
     # just those the given user has been invited to or is attending.
     all
-  end
-
-  private
-
-  def serialize_address
-    self.address_json = address.to_json
   end
 end

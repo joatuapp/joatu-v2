@@ -179,7 +179,7 @@ CREATE TABLE events (
     pod_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    address_json json,
+    address json,
     created_by_user_id integer,
     organization_id integer,
     latlng geometry(Point),
@@ -464,7 +464,7 @@ CREATE TABLE organizations (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     latlng geometry(Point),
-    address_json json,
+    address json,
     caps_cents integer DEFAULT 0 NOT NULL,
     is_private boolean DEFAULT false,
     CONSTRAINT check_caps_cents CHECK ((caps_cents >= 0))
@@ -701,7 +701,7 @@ CREATE TABLE users (
     invited_by_type character varying,
     invitations_count integer DEFAULT 0,
     is_admin boolean DEFAULT false NOT NULL,
-    preferences_json json,
+    preferences json,
     postal_code character varying(32),
     home_location geometry(Point),
     caps_cents integer DEFAULT 0 NOT NULL,
@@ -1485,4 +1485,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150530220357');
 INSERT INTO schema_migrations (version) VALUES ('20150601142438');
 
 INSERT INTO schema_migrations (version) VALUES ('20150625145416');
+
+INSERT INTO schema_migrations (version) VALUES ('20150630152604');
 

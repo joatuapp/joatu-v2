@@ -1,13 +1,11 @@
 class Organization < Base
-  has_many :memberships, class: OrganizationMembership
+  has_many :memberships, class_name: "OrganizationMembership"
   has_many :members, through: :memberships, source: :user
 
   has_one :pod, through: :hub_organization_relation
-  has_one :hub_organization_relation, class: PodHubRelation, dependent: :destroy
+  has_one :hub_organization_relation, class_name: "PodHubRelation", dependent: :destroy
 
-  composed_of :address, mapping: %w(address_json to_json)
-
-  before_validation :serialize_address
+  attribute :address, Address::Type.new
 
   # Not strictly necessary to specify the currency is caps here, as the app
   # default is caps, but this keeps things explicit, and doesn't hurt.
@@ -46,11 +44,5 @@ class Organization < Base
 
   def private?
     is_private?
-  end
-
-  private
-
-  def serialize_address
-    self.address_json = address.to_json
   end
 end
