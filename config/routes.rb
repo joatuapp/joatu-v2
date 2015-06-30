@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     get 'help', to: 'static_page#help', as: :help
 
     get '/:locale', to: 'static_page#home'
-    root 'static_page#home'
+    root 'dashboard#index'
   end
 
   namespace :admin do
