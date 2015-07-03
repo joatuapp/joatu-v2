@@ -44,7 +44,15 @@ class User::Preferences
 
     def type_cast_for_database(value)
       case value
-      when Array, Hash, User::Preferences
+      when User::Preferences
+        # If User::Preferences object is empty store it as a simple nil value
+        # rather than a long JSON string, to save storage space:
+        if value.empty?
+          super(nil)
+        else
+          ::ActiveSupport::JSON.encode(value)
+        end
+      when Array, Hash
         ::ActiveSupport::JSON.encode(value)
       else
         super

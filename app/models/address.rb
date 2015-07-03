@@ -55,7 +55,15 @@ class Address
 
     def type_cast_for_database(value)
       case value
-      when Array, Hash, Address
+      when Address
+        # If all address attributes are empty, store it in the DB as nil to
+        # save storage space.
+        if value.empty?
+          super(nil)
+        else
+          ::ActiveSupport::JSON.encode(value)
+        end
+      when Array, Hash
         ::ActiveSupport::JSON.encode(value)
       else
         super
