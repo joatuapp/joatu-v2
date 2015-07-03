@@ -6,7 +6,7 @@ class Event < Base
   has_one :community_offer_detail # 0 or 1, actually.
   accepts_nested_attributes_for :community_offer_detail
 
-  attribute :address, Address::Type.new
+  attribute :address, Address::Type.new, default: Address.new
 
   def self.available_for_organization(org, pagination)
     return none unless Actual(org)

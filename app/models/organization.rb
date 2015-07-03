@@ -5,7 +5,7 @@ class Organization < Base
   has_one :pod, through: :hub_organization_relation
   has_one :hub_organization_relation, class_name: "PodHubRelation", dependent: :destroy
 
-  attribute :address, Address::Type.new
+  attribute :address, Address::Type.new, default: Address.new
 
   # Not strictly necessary to specify the currency is caps here, as the app
   # default is caps, but this keeps things explicit, and doesn't hurt.

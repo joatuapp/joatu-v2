@@ -12,7 +12,7 @@ class User < Base
   # default is caps, but this keeps things explicit, and doesn't hurt.
   monetize :caps_cents, with_currency: :caps 
 
-  attribute :preferences, User::Preferences::Type.new
+  attribute :preferences, User::Preferences::Type.new, default: User::Preferences.new
   
   has_one :profile
 

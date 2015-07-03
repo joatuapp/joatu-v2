@@ -40,9 +40,14 @@ class Address
     end
 
     def type_cast_from_database(value)
-      if String === value
+      case value
+      when String
         decoded = ::ActiveSupport::JSON.decode(value) rescue nil
         Address(decoded)
+      when nil
+        # When we load a nil from the DB, replace it with an empty instance
+        # of Address, so that we always provide a consistent interface:
+        Address(nil)
       else
         super
       end

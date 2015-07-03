@@ -29,9 +29,14 @@ class User::Preferences
     end
 
     def type_cast_from_database(value)
-      if String === value
+      case value
+      when String
         decoded = ::ActiveSupport::JSON.decode(value) rescue nil
         UserPreferences(decoded)
+      when nil
+        # Keep a consistent interface, return an empty preferences
+        # object even if DB value is nil:
+        UserPreferences(nil)
       else
         super
       end
@@ -39,7 +44,7 @@ class User::Preferences
 
     def type_cast_for_database(value)
       case value
-      when Array, Hash, Address
+      when Array, Hash, User::Preferences
         ::ActiveSupport::JSON.encode(value)
       else
         super
