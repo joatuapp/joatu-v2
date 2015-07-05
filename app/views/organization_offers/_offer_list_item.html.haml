@@ -3,5 +3,5 @@
   %h4
     = offer.title
     %br
-    %small= t('offers.offerer_label', offerer: offer.user.name)
+    %small= t('offers.offerer_label', offerer: offer.created_by_name)
   %p= truncate(offer.description, length: 100)

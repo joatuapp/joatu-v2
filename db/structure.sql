@@ -350,38 +350,6 @@ ALTER SEQUENCE mailboxer_receipts_id_seq OWNED BY mailboxer_receipts.id;
 
 
 --
--- Name: offer_and_request_access_controls; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE offer_and_request_access_controls (
-    id integer NOT NULL,
-    offer_or_request_id integer NOT NULL,
-    group_id integer NOT NULL,
-    group_type character varying NOT NULL,
-    grant_or_deny character varying DEFAULT 'grant'::character varying NOT NULL
-);
-
-
---
--- Name: offer_and_request_access_controls_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE offer_and_request_access_controls_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: offer_and_request_access_controls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE offer_and_request_access_controls_id_seq OWNED BY offer_and_request_access_controls.id;
-
-
---
 -- Name: offers_and_requests; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -391,13 +359,13 @@ CREATE TABLE offers_and_requests (
     description text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    user_id integer NOT NULL,
+    created_by_user_id integer NOT NULL,
     offer_or_request character varying,
     type character varying,
     pod_id integer,
-    organization_id integer,
+    created_by_organization_id integer,
     detail_type character varying,
-    visibility character varying DEFAULT 'public'::character varying
+    organization_id integer
 );
 
 
@@ -788,13 +756,6 @@ ALTER TABLE ONLY mailboxer_receipts ALTER COLUMN id SET DEFAULT nextval('mailbox
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY offer_and_request_access_controls ALTER COLUMN id SET DEFAULT nextval('offer_and_request_access_controls_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY offers_and_requests ALTER COLUMN id SET DEFAULT nextval('offers_and_requests_id_seq'::regclass);
 
 
@@ -916,14 +877,6 @@ ALTER TABLE ONLY mailboxer_notifications
 
 ALTER TABLE ONLY mailboxer_receipts
     ADD CONSTRAINT mailboxer_receipts_pkey PRIMARY KEY (id);
-
-
---
--- Name: offer_and_request_access_controls_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY offer_and_request_access_controls
-    ADD CONSTRAINT offer_and_request_access_controls_pkey PRIMARY KEY (id);
 
 
 --
@@ -1209,17 +1162,18 @@ CREATE INDEX type_collection_select_index ON offers_and_requests USING btree (ty
 
 
 --
--- Name: unique_index_on_offer_and_group; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX unique_index_on_offer_and_group ON offer_and_request_access_controls USING btree (offer_or_request_id, group_id, group_type);
-
-
---
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: fk_rails_07ff1a5ebf; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY offers_and_requests
+    ADD CONSTRAINT fk_rails_07ff1a5ebf FOREIGN KEY (organization_id) REFERENCES organizations(id);
 
 
 --
@@ -1243,7 +1197,7 @@ ALTER TABLE ONLY events
 --
 
 ALTER TABLE ONLY offers_and_requests
-    ADD CONSTRAINT fk_rails_200a2c9a65 FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_rails_200a2c9a65 FOREIGN KEY (created_by_organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
 
 
 --
@@ -1295,14 +1249,6 @@ ALTER TABLE ONLY pod_memberships
 
 
 --
--- Name: fk_rails_8c4060e9ae; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY offer_and_request_access_controls
-    ADD CONSTRAINT fk_rails_8c4060e9ae FOREIGN KEY (offer_or_request_id) REFERENCES offers_and_requests(id);
-
-
---
 -- Name: fk_rails_b67ad19978; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1323,7 +1269,7 @@ ALTER TABLE ONLY events
 --
 
 ALTER TABLE ONLY offers_and_requests
-    ADD CONSTRAINT fk_rails_d30e756f11 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_rails_d30e756f11 FOREIGN KEY (created_by_user_id) REFERENCES users(id) ON DELETE CASCADE;
 
 
 --
@@ -1487,4 +1433,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150601142438');
 INSERT INTO schema_migrations (version) VALUES ('20150625145416');
 
 INSERT INTO schema_migrations (version) VALUES ('20150630152604');
+
+INSERT INTO schema_migrations (version) VALUES ('20150705020419');
 

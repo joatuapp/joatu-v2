@@ -3,5 +3,5 @@
   %h4
     = request_model.title
     %br
-    %small= t('requests.requester_label', requester: request_model.user.name)
+    %small= t('requests.requester_label', requester: request_model.created_by_name)
   %p= truncate(request_model.description, length: 100)

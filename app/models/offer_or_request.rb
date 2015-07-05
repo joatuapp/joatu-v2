@@ -7,13 +7,14 @@ class OfferOrRequest < Base
 
   include PgSearch
 
-  belongs_to :user
-  belongs_to :pod
+  # Offers and Requests are _always_ created by a user, and _may_ also be
+  # created by an organization. If created by the org, we'll use the org's name
+  # for display purposes most of the time, but we still store specificially
+  # which user created the offer / request, for future reference.
+  belongs_to :created_by_user, class_name: "User"
+  belongs_to :created_by_organization, class_name: "Organization"
 
-  has_many :offer_or_request_access_controls, foreign_key: "offer_or_request_id"
-
-  has_many :visible_to_pods, through: :offer_or_request_access_controls, source: :group, source_type: Pod
-  has_many :visible_to_organizations, through: :offer_or_request_access_controls, source: :group, source_type: Organization
+  belongs_to :organization
 
   validates :visibility, inclusion: { in: %w(public private) }
 
@@ -57,21 +58,32 @@ class OfferOrRequest < Base
   end
 
   def self.owned_by(user)
-    Just(user)
-    where(user_id: user.id)
+    if Actual(user)
+      where(user_id: user.id)
+    else
+      none
+    end
   end
 
   def self.available_to(user)
-    pod_id = Pod.home_pod_for_user(user).id
+    query = self
     org_ids = OrganizationMembership.where_user_is_member(user).pluck(:organization_id)
 
-    query = self.joins("LEFT OUTER JOIN offer_and_request_access_controls ON offers_and_requests.id = offer_and_request_access_controls.offer_or_request_id")
-    query = query.where("offers_and_requests.visibility = 'public' OR offer_and_request_access_controls.id IS NOT NULL")
     if org_ids.empty?
-      query = query.where("(offer_and_request_access_controls.group_type = 'Pod' AND offer_and_request_access_controls.group_id = #{pod_id})")
+      query = query.where(organization_id: nil)
+    elsif org_ids.size == 1
+      query = query.where("organization_id IS NULL OR organization_id = #{org_ids.first}")
     else
-      query = query.where("(offer_and_request_access_controls.group_type = 'Pod' AND offer_and_request_access_controls.group_id = #{pod_id}) OR (offer_and_request_access_controls.group_type = 'Organization' AND offer_and_request_access_controls.group_id IN (#{org_ids.join(',')}))")
+      query = query.where("organization_id IS NULL OR organization_id = IN(#{org_ids.join(", ")})")
     end
+  end
+
+  def self.organization_public_collection(org)
+    self.where(created_by_organization_id: org.id)
+  end
+
+  def self.organization_member_collection(org)
+    self.where("created_by_organization_id = #{org.id} OR organization_id = #{org.id}")
   end
 
   def self.search_results(search_data)
@@ -93,7 +105,7 @@ class OfferOrRequest < Base
     end
 
     if search_data[:types_filter].present?
-      query = query.where(type: search_data[:types_filter])
+      query = query.where(detail_type: search_data[:types_filter])
     end
 
     query
@@ -113,5 +125,13 @@ class OfferOrRequest < Base
 
   def type_class
     self.class.name.demodulize.underscore
+  end
+
+  def created_by_name
+    if created_by_organization_id.present?
+      created_by_organization.name
+    else
+      created_by_user.name
+    end
   end
 end

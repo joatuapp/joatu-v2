@@ -1,4 +1,6 @@
+# Subclass for Requests that are assigned to a specific Organization. Such Requests
+# will be visible only to the members and/or admins of the associated
+# Organization.
 class OrganizationRequest < Request
-  belongs_to :organization
-  validates_presence_of :organization_id
+  include OrgOfferOrRequest
 end
