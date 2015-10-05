@@ -365,7 +365,8 @@ CREATE TABLE offers_and_requests (
     pod_id integer,
     created_by_organization_id integer,
     detail_type character varying,
-    organization_id integer
+    organization_id integer,
+    organization_privacy character varying DEFAULT 'all'::character varying
 );
 
 
@@ -1437,4 +1438,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150630152604');
 INSERT INTO schema_migrations (version) VALUES ('20150705020419');
 
 INSERT INTO schema_migrations (version) VALUES ('20150706134319');
+
+INSERT INTO schema_migrations (version) VALUES ('20150706135805');
 

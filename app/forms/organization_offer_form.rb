@@ -2,6 +2,6 @@ class OrganizationOfferForm < OfferForm
   # def self.policy_class
     # OrganizationOfferPolicy
   # end
-
-  property :organization_id
+  
+  property :created_by_organization_id, validates: {presence: true}
 end

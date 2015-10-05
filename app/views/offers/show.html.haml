@@ -15,7 +15,7 @@
       .panel-body
         = @offer.description
         .pull-right
-          = link_to new_message_path(receiver: @offer.user.id), class: 'btn btn-primary btn-large' do
+          = link_to new_message_path(receiver: @offer.created_by_user.id), class: 'btn btn-primary btn-large' do
             = t('offers.send_message', offerer: @offerer.profile.full_name)
   .col-sm-6
     .panel.panel-info

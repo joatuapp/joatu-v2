@@ -18,7 +18,7 @@ class OffersController < ApplicationController
 
   def show
     authorize @offer
-    @offerer = @offer.user
+    @offerer = @offer.created_by
     @offerer_requests = Request.owned_by(@offerer).paginate(PaginationOptions.new(params[:requests_page], 5))
     @offerer_references = Reference.to_user(@offerer, PaginationOptions.new(params[:references_page], 5))
     respond_with(@offer)

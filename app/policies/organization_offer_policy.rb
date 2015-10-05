@@ -1,4 +1,4 @@
-class OrganizationOfferPolicy < ApplicationPolicy
+class OrganizationOfferPolicy < OfferPolicy
   def show?
     # Private organizations are only visible to their members:
     if record.organization.private?
@@ -10,26 +10,14 @@ class OrganizationOfferPolicy < ApplicationPolicy
   end
 
   def create?
-    Pundit.policy(user, record.organization).create_offer?
+    Pundit.policy(user, record.created_by_organization).create_offer?
   end
 
   def update?
-    user.is_admin? || record.organization.user_is_admin?(user)
+    user.is_admin? || record.created_by_organization.user_is_admin?(user)
   end
 
   def destroy?
-    user.is_admin? || record.organization.user_is_admin?(user)
-  end
-
-  class Scope < ApplicationPolicy::Scope
-    def resolve
-      raise UnauthorizedError if user.guest?
-
-      if user.is_admin? 
-        scope
-      else
-        scope.public_or_member_of(user)
-      end
-    end
+    user.is_admin? || record.created_by_organization.user_is_admin?(user)
   end
 end

@@ -7,16 +7,12 @@ class OfferOrRequest < Base
 
   include PgSearch
 
-  # Offers and Requests are _always_ created by a user, and _may_ also be
-  # created by an organization. If created by the org, we'll use the org's name
-  # for display purposes most of the time, but we still store specificially
-  # which user created the offer / request, for future reference.
   belongs_to :created_by_user, class_name: "User"
-  belongs_to :created_by_organization, class_name: "Organization"
 
+  # Offers and Requests _may_ belong to an organization. If they do, that
+  # offer / request will be visible only to members of that organization, or
+  # depending on the value of organization_privacy, just the org's admins.
   belongs_to :organization
-
-  validates :visibility, inclusion: { in: %w(public private) }
 
   DETAIL_TYPES = {
     knowledge: 'knowledge',
@@ -59,7 +55,7 @@ class OfferOrRequest < Base
 
   def self.owned_by(user)
     if Actual(user)
-      where(user_id: user.id)
+      where(created_by_user_id: user.id)
     else
       none
     end
@@ -127,11 +123,11 @@ class OfferOrRequest < Base
     self.class.name.demodulize.underscore
   end
 
+  def created_by
+    created_by_user
+  end
+
   def created_by_name
-    if created_by_organization_id.present?
-      created_by_organization.name
-    else
-      created_by_user.name
-    end
+    created_by.name
   end
 end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :events
 
     resources :organizations do
-      resources :offers, except: [:index], controller: :organization_offers, as: 'organization_offers'
+      resources :offers, only: [:new, :create], controller: :organization_offers, as: 'organization_offers'
     end
 
     resources :references, except: [:index, :show]

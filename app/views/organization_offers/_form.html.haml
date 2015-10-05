@@ -5,12 +5,12 @@
 = simple_form_for [@organization, @offer] do |f|
   = f.error_notification
 
+  = f.input :created_by_organization_id, as: :hidden
+
   .form-inputs
-    = f.input :organization_id, as: :hidden
     = f.input :detail_type, collection: @offer_types, as: :radio_buttons, label: "#{t('offers.type_label')}:"
     = f.input :title
     = f.input :description, as: :text
-    = f.input :visibility, collection: org_visibility_options(@organization), as: :select, label: "#{t('offers.visibility.label')}:"
 
   .form-actions
     = f.button :submit, class: 'pull-right btn-primary'
