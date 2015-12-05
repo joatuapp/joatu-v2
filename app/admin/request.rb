@@ -9,7 +9,8 @@ ActiveAdmin.register Request do
     actions
   end
 
-  filter :title, :created_by_user_id
+  filter :title
+  filter :created_by_user_id
 
   form do |f|
     f.inputs "Request" do
