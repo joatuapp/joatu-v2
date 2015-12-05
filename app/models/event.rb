@@ -1,5 +1,5 @@
 class Event < Base
-  belongs_to :creator, class: User, foreign_key: :created_by_user_id
+  belongs_to :creator, class_name: User, foreign_key: :created_by_user_id
   belongs_to :organization
   belongs_to :pod
 

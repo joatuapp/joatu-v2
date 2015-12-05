@@ -5,13 +5,17 @@ class RequestPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && 
-      record.user.id == user.id
+    user.present? && (
+      user.admin? ||
+      user.id == record.user.id
+    )
   end
 
   def destroy?
-    user.present? && 
-      record.user.id == user.id
+    user.present? && (
+      user.admin? ||
+      user.id == record.user.id
+    )
   end
 
   class Scope < ApplicationPolicy::Scope

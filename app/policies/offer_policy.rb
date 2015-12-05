@@ -5,13 +5,17 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && 
-      record.user == user
+    user.present? && (
+      user.admin? ||
+      user.id == record.user.id
+    )
   end
 
   def destroy?
-    user.present? && 
-      record.user == user
+    user.present? && (
+      user.admin? ||
+      user.id == record.user.id
+    )
   end
 
   class Scope < ApplicationPolicy::Scope
