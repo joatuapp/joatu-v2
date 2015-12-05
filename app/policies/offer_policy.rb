@@ -6,14 +6,14 @@ class OfferPolicy < ApplicationPolicy
 
   def update?
     user.present? && (
-      user.admin? ||
+      user.is_admin? ||
       user.id == record.user.id
     )
   end
 
   def destroy?
     user.present? && (
-      user.admin? ||
+      user.is_admin? ||
       user.id == record.user.id
     )
   end
