@@ -123,3 +123,5 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'pry-rails'
 end
+
+gem 'rails_12factor', group: :production
