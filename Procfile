@@ -1,2 +1,2 @@
 db: bin/local_postgres.sh
-web: bin/rails s
+web: bundle exec puma -C config/puma.rb
