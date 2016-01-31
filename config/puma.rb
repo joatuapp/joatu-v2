@@ -1,1 +1,1 @@
-bind "unix:///home/ec2-user/joatu-puma.sock?umask=0777"
+bind "unix:///home/ec2-user/sockets/joatu-puma.sock?umask=0777"
