@@ -1,8 +1,10 @@
 module JoatuV2
   class Application
+    config.action_mailer.default_url_options = {
+      host: ENV.fetch('APP_HOST'),
+    }
     config.action_mailer.default_options = {
       from: 'Joatu <info@joatu.org>',
-      host: ENV.fetch('APP_HOST'),
     }
     config.action_mailer.smtp_settings = {
       :address        => 'smtp.sendgrid.net',
