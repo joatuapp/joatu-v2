@@ -82,9 +82,6 @@ gem 'simple_usecase', github: "sweettooth/simple_usecase"
 gem 'naught', github: 'avdi/naught'
 gem 'contracts' # https://github.com/egonSchiele/contracts.ruby
 
-# Mandrill api support
-gem 'mandrill-api', require: 'mandrill'
-
 group :development, :test do
   gem "codeclimate-test-reporter"
 

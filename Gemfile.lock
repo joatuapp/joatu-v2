@@ -193,7 +193,6 @@ GEM
       thread_safe
     equalizer (0.0.9)
     erubis (2.7.0)
-    excon (0.31.0)
     execjs (2.2.2)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
@@ -271,9 +270,6 @@ GEM
       mime-types (>= 1.16, < 3)
     mail_safe (0.3.4)
       actionmailer (>= 3.0.0)
-    mandrill-api (1.0.49)
-      excon (>= 0.16.0, < 1.0)
-      json (>= 1.7.7, < 2.0)
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.2)
@@ -497,7 +493,6 @@ DEPENDENCIES
   kaminari
   mail_safe
   mailboxer!
-  mandrill-api
   momentjs-rails (>= 2.9.0)
   money-rails!
   naught!
@@ -530,3 +525,6 @@ DEPENDENCIES
   virtus (~> 1.0.4)
   web-console (~> 2.0)
   wisper
+
+BUNDLED WITH
+   1.11.2
