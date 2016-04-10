@@ -1,6 +1,6 @@
 module JoatuV2
   class Application
-    config.default_options = {
+    config.action_mailer.default_options = {
       from: 'Joatu <info@joatu.org>',
       host: ENV.fetch('APP_HOST'),
     }
