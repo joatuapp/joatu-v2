@@ -1,17 +1,17 @@
 module JoatuV2
   class Application
-    config.action_mailer.default_url_options = {host: ENV.fetch('APP_HOST')}
-
+    config.default_options = {
+      from: 'Joatu <info@joatu.org>',
+      host: ENV.fetch('APP_HOST'),
+    }
     config.action_mailer.smtp_settings = {
-      address: "smtp.mandrillapp.com",
-      port: 587,
-      enable_starttls_auto: true,
-      user_name: ENV.fetch("MANDRILL_USERNAME"),
-      password: ENV.fetch("MANDRILL_PASSWORD"),
-      authentication: :login,
-      domain: ENV.fetch('APP_HOST'),
+      :address        => 'smtp.sendgrid.net',
+      :port           => '587',
+      :authentication => :plain,
+      :user_name      => ENV['SENDGRID_USERNAME'],
+      :password       => ENV['SENDGRID_PASSWORD'],
+      :domain         => ENV.fetch('APP_HOST'),
+      :enable_starttls_auto => true
     }
   end
 end
-
-MANDRILL = Mandrill::API.new ENV['MANDRILL_PASSWORD']
