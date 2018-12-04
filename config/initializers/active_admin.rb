@@ -164,7 +164,7 @@ ActiveAdmin.setup do |config|
   #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
   #
   # To load a javascript file:
-  config.register_javascript '//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry,drawing'
+  config.register_javascript "//maps.google.com/maps/api/js?v=3.13&amp;key=#{ENV.fetch("GOOGLE_API_KEY")}&amp;sensor=false&amp;libraries=geometry,drawing"
   config.register_javascript '//cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer_compiled.js'
 
   # == CSV options

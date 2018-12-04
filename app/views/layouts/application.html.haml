@@ -15,7 +15,7 @@
     = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
-    = javascript_include_tag "//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry,drawing"
+    = javascript_include_tag "//maps.google.com/maps/api/js?v=3.13&amp;key=#{ENV.fetch("GOOGLE_API_KEY")}&amp;sensor=false&amp;libraries=geometry,drawing"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer_compiled.js"
     = javascript_include_tag "application"
 
