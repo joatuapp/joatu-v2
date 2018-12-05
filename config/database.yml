@@ -16,15 +16,25 @@
 #
 default: &default
   adapter: postgis
-  encoding: unicode
+  encoding: utf8
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   prepared_statements: false
+  url: <%= ENV['DATABASE_URL'].sub(/^postgres/, "postgis") %>
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
 
 development:
   <<: *default
   database: joatu-v2_development
+  host: db
+  username: postgres
+  password: 
+  url: <%= ENV['DATABASE_URL'].sub(/^postgres/, "postgis") +'/joatu-v2_development' %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -59,6 +69,7 @@ development:
 test:
   <<: *default
   database: joatu-v2_test
+  host: db
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

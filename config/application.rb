@@ -43,6 +43,7 @@ module JoatuV2
     # TODO: Using sql schema due to bugs in the (beta) postgres activerecord adapter.
     # Once a stable version is released we should be able to remve this and
     # regenerate the schema in Ruby format.
-    config.active_record.schema_format = :sql
+    # config.active_record.schema_format = :sql
+    config.active_record.schema_format = :ruby
   end
 end

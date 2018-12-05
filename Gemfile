@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'dotenv-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'pg_search'
@@ -43,7 +43,7 @@ gem 'kaminari'
 gem 'simple_form', '~> 3.1.0'
 gem 'gravatarify', '~> 3.0.0'
 gem 'momentjs-rails', '>= 2.9.0'
-gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+# gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 
 # Use puma as the app server
@@ -54,7 +54,9 @@ gem 'newrelic_rpm'
 gem 'i18n-tasks', '~> 0.7.11'
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
 
-gem 'activeadmin', github: 'activeadmin'
+# gem 'inherited_resources', '~> 1.7'
+
+gem 'activeadmin', github: 'activeadmin/activeadmin', tag: 'v1.0.0'
 
 gem 'underscore-rails'
 
@@ -97,7 +99,6 @@ end
 
 # Protects mail from going out to the real world in all environments for which
 # this gem is installed:
-gem "mail_safe", group: [:development, :staging]
 
 gem 'foreman', '~> 0.75'
 gem 'bootstrap-sass', '~> 3.3.1'
