@@ -18,7 +18,7 @@ Please feel free to check out our
 a [pull request](https://github.com/joatuapp/joatu-v2/pulls)!
 
 ### Dependencies
-- Ruby 2.1.3+
+- Ruby 2.3.5+
 - Bundler
 - Postgres 9.3+
 - Postgis (Postgres Geo Extension) 2.1+
