@@ -49,7 +49,7 @@ gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: '
 
 
 # Use puma as the app server
-gem 'puma', '~> 3.4.0'
+gem 'puma', '~> 3.12.0'
 
 gem 'newrelic_rpm'
 
