@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.4.0'
+ruby '2.4.5'
 gem 'dotenv-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2'
+gem 'rails', '4.2.11'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'pg_search'
@@ -28,7 +28,7 @@ gem 'money-rails', github: "joatuapp/money-rails"
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+# gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -113,13 +113,13 @@ end
 gem 'foreman', '~> 0.75'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
-gem 'devise', '~> 3.4.1'
-gem 'devise_invitable', '~> 1.4.0'
+gem 'devise',           '~> 4.2'
+gem 'devise_invitable', '~> 1.7.0'
 gem 'pundit', '~> 0.3.0'
 gem 'reform', '~> 1.2.5'
 gem 'virtus', '~> 1.0.4'
 gem 'haml-rails', '~> 0.7.0'
-gem 'bootstrap-sass-extras', '~> 0.0.6'
+# gem 'bootstrap-sass-extras'#, '~> 0.0.6'
 gem "font-awesome-rails"
 
 gem 'rails_12factor', group: :production
