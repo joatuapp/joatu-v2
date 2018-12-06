@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'dotenv-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'pg_search'
@@ -54,7 +54,9 @@ gem 'newrelic_rpm'
 gem 'i18n-tasks', '~> 0.7.11'
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
 
-gem 'activeadmin', github: 'activeadmin'
+# gem 'inherited_resources', '~> 1.7'
+
+gem 'activeadmin', github: 'activeadmin/activeadmin', tag: 'v1.0.0'
 
 gem 'underscore-rails'
 
@@ -71,8 +73,6 @@ gem 'country_select', '~> 2.1.1'
 gem 'wisper'
 
 gem 'render_anywhere', :require => false
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 gem 'redcarpet', '~> 3.2'
 
@@ -81,6 +81,9 @@ gem 'simple_usecase', github: "sweettooth/simple_usecase"
 
 gem 'naught', github: 'avdi/naught'
 gem 'contracts' # https://github.com/egonSchiele/contracts.ruby
+
+group :development do
+end
 
 group :development, :test do
   gem "codeclimate-test-reporter"
@@ -93,11 +96,19 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'spring-commands-rspec'
+  gem 'pry-rails'
 end
 
 # Protects mail from going out to the real world in all environments for which
 # this gem is installed:
-gem "mail_safe", group: [:development, :staging]
 
 gem 'foreman', '~> 0.75'
 gem 'bootstrap-sass', '~> 3.3.1'
@@ -110,15 +121,5 @@ gem 'virtus', '~> 1.0.4'
 gem 'haml-rails', '~> 0.7.0'
 gem 'bootstrap-sass-extras', '~> 0.0.6'
 gem "font-awesome-rails"
-group :development, :test do
-  gem 'factory_girl_rails', '~> 4.0'
-  gem 'faker'
-  gem 'rspec'
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'spring-commands-rspec'
-  gem 'pry-rails'
-end
 
 gem 'rails_12factor', group: :production

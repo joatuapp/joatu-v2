@@ -1,5 +1,9 @@
-%h1= t('users.editing_header')
 
-= render 'form'
+#edit-user-row.row
+  #user-form-column.col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3
+    %h1= t('users.editing_header')
 
-= link_to t('users.delete_button'), user_path(@user), method: :delete, class: "btn btn-danger", data: {confirm: t('users.delete_confirm_message')}
+    = render 'form'
+    
+    .voffset40
+      = link_to t('users.delete_button'), user_path(@user), method: :delete, class: "btn btn-xs btn-danger", data: {confirm: t('users.delete_confirm_message')}

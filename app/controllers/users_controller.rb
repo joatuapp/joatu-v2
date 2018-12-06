@@ -25,6 +25,8 @@ class UsersController < ApplicationController
     end
 
     respond_with(@user = @form, location: edit_user_path(@user))
+  rescue => e
+    render :edit
   end
 
   def destroy
