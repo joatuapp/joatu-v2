@@ -92,8 +92,12 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:invite).concat [:home_pod_id]
-    devise_parameter_sanitizer.for(:accept_invitation).concat [:postal_code, :tou_agreement]
+    devise_parameter_sanitizer.permit(:invite) do |p|
+      p.permit(:home_pod_id)
+    end
+    devise_parameter_sanitizer.permit(:accept_invitation) do |p|
+      p.permit(:postal_code, :tou_agreement)
+    end
   end
 
   def guest_instance
