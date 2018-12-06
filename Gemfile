@@ -43,7 +43,7 @@ gem 'kaminari'
 gem 'simple_form', '~> 3.1.0'
 gem 'gravatarify', '~> 3.0.0'
 gem 'momentjs-rails', '>= 2.9.0'
-# gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 
 # Use puma as the app server
@@ -73,8 +73,6 @@ gem 'country_select', '~> 2.1.1'
 gem 'wisper'
 
 gem 'render_anywhere', :require => false
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 gem 'redcarpet', '~> 3.2'
 

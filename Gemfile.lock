@@ -59,6 +59,15 @@ GIT
     simple_usecase (0.0.1)
       activesupport (>= 3.0.0)
 
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: 36d21cec5da7f5b214925804f60e63c61c747023
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (4.7.16)
+      momentjs-rails (>= 2.9.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -462,6 +471,7 @@ DEPENDENCIES
   contracts
   country_select (~> 2.1.1)
   database_cleaner
+  datetimepicker-rails!
   devise (~> 3.4.1)
   devise_invitable (~> 1.4.0)
   dotenv-rails
