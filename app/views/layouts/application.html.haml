@@ -29,7 +29,7 @@
       - if content_for? :content
         = yield :content
       - else
-        / = bootstrap_flash
+        = bootstrap_flash
         = yield
       = modal_dialog id: "joatu_modal",
         header: { show_close: true },
