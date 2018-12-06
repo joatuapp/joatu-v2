@@ -84,6 +84,9 @@ gem 'simple_usecase', github: "sweettooth/simple_usecase"
 gem 'naught', github: 'avdi/naught'
 gem 'contracts' # https://github.com/egonSchiele/contracts.ruby
 
+group :development do
+end
+
 group :development, :test do
   gem "codeclimate-test-reporter"
 
@@ -95,6 +98,15 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'spring-commands-rspec'
+  gem 'pry-rails'
 end
 
 # Protects mail from going out to the real world in all environments for which
@@ -111,15 +123,5 @@ gem 'virtus', '~> 1.0.4'
 gem 'haml-rails', '~> 0.7.0'
 gem 'bootstrap-sass-extras', '~> 0.0.6'
 gem "font-awesome-rails"
-group :development, :test do
-  gem 'factory_girl_rails', '~> 4.0'
-  gem 'faker'
-  gem 'rspec'
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'spring-commands-rspec'
-  gem 'pry-rails'
-end
 
 gem 'rails_12factor', group: :production
