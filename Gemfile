@@ -22,6 +22,8 @@ gem 'jquery-rails'
 gem 'jquery-cookie-rails'
 gem 'jquery-turbolinks'
 
+gem 'nokogiri', '~> 1.8.2'
+
 # Handles money support, with migration / DB integration.
 gem 'money-rails', github: "joatuapp/money-rails"
 
@@ -47,7 +49,7 @@ gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: '
 
 
 # Use puma as the app server
-gem 'puma'
+gem 'puma', '~> 3.4.0'
 
 gem 'newrelic_rpm'
 
@@ -118,7 +120,7 @@ gem 'devise_invitable', '~> 1.7.0'
 gem 'pundit', '~> 0.3.0'
 gem 'reform', '~> 1.2.5'
 gem 'virtus', '~> 1.0.4'
-gem 'haml-rails', '~> 0.7.0'
+gem 'haml-rails'
 # gem 'bootstrap-sass-extras'#, '~> 0.0.6'
 gem "font-awesome-rails"
 
