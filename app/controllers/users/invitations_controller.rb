@@ -47,4 +47,8 @@ class Users::InvitationsController < Devise::InvitationsController
     
     @form
   end
+
+  def current_inviter
+    current_user
+  end
 end

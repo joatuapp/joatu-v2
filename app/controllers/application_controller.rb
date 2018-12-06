@@ -93,7 +93,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:invite) do |p|
-      p.permit(:home_pod_id)
+      p.permit(:home_pod_id, :email)
     end
     devise_parameter_sanitizer.permit(:accept_invitation) do |p|
       p.permit(:postal_code, :tou_agreement)
