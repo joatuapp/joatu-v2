@@ -121,7 +121,7 @@ gem 'pundit', '~> 0.3.0'
 gem 'reform', '~> 1.2.5'
 gem 'virtus', '~> 1.0.4'
 gem 'haml-rails'
-# gem 'bootstrap-sass-extras'#, '~> 0.0.6'
+gem 'bootstrap-sass-extras', '~> 0.0.7'
 gem "font-awesome-rails"
 
 gem 'rails_12factor', group: :production
