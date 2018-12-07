@@ -32,7 +32,7 @@ ActiveAdmin.register User do
       f.input :password_confirmation
       f.input :postal_code
       f.input :is_admin
-      f.input :pod, as: :select, collection: Pod.all.select(:id, :name), member_label: :name, class: 'form-control'
+      f.input :pod, as: :select, collection: Pod.all.select(:id, :name), member_label: :name
     end
     f.actions
   end
