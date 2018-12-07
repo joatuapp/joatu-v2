@@ -1,5 +1,7 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, :is_admin, :postal_code
+  permit_params :email, :password, :password_confirmation, :is_admin, :postal_code, :pod_id
+
+  includes :pod
 
   index do
     selectable_column
@@ -7,7 +9,7 @@ ActiveAdmin.register User do
     column :email
 
     column "Pod" do |user|
-      Pod.home_pod_for_user(user).name
+      user.pod
     end
 
     column :is_admin
@@ -30,6 +32,7 @@ ActiveAdmin.register User do
       f.input :password_confirmation
       f.input :postal_code
       f.input :is_admin
+      f.input :pod, as: :select, collection: Pod.all.select(:id, :name), member_label: :name, class: 'form-control'
     end
     f.actions
   end

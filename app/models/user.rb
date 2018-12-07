@@ -15,6 +15,8 @@ class User < Base
   composed_of :preferences, class_name: "User::Preferences", mapping: %w(preferences_json to_json)
   
   has_one :profile
+  has_one :pod_membership
+  has_one :pod, through: :pod_membership
 
   before_validation :update_home_location, if: :postal_code_changed?
   after_save :publish_location_updated, if: :home_location_changed?
@@ -42,6 +44,14 @@ class User < Base
 
   def is_admin?
     is_admin
+  end
+
+  def pod_id
+    pod.id if pod
+  end
+
+  def pod_id=(arg)
+    self.pod = Pod.find arg
   end
 
   private
