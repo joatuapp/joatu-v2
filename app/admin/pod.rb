@@ -1,10 +1,15 @@
 ActiveAdmin.register Pod do
   permit_params :name, :description, :focus_area, :hub_id
 
+  includes :hub
+
   index do
     selectable_column
     id_column
     column :name
+    column "Organization" do |pod|
+      pod.hub
+    end
     column :created_at
     actions
   end
@@ -15,7 +20,7 @@ ActiveAdmin.register Pod do
     f.inputs "Pod Details" do
       f.input :name
       f.input :description
-      f.select :hub_id, Organization.all.map {|o| [o.name, o.id] }
+      f.input :hub_id, as: :select, collection: Organization.all.select(:id, :name), member_label: :name, label: 'Organization'
       f.input :focus_area, as: :map_area
     end
     f.actions
