@@ -413,6 +413,10 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
+    skylight (3.1.2)
+      skylight-core (= 3.1.2)
+    skylight-core (3.1.2)
+      activesupport (>= 4.2.0)
     slop (3.6.0)
     spring (1.2.0)
     spring-commands-rspec (1.0.4)
@@ -518,6 +522,7 @@ DEPENDENCIES
   sass-rails (~> 5.0.7)
   simple_form (~> 3.1.0)
   simple_usecase!
+  skylight
   spring
   spring-commands-rspec
   turbolinks
