@@ -35,7 +35,7 @@ class Users::InvitationsController < Devise::InvitationsController
   # of resource class
   def accept_form
     update_params = update_resource_params
-    resource = resource_class.find_by_invitation_token(update_params.delete(:invitation_token), false)
+    resource = resource_class.find_by(invitation_token: update_params[:invitation_token])
     @form = NewUserForm.new(resource)
     if @form.validate(update_params)
       @form.save do |data|
