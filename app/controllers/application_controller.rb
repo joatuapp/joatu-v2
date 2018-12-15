@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
       p.permit(:home_pod_id, :email)
     end
     devise_parameter_sanitizer.permit(:accept_invitation) do |p|
-      p.permit(:postal_code, :tou_agreement)
+      p.permit(:invitation_token, :password, :password_confirmation, :postal_code, :tou_agreement)
     end
   end
 
