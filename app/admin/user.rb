@@ -16,6 +16,8 @@ ActiveAdmin.register User do
       end
     end
 
+    column :postal_code
+
     column :is_admin
     column :current_sign_in_at
     column :sign_in_count
