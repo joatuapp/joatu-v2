@@ -49,4 +49,8 @@ class Pod < ActiveRecord::Base
   def hub_id=(val)
     self.hub = Organization.find(val)
   end
+
+  def to_s
+    name
+  end
 end

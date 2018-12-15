@@ -9,7 +9,11 @@ ActiveAdmin.register User do
     column :email
 
     column "Pod" do |user|
-      user.pod
+      if user.pod.id
+        link_to user.pod.name, admin_pod_path(user.pod)
+      else
+        user.pod.name
+      end
     end
 
     column :is_admin

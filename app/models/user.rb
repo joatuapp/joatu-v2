@@ -54,6 +54,10 @@ class User < Base
     self.pod = Pod.find arg
   end
 
+  def pod
+    super || UncreatedPod.new
+  end
+
   private
 
   def update_home_location

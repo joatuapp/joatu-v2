@@ -2,6 +2,10 @@ UncreatedPod = Naught.build do |config|
   config.impersonate Pod
   config.black_hole
 
+  def id
+    nil
+  end
+
   def name
     "Uncreated Pod"
   end
