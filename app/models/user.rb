@@ -51,7 +51,11 @@ class User < Base
   end
 
   def pod_id=(arg)
-    self.pod = Pod.find arg
+    if arg.present?
+      self.pod = Pod.find arg
+    else
+      self.pod = nil
+    end
   end
 
   def pod
