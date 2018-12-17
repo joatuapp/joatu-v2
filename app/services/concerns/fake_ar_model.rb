@@ -2,6 +2,7 @@ module FakeArModel
   extend ActiveSupport::Concern
 
   included do
+
     # Required to match AR interface, so this can be set as a polymorphic
     # relation.
     def self.primary_key
@@ -14,6 +15,9 @@ module FakeArModel
       self
     end
 
+    def initialize
+      @attributes = {id: id}
+    end
     # Required to match AR interface, so this can be set as a polymorphic
     # relation.
     def [](val)
@@ -41,5 +45,9 @@ module FakeArModel
     def save!(*args)
     end
     alias save save!
+
+    def _read_attribute(attr_name, &block) # :nodoc
+      @attributes[attr_name]
+    end
   end
 end
