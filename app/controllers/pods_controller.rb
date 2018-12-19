@@ -5,7 +5,7 @@ class PodsController < ApplicationController
   def home
     @display_add_offers_and_requests = true
 
-    @pod = Pod.home_pod_for_user(current_user)
+    @pod = current_user.pod
     @hub = @pod.hub
     @events = Event.available_for_pod(@pod, PaginationOptions.new(1, 3))
     authorize @pod, :show?
