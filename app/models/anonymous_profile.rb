@@ -3,7 +3,11 @@ AnonymousProfile = Naught.build do |config|
   config.black_hole
 
   def full_name
-    "anonymous"
+    "Anonymous"
+  end
+
+  def to_s
+    full_name
   end
 
   # Supports using this as an existing value for a select input:

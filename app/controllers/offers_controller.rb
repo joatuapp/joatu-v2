@@ -43,7 +43,7 @@ class OffersController < ApplicationController
     authorize @form.model
     if @form.validate(params[:offer])
       if @form.visibility == :pod
-        @form.model.pod = Pod.home_pod_for_user(current_user)
+        @form.model.pod = current_user.pod
       else
         @form.model.pod = nil
       end
@@ -58,7 +58,7 @@ class OffersController < ApplicationController
     authorize @form.model
     if @form.validate(params[:offer])
       if @form.visibility == :pod
-        @form.model.pod = Pod.home_pod_for_user(current_user)
+        @form.model.pod = current_user.pod
       else
         @form.model.pod = nil
       end

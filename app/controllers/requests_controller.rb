@@ -6,12 +6,16 @@ class RequestsController < ApplicationController
 
   respond_to :html
 
-  SearchQuery = Struct.new(:search, :order_by, :types_filter) do include ActiveModel::Model; end
+  SearchQuery = Struct.new(:search, :order_by, :types_filter) do
+    include ActiveModel::Model
+  end
 
   def index
     @search_form = RequestSearchForm.new(SearchQuery.new)
     @search_form.save do |search_data|
-      @user_requests = Request.search_results(search_data, current_user, PaginationOptions.new(params[:page]))
+      @user_requests = Request.search_results(
+        search_data, current_user, PaginationOptions.new(params[:page])
+      )
     end
     respond_with(@user_requests)
   end
@@ -44,7 +48,7 @@ class RequestsController < ApplicationController
     authorize @form.model
     if @form.validate(params[:request])
       if @form.visibility == :pod
-        @form.model.pod = Pod.home_pod_for_user(current_user)
+        @form.model.pod = current_user.pod
       else
         @form.model.pod = nil
       end
@@ -60,7 +64,7 @@ class RequestsController < ApplicationController
     authorize @form.model
     if @form.validate(params[:request])
       if @form.visibility == :pod
-        @form.model.pod = Pod.home_pod_for_user(current_user)
+        @form.model.pod = current_user.pod
       else
         @form.model.pod = nil
       end
