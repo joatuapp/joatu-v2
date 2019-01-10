@@ -9,10 +9,8 @@ ActiveAdmin.register Request do
     column :title
 
     column "Pod" do |request|
-      if request.pod.id
+      if request.pod && request.pod.id
         link_to request.pod.name, admin_pod_path(request.pod)
-      else
-        request.pod.name
       end
     end
 

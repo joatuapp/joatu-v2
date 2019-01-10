@@ -9,10 +9,8 @@ ActiveAdmin.register Offer do
     column :title
 
     column "Pod" do |offer|
-      if offer.pod.id
+      if offer.pod && offer.pod.id
         link_to offer.pod.name, admin_pod_path(offer.pod)
-      else
-        offer.pod.name
       end
     end
 
