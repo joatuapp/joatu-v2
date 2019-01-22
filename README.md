@@ -50,14 +50,16 @@ The following commands will get you set up to begin develpment on JoatU:
       - edit the file and add the following line to the end, replacing `<api_key_value>` with the API key that you created.
       - `GOOGLE_API_KEY=<api_key_value>`
 
-
-3. Load seed data and create an initial admin user:
+3. Create the development and test databases
+  - Run the following command, it will create the development and test databases in the postgres server
+  - `docker-compose run app bundle exec db:setup`
+4. Load seed data and create an initial admin user:
   - `docker-compose run app bundle exec rake db:seed INITIAL_ADMIN_EMAIL=joatu-admin@grr.la INITIAL_ADMIN_PASSWORD=password`
   - Log in to JoatU using email `joatu-admin@grr.la`, password `password`.
   - Once logged in, you will have access to administration tools from within
     the "Manage JoatU" menu.
 
-4. Start up the app
+5. Start up the app
   - run `docker-compose up app`
   - The app should now be available on `localhost:3000`
 
