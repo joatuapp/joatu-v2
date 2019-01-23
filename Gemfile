@@ -87,6 +87,7 @@ gem 'naught', github: 'avdi/naught'
 gem 'contracts' # https://github.com/egonSchiele/contracts.ruby
 
 group :development do
+  gem 'sidekiq'
 end
 
 group :development, :test do
