@@ -52,7 +52,7 @@ The following commands will get you set up to begin develpment on JoatU:
 
 3. Create the development and test databases
   - Run the following command, it will create the development and test databases in the postgres server
-  - `docker-compose run app bundle exec db:setup`
+  - `docker-compose run app bundle exec rake db:setup`
 4. Load seed data and create an initial admin user:
   - `docker-compose run app bundle exec rake db:seed INITIAL_ADMIN_EMAIL=joatu-admin@grr.la INITIAL_ADMIN_PASSWORD=password`
   - Log in to JoatU using email `joatu-admin@grr.la`, password `password`.
