@@ -10,7 +10,11 @@ class Offer < OfferOrRequest
   end
 
   def self.type_options
-    descendants.inject({}) {|h, c| h[c.name.demodulize.titleize] = c.name.to_s; h}
+    descendants.inject({}) do |h, c|
+      h[I18n.t("offers_and_requests.types.#{c.name.demodulize.underscore}")] = c.name.to_s
+
+      h
+    end
   end
 end
 

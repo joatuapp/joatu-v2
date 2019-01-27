@@ -190,6 +190,11 @@ fr:
     from: "De"
     subject: "Sujet"
     new_header: "Envoyer un message"
+  offers_and_requests:
+    types:
+      knowledge: "Knowledge"
+      skills_and_time: "Skills and Time"
+      physical_goods: "Physical Goods"
   offers:
     types_filter_label: "Filtrer par type d’offre"
     editing_header: "Modifier une offre"
