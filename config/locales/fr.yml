@@ -32,33 +32,33 @@ fr:
     new_header: "Créer une nouvelle Offre Communautaire" 
     name_label: "Titre"
     description_label: "Description"
-    Start_date_time_label: "Date et heure de début"
-    End_date_time_label: "Date et heure de fin"
-    Capacity_label: "Capacité"
-    Address_label: "Adresse"
-    Address_name_label: "Nom de lieu"
-    Address1_label: "Addresse"
-    City_label: "Ville"
-    Province_label: "Province"
-    Country_label: "Pays"
-    Postal_code_label: "Code postal"
-    About_offer_label: "À propos de votre offre"
-    Value_to_society_label:  "Bienfait pour la société"
-    Qualifications_label: "Vos qualifications pour offrir cet événement"
-    Estimated_hours_label: "Combien d’heure de travail allez-vous fournir pour cet événement"
-    Requirements_provided_label: "Les exigences que vous allez fournir"
-    Requirements_needed_label: "Ce dont vous aurez besoin pour organiser l’événement"
-    Request_label: "Services et/ou produits que vous apprécieriez pour améliorer l’événement, ou de l’aide que vous auriez besoin de la part de la communauté"
-    Question_or_comment_label: "Commentaires et/ou questions pour JoatU”
+    start_date_time_label: "Date et heure de début"
+    end_date_time_label: "Date et heure de fin"
+    capacity_label: "Capacité"
+    address_label: "Adresse"
+    address_name_label: "Nom de lieu"
+    address1_label: "Addresse"
+    city_label: "Ville"
+    province_label: "Province"
+    country_label: "Pays"
+    postal_code_label: "Code postal"
+    about_offer_label: "À propos de votre offre"
+    value_to_society_label:  "Bienfait pour la société"
+    qualifications_label: "Vos qualifications pour offrir cet événement"
+    estimated_hours_label: "Combien d’heure de travail allez-vous fournir pour cet événement"
+    requirements_provided_label: "Les exigences que vous allez fournir"
+    requirements_needed_label: "Ce dont vous aurez besoin pour organiser l’événement"
+    request_label: "Services et/ou produits que vous apprécieriez pour améliorer l’événement, ou de l’aide que vous auriez besoin de la part de la communauté"
+    question_or_comment_label: "Commentaires et/ou questions pour JoatU"
     Create: "Créer une Offre Communautaire"
-    Subject_to_approval: "NOTE : Toute nouvelle Offre Communautaire devra être approuvée par les modérateurs de JoatU. Donc, elle ne sera pas immédiatement visible au public."
+    subject_to_approval: "NOTE : Toute nouvelle Offre Communautaire devra être approuvée par les modérateurs de JoatU. Donc, elle ne sera pas immédiatement visible au public."
   admin:
-    caps: "POINT D’ACC"
+    caps:
       new_header: "Génère de nouveaux points d’ACC"
       destination_label: "Attribuer de nouveaux points d’ACC à"
       caps_amount: "Montant des points d’ACC"
       caps_awarded_successfully_message: "Attribue avec succès % {caps} à % {recipient_name}" 
-language:
+  language:
     en: "English"
     fr: "Français"
   footer:
@@ -99,8 +99,7 @@ language:
         Talents offerts, produits et objets à échanger/louer/vendre — ou même à donner !"
       build_bonds_header: "Tissez des liens avec vos voisins"
       # ***** I was a bit imaginative for this one ;)
-      build_bonds_desc: "Rencontrez des personnes à l'esprit communautaire dans leur environnement naturel et créez des alliances !"
-      Ateliers gratuits de partage de connaissances et autres rencontres en tout genre: "échanges de vêtements, cuisines collectives, soirées de jeux, concerts, cours..."
+      build_bonds_desc: "Rencontrez des personnes à l'esprit communautaire dans leur environnement naturel et créez des alliances ! Ateliers gratuits de partage de connaissances et autres rencontres en tout genre: échanges de vêtements, cuisines collectives, soirées de jeux, concerts, cours..."
       offer_skills_header: "Donnez et recevez de l'aide"
       # ***** Here I removed 'exclusive' and the mention of JoatU. I think
       # ***** it is a little... awkward.
@@ -122,13 +121,13 @@ language:
     ends_at: "Se termine à"
     starts_at: "Débute à"
     times: "De %{start} à %{end}"
-  Location: "Emplacement"
-    Value_to_society: "Bienfait pour la société"
-    Qualifications: "Vos qualifications pour offrir cet événement"
-    Estimated_hours: "Combien d’heure de travail %{producer_name} va fournir pour cet événement"
-    Requirements_provided: "Exigences fournies"
-    Requirements_needed: "Exigences nécessaires pour organiser l’événement"
-    Requests: "Services et/ou produits qui pourraient améliorer l’événement, ou aide nécessaire de la part de la communauté"
+    location: "Emplacement"
+    value_to_society: "Bienfait pour la société"
+    qualifications: "Vos qualifications pour offrir cet événement"
+    estimated_hours: "Combien d’heure de travail %{producer_name} va fournir pour cet événement"
+    requirements_provided: "Exigences fournies"
+    requirements_needed: "Exigences nécessaires pour organiser l’événement"
+    requests: "Services et/ou produits qui pourraient améliorer l’événement, ou aide nécessaire de la part de la communauté"
   flash:
     not_authorized: "Vous n'avez pas l'autorisation d'effectuer cette opération."
   tou:
@@ -140,10 +139,10 @@ language:
     header: "Aide et « foire aux questions »"
     intro: "JoatU, une plateforme communautaire, est ouverte à vos commentaires et suggestions !"
     send_admin_message: "Envoyer un message à JoatU"
-    faqus: "Foire aux questions"
-      caps:
-        caps_sent_successfully_message: "Succès de l’envoie des %{caps} à %{recipient_name}"
-        caps_failed_to_send: "Impossible d’envoyer les points d’ACC en raison d’une erreur : %{error_message}"
+    faqs: "Foire aux questions"
+  caps:
+    caps_sent_successfully_message: "Succès de l’envoie des %{caps} à %{recipient_name}"
+    caps_failed_to_send: "Impossible d’envoyer les points d’ACC en raison d’une erreur : %{error_message}"
   mailchimp:
     newsletter:
       email: "Adresse courriel"
@@ -191,7 +190,6 @@ language:
     from: "De"
     subject: "Sujet"
     new_header: "Envoyer un message"
-
   offers:
     types_filter_label: "Filtrer par type d’offre"
     editing_header: "Modifier une offre"
