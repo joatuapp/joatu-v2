@@ -1,5 +1,7 @@
 sudo: required
 language: ruby
+rvm:
+  - 2.4.5
 services:
   - docker
 env:
@@ -13,10 +15,12 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
+  - sudo /etc/init.d/postgresql stop
   # - docker-compose up -d bundle
-  - docker-compose up -d db
+  # - docker-compose up -d db
   - docker-compose build
 script:
-  - docker-compose run app bundle update
-  - docker-compose run app bundle exec rails db:setup
+  - echo "GOOGLE_API_KEY=this_is_a_test" >> ./docker/.env.app.conf
+  - docker-compose run app bundle
+  - docker-compose run app bundle exec rake db:setup
   - docker-compose run app bundle exec rspec

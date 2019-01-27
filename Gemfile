@@ -7,7 +7,7 @@ gem 'rails', '4.2.11'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'pg_search'
-gem 'activerecord-postgis-adapter'
+gem 'activerecord-postgis-adapter', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.7'
 # Use Uglifier as compressor for JavaScript assets
@@ -95,12 +95,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
   gem 'rspec'
@@ -109,6 +103,14 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'spring-commands-rspec'
   gem 'pry-rails'
+end
+
+group :development do
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
+  
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
 end
 
 # Protects mail from going out to the real world in all environments for which

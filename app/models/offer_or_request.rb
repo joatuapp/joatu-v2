@@ -50,7 +50,7 @@ class OfferOrRequest < Base
   end
 
   def self.available_to(user, pagination)
-    pod = Pod.home_pod_for_user(user)
+    pod = user.pod
     visible_to_pod(pod).includes(user: [:profile]).paginate(pagination)
   end
 

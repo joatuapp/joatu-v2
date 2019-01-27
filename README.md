@@ -1,9 +1,16 @@
-[![Code
-Climate](https://codeclimate.com/github/joatuapp/joatu-v2/badges/gpa.svg)](https://codeclimate.com/github/joatuapp/joatu-v2)
-[![Build
-Status](https://semaphoreapp.com/api/v1/projects/f723d0c2-dcfd-4b6a-9b3e-f4e30e0189ba/357065/badge.png)](https://semaphoreapp.com/joatu/joatu-v2)
+[![Code Climate](https://codeclimate.com/github/joatuapp/joatu-v2/badges/gpa.svg)](https://codeclimate.com/github/joatuapp/joatu-v2)
+[![Build Status](https://travis-ci.org/joatuapp/joatu-v2.svg?branch=master)](https://travis-ci.org/joatuapp/joatu-v2)
 
 # JoatU
+
+## Contents
+- About the project
+- Contributing
+- Development Setup (Docker)
+    - Requirements
+    - Installation
+    - Configuration
+    - Running the application
 
 ## About the Project
 The Jack Of All Trade Universe is an online marketplace for self-organized
@@ -18,7 +25,12 @@ Please feel free to check out our
 a [pull request](https://github.com/joatuapp/joatu-v2/pulls)!
 
 ### Dependencies
-- Ruby 2.3.5+
+#### Development Dependencies
+- Docker
+- Docker Compose
+
+#### Production Dependencies
+- Ruby 2.4.5+
 - Bundler
 - Postgres 9.3+
 - Postgis (Postgres Geo Extension) 2.1+
@@ -27,38 +39,26 @@ a [pull request](https://github.com/joatuapp/joatu-v2/pulls)!
 The following commands will get you set up to begin develpment on JoatU:
 
 1. Check out the code:
-  - `git clone
-  https://github.com/joatuapp/joatu-v2.git`
+  - `git clone https://github.com/joatuapp/joatu-v2.git`
   - `cd joatu-v2`
-  - `bundle install`
+  - `docker-compose build`
 
 2. Set up environment:
-  - `cp .env.example .env`
-  - Edit .env file as necessary. SECRET_TOKEN, SECRET_KEY_BASE,
-  DEVISE_SECRET, and DEVISE_PEPPER should all be set with values created by
-  running `rake secret`
+  - You must create a [Google Maps API key](https://developers.google.com/maps/documentation/embed/get-api-key) before completing this next step
+  - Once you have obtained your API key, you must add it to the environment file located at `<project_folder>/docker/.env.app.conf`. 
+      - edit the file and add the following line to the end, replacing `<api_key_value>` with the API key that you created.
+      - `GOOGLE_API_KEY=<api_key_value>`
 
-3. Set up the Database:
-  - `foreman start db` (note: it will start then stay running for subsequent
-  steps)
-  - In a new terminal window, from the code path, run `rake db:setup`
-  - In the original window, hit Ctl+C to stop the DB process.
-
-4. Start the app server:
-  - `foreman start`
-  - Visit [localhost:3000](http://localhost:3000) to see the app!
-
-5. Create an initial admin user and log in:
-  - `INITIAL_ADMIN_EMAIL=test@example.com INITIAL_ADMIN_PASSWORD=foobar rake
-    db:seed`
-  - Log in to JoatU using email test@example.com, password foobar.
+3. Create the development and test databases
+  - Run the following command, it will create the development and test databases in the postgres server
+  - `docker-compose run app bundle exec rake db:setup`
+4. Load seed data and create an initial admin user:
+  - `docker-compose run app bundle exec rake db:seed INITIAL_ADMIN_EMAIL=joatu-admin@grr.la INITIAL_ADMIN_PASSWORD=password`
+  - Log in to JoatU using email `joatu-admin@grr.la`, password `password`.
   - Once logged in, you will have access to administration tools from within
     the "Manage JoatU" menu.
 
-On subsequent runs, simply change to the app directory and run `foreman start`
-to start the app. In the terminal window while the app is running, hit Ctl+C at
-any point to shut down the app. The JoatU app uses a custom postgres database
-(stored in vendor/postgresql) and will start that database when `foreman start`
-is run. If `foreman start` fails and you are running postgres for other 
-projects, please try shutting down any other instances of postgrss, and then 
-running `foreman start` again.
+5. Start up the app
+  - run `docker-compose up app`
+  - The app should now be available on `localhost:3000`
+
