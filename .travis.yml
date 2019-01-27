@@ -15,6 +15,7 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
+  - sudo /etc/init.d/postgresql stop
   # - docker-compose up -d bundle
   # - docker-compose up -d db
   - docker-compose build
