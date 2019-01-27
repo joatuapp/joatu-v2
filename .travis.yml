@@ -14,9 +14,10 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   # - docker-compose up -d bundle
-  - docker-compose up -d db
+  # - docker-compose up -d db
   - docker-compose build
 script:
-  - docker-compose run app bundle update
-  - docker-compose run app bundle exec rails db:setup
+  - echo "GOOGLE_API_KEY=this_is_a_test" >> ./docker/.env.app.conf
+  - docker-compose run app bundle
+  - docker-compose run app bundle exec rake db:setup
   - docker-compose run app bundle exec rspec
