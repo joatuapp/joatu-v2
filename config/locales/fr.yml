@@ -48,9 +48,9 @@ fr:
     estimated_hours_label: "Combien d’heure de travail allez-vous fournir pour cet événement"
     requirements_provided_label: "Les exigences que vous allez fournir"
     requirements_needed_label: "Ce dont vous aurez besoin pour organiser l’événement"
-    request_label: "Services et/ou produits que vous apprécieriez pour améliorer l’événement, ou de l’aide que vous auriez besoin de la part de la communauté"
+    requests_label: "Services et/ou produits que vous apprécieriez pour améliorer l’événement, ou de l’aide que vous auriez besoin de la part de la communauté"
     question_or_comment_label: "Commentaires et/ou questions pour JoatU"
-    Create: "Créer une Offre Communautaire"
+    create: "Créer une Offre Communautaire"
     subject_to_approval: "NOTE : Toute nouvelle Offre Communautaire devra être approuvée par les modérateurs de JoatU. Donc, elle ne sera pas immédiatement visible au public."
   admin:
     caps:
