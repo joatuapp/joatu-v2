@@ -19,6 +19,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+
 fr:
   back: "Revenir"
   show: "Montrer"
@@ -27,6 +28,36 @@ fr:
   alpha: "Alpha"
   time:
     ago: "il y a %{time}"
+  community_offers:
+    new_header: "Créer une nouvelle Offre Communautaire" 
+    name_label: "Titre"
+    description_label: "Description"
+    start_date_time_label: "Date et heure de début"
+    end_date_time_label: "Date et heure de fin"
+    capacity_label: "Capacité"
+    address_label: "Adresse"
+    address_name_label: "Nom de lieu"
+    address1_label: "Addresse"
+    city_label: "Ville"
+    province_label: "Province"
+    country_label: "Pays"
+    postal_code_label: "Code postal"
+    about_offer_label: "À propos de votre offre"
+    value_to_society_label:  "Bienfait pour la société"
+    qualifications_label: "Vos qualifications pour offrir cet événement"
+    estimated_hours_label: "Combien d’heure de travail allez-vous fournir pour cet événement"
+    requirements_provided_label: "Les exigences que vous allez fournir"
+    requirements_needed_label: "Ce dont vous aurez besoin pour organiser l’événement"
+    requests_label: "Services et/ou produits que vous apprécieriez pour améliorer l’événement, ou de l’aide que vous auriez besoin de la part de la communauté"
+    question_or_comment_label: "Commentaires et/ou questions pour JoatU"
+    create: "Créer une Offre Communautaire"
+    subject_to_approval: "NOTE : Toute nouvelle Offre Communautaire devra être approuvée par les modérateurs de JoatU. Donc, elle ne sera pas immédiatement visible au public."
+  admin:
+    caps:
+      new_header: "Génère de nouveaux points d’ACC"
+      destination_label: "Attribuer de nouveaux points d’ACC à"
+      caps_amount: "Montant des points d’ACC"
+      caps_awarded_successfully_message: "Attribue avec succès % {caps} à % {recipient_name}" 
   language:
     en: "English"
     fr: "Français"
@@ -42,13 +73,13 @@ fr:
     follow_us:
       header: "Suivez-nous"
     support_us:
-      header: "Commanditez-nous avec Bitcoin"
+      header: "Commanditez-nous avec des Bitcoin"
       bitcoin: "Portefeuille: %{wallet_id}"
   active_admin:
     dashboard: "Tableau de bord"
     dashboard_welcome:
       call_to_action: "« Avec de grands pouvoirs viennent de grandes responsabilités. »"
-      welcome: "Bienvenue à la section administrative de JoatU"
+      welcome: "Bienvenue dans la section administrative de JoatU"
   activerecord:
     errors:
       models:
@@ -61,36 +92,42 @@ fr:
       header_html: "Échangez biens et services pour répondre à vos besoins, et créez de vibrantes communautés !"
       request_an_invite_link: "Demandez une invitation"
     benefits:
-      header: "Créez des liens, partagez des savoir-faire, développez et enrichissez la communauté"
+      header: "Créez des liens, partagez votre savoir-faire, développez et enrichissez la communauté"
       subheader: "Rejoignez votre marché hyperlocal de biens et services"
-      hyperlocal_header: "Répertoire de ressources hyperlocales"
+      hyperlocal_header: "Répertoire des ressources hyperlocales"
       hyperlocal_desc: "Accédez à un bassin de ressources et... plongez !
         Talents offerts, produits et objets à échanger/louer/vendre — ou même à donner !"
       build_bonds_header: "Tissez des liens avec vos voisins"
       # ***** I was a bit imaginative for this one ;)
-      build_bonds_desc: "Rencontrez des personnes à l'esprit communautaire dans leur environnement naturel et faites des alliances !
-      Ateliers gratuits de partage de connaissances et autres rencontres en tout genre : échanges de vêtements, cuisines collectives, soirées de jeux, concerts, cours..."
+      build_bonds_desc: "Rencontrez des personnes à l'esprit communautaire dans leur environnement naturel et créez des alliances ! Ateliers gratuits de partage de connaissances et autres rencontres en tout genre: échanges de vêtements, cuisines collectives, soirées de jeux, concerts, cours..."
       offer_skills_header: "Donnez et recevez de l'aide"
       # ***** Here I removed 'exclusive' and the mention of JoatU. I think
       # ***** it is a little... awkward.
-      offer_skills_desc: "Donnez un coup de main à vos voisins, contribuez à l'économie hyperlocale et soyez payé(e). Participez bénévolement à des organisations non lucratives, créez des jardins communautaires, enseignez —  et soyez récompensé(e) par des points d'action communautaire."
+      offer_skills_desc: "Donnez un coup de main à vos voisins, contribuez à l’économie hyperlocale et soyez payé(e). Participez bénévolement à des organisations non lucratives, créez des jardins communautaires, enseignez - et soyez récompensé(e) avec des points d’action communautaire."
     features:
-      header: "Des outils bien pratiques"
-      subheader: "(d'autres sont en gestation)"
+      header: "Des outils que vous aimerez"
+      subheader: "(d'autres sont en création)"
       choose_walking_distance: "Déterminez votre rayon d'action."
       build_reputation: "Établissez votre réputation grâce à un système de références facile à utiliser."
       propose_community_projects: "Proposez des projets communautaires (ex.: nourrir les affamés ou démarrer un jardin communautaire) et obtenez de l'aide, du matériel et du financement en points d'ACC (points d'action communautaire) !" # ***** 'D'acc !', or 'D'accord !' means 'Alright !'
     how_it_works:
       header: "Bienvenue sur JoatU (Jack of all trades Universe) !"
-      subheader: "Animation de présentation"
+      subheader: "Regardez notre vidéo de présentation"
     subscribe:
       header: "Restez informé(e) !"
-      subheader: "Inscrivez-vous à notre bulletin d'information"
+      subheader: "Inscrivez-vous à notre bulletin infolettre"
   events:
     description: "À propos de cet évènement"
     ends_at: "Se termine à"
     starts_at: "Débute à"
     times: "De %{start} à %{end}"
+    location: "Emplacement"
+    value_to_society: "Bienfait pour la société"
+    qualifications: "Vos qualifications pour offrir cet événement"
+    estimated_hours: "Combien d’heure de travail %{producer_name} va fournir pour cet événement"
+    requirements_provided: "Exigences fournies"
+    requirements_needed: "Exigences nécessaires pour organiser l’événement"
+    requests: "Services et/ou produits qui pourraient améliorer l’événement, ou aide nécessaire de la part de la communauté"
   flash:
     not_authorized: "Vous n'avez pas l'autorisation d'effectuer cette opération."
   tou:
@@ -102,16 +139,20 @@ fr:
     header: "Aide et « foire aux questions »"
     intro: "JoatU, une plateforme communautaire, est ouverte à vos commentaires et suggestions !"
     send_admin_message: "Envoyer un message à JoatU"
+    faqs: "Foire aux questions"
+  caps:
+    caps_sent_successfully_message: "Succès de l’envoie des %{caps} à %{recipient_name}"
+    caps_failed_to_send: "Impossible d’envoyer les points d’ACC en raison d’une erreur : %{error_message}"
   mailchimp:
     newsletter:
-      email: "Adresse courrielle"
+      email: "Adresse courriel"
       subscribe: "Inscrivez-vous"
     preregister:
       header_html: "Demandez une invitation <br />à joindre JoatU Beta"
-      email: "Adresse courrielle"
+      email: "Adresse courriel"
       postal: "Code postal"
       signup: "Ajoutez-moi à la file d'attente !"
-      explanation: "JoatU est présentement en période de rodage sous la forme d'une version Alpha limitée. Si vous nous laissez votre adresse courrielle ainsi que votre code postal (voir ci-dessous), il nous fera plaisir de vous avertir lorsque JoatU sera disponible dans votre ville."
+      explanation: "JoatU est présentement en période de rodage sous la forme d'une version Alpha limitée. Laissez-nouse votre adresse courriel ainsi que votre code postal (voir ci-dessous), et il nous fera plaisir de vous prévenir lorsque JoatU sera disponible dans votre ville"
   currencies:
     bitcoin: "Bitcoin"
     caps: "Points d'ACC"
@@ -119,7 +160,7 @@ fr:
     cheque: "Chèque"
     trade: "Échange"
   conversations:
-    choose_a_conversation: "Veuillez choisir une conversation dans la liste sur la gauche."
+    choose_a_conversation: "Veuillez choisir une conversation dans la liste à gauche."
     no_conversations: "Ce dossier ne contient aucune conversation"
     reply: "Répondre"
     send: "Envoyer"
@@ -142,10 +183,15 @@ fr:
     edit_account: "Modifier Mon Compte"
     my_profile: "Mon Profil"
     edit_my_profile: "Modifier Mon Profil"
+    help_out: "Venir en aide"
+    generate_caps: "Générer des points d’ACC"
+    new_community_offer: "Nouvelle Offre Communautaire"
   messages:
     from: "De"
     subject: "Sujet"
+    new_header: "Envoyer un message"
   offers:
+    types_filter_label: "Filtrer par type d’offre"
     editing_header: "Modifier une offre"
     index_header: "Offres courantes"
     description: "Description"
@@ -153,6 +199,7 @@ fr:
     new_header: "Offrez quelque chose de nouveau !"
     search: "Rechercher !"
     search_placeholder: "Recherche..."
+    empty: "Aucune offre ne correspond à votre recherche"
     offered_by:
       about_header: "À propos de cet usager"
       header: "Offert par %{offerer}"
@@ -160,14 +207,14 @@ fr:
       header: "Demandes"
       requests: 
         has_no_requests: "%{offerer} n'a présentement aucune demande."
-        has_open_requests: "%{offerer} a formulé les demandes ci-dessous. Peut-être un échange est-il envisageable ?"
+        has_open_requests: "%{offerer} a formulé les demandes ci-dessous. Un échange pourrait-il être envisagé ?"
         header: "Demandes"
     offerer_label: "Offert par : %{offerer}"
     send_message: "Envoyer un message à %{offerer} à propos de cette offre"
     type_label: "J'offre"
     visibility:
       global: "Tout le monde"
-      label: "Rendre cette offre visible à"
+      label: "Rendre cette offre visible pour"
       pod: "Seulement mon secteur"
   references:
     destroy_confirm: "Voulez-vous vraiment supprimer cette référence ? Cette opération est irréversible !"
@@ -180,6 +227,8 @@ fr:
     new_header: "Nouvelle référence"
     new_link: "Ajouter une référence"
   requests:
+    types_filter_label: "Filter par type de demandes"
+    empty: "Aucune demande ne correspond à votre recherche"
     description: "Description"
     editing_header: "Modifier la demande"
     index_header: "Demandes courantes"
@@ -192,7 +241,7 @@ fr:
       header: "Demandes faites par %{requester}"
       offers:
         has_no_offers: "%{requester} n'offre rien pour l'instant."
-        has_open_offers: "%{requester} propose les offres ci-dessous. Peut-être un échange est-il envisageable ?"
+        has_open_offers: "%{requester} propose les offres ci-dessous. Un échange pourrait-il être envisagé ?"
         header: "Offres"
     search: "Rechercher !"
     search_placeholder: "Recherche en cours..."
@@ -205,7 +254,7 @@ fr:
   pods:
     about: "À propos de ce secteur"
     events: "Évènements"
-    events_intro: "Prenez connaissance de ces évènements à venir dans le secteur %{pod_name}"
+    events_intro: "Prenez connaissance des évènements à venir dans le secteur %{pod_name}"
     few_offers_content_html: "Débutez en ajoutant des %{requests_link} et des %{offers_link}."
     few_offers_header: "Bienvenue sur JoatU !"
     hub: "Point de ralliement"
@@ -218,7 +267,7 @@ fr:
     delete_button: "Supprimer votre compte"
     delete_confirm_message: "Voulez-vous vraiment supprimer votre compte ? Cette opération est irréversible !"
     editing_header: "Modifier le compte"
-    leave_password_blank_to_not_change: "Laissez vide si vous ne désirez pas le modifier."
+    leave_password_blank_to_not_change: "Laissez ce champ vide si vous ne désirez pas modifier le mot de passe."
     user_updated: "Votre compte a été mis à jour avec succès !"
   profiles:
     editing_header: "Modifier votre profil"
@@ -245,7 +294,7 @@ fr:
     cancel_account_link_confirm: "Voulez-vous réellement faire cela ?"
     sign_up_header: "Créer un compte"
     password_length_hint: "Le mot de passe doit avoir au moins %{min_length} caractères."
-    log_in_header: "Accéder à votre compte"
+    log_in_header: "Connectez-vous à votre compte"
     resend_unlock_header: "Réenvoyer les instructions de déverrouillage"
     links:
       log_in: "Accéder à votre compte"
@@ -259,13 +308,13 @@ fr:
       confirm_new_password: "Confirmez votre nouveau mot de passe"
       change_password_btn: "Modifier mon mot de passe"
       send_new_password: "Recevoir les instructions de réinitialisation du mot de passe"
-      new_password_hint: "Laissez en blanc si vous ne désirez pas le modifier." 
-      current_password_hint: "Votre mot de passe actuel est requis pour confirmer la modification." # ??? Singular ok ?
+      new_password_hint: "Laissez ce champ vide si vous ne désirez pas le modifier le mot de passe." 
+      current_password_hint: "Votre mot de passe actuel est requis pour confirmer les modifications."
       update: "Mise à jour"
       sign_up: "Créer un compte"
-      log_in: "Accéder à votre compte"
+      log_in: "Connectez-vous à votre compte"
       log_out: "Déconnexion"
-      email: "Adresse courielle"
+      email: "Adresse couriel"
       password: "Mot de passe"
       resend_unlock: "Réenvoyer les instructions de déverrouillage"
 
@@ -274,13 +323,13 @@ fr:
       confirm_instructions: "Vous pouvez confirmer l'adresse courrielle liée à votre compte en suivant l'hyperlien ci-dessous :"
       confirm_link: "Valider mon compte"
 
-      reset_pw_greeting: "Hello %{email}!"
+      reset_pw_greeting: "Bonjour %{email}!"
       reset_pw_instructions_1: "Quelqu'un a demandé à modifier votre mot de passe, ce qui peut être fait en suivant l'hyperlien ci-dessous."
       reset_pw_instructions_2: "Si ce n'est pas vous qui avez fait cette demande, veuillez ne pas tenir compte du présent message."
       reset_pw_instructions_3: "Votre mot de passe ne sera pas modifié avant que vous ayez suivi l'hyperlien ci-dessus et procédé à la modification."
       reset_pw_link: "Changer mon mot de passe"
 
-      unlock_greeting: "Hello %{email}"
+      unlock_greeting: "Bonjour %{email}!"
       unlock_instructions_1: "Votre compte a été verrouillé suite à un trop grand nombre de tentatives de connexion infructueuses."
       unlock_instructions_2: "Cliquez sur l'hyperlien ci-dessous pour déverrouiller votre compte."
       unlock_link: "Déverrouiller mon compte"
