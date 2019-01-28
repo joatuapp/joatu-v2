@@ -84,4 +84,16 @@ class OfferOrRequest < Base
   def type_class
     self.class.name.demodulize.underscore
   end
+
+  def self.valid_types
+    descendants.map {|c| c.name }
+  end
+
+  def self.type_options
+    descendants.inject({}) do |h, c|
+      h[I18n.t("offers_and_requests.types.#{c.name.demodulize.underscore}")] = c.name.to_s
+
+      h
+    end
+  end
 end

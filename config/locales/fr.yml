@@ -192,18 +192,28 @@ fr:
     new_header: "Envoyer un message"
   offers_and_requests:
     types:
-      knowledge: "Knowledge"
-      skills_and_time: "Skills and Time"
-      physical_goods: "Physical Goods"
+      knowledge: "Connaissances"
+      skills_and_time: "Compétences et temps"
+      physical_goods: "Biens matériels"
+    forms:
+      list:
+        labels:
+          search: "Rechercher"
+          order_by: "Trier"
+          filter_by_type: "Filtrer par type"
+          submit: 'Rechercher!'
+        values:
+          order_by:
+            newest_first: "Plus récent"
+            oldest_first: "Plus ancien"
+        placeholders:
+          search: "Mots clé..."
   offers:
-    types_filter_label: "Filtrer par type d’offre"
     editing_header: "Modifier une offre"
     index_header: "Offres courantes"
     description: "Description"
     new_link: "Ajouter une nouvelle offre"
     new_header: "Offrez quelque chose de nouveau !"
-    search: "Rechercher !"
-    search_placeholder: "Recherche..."
     empty: "Aucune offre ne correspond à votre recherche"
     offered_by:
       about_header: "À propos de cet usager"
@@ -232,7 +242,6 @@ fr:
     new_header: "Nouvelle référence"
     new_link: "Ajouter une référence"
   requests:
-    types_filter_label: "Filter par type de demandes"
     empty: "Aucune demande ne correspond à votre recherche"
     description: "Description"
     editing_header: "Modifier la demande"
@@ -248,8 +257,6 @@ fr:
         has_no_offers: "%{requester} n'offre rien pour l'instant."
         has_open_offers: "%{requester} propose les offres ci-dessous. Un échange pourrait-il être envisagé ?"
         header: "Offres"
-    search: "Rechercher !"
-    search_placeholder: "Recherche en cours..."
     send_message: "Envoyer un message à %{requester} concernant cette demand"
     type_label: "Je cherche"
     visibility:
