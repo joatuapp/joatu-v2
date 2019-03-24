@@ -192,7 +192,7 @@ fr:
     new_header: "Envoyer un message"
   offers_and_requests:
     types:
-      knowledge: "Connaissances"
+      knowledge: "Mandats bénévoles"
       skills_and_time: "Compétences et temps"
       physical_goods: "Biens matériels"
     forms:
