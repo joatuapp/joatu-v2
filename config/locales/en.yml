@@ -190,7 +190,7 @@ en:
     subject: "Subject"
   offers_and_requests:
     types:
-      knowledge: "Knowledge"
+      knowledge: "Volunteer positions"
       skills_and_time: "Skills and Time"
       physical_goods: "Physical Goods"
     forms:
