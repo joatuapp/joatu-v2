@@ -176,7 +176,7 @@ GEM
     debugger-linecache (1.2.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
-    devise (4.5.0)
+    devise (4.6.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
@@ -217,7 +217,7 @@ GEM
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
     geocoder (1.2.7)
-    globalid (0.4.1)
+    globalid (0.4.2)
       activesupport (>= 4.2.0)
     gmaps4rails (2.1.2)
     gravatarify (3.0.0)
@@ -367,9 +367,9 @@ GEM
       multi_json
       nokogiri
       uber (~> 0.0.7)
-    responders (2.4.0)
-      actionpack (>= 4.2.0, < 5.3)
-      railties (>= 4.2.0, < 5.3)
+    responders (2.4.1)
+      actionpack (>= 4.2.0, < 6.0)
+      railties (>= 4.2.0, < 6.0)
     rgeo (0.3.20)
     rgeo-activerecord (4.0.5)
       activerecord (~> 4.2)
@@ -487,7 +487,7 @@ DEPENDENCIES
   country_select (~> 2.1.1)
   database_cleaner
   datetimepicker-rails!
-  devise (~> 4.2)
+  devise (>= 4.6.0)
   devise_invitable (~> 1.7.0)
   dotenv-rails
   factory_girl_rails (~> 4.0)
