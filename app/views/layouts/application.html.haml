@@ -11,11 +11,22 @@
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"
     = stylesheet_link_tag "application", :media => "all"
-    = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
-    = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
-    = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
-    = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
-    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+
+    = favicon_link_tag 'android-chrome-192x192.png', rel: 'android-chrome-192x192', type: 'image/png', sizes: '192x192'
+    = favicon_link_tag 'android-chrome-256x256.png', rel: 'android-chrome-256x256', type: 'image/png', sizes: '256x256'
+
+    = favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png'
+    = favicon_link_tag 'safari-pinned-tab.svg', rel: 'mask-icon', type: 'image/svg'
+
+    = favicon_link_tag 'favicon.ico', rel: 'icon'
+    = favicon_link_tag 'favicon.ico', rel: 'icon', sizes: '16x16'
+    = favicon_link_tag 'favicon.ico', rel: 'icon', sizes: '32x32'
+
+    %meta(name="apple-mobile-web-app-title" content="JoatU")
+    %meta(name="application-name" content="JoatU")
+    %meta(name="msapplication-TileColor" content="#00a300")
+    %meta(name="theme-color" content="#ffffff")
+
     = javascript_include_tag "//maps.google.com/maps/api/js?v=3.13&key=#{ENV.fetch("GOOGLE_API_KEY")}&sensor=false&libraries=geometry,drawing", defer: true, async: true
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer_compiled.js"
     = javascript_include_tag "application"
