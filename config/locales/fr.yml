@@ -284,8 +284,8 @@ fr:
   profiles:
     editing_header: "Modifier votre profil"
     index_header: "Utilisateurs de JoatU"
-    given_name: "Nom réel"
-    surname: "Pseudonyme"
+    given_name: "Prénom"
+    surname: "Nom"
     about_me: "À propos de moi"
     destroy: "Supprimer votre profil"
     destroy_confirm: "Voulez-vous réellement supprimer votre profil ? Cette opération est irréversible !"
