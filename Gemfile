@@ -117,9 +117,9 @@ end
 # this gem is installed:
 
 gem 'foreman', '~> 0.75'
-gem 'bootstrap-sass', '~> 3.3.1'
+gem 'bootstrap-sass', '>= 3.4.1'
 gem 'autoprefixer-rails'
-gem 'devise',           '~> 4.2'
+gem "devise", '>= 4.6.0'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'pundit', '~> 0.3.0'
 gem 'reform', '~> 1.2.5'
