@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.6.0'
+ruby '2.5.3'
 gem 'dotenv-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -40,11 +40,11 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'paranoia'
 
 # Mailboxer, handle messaging between users
-# gem 'mailboxer'#, github: 'div/mailboxer', branch: 'rails42-foreigner'
+gem 'mailboxer'#, github: 'div/mailboxer', branch: 'rails42-foreigner'
 gem 'kaminari'
 
 # Rails frontend specific gems:
-# gem 'simple_form'#, '~> 3.1.0'
+gem 'simple_form'#, '~> 3.1.0'
 gem 'gravatarify', '~> 3.0.0'
 gem 'momentjs-rails'#, '>= 2.9.0'
 # gem 'datetimepicker-rails'#, github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
@@ -60,7 +60,7 @@ gem 'i18n-tasks', '~> 0.7.11'
 
 # gem 'inherited_resources', '~> 1.7'
 
-# gem 'activeadmin'#, github: 'activeadmin/activeadmin', tag: 'v1.0.0'
+gem 'activeadmin'#, github: 'activeadmin/activeadmin', tag: 'v1.0.0'
 
 gem 'underscore-rails'
 
@@ -121,6 +121,7 @@ gem "devise", '>= 4.6.0'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'pundit', '~> 0.3.0'
 gem 'reform'#, '~> 1.2.5'
+gem 'reform-rails'
 gem 'virtus', '~> 1.0.4'
 # gem 'haml-rails'
 # gem 'bootstrap-sass-extras', path: '../utilities/bootstrap-sass-extras'
