@@ -1,4 +1,4 @@
-class Organization < ActiveRecord::Base
+class Organization < ApplicationRecord
   has_many :memberships, class_name: OrganizationMembership
   has_many :members, through: :memberships, source: :user
 

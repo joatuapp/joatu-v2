@@ -1,4 +1,4 @@
-class Reference < ActiveRecord::Base
+class Reference < ApplicationRecord
   include Paginatable
   acts_as_paranoid
 

@@ -1,4 +1,4 @@
-class Pod < ActiveRecord::Base
+class Pod < ApplicationRecord
   has_one :hub, through: :hub_organization_relation, source: :organization
   has_one :hub_organization_relation, class_name: PodHubRelation, dependent: :destroy
 

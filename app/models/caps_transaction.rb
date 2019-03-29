@@ -1,4 +1,4 @@
-class CapsTransaction < ActiveRecord::Base
+class CapsTransaction < ApplicationRecord
   belongs_to :source, polymorphic: true
   belongs_to :destination, polymorphic: true
 
