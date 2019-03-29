@@ -2,13 +2,10 @@
   .col-sm-4
     .panel.panel-info
       .panel-heading
-        %h2.text-center Search
+        %h2.text-center
+          = t('offers_and_requests.forms.list.labels.search')
       .panel-body
-        = simple_form_for @search_form, url: search_requests_path, wrapper: :horizontal_form, html: {method: :get, class: 'form-horizontal'} do |f|
-          = f.input :search, placeholder: t('requests.search_placeholder')
-          = f.input :order_by, collection: @order_options
-          = f.input :types_filter, collection: @request_type_options, as: :check_boxes, label: t('requests.types_filter_label'), wrapper: :horizontal_radio_and_checkboxes
-          = f.button :submit, t('requests.search'), class: 'pull-right'
+        = render 'shared/offers_and_requests/list_form', search_form: @search_form, search_path: search_requests_path, order_options: @order_options, type_options: @request_type_options
 
         .clearfix
         %br

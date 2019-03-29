@@ -188,16 +188,31 @@ en:
     new_header: "Send Message"
     from: "From"
     subject: "Subject"
+  offers_and_requests:
+    types:
+      knowledge: "Volunteer positions"
+      skills_and_time: "Skills and Time"
+      physical_goods: "Physical Goods"
+    forms:
+      list:
+        labels:
+          search: "Search"
+          order_by: "Order By"
+          filter_by_type: "Filter By Type"
+          submit: "Search!"
+        values:
+          order_by:
+            newest_first: "Newest First"
+            oldest_first: "Oldest First"
+        placeholders:
+          search: "Keywords..."
   offers:
-    types_filter_label: "Filter By Type"
     editing_header: "Edit Offer"
     index_header: "Offers"
     description: "Description"
     new_link: "Add A New Offer"
     new_header: "Offer something new!"
-    search: "Search!"
     empty: "No offers match that search!"
-    search_placeholder: "Search..."
     type_label: "I am offering"
     offerer_label: "Offered by: %{offerer}"
     visibility:
@@ -214,10 +229,7 @@ en:
         has_open_requests: "%{offerer} has these open requests. Perhaps you can arrange a trade?"
       references_header: "References"
   requests:
-    types_filter_label: "Filter By Type"
     index_header: "Current Requests"
-    search_placeholder: "Search..."
-    search: "Search!"
     new_link: "Add A New Request"
     empty: "No requests match that search!"
     new_header: "Request Something From the Community!"
@@ -252,8 +264,8 @@ en:
     caps_balance: "CAPS Balance: %{balance}"
     editing_header: "Edit Profile"
     index_header: "JoatU Users"
-    given_name: "Given name"
-    surname: "Surname"
+    given_name: "First Name"
+    surname: "Last Name"
     about_me: "About me"
     destroy: "Delete your profile"
     destroy_confirm: "Are you sure you want to delete your profile? This cannot be undone!"

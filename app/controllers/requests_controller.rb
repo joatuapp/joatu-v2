@@ -100,8 +100,8 @@ class RequestsController < ApplicationController
 
     def set_search_options
       @order_options = {
-        "Newest First" => :created_at_desc,
-        "Oldest First" => :created_at_asc
+        I18n.t('offers_and_requests.forms.list.values.order_by.newest_first') => :created_at_desc,
+        I18n.t('offers_and_requests.forms.list.values.order_by.oldest_first') => :created_at_asc
       }
       @request_type_options = Request.type_options
     end

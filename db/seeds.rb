@@ -29,16 +29,24 @@ unless Organization.exists?
 end
 
 unless Pod.exists?
+  description = <<-TEXT.squish
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+
+    Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a
+  TEXT
+  
   first_pod_params = {
     hub_id: 1, 
     name: "Coop Sur Genereux", 
+    description: description,
     focus_area: "POLYGON ((-73.57838988304138 45.51188068140241, -73.56929183006287 45.52306687976776, -73.57924818992615 45.52787746396651, -73.58989119529724 45.51669222205489, -73.57838988304138 45.51188068140241))",
   }
   first_pod = Pod.create(first_pod_params)
 
-  User.find_each do |user|
-    membership = PodMembership.home_membership_for_user(user)
-    membership.pod = first_pod
-    membership.save!
+  if ENV["INITIAL_ADMIN_EMAIL"] && ENV["INITIAL_ADMIN_PASSWORD"]
+    u = User.find_by_email(ENV["INITIAL_ADMIN_EMAIL"])
+    u.pod = Pod.first
+
+    u.save!
   end
 end
