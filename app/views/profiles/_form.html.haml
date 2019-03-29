@@ -2,9 +2,9 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :given_name
-    = f.input :surname
-    = f.input :about_me
+    = f.input :given_name, label: t('profiles.given_name')
+    = f.input :surname, label: t('profiles.surname')
+    = f.input :about_me, label: t('profiles.about_me')
 
   .form-actions
     = f.button :submit

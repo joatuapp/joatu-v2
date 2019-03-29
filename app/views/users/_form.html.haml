@@ -2,9 +2,9 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :email
-    = f.input :password, hint: t('users.leave_password_blank_to_not_change')
-    = f.input :password_confirmation, hint: t('users.leave_password_blank_to_not_change')
+    = f.input :email, label: t('auth.form.email')
+    = f.input :password, label: t('auth.form.password'), hint: t('users.leave_password_blank_to_not_change')
+    = f.input :password_confirmation, label: t('auth.form.password_confirmation'), hint: t('users.leave_password_blank_to_not_change')
 
   .form-actions
     = f.button :submit
