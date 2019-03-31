@@ -1,7 +1,7 @@
 # NOTE: This class is an abstract base class for the
 # offers_or_requests table. It should not be instantiated directly, use the
 # Offer or Request models, or their descendents.
-class OfferOrRequest < Base
+class OfferOrRequest < ApplicationRecord
   self.abstract_class = true
   self.table_name = "offers_and_requests"
 

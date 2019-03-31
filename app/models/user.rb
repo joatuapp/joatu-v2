@@ -1,4 +1,4 @@
-class User < Base
+class User < ApplicationRecord
   include Wisper::Publisher
 
   # Include default devise modules. Others available are:
@@ -10,10 +10,10 @@ class User < Base
 
   # Not strictly necessary to specify the currency is caps here, as the app
   # default is caps, but this keeps things explicit, and doesn't hurt.
-  monetize :caps_cents, with_currency: :caps 
+  monetize :caps_cents, with_currency: :caps
 
   composed_of :preferences, class_name: "User::Preferences", mapping: %w(preferences_json to_json)
-  
+
   has_one :profile
   has_one :pod_membership
   has_one :pod, through: :pod_membership

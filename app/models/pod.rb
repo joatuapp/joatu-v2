@@ -1,6 +1,6 @@
 class Pod < ApplicationRecord
   has_one :hub, through: :hub_organization_relation, source: :organization
-  has_one :hub_organization_relation, class_name: PodHubRelation, dependent: :destroy
+  has_one :hub_organization_relation, class_name: 'PodHubRelation', dependent: :destroy
 
   has_many :members, through: :pod_memberships, source: :user
   has_many :pod_memberships

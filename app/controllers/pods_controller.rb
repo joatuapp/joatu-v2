@@ -1,5 +1,5 @@
 class PodsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   # Show's the user's home pod.
   def home

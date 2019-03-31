@@ -6,8 +6,8 @@ gem 'dotenv-rails'
 gem 'rails', '~> 5.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
-# gem 'pg_search'
-# gem 'activerecord-postgis-adapter'
+gem 'pg_search'
+gem 'activerecord-postgis-adapter'
 # Use SCSS for stylesheets
 gem 'sass-rails'#, '~> 5.0.7'
 # Use Uglifier as compressor for JavaScript assets
@@ -33,6 +33,7 @@ gem 'money-rails'#, github: "joatuapp/money-rails"
 gem 'turbolinks'
 # bundle exec rake doc:rails generates the API under doc/api.
 # gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'bootsnap', require: false
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -90,7 +91,7 @@ group :development do
 end
 
 group :development, :test do
-  gem "codeclimate-test-reporter"
+  # gem "codeclimate-test-reporter"
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -104,8 +105,8 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
   gem 'rspec'
-  # gem 'rspec-rails'
-  # gem 'capybara'
+  gem 'rspec-rails'
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'spring-commands-rspec'
   gem 'pry-rails'
