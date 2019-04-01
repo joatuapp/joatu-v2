@@ -16,8 +16,6 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - sudo /etc/init.d/postgresql stop
-  # - docker-compose up -d bundle
-  # - docker-compose up -d db
   - docker-compose build
 script:
   - echo "GOOGLE_API_KEY=this_is_a_test" >> ./docker/.env.app.conf

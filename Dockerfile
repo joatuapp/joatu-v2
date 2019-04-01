@@ -14,6 +14,7 @@ ENV BUNDLE_GEMFILE=/joatu/Gemfile \
   GEM_PATH=/bundler \
   GEM_HOME=/bundler
 
+run gem install bundler
 RUN bundle install
 
 COPY . /joatu
