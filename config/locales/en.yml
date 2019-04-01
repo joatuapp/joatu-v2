@@ -323,6 +323,7 @@ en:
       log_out: "Log Out"
       email: "Email"
       password: "Password"
+      password_confirmation: "Password Confirmation"
       resend_unlock: "Resend unlock instructions"
     email:
       confirm_greeting: "Welcome %{email}"

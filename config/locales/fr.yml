@@ -29,7 +29,7 @@ fr:
   time:
     ago: "il y a %{time}"
   community_offers:
-    new_header: "Créer une nouvelle Offre Communautaire" 
+    new_header: "Créer une nouvelle Offre Communautaire"
     name_label: "Titre"
     description_label: "Description"
     start_date_time_label: "Date et heure de début"
@@ -320,7 +320,7 @@ fr:
       confirm_new_password: "Confirmez votre nouveau mot de passe"
       change_password_btn: "Modifier mon mot de passe"
       send_new_password: "Recevoir les instructions de réinitialisation du mot de passe"
-      new_password_hint: "Laissez ce champ vide si vous ne désirez pas le modifier le mot de passe." 
+      new_password_hint: "Laissez ce champ vide si vous ne désirez pas le modifier le mot de passe."
       current_password_hint: "Votre mot de passe actuel est requis pour confirmer les modifications."
       update: "Mise à jour"
       sign_up: "Créer un compte"
@@ -328,6 +328,7 @@ fr:
       log_out: "Déconnexion"
       email: "Adresse couriel"
       password: "Mot de passe"
+      password_confirmation: "Confirmer votre mot de passe"
       resend_unlock: "Réenvoyer les instructions de déverrouillage"
 
     email:
