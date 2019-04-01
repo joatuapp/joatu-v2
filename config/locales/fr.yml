@@ -345,3 +345,13 @@ fr:
       unlock_instructions_1: "Votre compte a été verrouillé suite à un trop grand nombre de tentatives de connexion infructueuses."
       unlock_instructions_2: "Cliquez sur l'hyperlien ci-dessous pour déverrouiller votre compte."
       unlock_link: "Déverrouiller mon compte"
+  components:
+    datepicker:
+      formats:
+        display: '%d/%m/%Y'
+        picker: 'DD/MM/YYYY'
+        day_header: 'MMMM YYYY'
+    timepicker:
+      formats:
+        display: '%R'
+        picker: 'HH:mm'

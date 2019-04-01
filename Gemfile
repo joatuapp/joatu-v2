@@ -56,7 +56,7 @@ gem 'puma', '~> 3.12.0'
 
 gem 'newrelic_rpm', '~> 5.5.0'
 
-gem 'i18n-tasks', '~> 0.7.11'
+gem 'i18n-tasks'
 # gem 'rails-i18n'#, github: 'svenfuchs/rails-i18n', branch: 'master'
 
 # gem 'inherited_resources', '~> 1.7'
@@ -110,6 +110,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'spring-commands-rspec'
   gem 'pry-rails'
+  gem 'listen'
 end
 
 # Protects mail from going out to the real world in all environments for which
@@ -124,8 +125,8 @@ gem 'pundit', '~> 0.3.0'
 gem 'reform'#, '~> 1.2.5'
 gem 'reform-rails'
 gem 'virtus', '~> 1.0.4'
-# gem 'haml-rails'
-# gem 'bootstrap-sass-extras', path: '../utilities/bootstrap-sass-extras'
+gem 'haml-rails'
+gem 'bootstrap-sass-extras'
 gem "font-awesome-rails"
 
 gem 'rails_12factor', group: :production

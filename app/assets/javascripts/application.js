@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.cookie
+// require jquery.cookie
 //= require turbolinks
 //= require bootstrap
 //= require gmaps/google
