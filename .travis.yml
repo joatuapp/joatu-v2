@@ -22,5 +22,5 @@ before_install:
 script:
   - echo "GOOGLE_API_KEY=this_is_a_test" >> ./docker/.env.app.conf
   - docker-compose run app bundle
-  - docker-compose run app bundle exec rake db:seed INITIAL_ADMIN_EMAIL=joatu-admin@grr.la INITIAL_ADMIN_PASSWORD=password
+  - docker-compose run app bundle exec rake db:setup INITIAL_ADMIN_EMAIL=joatu-admin@grr.la INITIAL_ADMIN_PASSWORD=password
   - docker-compose run app bundle exec rspec
