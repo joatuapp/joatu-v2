@@ -17,6 +17,8 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   - sudo /etc/init.d/postgresql stop
   - docker-compose build
+  - gem update --system
+  - gem install bundler
 script:
   - echo "GOOGLE_API_KEY=this_is_a_test" >> ./docker/.env.app.conf
   - docker-compose run app bundle
