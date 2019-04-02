@@ -5,7 +5,7 @@ class ConversationsController < ApplicationController
   before_action :get_conversation, only: [:show, :update, :destroy]
 
   # We look up conversations by user, no need to scope it too.
-  skip_after_action :verify_policy_scoped, only: :index
+  # skip_after_action :verify_policy_scoped, only: :index
 
   respond_to :html
 
