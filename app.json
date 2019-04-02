@@ -1,0 +1,64 @@
+{
+  "addons": [
+    "heroku-postgresql",
+    "sendgrid"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "env": {
+    "APP_HOST": {
+      "required": true
+    },
+    "DEVISE_PEPPER": {
+      "required": true
+    },
+    "DEVISE_SECRET": {
+      "required": true
+    },
+    "GOOGLE_API_KEY": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "NEW_RELIC_LICENSE": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SECRET_TOKEN": {
+      "required": true
+    },
+    "SENDGRID_PASSWORD": {
+      "required": true
+    },
+    "SENDGRID_USERNAME": {
+      "required": true
+    },
+    "SKYLIGHT_AUTHENTICATION": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "joatu-v2",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
