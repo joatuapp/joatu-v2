@@ -113,6 +113,11 @@ group :development, :test do
   gem 'listen'
 end
 
+group :test do
+  gem 'coveralls'
+  gem 'simplecov', require: false
+end
+
 # Protects mail from going out to the real world in all environments for which
 # this gem is installed:
 
