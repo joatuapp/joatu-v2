@@ -42,7 +42,7 @@ class OffersController < ApplicationController
     @offer_types = Offer.type_options
     authorize @form.model
     if @form.validate(params[:offer])
-      if @form.visibility == :pod
+      if @form.visibility == :pod && current_user.pod_id
         @form.model.pod = current_user.pod
       else
         @form.model.pod = nil

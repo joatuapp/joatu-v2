@@ -1,11 +1,12 @@
 = simple_form_for(@offer) do |f|
   = f.error_notification
-
+  - visibilities = {t('offers.visibility.global') => "global"}
+  - visibilities[t('offers.visibility.pod')] = "pod" if current_user && current_user.pod_id
   .form-inputs
     = f.input :type, collection: @offer_types, as: :radio_buttons, label: "#{t('offers.type_label')}:"
     = f.input :title
     = f.input :description, as: :text
-    = f.input :visibility, collection: {t('offers.visibility.global') => "global", t('offers.visibility.pod') => "pod"}, as: :select, label: "#{t('offers.visibility.label')}:"
+    = f.input :visibility, collection: visibilities, as: :select, label: "#{t('offers.visibility.label')}:", include_blank: false
 
   .form-actions
-    = f.button :submit, class: 'pull-right btn-primary'
+    = f.button :submit, class: 'pull-right btn-primary', id: 'submit_offer'

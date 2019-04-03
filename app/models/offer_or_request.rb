@@ -8,7 +8,7 @@ class OfferOrRequest < ApplicationRecord
   include PgSearch
 
   belongs_to :user
-  belongs_to :pod
+  belongs_to :pod, optional: true
 
   pg_search_scope :text_search, lambda {|query, lang, order = nil|
     dictionary = (lang == :fr) ? "french" : "english"
