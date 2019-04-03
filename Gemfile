@@ -77,7 +77,7 @@ gem 'country_select', '~> 2.1.1'
 
 gem 'wisper'
 
-# gem 'render_anywhere', :require => false
+gem 'render_anywhere', :require => false
 
 gem 'redcarpet', '~> 3.2'
 
