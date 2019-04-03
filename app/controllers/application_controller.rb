@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
     super
 
     @authentication = nil
-    
+
     # If the locale parameter is set to the default locale, do NOT use it,
     # which will cause set_locale to fall back on the logged in user's saved
     # locale. This means if your saved language is french but you're browsing
