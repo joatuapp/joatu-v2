@@ -267,6 +267,8 @@ GEM
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
+    paranoia (2.4.1)
+      activerecord (>= 4.0, < 5.3)
     parser (2.6.2.0)
       ast (~> 2.4.0)
     pg (1.1.4)
@@ -473,6 +475,7 @@ DEPENDENCIES
   naught!
   newrelic_rpm (~> 5.5.0)
   nokogiri (~> 1.8.2)
+  paranoia
   pg
   pg_search
   pry-rails

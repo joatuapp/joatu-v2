@@ -38,7 +38,7 @@ gem 'bootsnap', require: false
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# gem 'paranoia'
+gem 'paranoia'
 
 # Mailboxer, handle messaging between users
 gem 'mailboxer'#, github: 'div/mailboxer', branch: 'rails42-foreigner'
