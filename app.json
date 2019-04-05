@@ -59,6 +59,7 @@
   },
   "name": "joatu-v2",
   "scripts": {
+    "postdeploy": "bundle exec rake db:setup INITIAL_ADMIN_EMAIL=joatu-admin@grr.la INITIAL_ADMIN_PASSWORD=password"
   },
   "stack": "heroku-18"
 }
