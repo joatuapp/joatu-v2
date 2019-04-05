@@ -9,7 +9,7 @@
         - if Pundit.policy(current_user, @offer).edit?
           = link_to t('edit'), edit_offer_path(@offer), class: 'btn btn-info'
         - if Pundit.policy(current_user, @offer).destroy?
-          = link_to t('destroy'), offer_path(@offer), method: :delete, class: 'btn btn-danger'
+          = link_to t('destroy'), offer_path(@offer), method: :delete, class: 'btn btn-danger', id: 'destroy-offer'
     .panel.panel-default
       .panel-heading= t('offers.description')
       .panel-body

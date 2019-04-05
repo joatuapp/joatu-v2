@@ -18,6 +18,19 @@ feature "View Requests" do
   end
 
   scenario "Create new physical good request" do
+    create_new_request
+    click_link 'destroy-request'
+
+    expect(page).to have_selector 'h1', text: 'Requests'
+  end
+
+  def visit_new_requests_page
+    sign_in_with('test@example.com', 'testpass')
+    visit requests_path
+    click_link "Add A New Request"
+  end
+
+  def create_new_request
     visit_new_requests_page
     within('form#new_request') do
       choose 'request[type]', option: 'Request::PhysicalGoods'
@@ -26,13 +39,5 @@ feature "View Requests" do
       select 'Everyone', from: 'request[visibility]'
       click_button 'submit_request'
     end
-
-    expect(page).to have_selector 'h1', text: 'My First Request'
-  end
-
-  def visit_new_requests_page
-    sign_in_with('test@example.com', 'testpass')
-    visit requests_path
-    click_link "Add A New Request"
   end
 end

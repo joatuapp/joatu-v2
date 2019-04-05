@@ -18,6 +18,25 @@ feature "View Offers" do
   end
 
   scenario "Create new physical good offer" do
+    create_new_offer
+
+    expect(page).to have_selector 'h1', text: 'My First Offer'
+  end
+
+  scenario "Destroy an offer" do
+    create_new_offer
+    click_link 'destroy-offer'
+
+    expect(page).to have_selector 'h1', text: 'Offers'
+  end
+
+  def visit_new_offers_page
+    sign_in_with('test@example.com', 'testpass')
+    visit offers_path
+    click_link "Add A New Offer"
+  end
+
+  def create_new_offer
     visit_new_offers_page
     within('form#new_offer') do
       choose 'offer[type]', option: 'Offer::PhysicalGoods'
@@ -26,13 +45,5 @@ feature "View Offers" do
       select 'Everyone', from: 'offer[visibility]'
       click_button 'submit_offer'
     end
-
-    expect(page).to have_selector 'h1', text: 'My First Offer'
-  end
-
-  def visit_new_offers_page
-    sign_in_with('test@example.com', 'testpass')
-    visit offers_path
-    click_link "Add A New Offer"
   end
 end

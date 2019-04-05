@@ -70,7 +70,7 @@ class OffersController < ApplicationController
   def destroy
     authorize @offer
     @offer.destroy
-    respond_with(@offer)
+    respond_with(@offer, location: offers_path)
   end
 
   def search

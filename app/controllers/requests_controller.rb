@@ -76,7 +76,7 @@ class RequestsController < ApplicationController
   def destroy
     authorize @user_request
     @user_request.destroy
-    respond_with(@user_request)
+    respond_with(@user_request, location: requests_path)
   end
 
   def search

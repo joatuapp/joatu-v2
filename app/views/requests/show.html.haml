@@ -9,7 +9,7 @@
         - if Pundit.policy(current_user, @user_request).edit?
           = link_to t('edit'), edit_request_path(@user_request), class: 'btn btn-info'
         - if Pundit.policy(current_user, @user_request).destroy?
-          = link_to t('destroy'), request_path(@user_request), method: :delete, class: 'btn btn-danger'
+          = link_to t('destroy'), request_path(@user_request), method: :delete, class: 'btn btn-danger', id: 'destroy-request'
     .panel.panel-default
       .panel-heading= t('requests.description')
       .panel-body
