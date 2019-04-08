@@ -19,7 +19,7 @@
             = t('nav.my_account')
             %span.caret
           %ul.dropdown-menu(role="menu")
-            - if current_user.profile.present?
+            - if current_user.profile.id.present?
               %li= link_to t('nav.my_profile'), profile_path(current_user.profile)
               %li= link_to t('nav.edit_my_profile'), edit_profile_path(current_user.profile)
             - else
