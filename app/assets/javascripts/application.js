@@ -12,7 +12,6 @@
 //
 //= require jquery
 // require jquery.cookie
-//= require turbolinks
 //= require bootstrap
 //= require gmaps/google
 //= require moment
