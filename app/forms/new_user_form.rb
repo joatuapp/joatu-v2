@@ -1,7 +1,11 @@
 class NewUserForm < ApplicationForm
   property :email, validates: {presence: true}
-  property :password, validates: {presence: true, confirmation: true, length: { minimum: 8 } }
+  property :password, validates: {presence: true, length: { minimum: 8 } }
   property :postal_code, validates: {presence: true}
+
+  property :password_confirmation, validates: {presence: true, length: { minimum: 8 } }
+
+  validate :password_ok?
 
   property :tou_agreement, virtual: true
 
@@ -15,4 +19,8 @@ class NewUserForm < ApplicationForm
   end
 
   property :invitation_token
+
+  def password_ok?
+    errors.add(:password_confirmation, "Password mismatch") if password != password_confirmation
+  end
 end
