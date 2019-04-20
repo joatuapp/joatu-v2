@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_request, only: [:show, :edit, :update, :destroy]
   before_action :set_search_options, only: [:index, :search]
   skip_after_action :verify_authorized, only: [:index, :search]
@@ -76,7 +76,7 @@ class RequestsController < ApplicationController
   def destroy
     authorize @user_request
     @user_request.destroy
-    respond_with(@user_request)
+    respond_with(@user_request, location: requests_path)
   end
 
   def search

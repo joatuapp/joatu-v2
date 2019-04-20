@@ -1,5 +1,5 @@
-require 'reform/form/coercion'
+# require 'reform/form/coercion'
 
 class ApplicationForm < Reform::Form
-  include Coercion
+  # include Coercion
 end

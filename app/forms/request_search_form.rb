@@ -1,6 +1,6 @@
 class RequestSearchForm < ApplicationForm
   property :search, empty: true
-  property :order_by, empty: true, type: Symbol, default: :created_at_desc
+  property :order_by, empty: true, type: Symbol
   property :types_filter, empty: true, type: Array, default: Request.valid_types
 
   def types_filter= (val)

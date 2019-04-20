@@ -129,8 +129,7 @@ en:
       hyperlocal_desc: "Access a pool of resources and dive in!
         Skill offers, goods and products for trade/rent/sale and even given away!"
       build_bonds_header: "Build bonds with your neighbors"
-      build_bonds_desc: "Meet community-minded members in a casual setting and build alliances. 
-      Free-to-attend local skillshares, clothing swaps, cookoffs, game nights, concerts, and educational classes."
+      build_bonds_desc: "Meet community-minded members in a casual setting and build alliances. Free-to-attend local skillshares, clothing swaps, cookoffs, game nights, concerts, and educational classes."
       offer_skills_header: "Help others and be helped"
       offer_skills_desc: "Give a hand to your neighbors, contribute to your hyperlocal economy and get paid. Volunteer at a non-profit, plant community gardens, teach classes, and be rewarded with JoatU’s exclusive Community Action Points."
     features:
@@ -316,7 +315,7 @@ en:
       confirm_new_password: "Confirm your new password"
       change_password_btn: "Change my password"
       send_new_password: "Send me reset password instructions"
-      new_password_hint: "leave it blank if you don't want to change it" 
+      new_password_hint: "leave it blank if you don't want to change it"
       current_password_hint: "we need your current password to confirm your changes"
       update: "Update"
       sign_up: "Sign Up"
@@ -326,12 +325,10 @@ en:
       password: "Password"
       password_confirmation: "Password Confirmation"
       resend_unlock: "Resend unlock instructions"
-
     email:
       confirm_greeting: "Welcome %{email}"
       confirm_instructions: "You can confirm your account email through the link below:"
       confirm_link: "Confirm my account"
-
       reset_pw_greeting: "Hello %{email}!"
       reset_pw_instructions_1: "Someone has requested a link to change your password. You can do this through the link below."
       reset_pw_instructions_2: "If you didn't request this, please ignore this email."
@@ -342,3 +339,13 @@ en:
       unlock_instructions_1: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
       unlock_instructions_2: "Click the link below to unlock your account:"
       unlock_link: "Unlock my account"
+  components:
+    datepicker:
+      formats:
+        display: '%d/%m/%Y'
+        picker: 'DD/MM/YYYY'
+        day_header: 'MMMM YYYY'
+    timepicker:
+      formats:
+        display: '%R'
+        picker: 'HH:mm'

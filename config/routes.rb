@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   end
 
   ActiveAdmin.routes(self)
-  
+
   # These are a bunch of redirect routes for old blog articles, so that when we
   # point joatu.com at this app we don't break the old links.
   get '/faq', to: redirect("https://joatu.wordpress.com/faq/")

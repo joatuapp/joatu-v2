@@ -9,7 +9,7 @@
         - if Pundit.policy(current_user, @offer).edit?
           = link_to t('edit'), edit_offer_path(@offer), class: 'btn btn-info'
         - if Pundit.policy(current_user, @offer).destroy?
-          = link_to t('destroy'), offer_path(@offer), method: :delete, class: 'btn btn-danger'
+          = link_to t('destroy'), offer_path(@offer), method: :delete, class: 'btn btn-danger', id: 'destroy-offer'
     .panel.panel-default
       .panel-heading= t('offers.description')
       .panel-body
@@ -21,7 +21,14 @@
   .col-sm-6
     .panel.panel-info
       .panel-heading
-        = link_to profile_path(@offerer.profile) do
+        - if @offerer.profile.id
+          = link_to profile_path(@offerer.profile) do
+            .media
+              .media-left
+                = gravatar_tag @offerer, :profile
+              .media-body.media-middle
+                %h3= t('offers.offered_by.header', offerer: @offerer.profile.full_name)
+        - else
           .media
             .media-left
               = gravatar_tag @offerer, :profile

@@ -1,14 +1,14 @@
 # NOTE: This class is an abstract base class for the
 # offers_or_requests table. It should not be instantiated directly, use the
 # Offer or Request models, or their descendents.
-class OfferOrRequest < Base
+class OfferOrRequest < ApplicationRecord
   self.abstract_class = true
   self.table_name = "offers_and_requests"
 
   include PgSearch
 
   belongs_to :user
-  belongs_to :pod
+  belongs_to :pod, optional: true
 
   pg_search_scope :text_search, lambda {|query, lang, order = nil|
     dictionary = (lang == :fr) ? "french" : "english"

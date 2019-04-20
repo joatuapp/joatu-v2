@@ -27,7 +27,7 @@ services:
     env_file:
       - './docker/.env.app.conf'
   bundler:
-    container_name: joatu-bundler
+    container_name: joatu-bundler-rails5
     image: busybox
     volumes:
       - .:/bundler

@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
   before_action :set_search_options, only: [:index, :search]
   skip_after_action :verify_authorized, only: [:index, :search]
@@ -42,7 +42,7 @@ class OffersController < ApplicationController
     @offer_types = Offer.type_options
     authorize @form.model
     if @form.validate(params[:offer])
-      if @form.visibility == :pod
+      if @form.visibility == :pod && current_user.pod_id
         @form.model.pod = current_user.pod
       else
         @form.model.pod = nil
@@ -70,7 +70,7 @@ class OffersController < ApplicationController
   def destroy
     authorize @offer
     @offer.destroy
-    respond_with(@offer)
+    respond_with(@offer, location: offers_path)
   end
 
   def search

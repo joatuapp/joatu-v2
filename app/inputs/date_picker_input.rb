@@ -39,15 +39,15 @@ class DatePickerInput < SimpleForm::Inputs::StringInput
   end
 
   def display_pattern
-    I18n.t('datepicker.dformat', default: '%d/%m/%Y')
+    I18n.t('components.datepicker.formats.display', default: '%d/%m/%Y')
   end
 
   def picker_pattern
-    I18n.t('datepicker.pformat', default: 'DD/MM/YYYY')
+    I18n.t('components.datepicker.formats.picker', default: 'DD/MM/YYYY')
   end
 
   def date_view_header_format
-    I18n.t('dayViewHeaderFormat', default: 'MMMM YYYY')
+    I18n.t('components.datepicker.formats.day_header', default: 'MMMM YYYY')
   end
 
   def date_options_base
