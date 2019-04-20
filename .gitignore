@@ -16,6 +16,7 @@
 /db/*.sqlite3-journal
 /log/*.log
 /tmp
+/coverage
 doc/
 *.swp
 *~
@@ -24,6 +25,7 @@ doc/
 .secret
 .env
 .DS_Store
+.byebug_history
 vendor/postgresql
 
 # Elastic Beanstalk Files
