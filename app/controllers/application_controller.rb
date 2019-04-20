@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   after_action :set_csrf_cookie, if: -> { protect_against_forgery? }
-  after_action :verify_authorized, :except => :index, unless: -> { is_a?(DeviseController) || is_a?(ActiveAdmin::BaseController) }
+  after_action :verify_authorized, :except => :index, unless: -> { is_a?(DeviseController) || is_a?(::ActiveAdmin::BaseController) }
 
-  rescue_from Pundit::NotAuthorizedError, UnauthorizedError, with: :user_not_authorized
+  rescue_from ::Pundit::NotAuthorizedError, UnauthorizedError, with: :user_not_authorized
 
   # Default locale to be included with each request:
   def default_url_options(options = {})
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   # at the controller level, we're including them here and having them call out
   # to this custom object.
   def authentication
-    @authentication ||= Authentication.build do |config|
+    @authentication ||= ::Authentication.build do |config|
       config.warden = request.env["warden"]
     end
   end
@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
     # the home page in English, when you sign in, you'll start seeing French.
     # If you're browsing the home page in Italian before you sign in,
     # however, you'll still see italian _after_ signing in.
-    if params[:locale] == I18n.default_locale.to_s
+    if params[:locale] == ::I18n.default_locale.to_s
       params[:locale] = nil
     end
     set_locale
@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
   # all our authorization is in one place.
   def authenticate_inviter!
     authenticate_user!
-    raise Pundit::NotAuthorizedError unless Pundit.policy!(current_user, :invitation).send?
+    raise ::Pundit::NotAuthorizedError unless ::Pundit.policy!(current_user, :invitation).send?
   end
 
   def user_not_authorized
@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     current_user.preferences.locale = params[:locale]
     current_user.save! # Save any changes. Will no-op if nothing changed.
-    I18n.locale = current_user.preferences.locale.to_sym
+    ::I18n.locale = current_user.preferences.locale.to_sym
   end
 
   def set_csrf_cookie
@@ -101,6 +101,6 @@ class ApplicationController < ActionController::Base
   end
 
   def guest_instance
-    @guest_instance ||= GuestUser.new
+    @guest_instance ||= ::GuestUser.new
   end
 end

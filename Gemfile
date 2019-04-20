@@ -47,8 +47,8 @@ gem 'kaminari'
 # Rails frontend specific gems:
 gem 'simple_form'#, '~> 3.1.0'
 gem 'gravatarify', '~> 3.0.0'
-gem 'momentjs-rails'#, '>= 2.9.0'
-# gem 'datetimepicker-rails'#, github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 
 # Use puma as the app server
@@ -61,7 +61,7 @@ gem 'i18n-tasks'
 
 # gem 'inherited_resources', '~> 1.7'
 
-gem 'activeadmin'#, github: 'activeadmin/activeadmin', tag: 'v1.0.0'
+gem 'activeadmin'
 
 gem 'underscore-rails'
 

@@ -1,11 +1,9 @@
 
-console.log('test');
 var setup_maps;
 
 setup_maps = function() {
   return $('[data-map]').each(function() {
     var bounds, data_map_element, geojson, handler;
-    console.log('map setup');
     data_map_element = $(this);
     geojson = data_map_element.data('geojson');
     bounds = data_map_element.data('bounds');
