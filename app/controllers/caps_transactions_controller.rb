@@ -1,7 +1,7 @@
 class CapsTransactionsController < ApplicationController
   include MoneyRails::ActionViewExtension
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   # NOTE: Currently assumes that it will be called from a form embedded within
   # the profile page, so it redirects there on success / failure.

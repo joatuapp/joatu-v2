@@ -1,6 +1,6 @@
 class ReferencesController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_reference, only: [:edit, :update, :destroy] 
 
   respond_to :html, :js

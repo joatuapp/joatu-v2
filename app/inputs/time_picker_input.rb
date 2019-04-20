@@ -2,11 +2,11 @@ class TimePickerInput < DatePickerInput
   private
 
   def display_pattern
-    I18n.t('timepicker.dformat', default: '%R')
+    I18n.t('components.timepicker.formats.display', default: '%R')
   end
 
   def picker_pattern
-    I18n.t('timepicker.pformat', default: 'HH:mm')
+    I18n.t('components.timepicker.formats.picker', default: 'HH:mm')
   end
 
   def date_options

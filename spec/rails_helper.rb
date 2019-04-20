@@ -2,11 +2,11 @@
 ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
+abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-# Add additional requires below this line. Rails is not loaded until this point!
+require 'database_cleaner'
 
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
+# Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -23,9 +23,17 @@ CodeClimate::TestReporter.start
 #
 # Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
-# Checks for pending migrations before tests are run.
-# If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.maintain_test_schema!
+# Checks for pending migrations and applies them before tests are run.
+# If you are not using ActiveRecord, you can remove these lines.
+begin
+  ActiveRecord::Migration.maintain_test_schema!
+rescue ActiveRecord::PendingMigrationError => e
+  puts e.to_s.strip
+  exit 1
+end
+
+DatabaseCleaner.allow_remote_database_url = true
+# DatabaseCleaner.url_whitelist = ['postgres://postgres@localhost', 'postgres://postgres@db']
 
 RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
@@ -33,21 +41,21 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
-    config.before(:suite) do
-      DatabaseCleaner.clean_with(:truncation)
-    end
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
 
-    config.before(:each) do
-      DatabaseCleaner.strategy = :transaction
-    end
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
 
-    config.before(:each) do
-      DatabaseCleaner.start
-    end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
 
-    config.after(:each) do
-      DatabaseCleaner.clean
-    end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

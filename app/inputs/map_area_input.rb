@@ -10,6 +10,7 @@ class MapAreaInput
       geojson: geojson,
       method: @method,
       object_name: @object_name,
+      map_bounds: @object.map_bounds
     }
   end
 end

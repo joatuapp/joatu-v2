@@ -2,7 +2,7 @@ class StaticPageController < ApplicationController
   skip_after_action :verify_authorized
   before_action :redirect_if_signed_in, only: [:home, :alpha_signup]
 
-  caches_action :home, :alpha_signup
+  # caches_action :home, :alpha_signup
 
   def home
   end
@@ -18,6 +18,7 @@ class StaticPageController < ApplicationController
   end
 
   private
+
   def redirect_if_signed_in
     redirect_to home_pod_path if user_signed_in?
   end

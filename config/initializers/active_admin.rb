@@ -138,7 +138,7 @@ ActiveAdmin.setup do |config|
   # You can add before, after and around filters to all of your
   # Active Admin resources and pages from here.
   #
-  # config.before_filter :do_something_awesome
+  # config.before_action :do_something_awesome
 
   # == Setting a Favicon
   #
@@ -164,7 +164,6 @@ ActiveAdmin.setup do |config|
   #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
   #
   # To load a javascript file:
-  config.register_javascript "//maps.google.com/maps/api/js?v=3.13&key=#{ENV.fetch("GOOGLE_API_KEY")}&sensor=false&libraries=geometry,drawing"
   config.register_javascript '//cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer_compiled.js'
 
   # == CSV options

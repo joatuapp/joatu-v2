@@ -1,4 +1,4 @@
-class Profile < Base
+class Profile < ApplicationRecord
   belongs_to :user
 
   def self.available_to(user, pagination)

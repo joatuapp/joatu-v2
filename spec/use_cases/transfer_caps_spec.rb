@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe TransferCaps do
-  let(:form) do 
+  let(:form) do
     f = instance_double(CapsTransactionForm)
     allow(f).to receive(:model)
     f

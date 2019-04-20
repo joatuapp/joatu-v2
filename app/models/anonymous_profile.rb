@@ -2,6 +2,10 @@ AnonymousProfile = Naught.build do |config|
   config.impersonate Profile
   config.black_hole
 
+  def id
+    nil
+  end
+
   def full_name
     "Anonymous"
   end
