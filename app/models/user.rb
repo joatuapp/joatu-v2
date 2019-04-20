@@ -68,7 +68,7 @@ class User < ApplicationRecord
     lat,lng = Geocoder.coordinates(self.postal_code)
     self.home_location = "POINT(#{lng} #{lat})"
   end
-  
+
   def publish_location_updated
     broadcast(:user_location_updated, self)
   end

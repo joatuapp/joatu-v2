@@ -21,7 +21,14 @@
   .col-sm-6
     .panel.panel-info
       .panel-heading
-        = link_to profile_path(@offerer.profile) do
+        - if @offerer.profile.id
+          = link_to profile_path(@offerer.profile) do
+            .media
+              .media-left
+                = gravatar_tag @offerer, :profile
+              .media-body.media-middle
+                %h3= t('offers.offered_by.header', offerer: @offerer.profile.full_name)
+        - else
           .media
             .media-left
               = gravatar_tag @offerer, :profile
