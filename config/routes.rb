@@ -35,7 +35,10 @@ Rails.application.routes.draw do
 
     resources :community_offers, only: [:new, :create]
 
-    devise_for :users, controllers: { invitations: 'users/invitations' }
+    devise_for :users, controllers: {
+      invitations: 'users/invitations',
+      registrations: 'users/registrations'
+    }
     resources :users, only: [:edit, :update, :destroy]
 
     get 'pods/home', controller: :pods, action: :home, as: :home_pod
