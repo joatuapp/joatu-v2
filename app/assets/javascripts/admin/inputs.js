@@ -3,24 +3,28 @@ var setup_datetime_pickers, setup_map_areas;
 
 setup_map_areas = function() {
   return $('[data-map-area]').each(function() {
-    var data, data_map, feature_from_overlay, handler, update_from_feature, update_from_overlay, visible_overlay, bounds;
+    var data, data_map, feature_from_overlay, handler, update_from_feature, update_from_overlay, visible_overlay, bounds, addOverlayListener;
     visible_overlay = null;
     data_map = this;
     data = $(data_map).data('geojson');
     bounds = $(data_map).data('bounds');
+    addOverlayListener = function(overlay) {
+      google.maps.event.addListener(overlay, 'mouseup', (function(_this) {
+        return function(mouse_event) {
+          return update_from_overlay({
+            overlay: overlay
+          });
+        };
+      })(this));
+    };
+
     update_from_feature = function(feature) {
       var paths;
       if (!visible_overlay) {
         visible_overlay = new google.maps.Polygon;
         visible_overlay.setMap(handler.map.serviceObject);
         visible_overlay.setEditable(true);
-        google.maps.event.addListener(visible_overlay, 'mouseup', (function(_this) {
-          return function(mouse_event) {
-            return update_from_overlay({
-              overlay: visible_overlay
-            });
-          };
-        })(this));
+        addOverlayListener(visible_overlay);
       }
       paths = [];
       _.each(feature.getGeometry().getArray(), function(path) {
@@ -38,13 +42,8 @@ setup_map_areas = function() {
       }
       visible_overlay = overlay.overlay;
       visible_overlay.setEditable(true);
-      google.maps.event.addListener(visible_overlay, 'mouseup', (function(_this) {
-        return function(mouse_event) {
-          return update_from_overlay({
-            overlay: visible_overlay
-          });
-        };
-      })(this));
+      addOverlayListener(visible_overlay);
+
       return feature_from_overlay(visible_overlay).toGeoJson(function(json) {
         return $(data_map).find('.map-area-coords-input').val(JSON.stringify(json));
       });
