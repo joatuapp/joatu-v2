@@ -38,7 +38,7 @@
           = link_to help_path do
             %span.glyphicon.glyphicon-question-sign 
 
-      = link_to(destroy_user_session_path, method: :delete, class: "navbar-right btn btn-default btn-sm") do
+      = link_to(destroy_user_session_path, method: :delete, id:'log-in-btn', class: "navbar-right btn btn-default btn-sm") do
         = t('auth.form.log_out')
       - if I18n.locale.to_s == "en"
         = link_to(url_for(locale: "fr"), class: "navbar-right btn btn-default btn-sm") do

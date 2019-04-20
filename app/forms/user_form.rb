@@ -6,7 +6,7 @@ class UserForm < ApplicationForm
   property :email
   property :password
   property :password_confirmation
-  
+
   def password=(val)
     super unless val.nil?
   end
