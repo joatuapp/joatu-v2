@@ -6,14 +6,14 @@ class ReferencePolicy < ApplicationPolicy
   def update?
     user.present? && (
       user.is_admin? ||
-      user.id == record.user.id
+      user.id == record.to_user.id
     )
   end
 
   def destroy?
     user.present? && (
       user.is_admin? ||
-      user.id == record.user.id
+      user.id == record.to_user.id
     )
   end
 
