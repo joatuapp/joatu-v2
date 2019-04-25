@@ -9,4 +9,4 @@
       = f.input :offer_id, collection: @to_user_offers.inject({}) {|h, offer| h[offer.title] = offer.id; h }, include_blank: true
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, id: 'create-reference-btn'
