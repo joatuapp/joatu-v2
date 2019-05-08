@@ -106,6 +106,8 @@ group :development, :test do
   gem 'faker'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'shoulda-callback-matchers'
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'spring-commands-rspec'

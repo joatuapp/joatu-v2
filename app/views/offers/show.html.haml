@@ -16,7 +16,7 @@
         = @offer.description
         - unless @offer.user == current_user
           .pull-right
-            = link_to new_message_path(receiver: @offer.user.id), class: 'btn btn-primary btn-large' do
+            = link_to(new_message_path(receiver: @offer.user.id), id: dom_id(@offer, :send_message), class: 'btn btn-primary btn-large send-message-btn') do
               = t('offers.send_message', offerer: @offerer.profile.full_name)
   .col-sm-6
     .panel.panel-info
