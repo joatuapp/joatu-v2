@@ -31,7 +31,7 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   # this is called when accepting invitation
-  # should return a form holding an instance 
+  # should return a form holding an instance
   # of resource class
   def accept_form
     update_params = update_resource_params
@@ -44,7 +44,7 @@ class Users::InvitationsController < Devise::InvitationsController
         @form.model.accept_invitation!
       end
     end
-    
+
     @form
   end
 
