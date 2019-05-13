@@ -106,6 +106,8 @@ group :development, :test do
   gem 'faker'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'shoulda-callback-matchers'
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'spring-commands-rspec'
@@ -122,6 +124,7 @@ end
 # this gem is installed:
 
 gem 'foreman', '~> 0.75'
+gem 'record_tag_helper', '~> 1.0'
 gem 'bootstrap-sass', '>= 3.4.1'
 gem 'autoprefixer-rails'
 gem "devise", '>= 4.6.0'

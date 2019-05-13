@@ -339,6 +339,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    record_tag_helper (1.0.0)
+      actionview (~> 5.x)
     redcarpet (3.4.0)
     reform (2.2.4)
       disposable (>= 0.4.1)
@@ -401,6 +403,10 @@ GEM
       ffi (~> 1.9)
       rake
     sexp_processor (4.12.0)
+    shoulda-callback-matchers (1.1.4)
+      activesupport (>= 3)
+    shoulda-matchers (4.0.1)
+      activesupport (>= 4.2.0)
     simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -502,6 +508,7 @@ DEPENDENCIES
   pundit (~> 0.3.0)
   rails (~> 5.2)
   rails_12factor
+  record_tag_helper (~> 1.0)
   redcarpet (~> 3.2)
   reform
   reform-rails
@@ -510,6 +517,8 @@ DEPENDENCIES
   rspec
   rspec-rails
   sass-rails
+  shoulda-callback-matchers
+  shoulda-matchers
   simple_form
   simple_usecase!
   simplecov

@@ -4,7 +4,7 @@ class Reference < ApplicationRecord
 
   belongs_to :to_user, class_name: 'User'
   belongs_to :from_user, class_name: 'User'
-  belongs_to :offer
+  belongs_to :offer, optional: true
 
   def self.to_user(user, pagination)
     where(to_user_id: user.id).paginate(pagination)

@@ -22,8 +22,9 @@ class MessagesController < ApplicationController
     if @form.validate(params[:message])
       authorize @form.model
       @form.save do |form_data|
+        recipients = User.where(id: form_data[:recipients].split(','))
         receipt = current_user.send_message(
-          form_data[:recipients],
+          recipients,
           form_data[:body],
           form_data[:subject],
         )

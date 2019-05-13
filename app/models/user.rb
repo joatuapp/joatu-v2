@@ -18,6 +18,9 @@ class User < ApplicationRecord
   has_one :pod_membership
   has_one :pod, through: :pod_membership
 
+  has_many :offers
+  has_many :requests
+
   before_validation :update_home_location, if: :postal_code_changed?
   after_save :publish_location_updated, if: :home_location_changed?
 
