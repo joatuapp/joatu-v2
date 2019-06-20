@@ -272,7 +272,7 @@ GEM
       money (~> 6.13.0)
       railties (>= 3.0)
     msgpack (1.2.9)
-    newrelic_rpm (5.5.0.348)
+    newrelic_rpm (6.4.0.356)
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
@@ -498,7 +498,7 @@ DEPENDENCIES
   momentjs-rails (>= 2.9.0)
   money-rails
   naught!
-  newrelic_rpm (~> 5.5.0)
+  newrelic_rpm (~> 6.4.0)
   nokogiri (~> 1.8.2)
   paranoia
   pg
