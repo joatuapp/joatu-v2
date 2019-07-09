@@ -73,7 +73,7 @@ gem 'rgeo-geojson'
 gem 'gmaps4rails'
 gem 'geocoder'
 
-gem 'country_select', '~> 2.1.1'
+gem 'country_select', '~> 4.0.0'
 
 gem 'wisper'
 
