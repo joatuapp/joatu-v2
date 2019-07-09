@@ -79,7 +79,11 @@ class OffersController < ApplicationController
 
     if @search_form.validate(params[:offer_search])
       @search_form.save do |search_data|
-        @offers = Offer.search_results(search_data, current_user, PaginationOptions.new(params[:page]))
+        @offers = Offer.search_results(
+          search_data,
+          current_user,
+          PaginationOptions.new(params[:page])
+        )
         render :index
       end
     else

@@ -1,15 +1,21 @@
 class OfferSearchForm < ApplicationForm
   property :search, empty: true
-  property :order_by, empty: true, type: Symbol
-  property :types_filter, empty: true, type: Array, default: Offer.valid_types
+  property :order_by, empty: true
+  property :types_filter,
+           empty: true,
+           type: Array,
+           default: Offer.valid_types
 
   def types_filter=(val)
     val = Array(val)
     val.reject! {|v| v.blank? }
-    super
+    super(val)
   end
 
-  validates :order_by, inclusion: {in: [nil, :created_at_desc, :created_at_asc]}
+  validates :order_by,
+            inclusion: {
+              in: [nil, 'created_at_desc', 'created_at_asc']
+            }
   validate :types_filter_valid
 
   private
