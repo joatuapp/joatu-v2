@@ -82,9 +82,9 @@ gem 'render_anywhere', :require => false
 gem 'redcarpet', '~> 3.2'
 
 
-gem 'simple_usecase', github: "sweettooth/simple_usecase"
+gem 'simple_usecase', git: 'https://github.com/sweettooth/simple_usecase.git'
 
-gem 'naught', github: 'avdi/naught'
+gem 'naught', git: 'https://github.com/avdi/naught.git'
 gem 'contracts' # https://github.com/egonSchiele/contracts.ruby
 
 group :development do
