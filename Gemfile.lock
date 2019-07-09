@@ -1,11 +1,11 @@
 GIT
-  remote: git://github.com/avdi/naught.git
+  remote: https://github.com/avdi/naught.git
   revision: 30143608295b71a0c3c75bf7072a35a5bdc40485
   specs:
     naught (1.1.0)
 
 GIT
-  remote: git://github.com/sweettooth/simple_usecase.git
+  remote: https://github.com/sweettooth/simple_usecase.git
   revision: 9d7b1aedb5c88a20175dad7860f57fec2b4601d7
   specs:
     simple_usecase (0.0.1)
@@ -534,4 +534,4 @@ RUBY VERSION
    ruby 2.5.3p105
 
 BUNDLED WITH
-   2.0.1
+   2.0.2
