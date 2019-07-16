@@ -46,7 +46,7 @@ gem 'kaminari'
 
 # Rails frontend specific gems:
 gem 'simple_form'#, '~> 3.1.0'
-gem 'gravatarify', '~> 3.0.0'
+gem 'gravatarify', '~> 3.1.1'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
