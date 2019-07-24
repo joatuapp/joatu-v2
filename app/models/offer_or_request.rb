@@ -65,9 +65,9 @@ class OfferOrRequest < ApplicationRecord
       # handle order for us, IF it is used. This is a fallback for ordering
       # when not doing a text search:
       case search_data[:order_by]
-      when :created_at_desc
+      when 'created_at_desc'
         query = query.order(created_at: :desc)
-      when :created_at_asc
+      when 'created_at_asc'
         query = query.order(created_at: :asc)
       end
     end

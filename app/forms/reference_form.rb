@@ -5,7 +5,7 @@ class ReferenceForm < ApplicationForm
 
   property :reference, validates: {presence: true}
   property :rating, type: Integer, validates: {
-    presence: true, 
+    presence: true,
     inclusion: {in: 1..5}
   }
 
@@ -19,9 +19,14 @@ class ReferenceForm < ApplicationForm
   validates_uniqueness_of :to_user_id, scope: :from_user_id
   validate :not_referencing_self
 
+  def rating
+    super ? super.to_i : super
+  end
+
   private
 
   def not_referencing_self
     errors[:base] = "Cannot leave a reference for yourself!" if to_user_id == from_user_id
   end
+
 end

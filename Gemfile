@@ -24,7 +24,7 @@ gem "skylight"
 # gem 'jquery-cookie-rails'
 # gem 'jquery-turbolinks'
 
-gem 'nokogiri', '~> 1.8.2'
+gem 'nokogiri', '~> 1.10.3'
 
 # Handles money support, with migration / DB integration.
 gem 'money-rails'#, github: "joatuapp/money-rails"
@@ -46,7 +46,7 @@ gem 'kaminari'
 
 # Rails frontend specific gems:
 gem 'simple_form'#, '~> 3.1.0'
-gem 'gravatarify', '~> 3.0.0'
+gem 'gravatarify', '~> 3.1.1'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
@@ -73,7 +73,7 @@ gem 'rgeo-geojson'
 gem 'gmaps4rails'
 gem 'geocoder'
 
-gem 'country_select', '~> 2.1.1'
+gem 'country_select', '~> 4.0.0'
 
 gem 'wisper'
 
@@ -82,9 +82,9 @@ gem 'render_anywhere', :require => false
 gem 'redcarpet', '~> 3.2'
 
 
-gem 'simple_usecase', github: "sweettooth/simple_usecase"
+gem 'simple_usecase', git: 'https://github.com/sweettooth/simple_usecase.git'
 
-gem 'naught', github: 'avdi/naught'
+gem 'naught', git: 'https://github.com/avdi/naught.git'
 gem 'contracts' # https://github.com/egonSchiele/contracts.ruby
 
 group :development do
@@ -106,6 +106,8 @@ group :development, :test do
   gem 'faker'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'shoulda-callback-matchers'
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'spring-commands-rspec'
@@ -122,6 +124,7 @@ end
 # this gem is installed:
 
 gem 'foreman', '~> 0.75'
+gem 'record_tag_helper', '~> 1.0'
 gem 'bootstrap-sass', '>= 3.4.1'
 gem 'autoprefixer-rails'
 gem "devise", '>= 4.6.0'

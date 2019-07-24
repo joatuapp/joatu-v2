@@ -1,6 +1,6 @@
 class RequestSearchForm < ApplicationForm
   property :search, empty: true
-  property :order_by, empty: true, type: Symbol
+  property :order_by, empty: true
   property :types_filter, empty: true, type: Array, default: Request.valid_types
 
   def types_filter= (val)
@@ -9,10 +9,13 @@ class RequestSearchForm < ApplicationForm
     super
   end
 
-  validates :order_by, inclusion: {in: [nil, :created_at_desc, :created_at_asc]}
+  validates :order_by,
+            inclusion: {
+              in: [nil, 'created_at_desc', 'created_at_asc']
+            }
   validate :types_filter_valid
 
-  private 
+  private
   
   def types_filter_valid
     valid_types = Request.valid_types
