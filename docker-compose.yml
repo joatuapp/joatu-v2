@@ -2,6 +2,7 @@ version: '3'
 
 volumes:
   joatu-db-data:
+  joatu-bundler:
 
 services:
   app:
@@ -12,11 +13,11 @@ services:
     tty: true
     volumes:
       - .:/joatu
+      - joatu-bundler:/usr/local/bundle/
     ports:
       - "3000:3000"
     depends_on:
       - db
-      - bundler
     env_file:
       - './docker/.env.app.conf'
   db:
@@ -28,8 +29,3 @@ services:
       - 5454:5432
     env_file:
       - './docker/.env.app.conf'
-  bundler:
-    container_name: joatu-bundler-rails5
-    image: busybox
-    volumes:
-      - .:/bundler
