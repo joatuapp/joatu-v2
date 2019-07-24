@@ -46,15 +46,15 @@ ActiveAdmin.register Event do
       f.input :creator
       f.input :organization
       f.input :pod
-      f.inputs "Address", for: [:address, f.object.address] do |af|
-        af.input :name
-        af.input :address1
-        af.input :address2
-        af.input :city
-        af.input :province
-        af.input :country, as: :country
-        af.input :postal_code
-      end
+      # f.inputs "Address", for: f.object.address do |af|
+      #   af.input :name
+      #   af.input :address1
+      #   af.input :address2
+      #   af.input :city
+      #   af.input :province
+      #   af.input :country, as: :country
+      #   af.input :postal_code
+      # end
 
       f.inputs "Details", for: [:community_offer_detail_attributes, f.object.community_offer_detail] do |df|
         df.input :id, as: :hidden
