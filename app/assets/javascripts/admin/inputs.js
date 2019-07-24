@@ -117,7 +117,6 @@ setup_datetime_pickers = function() {
 };
 
 $(document).ready(function(e) {
-  console.log('test');
   $('head').append('<script defer async src="//maps.google.com/maps/api/js?v=3.13&amp;key=AIzaSyCJlym5rNyFZzA9GOs0IA9pz-jfyinGiKo&amp;sensor=false&amp;libraries=geometry,drawing&amp;callback=setup_map_areas"></script>');
   setup_datetime_pickers();
 });
