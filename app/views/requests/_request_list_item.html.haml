@@ -3,6 +3,8 @@
   %h4
     = request_model.title
   %div.metadata
+    %small= t("offers_and_requests.types.#{request_model.class.name.demodulize.underscore}")
+    |
     %small= t('requests.requester_label', requester: request_model.user.name)
     |
     %small= l(request_model.created_at, format: :long)

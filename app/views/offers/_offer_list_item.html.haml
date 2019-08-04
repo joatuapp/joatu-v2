@@ -3,6 +3,8 @@
   %h4
     = offer.title
   %div.metadata
+    %small= t("offers_and_requests.types.#{offer.class.name.demodulize.underscore}")
+    |
     %small= t('offers.offerer_label', offerer: offer.user.name)
     |
     %small= l(offer.created_at, format: :long)
