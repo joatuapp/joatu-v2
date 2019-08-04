@@ -2,6 +2,7 @@ version: '3'
 
 volumes:
   joatu-db-data:
+  joatu-gems:
 
 services:
   app:
@@ -12,6 +13,7 @@ services:
     tty: true
     volumes:
       - .:/joatu
+      - joatu-gems:/usr/local/bundle/
     ports:
       - "3000:3000"
     depends_on:
