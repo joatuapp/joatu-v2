@@ -4,4 +4,4 @@
     = offer.title
     %br
     %small= t('offers.offerer_label', offerer: offer.user.name)
-  %p= truncate(offer.description, length: 100)
+  %p.offer-description= truncate(offer.description, length: 100)
