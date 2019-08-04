@@ -2,6 +2,8 @@
 %a.list-group-item.request-list-group-item{href: request_path(request_model), class: "#{request_model.type_class}"}
   %h4
     = request_model.title
-    %br
+  %div.metadata
     %small= t('requests.requester_label', requester: request_model.user.name)
+    |
+    %small= l(request_model.created_at, format: :long)
   %p= truncate(request_model.description, length: 100)
