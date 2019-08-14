@@ -2,6 +2,10 @@
 %a.list-group-item.offer-list-group-item{href: offer_path(offer), class: "#{offer.type_class}"}
   %h4
     = offer.title
-    %br
+  %div.metadata
+    %small= t("offers_and_requests.types.#{offer.class.name.demodulize.underscore}")
+    |
     %small= t('offers.offerer_label', offerer: offer.user.name)
+    |
+    %small= l(offer.created_at, format: :long)
   %p.offer-description= truncate(offer.description, length: 100)
