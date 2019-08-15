@@ -31,12 +31,15 @@ class Pod < ApplicationRecord
   def map_bounds
     min_x = min_y = 1000
     max_x = max_y = -1000
-    self.focus_area.exterior_ring.points.each do |point|
-      min_x = point.x if point.x < min_x
-      min_y = point.y if point.y < min_y
 
-      max_x = point.x if point.x > max_x
-      max_y = point.y if point.y > max_y
+    if self.focus_area
+      self.focus_area.exterior_ring.points.each do |point|
+        min_x = point.x if point.x < min_x
+        min_y = point.y if point.y < min_y
+
+        max_x = point.x if point.x > max_x
+        max_y = point.y if point.y > max_y
+      end
     end
 
     [[min_y, min_x], [max_y, max_x]]
@@ -47,6 +50,7 @@ class Pod < ApplicationRecord
   end
 
   def hub_id=(val)
+    return unless val.present?
     self.hub = Organization.find(val)
   end
 

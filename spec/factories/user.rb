@@ -9,5 +9,9 @@ FactoryGirl.define do
     factory :unconfirmed_user do
       confirmed_at nil
     end
+
+    after(:create) do |user|
+      create(:profile, user: user)
+    end
   end
 end

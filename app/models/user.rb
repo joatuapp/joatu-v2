@@ -25,11 +25,27 @@ class User < ApplicationRecord
   after_save :publish_location_updated, if: :home_location_changed?
 
   def profile
-    super || AnonymousProfile.new
+    super || Profile.new
   end
 
   def name
     profile.full_name
+  end
+
+  def first_name
+    profile.given_name
+  end
+
+  def last_name
+    profile.surname
+  end
+
+  def first_name=(arg)
+    profile.given_name = arg
+  end
+
+  def last_name=(arg)
+    profile.surname = arg
   end
 
   # Return false if we should not send an email for 'object_to_send' otherwise,

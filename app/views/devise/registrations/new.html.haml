@@ -3,8 +3,10 @@
   = simple_form_for(@form, as: resource_name, url: registration_path(resource_name)) do |f|
     = f.error_notification
     .form-inputs
-      = hidden_field_tag('user[pod_id]', params[:pod_id])
-      = f.input :email, required: true, autofocus: true
+      = f.input :first_name, required: true, autofocus: true
+      = f.input :last_name, required: true
+      = f.input :pod_id, collection: Pod.all, label_method: :name, value_method: :id, label: "Pod" , include_blank: false, selected: (params[:pod_id] if params[:pod_id].present? )
+      = f.input :email, required: true
       = f.input :password, required: true, hint: (t('auth.password_length_hint', min_length: @minimum_password_length) if @validatable)
       = f.input :password_confirmation, required: true
       = f.input :tou_agreement, as: :boolean, label: t('tou.form.label_html', link: link_to(t('tou.form.link'), tou_path ))
