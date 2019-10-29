@@ -42,6 +42,7 @@ The following commands will get you set up to begin develpment on JoatU:
   - `git clone https://github.com/joatuapp/joatu-v2.git`
   - `cd joatu-v2`
   - `docker-compose build`
+  - `docker-compose run app bundle`
 
 2. Set up environment:
   - You must create a [Google Maps API key](https://developers.google.com/maps/documentation/embed/get-api-key) before completing this next step
