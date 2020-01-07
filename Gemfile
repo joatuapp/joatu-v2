@@ -52,7 +52,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 
 # Use puma as the app server
-gem 'puma', '~> 3.12.0'
+gem 'puma', '~> 3.12.2'
 
 gem 'newrelic_rpm', '~> 5.5.0'
 
