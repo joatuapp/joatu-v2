@@ -59,16 +59,22 @@ class OfferOrRequest < ApplicationRecord
 
     # Only add text search conditions if a search key is given:
     if search_data[:search].present?
-      query = query.text_search(search_data[:search], I18n.locale, search_data[:order_by])
+      query = query.text_search(
+        search_data[:search],
+        I18n.locale,
+        search_data[:order_by]
+      )
     else
       # NOTE: This search is in an "else" block, as the text_search scope will
       # handle order for us, IF it is used. This is a fallback for ordering
       # when not doing a text search:
       case search_data[:order_by]
-      when :created_at_desc
+      when 'created_at_desc'
         query = query.order(created_at: :desc)
-      when :created_at_asc
+      when 'created_at_asc'
         query = query.order(created_at: :asc)
+      else
+        query = query.order(created_at: :desc)
       end
     end
 

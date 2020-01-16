@@ -24,7 +24,7 @@ gem "skylight"
 # gem 'jquery-cookie-rails'
 # gem 'jquery-turbolinks'
 
-gem 'nokogiri', '~> 1.8.2'
+gem 'nokogiri', '~> 1.10.5'
 
 # Handles money support, with migration / DB integration.
 gem 'money-rails'#, github: "joatuapp/money-rails"
@@ -36,7 +36,7 @@ gem 'money-rails'#, github: "joatuapp/money-rails"
 gem 'bootsnap', require: false
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.13'
 
 gem 'paranoia'
 
@@ -46,15 +46,15 @@ gem 'kaminari'
 
 # Rails frontend specific gems:
 gem 'simple_form'#, '~> 3.1.0'
-gem 'gravatarify', '~> 3.0.0'
+gem 'gravatarify', '~> 3.1.1'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 
 # Use puma as the app server
-gem 'puma', '~> 3.12.0'
+gem 'puma', '~> 3.12.2'
 
-gem 'newrelic_rpm', '~> 5.5.0'
+gem 'newrelic_rpm', '~> 6.8.0'
 
 gem 'i18n-tasks'
 # gem 'rails-i18n'#, github: 'svenfuchs/rails-i18n', branch: 'master'
@@ -73,7 +73,7 @@ gem 'rgeo-geojson'
 gem 'gmaps4rails'
 gem 'geocoder'
 
-gem 'country_select', '~> 2.1.1'
+gem 'country_select', '~> 4.0.0'
 
 gem 'wisper'
 
@@ -82,9 +82,9 @@ gem 'render_anywhere', :require => false
 gem 'redcarpet', '~> 3.2'
 
 
-gem 'simple_usecase', github: "sweettooth/simple_usecase"
+gem 'simple_usecase', git: 'https://github.com/sweettooth/simple_usecase.git'
 
-gem 'naught', github: 'avdi/naught'
+gem 'naught', git: 'https://github.com/avdi/naught.git'
 gem 'contracts' # https://github.com/egonSchiele/contracts.ruby
 
 group :development do

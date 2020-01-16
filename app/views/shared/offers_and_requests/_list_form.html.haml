@@ -3,4 +3,4 @@
   = f.input :search, placeholder: t('offers_and_requests.forms.list.placeholders.search'), label: t('offers_and_requests.forms.list.labels.search')
   = f.input :order_by, collection: order_options, label: t('offers_and_requests.forms.list.labels.order_by'), include_blank: false, include_hidden: false
   = f.input :types_filter, collection: type_options, as: :check_boxes, label: t('offers_and_requests.forms.list.labels.filter_by_type'), wrapper: :horizontal_radio_and_checkboxes
-  = f.button :submit, t('offers_and_requests.forms.list.labels.submit'), class: 'pull-right'
+  = f.button :submit, t('offers_and_requests.forms.list.labels.submit'), class: 'pull-right', id: 'offer-request-search-submit'
