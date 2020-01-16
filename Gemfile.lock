@@ -82,7 +82,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    bcrypt (3.1.12)
+    bcrypt (3.1.13)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
     bootstrap-sass (3.4.1)
@@ -474,7 +474,7 @@ DEPENDENCIES
   activeadmin
   activerecord-postgis-adapter
   autoprefixer-rails
-  bcrypt (~> 3.1.7)
+  bcrypt (~> 3.1.13)
   bootsnap
   bootstrap-sass (>= 3.4.1)
   bootstrap-sass-extras
