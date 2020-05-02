@@ -24,7 +24,7 @@ gem "skylight"
 # gem 'jquery-cookie-rails'
 # gem 'jquery-turbolinks'
 
-gem 'nokogiri', '~> 1.10.5'
+gem 'nokogiri', '~> 1.10.8'
 
 # Handles money support, with migration / DB integration.
 gem 'money-rails'#, github: "joatuapp/money-rails"
@@ -36,7 +36,7 @@ gem 'money-rails'#, github: "joatuapp/money-rails"
 gem 'bootsnap', require: false
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.13'
 
 gem 'paranoia'
 
@@ -52,9 +52,9 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 
 # Use puma as the app server
-gem 'puma', '~> 3.12.0'
+gem 'puma', '~> 3.12.4'
 
-gem 'newrelic_rpm', '~> 5.5.0'
+gem 'newrelic_rpm', '~> 6.8.0'
 
 gem 'i18n-tasks'
 # gem 'rails-i18n'#, github: 'svenfuchs/rails-i18n', branch: 'master'

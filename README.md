@@ -1,5 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/joatuapp/joatu-v2/badges/gpa.svg)](https://codeclimate.com/github/joatuapp/joatu-v2)
 [![Build Status](https://travis-ci.org/joatuapp/joatu-v2.svg?branch=master)](https://travis-ci.org/joatuapp/joatu-v2)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjoatuapp%2Fjoatu-v2.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjoatuapp%2Fjoatu-v2?ref=badge_shield)
 
 # JoatU
 
@@ -63,3 +64,7 @@ The following commands will get you set up to begin develpment on JoatU:
   - run `docker-compose up app`
   - The app should now be available on `localhost:3000`
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjoatuapp%2Fjoatu-v2.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjoatuapp%2Fjoatu-v2?ref=badge_large)
