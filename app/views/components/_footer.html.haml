@@ -34,7 +34,8 @@
   .row
     .col-sm-12
       %p.copyright 
-        &copy; JoatU 2018
+        &copy; JoatU
+        = DateTime.current.strftime("%Y")
       %p.copyright
         %small
           = t('footer.tou_message_html', link: link_to(t('footer.tou_link'), tou_path))
