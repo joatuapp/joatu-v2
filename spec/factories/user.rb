@@ -9,5 +9,7 @@ FactoryGirl.define do
     factory :unconfirmed_user do
       confirmed_at nil
     end
+
+    profile
   end
 end

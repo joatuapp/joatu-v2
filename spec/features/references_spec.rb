@@ -2,17 +2,15 @@ require 'features_helper'
 require 'session_helper'
 
 feature "Profile References" do
-  background do
+  before do
     FactoryGirl.create(:user, email: "test@example.com", password: "testpass")
   end
 
   scenario "Create a Reference" do
-    user = FactoryGirl.create(:user, email: "joatu-test@example.com", password: "testpass")
-    profile = user.create_profile(
-      given_name: 'tester',
+    user = FactoryGirl.create(:user, email: "joatu-test@example.com", password: "testpass", profile: FactoryGirl.create(:profile, given_name: 'tester',
       surname: 'profile',
-      about_me: 'this is some info about me'
-    )
+      about_me: 'this is some info about me'))
+    profile = user.profile
 
     sign_in_with('test@example.com', 'testpass')
 

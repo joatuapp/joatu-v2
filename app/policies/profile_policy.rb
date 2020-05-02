@@ -3,6 +3,10 @@ class ProfilePolicy < ApplicationPolicy
     true
   end
 
+  def new?
+    true
+  end
+
   def create?
     user.present? && (user.profile.blank? || user.profile.new_record?)
   end

@@ -8,7 +8,7 @@ class Users::InvitationsController < Devise::InvitationsController
     form = accept_form
     self.resource = form.model
     invitation_accepted = form.errors.empty?
-
+    # byebug
     yield resource if block_given?
 
     if invitation_accepted
@@ -31,7 +31,7 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   # this is called when accepting invitation
-  # should return a form holding an instance 
+  # should return a form holding an instance
   # of resource class
   def accept_form
     update_params = update_resource_params
@@ -44,7 +44,7 @@ class Users::InvitationsController < Devise::InvitationsController
         @form.model.accept_invitation!
       end
     end
-    
+
     @form
   end
 

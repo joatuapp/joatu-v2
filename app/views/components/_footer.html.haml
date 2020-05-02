@@ -28,16 +28,14 @@
           = link_to "http://joatu.tumblr.com/" do
             = fa_icon "tumblr-square 2x"
         %li
-          = link_to "https://plus.google.com/+Joatuniverse/posts" do
-            = fa_icon "google-plus-square 2x"
-        %li
           = link_to "https://www.linkedin.com/company/joatu" do
             = fa_icon "linkedin-square 2x"
 
   .row
     .col-sm-12
       %p.copyright 
-        &copy; JoatU 2018
+        &copy; JoatU
+        = DateTime.current.strftime("%Y")
       %p.copyright
         %small
           = t('footer.tou_message_html', link: link_to(t('footer.tou_link'), tou_path))
