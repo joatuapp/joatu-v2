@@ -1,10 +1,10 @@
 class NewUserForm < ApplicationForm
   property :email, validates: {presence: true}
   property :password, validates: {presence: true, length: { minimum: 8 } }
-  property :postal_code, validates: {presence: true}
+  property :postal_code
 
-  property :first_name, validates: {presence: true}
-  property :last_name, validates: {presence: true}
+  # property :first_name, validates: {presence: true}
+  # property :last_name, validates: {presence: true}
 
   property :password_confirmation, validates: {presence: true, length: { minimum: 8 } }
 

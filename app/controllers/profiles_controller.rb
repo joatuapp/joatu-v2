@@ -24,6 +24,7 @@ class ProfilesController < ApplicationController
   def new
     @profile = ProfileForm.new(Profile.new)
     authorize @profile.model
+    redirect_to profile_path(current_user.profile) and return if current_user.profile.persisted?
     respond_with(@profile)
   end
 

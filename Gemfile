@@ -88,6 +88,8 @@ gem 'naught', git: 'https://github.com/avdi/naught.git'
 gem 'contracts' # https://github.com/egonSchiele/contracts.ruby
 
 group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :development, :test do
@@ -118,6 +120,7 @@ end
 group :test do
   gem 'coveralls'
   gem 'simplecov', require: false
+  gem 'capybara-screenshot'
 end
 
 # Protects mail from going out to the real world in all environments for which

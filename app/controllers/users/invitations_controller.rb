@@ -8,7 +8,7 @@ class Users::InvitationsController < Devise::InvitationsController
     form = accept_form
     self.resource = form.model
     invitation_accepted = form.errors.empty?
-
+    # byebug
     yield resource if block_given?
 
     if invitation_accepted

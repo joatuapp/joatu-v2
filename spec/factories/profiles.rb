@@ -5,5 +5,6 @@ FactoryGirl.define do
     given_name "MyString"
     surname "MyString"
     about_me "MyText"
+
   end
 end

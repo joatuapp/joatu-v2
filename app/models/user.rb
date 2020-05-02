@@ -14,12 +14,17 @@ class User < ApplicationRecord
 
   composed_of :preferences, class_name: "User::Preferences", mapping: %w(preferences_json to_json)
 
-  has_one :profile
+  belongs_to :profile, autosave: true, validate: true, optional: true
+
   has_one :pod_membership
   has_one :pod, through: :pod_membership
 
   has_many :offers
   has_many :requests
+
+  attr_accessor :tou_agreement
+
+  accepts_nested_attributes_for :profile
 
   before_validation :update_home_location, if: :postal_code_changed?
   after_save :publish_location_updated, if: :home_location_changed?

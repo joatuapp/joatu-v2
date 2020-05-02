@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    home_pod_path
+    return home_pod_path if resource.profile.persisted?
+    new_profile_path
   end
 
   private
@@ -74,12 +75,15 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:alert] = t('flash.not_authorized')
-    redirect_to(request.referrer || root_path)
+    redirect_to(request.referrer || root_path) and return
   end
 
   def set_locale
     current_user.preferences.locale = params[:locale]
-    current_user.save! # Save any changes. Will no-op if nothing changed.
+    begin
+      current_user.save! # Save any changes. Will no-op if nothing changed.
+    rescue ActiveRecord::RecordInvalid
+    end
     ::I18n.locale = current_user.preferences.locale.to_sym
   end
 
@@ -96,10 +100,10 @@ class ApplicationController < ActionController::Base
       p.permit(:home_pod_id, :email)
     end
     devise_parameter_sanitizer.permit(:sign_up) do |p|
-      p.permit(:pod_id, :first_name, :last_name, :email, :password, :password_confirmation, :postal_code)
+      p.permit(:pod_id, :tou_agreement, :first_name, :last_name, :email, :password, :password_confirmation, :postal_code, profile_attributes: %i[given_name surname])
     end
     devise_parameter_sanitizer.permit(:accept_invitation) do |p|
-      p.permit(:invitation_token, :password, :password_confirmation, :postal_code, :tou_agreement)
+      p.permit(:invitation_token, :password, :password_confirmation, :pod_id, :tou_agreement)
     end
   end
 

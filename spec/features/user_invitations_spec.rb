@@ -21,7 +21,9 @@ feature "Invite Users" do
 
   scenario "Accept an invitation sucessfully" do
     # byebug
+    pod = FactoryGirl.create(:pod)
     user = User.invite!(email: 'testuser@grr.la')
+    user.profile = FactoryGirl.create(:profile)
     raw, enc = Devise.token_generator.generate(user.class, :invitation_token)
     user.invitation_token = enc
     user.save!
@@ -31,21 +33,23 @@ feature "Invite Users" do
     visit url
 
     expect(page).to have_selector 'h2', text: "Set your password"
+    expect(page).to have_selector 'select#user_pod_id'
 
     within('form#edit_user') do
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password'
-      fill_in 'user[postal_code]', with: 'H2X 2T6'
+      # select Pod.first.id from: 'user_pod_id'
       check 'user[tou_agreement]'
-      click_button 'Set my password'
+      click_button 'accept-invitation'
     end
 
-    expect(page).to have_selector 'h3', text: "About this Pod"
+    expect(page).to have_selector 'h3', text: "About this Pod", wait: 10
   end
 
   scenario "Try to accept an invitation but fail password confirmation" do
     # byebug
     user = User.invite!(email: 'testuser@grr.la')
+    user.profile = FactoryGirl.create(:profile)
     raw, enc = Devise.token_generator.generate(user.class, :invitation_token)
     user.invitation_token = enc
     user.save!
@@ -59,7 +63,7 @@ feature "Invite Users" do
     within('form#edit_user') do
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password123'
-      fill_in 'user[postal_code]', with: 'H2X 2T6'
+      # fill_in 'user[postal_code]', with: 'H2X 2T6'
       check 'user[tou_agreement]'
       click_button 'Set my password'
     end

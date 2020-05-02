@@ -11,7 +11,7 @@ describe User, type: :model do
 
   describe 'ActiveRecord associations' do
     describe 'profile' do
-      it { is_expected.to have_one(:profile) }
+      # it { is_expected.to belong_to(:profile) }
       it { expect(user.profile).to be_present }
     end
     it { is_expected.to have_one(:pod_membership) }

@@ -2,13 +2,12 @@ require 'features_helper'
 require 'session_helper'
 
 feature "User Profiles" do
-  background do
-    FactoryGirl.create(:user, email: "test@example.com", password: "testpass")
-  end
 
   scenario "Create a profile" do
+    user = FactoryGirl.create(:user, email: "test@example.com", password: "testpass")
+    user.profile.destroy
     sign_in_with('test@example.com', 'testpass')
-    visit new_profile_path
+    visit new_profile_url
     expect(page).to have_selector 'h1', text: "Create your JoatU profile"
 
     within('form#new_profile') do
@@ -23,15 +22,17 @@ feature "User Profiles" do
 
   scenario "View a Profile" do
     user = FactoryGirl.create(:user, email: "joatu-test@example.com", password: "testpass")
-    profile = user.create_profile(
+    user.profile.destroy
+
+    user.create_profile(
       given_name: 'tester',
       surname: 'profile',
       about_me: 'this is some info about me'
     )
 
-    sign_in_with('test@example.com', 'testpass')
+    sign_in_with('joatu-test@example.com', 'testpass')
 
-    visit profile_url('en', profile)
+    visit profile_url('en', user.profile)
 
     expect(page).to have_selector 'h1', text: "tester profile"
   end

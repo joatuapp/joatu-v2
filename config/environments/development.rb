@@ -69,4 +69,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
+
+  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 end

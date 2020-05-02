@@ -10,8 +10,6 @@ FactoryGirl.define do
       confirmed_at nil
     end
 
-    after(:create) do |user|
-      create(:profile, user: user)
-    end
+    profile
   end
 end
