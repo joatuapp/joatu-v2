@@ -311,7 +311,7 @@ GEM
     puma (3.12.4)
     pundit (0.3.0)
       activesupport (>= 3.0.0)
-    rack (2.1.1)
+    rack (2.2.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.2.1)
