@@ -292,8 +292,8 @@ GEM
     nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    paranoia (2.4.1)
-      activerecord (>= 4.0, < 5.3)
+    paranoia (2.4.2)
+      activerecord (>= 4.0, < 6.1)
     parser (2.6.2.0)
       ast (~> 2.4.0)
     pg (1.1.4)
@@ -358,7 +358,7 @@ GEM
       ffi (~> 1.0)
     record_tag_helper (1.0.0)
       actionview (~> 5.x)
-    redcarpet (3.4.0)
+    redcarpet (3.5.0)
     reform (2.2.4)
       disposable (>= 0.4.1)
       representable (>= 2.4.0, < 3.1.0)
@@ -540,7 +540,7 @@ DEPENDENCIES
   rails (~> 5.2)
   rails_12factor
   record_tag_helper (~> 1.0)
-  redcarpet (~> 3.2)
+  redcarpet (~> 3.5)
   reform
   reform-rails
   render_anywhere
