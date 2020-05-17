@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_02_210719) do
+ActiveRecord::Schema.define(version: 2019_05_08_225355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -242,7 +242,6 @@ ActiveRecord::Schema.define(version: 2020_05_02_210719) do
     t.string "postal_code"
     t.geometry "home_location", limit: {:srid=>0, :type=>"st_point"}
     t.integer "caps_cents", default: 0, null: false
-    t.integer "profile_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["home_location"], name: "index_users_on_home_location", using: :gist
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
