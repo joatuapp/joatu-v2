@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  has_one :user
+  belongs_to :user
   validates :given_name,
             presence: true
 

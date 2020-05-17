@@ -10,6 +10,14 @@ FactoryGirl.define do
       confirmed_at nil
     end
 
-    profile
+    trait :profile do
+      after(:create) do |user|
+        user.profile = create(:profile, user: user)
+      end
+
+      after(:build) do |user|
+        user.profile = build(:profile, user: user)
+      end
+    end
   end
 end
