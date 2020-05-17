@@ -79,7 +79,7 @@ gem 'wisper'
 
 gem 'render_anywhere', :require => false
 
-gem 'redcarpet', '~> 3.2'
+gem 'redcarpet', '~> 3.5'
 
 
 gem 'simple_usecase', git: 'https://github.com/sweettooth/simple_usecase.git'
