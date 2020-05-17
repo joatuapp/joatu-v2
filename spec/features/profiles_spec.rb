@@ -4,10 +4,11 @@ require 'session_helper'
 feature "User Profiles" do
 
   scenario "Create a profile" do
-    user = FactoryGirl.create(:user, email: "test@example.com", password: "testpass")
-    user.profile.destroy
+    FactoryGirl.create(:user, email: "test@example.com", password: "testpass")
     sign_in_with('test@example.com', 'testpass')
-    visit new_profile_url
+
+    # User should be redirected to the new profile page if they don't have a
+    # profile
     expect(page).to have_selector 'h1', text: "Create your JoatU profile"
 
     within('form#new_profile') do

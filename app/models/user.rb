@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   composed_of :preferences, class_name: "User::Preferences", mapping: %w(preferences_json to_json)
 
-  belongs_to :profile, autosave: true, validate: true, optional: true
+  has_one :profile, autosave: true, validate: true
 
   has_one :pod_membership
   has_one :pod, through: :pod_membership
