@@ -286,7 +286,7 @@ en:
     caps: "CAPs"
   tou:
     form:
-      label_html: "I agree to the %{link}"
+      label_html: "I agree to check my email spam folder for my confirmation email and to the %{link}"
       link: "terms of use"
       error_message: "You must agree with the Terms of Use in order to user JoatU!"
   auth:
