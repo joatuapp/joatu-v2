@@ -133,7 +133,7 @@ fr:
   tou:
     form:
       error_message: "Vous devez souscrire aux conditions d'utilisation pour utiliser JoatU !"
-      label_html: "J’accepte de visiter la section «courriels indésirables» pour trouver ma confirmation d’inscription et je souscris aux %{link}"
+      label_html: "J’accepte de visiter la section « courriels indésirables » pour trouver ma confirmation d’inscription et je souscris aux %{link}"
       link: "conditions d'utilisation"
   help:
     header: "Aide et « foire aux questions »"
