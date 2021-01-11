@@ -1,15 +1,20 @@
 .col-sm-6.col-sm-offset-3
   %h2= t('auth.sign_up_header')
-  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = f.error_notification
-    .form-inputs
-      / = f.input :first_name, required: true, autofocus: true, label: t('profiles.given_name')
-      / = f.input :last_name, required: true, label: t('profiles.surname')
-      = f.input :email, required: true
-      = f.input :password, required: true, hint: (t('auth.password_length_hint', min_length: @minimum_password_length) if @validatable)
-      = f.input :password_confirmation, required: true
-      = f.input :pod_id, collection: Pod.all, label_method: :name, value_method: :id, label: "Pod" , include_blank: false, selected: (params[:pod_id] if params[:pod_id].present? )
-      = f.input :tou_agreement, as: :boolean, label: t('tou.form.label_html', link: link_to(t('tou.form.link'), tou_path ))
-    .form-actions
-      = f.button :submit, t('auth.form.sign_up'), id: 'submit-new-user-form'
-  = render "devise/shared/links"
+
+  <p>Registration is temporarily disabled</p>
+
+  / = render "devise/shared/links"
+
+  / = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  /   = f.error_notification
+  /   .form-inputs
+  /     = f.input :first_name, required: true, autofocus: true, label: t('profiles.given_name')
+  /     = f.input :last_name, required: true, label: t('profiles.surname')
+  /     = f.input :email, required: true
+  /     = f.input :password, required: true, hint: (t('auth.password_length_hint', min_length: @minimum_password_length) if @validatable)
+  /     = f.input :password_confirmation, required: true
+  /     = f.input :pod_id, collection: Pod.all, label_method: :name, value_method: :id, label: "Pod" , include_blank: false, selected: (params[:pod_id] if params[:pod_id].present? )
+  /     = f.input :tou_agreement, as: :boolean, label: t('tou.form.label_html', link: link_to(t('tou.form.link'), tou_path ))
+  /   .form-actions
+  /     = f.button :submit, t('auth.form.sign_up'), id: 'submit-new-user-form'
+  / = render "devise/shared/links"
