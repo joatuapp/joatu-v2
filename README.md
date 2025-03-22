@@ -4,7 +4,7 @@
 
 # JoatU
 
-# This repository is not currently maintained and has since become outdated, but the ideas of JoatU live on and are still being worked on through other projects. Thank you for all of the hardwork and interest. JoatU will be reborn in a new form one day.
+# This repository is not currently maintained and has since become outdated, but the ideas of JoatU live on and are still being worked on through other projects. Thank you for all of the hard work and interest. JoatU will be reborn in a new form one day.
 
 ## Contents
 - About the project
